@@ -1,0 +1,13 @@
+.button {
+  color: #000;
+  display: block;
+  // TODO: add another class
+}
+
+.test {
+  .foo,
+  .bar {
+    margin: 10px;
+    padding: 10px;
+  }
+}
