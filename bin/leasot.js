@@ -5,6 +5,7 @@ var path = require('path');
 var program = require('commander');
 var leasot = require('../index');
 var logSymbols = require('log-symbols');
+var stdin = require('get-stdin');
 process.title = 'leasot';
 
 program
@@ -33,21 +34,14 @@ function useReporter(reporter, todos) {
     } catch (e) {
         console.log(logSymbols.error, e.toString());
     }
-    process.exit(1);
 }
 
 function parseContents(filetype, contents, file) {
-    var todos;
-    try {
-        todos = leasot.parse(filetype, contents, file);
-    } catch (e) {
-        console.log(logSymbols.error, e.toString());
+    if (!leasot.isExtSupported(filetype)) {
+        console.log(logSymbols.error, 'Filetype ' + filetype + ' is not supported.');
         process.exit(1);
     }
-    if (!todos.length) {
-        console.log(logSymbols.success, 'No todos/fixmes found');
-        process.exit(0);
-    }
+    var todos = leasot.parse(filetype, contents, file);
     return todos;
 }
 
@@ -57,32 +51,29 @@ function run(contents, params) {
     var reporter = program.reporter;
     var filetype = program.filetype || path.extname(file) || '.js';
     var todos = parseContents(filetype, contents, file);
+    if (!todos.length) {
+        console.log(logSymbols.success, 'No todos/fixmes found');
+        process.exit(0);
+    }
     useReporter(reporter, todos);
+    process.exit(1);
 }
 
-//assume any unconsumed option is a file path
-var filePath = program.args;
-if (filePath && filePath.length) {
-    //currently only handle 1 file
-    //TODO: handle multiple incoming files in args
-    var _file = filePath[0];
-    var _contents = fs.readFileSync(path.resolve(process.cwd(), _file), 'utf8');
+function readFiles(files) {
+    //TOOD: handle multiple files
+    var file = files[0];
+    var _contents = fs.readFileSync(path.resolve(process.cwd(), file), 'utf8');
     run(_contents, {
-        file: _file
+        file: file
     });
+}
+
+if (!process.stdin.isTTY) {
+    stdin(run);
     return;
 }
-
-//get data from stream
-process.stdin.setEncoding('utf8');
-if (process.stdin.isTTY) {
+if (!program.args.length) {
     program.help();
     return;
 }
-var data = [];
-process.stdin.on('data', function (chunk) {
-    data.push(chunk);
-}).on('end', function () {
-    data = data.join();
-    run(data);
-});
+readFiles(program.args);
