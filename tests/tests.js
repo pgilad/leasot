@@ -5,19 +5,19 @@ var should = require('should');
 var path = require('path');
 var leasot = require('../index');
 
-var getFixturePath = function (file) {
+var getFixturePath = function(file) {
     return path.join('./tests/fixtures/', file);
 };
 
-var getComments = function (file) {
+var getComments = function(file) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
     return leasot.parse(ext, content, file);
 };
 
-describe('gulp-todo parsing', function () {
-    describe('stylus', function () {
-        it('parse simple line comments', function () {
+describe('check parsing', function() {
+    describe('stylus', function() {
+        it('parse simple line comments', function() {
             var file = getFixturePath('line.styl');
             var comments = getComments(file);
             should.exist(comments);
@@ -27,7 +27,7 @@ describe('gulp-todo parsing', function () {
             comments[0].text.should.equal('use fixmes as well');
         });
 
-        it('parse block line comments', function () {
+        it('parse block line comments', function() {
             var file = getFixturePath('block.styl');
             var comments = getComments(file);
             should.exist(comments);
@@ -41,8 +41,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('handlebars', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
+    describe('handlebars', function() {
+        it('parse {{! }} and {{!-- --}} comments', function() {
             var file = getFixturePath('handlebars.hbs');
             var comments = getComments(file);
             should.exist(comments);
@@ -62,8 +62,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('sass', function () {
-        it('parse // and /* comments', function () {
+    describe('sass', function() {
+        it('parse // and /* comments', function() {
             var file = getFixturePath('block.sass');
             var comments = getComments(file);
             should.exist(comments);
@@ -83,8 +83,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('scss', function () {
-        it('parse // and /* comments', function () {
+    describe('scss', function() {
+        it('parse // and /* comments', function() {
             var file = getFixturePath('block.scss');
             var comments = getComments(file);
             should.exist(comments);
@@ -95,8 +95,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('typescript', function () {
-        it('parse // and /* comments', function () {
+    describe('typescript', function() {
+        it('parse // and /* comments', function() {
             var file = getFixturePath('typescript.ts');
             var comments = getComments(file);
             should.exist(comments);
@@ -110,8 +110,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('jsdoc', function () {
-        it('handle jsdoc comments', function () {
+    describe('jsdoc', function() {
+        it('handle jsdoc comments', function() {
             var file = getFixturePath('jsdoc.js');
             var comments = getComments(file);
             should.exist(comments);
@@ -122,8 +122,8 @@ describe('gulp-todo parsing', function () {
         });
     });
 
-    describe('coffeescript', function () {
-        it('handle # comments', function () {
+    describe('coffeescript', function() {
+        it('handle # comments', function() {
             var file = getFixturePath('coffee.coffee');
             var comments = getComments(file);
             should.exist(comments);
@@ -138,7 +138,7 @@ describe('gulp-todo parsing', function () {
     });
 
     describe('less', function() {
-        it('handles block and inline comment forms', function () {
+        it('handles block and inline comment forms', function() {
             var file = getFixturePath('block.less');
             var comments = getComments(file);
             should.exist(comments);
@@ -159,7 +159,7 @@ describe('gulp-todo parsing', function () {
     });
 
     describe('jsx', function() {
-        it('handles standard js comments in jsx', function () {
+        it('handles standard js comments in jsx', function() {
             var file = getFixturePath('react.jsx');
             var comments = getComments(file);
             should.exist(comments);

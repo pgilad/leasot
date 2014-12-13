@@ -113,17 +113,60 @@ var leasot = require('leasot');
 
 `leasot` exposes the following API:
 
-### isExtSupported
+### .isExtSupported(extension)
 
-TODO
+Check whether extension is supported by parser.
 
-### parse
+Specify an extension including the prefixing dot, for example:
 
-TODO
+`leasot.isExtSupported('.js'); //-> true`
 
-### reporter
+**Returns**: `Boolean`
 
-TODO
+### .parse(extension, contents, filename)
+
+Parse the contents, using the provided `extension`. `filename` will be attached
+to the return object, so it is recommended to use it if you know it.
+
+`extension` is the extension to parse as, including a prefixing dot.
+
+`contents` is a string containing the contents to parse.
+
+`filename` is an optional string.
+
+**Returns**: `Array` of comments.
+
+```js
+[{
+    file: 'parsedFile.js',
+    text: 'comment text',
+    kind: 'TODO',
+    line: 8
+}]
+```
+
+### .reporter(comments, config)
+
+Use the specified reporter to report the comments.
+
+`comments` is the array of comments received from `leasot.parse()`.
+
+`config` is an object that will also be passed to the reporter itself (allowing custom options for each reporter).
+
+It may also contain the specified reporter:
+
+#### config.reporter
+
+Can be a string indicating the [built-in reporter](#built-in-reporters) to use,
+ or an external library used as a reporter.
+
+Could also be a custom function `(comments, config)`
+
+**Type**: `String|Function`
+
+**Required**: `false`
+
+**Default**: `raw`
 
 ## Built-in Reporters
 
@@ -155,9 +198,9 @@ How many `newLine`s should separate between comment type blocks.
 
 **Type**: `Number`
 
-**Default**: 2
+**Default**: `2`
 
-**Minimum**: 0
+**Minimum**: `0`
 
 ### transformHeader(kind)
 
