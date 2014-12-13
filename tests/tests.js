@@ -136,4 +136,40 @@ describe('gulp-todo parsing', function () {
             comments[1].text.should.equal('Fix something');
         });
     });
+
+    describe('less', function() {
+        it('handles block and inline comment forms', function () {
+            var file = getFixturePath('block.less');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(4);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(2);
+            comments[0].text.should.equal('it will appear in the CSS output.');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(3);
+            comments[1].text.should.equal('this is a block comment too');
+            comments[2].kind.should.equal('FIXME');
+            comments[2].line.should.equal(10);
+            comments[2].text.should.equal('They won\'t appear in the CSS output,');
+            comments[3].kind.should.equal('TODO');
+            comments[3].line.should.equal(14);
+            comments[3].text.should.equal('improve this syntax');
+        });
+    });
+
+    describe('jsx', function() {
+        it('handles standard js comments in jsx', function () {
+            var file = getFixturePath('react.jsx');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(14);
+            comments[0].text.should.equal('Show my TODO please');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(21);
+            comments[1].text.should.equal('illogical');
+        });
+    });
 });
