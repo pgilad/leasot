@@ -21,7 +21,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "commander": "^2.5.0",
+    "commander": "^2.5.1",
     "get-line-from-pos": "^1.0.0",
     "get-stdin": "^3.0.2",
     "json2xml": "^0.1.1",
@@ -31,7 +31,7 @@
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1",
-    "should": "^4.3.0"
+    "mocha": "*",
+    "should": "*"
   }
 }
