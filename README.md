@@ -53,7 +53,7 @@ $ npm install --global leasot
 ```bash
 ❯ leasot --help
 
-  Usage: leasot [options] [file]
+  Usage: leasot [options] <file ...>
 
   Options:
 
@@ -65,6 +65,8 @@ $ npm install --global leasot
   Examples:
 
     $ leasot index.js
+    $ leasot **/*.js
+    $ leasot index.js lib/*.js
     $ leasot --reporter json index.js
     $ cat index.js | leasot
     $ cat index.coffee | leasot --filetype .coffee

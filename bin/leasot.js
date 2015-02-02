@@ -20,6 +20,8 @@ program
         console.log('  Examples:');
         console.log('');
         console.log('    $ leasot index.js');
+        console.log('    $ leasot **/*.js');
+        console.log('    $ leasot index.js lib/*.js');
         console.log('    $ leasot --reporter json index.js');
         console.log('    $ cat index.js | leasot');
         console.log('    $ cat index.coffee | leasot --filetype .coffee');
@@ -54,25 +56,46 @@ function run(contents, params) {
     var filetype = program.filetype || path.extname(file) || '.js';
     var todos = parseContents(filetype, contents, file);
     if (!todos.length) {
-        console.log(logSymbols.success, 'No todos/fixmes found');
-        process.exit(0);
+        return true;
     }
     useReporter(reporter, todos);
-    process.exit(1);
+    return false;
 }
 
 function readFiles(files) {
-    //TOOD: handle multiple files
-    var file = files[0];
-    var _contents = fs.readFileSync(path.resolve(process.cwd(), file), 'utf8');
-    run(_contents, {
-        file: file
+    // Get all of the files, and globs of files
+    files = files.reduce(function (newFiles, file) {
+        return newFiles.concat(glob.sync(file, {cwd: process.cwd()}));
+    }, []);
+    // Async read all of the given files
+    async.map(files, function (file, cb) {
+        fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb);
+    }, function (err, result) {
+        if (err) {
+          console.log(err);
+          return process.exit(1);
+        }
+        // This will be an array of trues (successes) and falses (failures)
+        var successes = result.map(function (contents, i) {
+            return run(contents, {file: files[i]});
+        });
+        // If all files returned with success, log success
+        if (successes.indexOf(false) === -1) {
+          console.log(logSymbols.success, 'No todos/fixmes found');
+          return process.exit(0);
+        }
+        // otherwise, quit with exit code 1
+        process.exit(1);
     });
 }
 
 if (!process.stdin.isTTY) {
-    stdin(run);
-    return;
+    var success = stdin(run);
+    if (success) {
+      console.log(logSymbols.success, 'No todos/fixmes found');
+      return process.exit(0);
+    }
+    return process.exit(1);
 }
 if (!program.args.length) {
     program.help();
