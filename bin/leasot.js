@@ -6,12 +6,14 @@ var program = require('commander');
 var leasot = require('../index');
 var logSymbols = require('log-symbols');
 var stdin = require('get-stdin');
+var async = require('async');
+var glob = require('glob');
 process.title = 'leasot';
 
 program
     .description('Parse and output TODOs and FIXMEs from comments in your files')
     .version(require(path.join(__dirname, '../package.json')).version)
-    .usage('[options] [file]')
+    .usage('[options] <file ...>')
     .option('-t, --filetype [filetype]', 'Force filetype to parse. Useful for handling files in streams [.js]')
     .option('-r, --reporter [reporter]', 'Which reporter to use (table|json|xml|markdown|raw) [table]', 'table')
     .on('--help', function () {
