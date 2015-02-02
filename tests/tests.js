@@ -3,7 +3,10 @@
 var fs = require('fs');
 var should = require('should');
 var path = require('path');
+var util = require('util');
 var leasot = require('../index');
+
+var binPath = path.resolve(__dirname, '..', 'bin', 'leasot.js');
 
 var getFixturePath = function(file) {
     return path.join('./tests/fixtures/', file);
@@ -13,6 +16,27 @@ var getComments = function(file) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
     return leasot.parse(ext, content, file);
+};
+
+var testCli = function (files, cb) {
+  var consoleLog = console.log;
+  var processExit = process.exit;
+  var log = '';
+  var args = files.map(getFixturePath);
+  process.argv = ['node', binPath].concat(args);
+
+  console.log = function () {
+    var output = util.format.apply(util.format, arguments);
+    log += require('chalk').stripColor(output) + '\n';
+  };
+
+  process.exit = function (code) {
+    process.exit = processExit;
+    console.log = consoleLog;
+    delete require.cache[require.resolve('../bin/leasot')];
+    cb(code, log.split('\n'));
+  };
+  require('../bin/leasot');
 };
 
 describe('check parsing', function() {
@@ -170,6 +194,66 @@ describe('check parsing', function() {
             comments[1].kind.should.equal('FIXME');
             comments[1].line.should.equal(21);
             comments[1].text.should.equal('illogical');
+        });
+    });
+});
+
+describe('check cli', function() {
+    describe('multiple files', function () {
+        it('should parse multiple files (single file per arg)', function(done) {
+            testCli(['block.less', 'coffee.coffee'], function (code, log) {
+                code.should.equal(1);
+                log.should.eql([
+                  '',
+                  'tests/fixtures/block.less',
+                  '  line 2   TODO   it will appear in the CSS output.',
+                  '  line 3   FIXME  this is a block comment too',
+                  '  line 10  FIXME  They won\'t appear in the CSS output,',
+                  '  line 14  TODO   improve this syntax',
+                  '',
+                  ' ✖ 4 problems',
+                  '',
+                  'tests/fixtures/coffee.coffee',
+                  '  line 1  TODO   Do something',
+                  '  line 3  FIXME  Fix something',
+                  '',
+                  ' ✖ 2 problems',
+                  ''
+                ]);
+                done();
+            });
+        });
+
+        it('should parse multiple files (globbing)', function (done) {
+            testCli(['*.styl'], function (code, log) {
+                code.should.equal(1);
+                log.should.eql([
+                  '',
+                  'tests/fixtures/block.styl',
+                  '  line 5  TODO   single line comment with a todo',
+                  '  line 6  FIXME  single line comment with a todo',
+                  '',
+                  ' ✖ 2 problems',
+                  '',
+                  'tests/fixtures/line.styl',
+                  '  line 4  FIXME  use fixmes as well',
+                  '',
+                  ' ✖ 1 problem',
+                  ''
+                ]);
+                done();
+            });
+        });
+
+        it('should get no error code if no todos or fixmes are found', function (done) {
+            testCli(['no-todos.js'], function (code, log) {
+                code.should.equal(0);
+                log.should.eql([
+                  '✔ No todos/fixmes found',
+                  ''
+                ]);
+                done();
+            });
         });
     });
 });
