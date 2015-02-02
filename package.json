@@ -21,9 +21,12 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "async": "^0.9.0",
+    "chalk": "^0.5.1",
     "commander": "^2.5.1",
     "get-line-from-pos": "^1.0.0",
     "get-stdin": "^3.0.2",
+    "glob": "^4.3.5",
     "json2xml": "^0.1.1",
     "lodash.compact": "^2.4.1",
     "lodash.defaults": "^2.4.1",
