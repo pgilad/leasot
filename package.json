@@ -1,6 +1,6 @@
 {
   "name": "leasot",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
   "license": "MIT",
   "repository": "pgilad/leasot",
