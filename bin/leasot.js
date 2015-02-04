@@ -10,6 +10,11 @@ var async = require('async');
 var glob = require('glob');
 process.title = 'leasot';
 
+var messages = {
+    ok: 'No todos/fixmes found.',
+    noFiles: 'No files passed for checking. See --help for examples.'
+};
+
 program
     .description('Parse and output TODOs and FIXMEs from comments in your files')
     .version(require(path.join(__dirname, '../package.json')).version)
@@ -42,7 +47,7 @@ function useReporter(reporter, todos) {
 
 function parseContents(filetype, contents, file) {
     if (!leasot.isExtSupported(filetype)) {
-        console.log(logSymbols.error, 'Filetype ' + filetype + ' is not supported.');
+        console.log(logSymbols.error, 'Filetype ' + filetype + ' is unsupported.');
         process.exit(1);
     }
     var todos = leasot.parse(filetype, contents, file);
@@ -65,37 +70,62 @@ function run(contents, params) {
 function readFiles(files) {
     // Get all of the files, and globs of files
     files = files.reduce(function (newFiles, file) {
-        return newFiles.concat(glob.sync(file, {cwd: process.cwd()}));
+        return newFiles.concat(glob(file, {
+            sync: true,
+            nodir: true,
+            cwd: process.cwd()
+        }));
     }, []);
+
+    if (!files || !files.length) {
+        console.log(logSymbols.warning, messages.noFiles);
+        return process.exit(0);
+    }
+
     // Async read all of the given files
     async.map(files, function (file, cb) {
         fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb);
-    }, function (err, result) {
+    }, function (err, results) {
         if (err) {
-          console.log(err);
-          return process.exit(1);
+            console.log(err);
+            return process.exit(1);
         }
-        // This will be an array of trues (successes) and falses (failures)
-        var successes = result.map(function (contents, i) {
-            return run(contents, {file: files[i]});
+        var errors = results.map(function (contents, i) {
+            return run(contents, {
+                file: files[i]
+            });
+        }).filter(function (item) {
+            return !item;
         });
-        // If all files returned with success, log success
-        if (successes.indexOf(false) === -1) {
-          console.log(logSymbols.success, 'No todos/fixmes found');
-          return process.exit(0);
+
+        var filesScannedMsg;
+        var msg;
+
+        if (files.length > 1) {
+            filesScannedMsg = 'Scanned a total of ' + files.length + ' files.';
+        } else {
+            filesScannedMsg = 'Scanned 1 file.';
         }
-        // otherwise, quit with exit code 1
+
+        if (!errors.length) {
+            msg = filesScannedMsg + ' ' + messages.ok;
+            console.log('\n' + logSymbols.success, msg);
+            return process.exit(0);
+        }
+        msg = filesScannedMsg + ' ' + errors.length + ' contained todos/fixmes.';
+        console.log('\n' + logSymbols.warning, msg);
         process.exit(1);
     });
 }
 
 if (!process.stdin.isTTY) {
-    var success = stdin(run);
-    if (success) {
-      console.log(logSymbols.success, 'No todos/fixmes found');
-      return process.exit(0);
-    }
-    return process.exit(1);
+    return stdin(function (contents) {
+        if (run(contents)) {
+            console.log(logSymbols.success, messages.ok);
+            return process.exit(0);
+        }
+        process.exit(1);
+    });
 }
 if (!program.args.length) {
     program.help();
