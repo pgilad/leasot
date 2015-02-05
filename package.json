@@ -1,25 +1,9 @@
 {
   "name": "leasot",
-  "version": "1.0.0",
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
-  "license": "MIT",
-  "repository": "pgilad/leasot",
+  "version": "1.0.0",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": "./bin/leasot.js",
-  "scripts": {
-    "test": "mocha -R spec ./tests/*.js",
-    "watch": "mocha -w -R spec ./tests/*.js"
-  },
-  "keywords": "fixme, todo, comments, list, parse, generator, ci, productivity, automation",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "lib",
-    "bin"
-  ],
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^0.5.1",
@@ -36,5 +20,22 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "bin"
+  ],
+  "keywords": "fixme, todo, comments, list, parse, generator, ci, productivity, automation",
+  "license": "MIT",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": "pgilad/leasot",
+  "scripts": {
+    "test": "mocha -R spec ./tests/*.js",
+    "watch": "mocha -w -R spec ./tests/*.js"
   }
 }
