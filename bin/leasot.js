@@ -2,12 +2,15 @@
 
 var fs = require('fs');
 var path = require('path');
-var program = require('commander');
-var leasot = require('../index');
-var logSymbols = require('log-symbols');
-var stdin = require('get-stdin');
-var async = require('async');
+
 var glob = require('glob');
+var logSymbols = require('log-symbols');
+var mapAsync = require('map-async');
+var program = require('commander');
+var stdin = require('get-stdin');
+
+var leasot = require('../index');
+
 process.title = 'leasot';
 
 var messages = {
@@ -68,6 +71,7 @@ function run(contents, params) {
 }
 
 function readFiles(files) {
+
     // Get all of the files, and globs of files
     files = files.reduce(function (newFiles, file) {
         return newFiles.concat(glob(file, {
@@ -83,7 +87,7 @@ function readFiles(files) {
     }
 
     // Async read all of the given files
-    async.map(files, function (file, cb) {
+    mapAsync(files, function (file, cb) {
         fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb);
     }, function (err, results) {
         if (err) {
