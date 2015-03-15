@@ -144,6 +144,16 @@ describe('check parsing', function () {
             comments[0].line.should.equal(14);
             comments[0].text.should.equal('Show my TODO please');
         });
+
+        it('handle jsdoc @todo comments', function () {
+            var file = getFixturePath('jsdoc2.js');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(9);
+            comments[0].text.should.equal('make this supported');
+        });
     });
 
     describe('coffeescript', function () {
