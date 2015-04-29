@@ -206,6 +206,24 @@ describe('check parsing', function () {
             comments[1].text.should.equal('illogical');
         });
     });
+
+    describe('php', function () {
+        it('handles standard js comments in php', function () {
+            var file = getFixturePath('sample.php');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(2);
+            comments[0].text.should.equal('This is a single-line comment');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(7);
+            comments[1].text.should.equal('implement single line comment');
+            comments[2].kind.should.equal('TODO');
+            comments[2].line.should.equal(14);
+            comments[2].text.should.equal('supported?');
+        });
+    });
 });
 
 describe('check cli', function () {
