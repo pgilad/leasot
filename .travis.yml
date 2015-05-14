@@ -1,8 +1,11 @@
+sudo: false
 language: node_js
 node_js:
-  - '0.11'
-  - '0.10'
-notifications:
-  email:
-    on_success: never
-    on_failure: always
+  - "0.10"
+  - "0.12"
+  - "0.13"
+  - "iojs"
+matrix:
+  fast_finish: true
+  allow_failures:
+    - node_js: "0.13"

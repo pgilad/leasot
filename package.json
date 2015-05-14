@@ -9,7 +9,7 @@
     "commander": "^2.8.1",
     "get-line-from-pos": "^1.0.0",
     "get-stdin": "^4.0.1",
-    "glob": "^5.0.5",
+    "glob": "^5.0.6",
     "json2xml": "^0.1.1",
     "lodash.compact": "^3.0.0",
     "lodash.defaults": "^3.1.1",
