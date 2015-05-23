@@ -1,4 +1,5 @@
-# leasot
+![leasot](media/leasot.png)
+
 > Parse and output TODOs and FIXMEs from comments in your files
 
 [![NPM Version](http://img.shields.io/npm/v/leasot.svg?style=flat)](https://npmjs.org/package/leasot)
