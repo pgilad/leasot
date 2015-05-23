@@ -10,20 +10,17 @@ var program = require('commander');
 var stdin = require('get-stdin');
 
 var leasot = require('../index');
+var DEFAULT_EXTENSION = '.js';
+var pkg = require(path.join(__dirname, '../package.json'));
 
-process.title = 'leasot';
-
-var messages = {
-    ok: 'No todos/fixmes found.',
-    noFiles: 'No files passed for checking. See --help for examples.'
-};
+process.title = pkg.name;
 
 program
-    .description('Parse and output TODOs and FIXMEs from comments in your files')
-    .version(require(path.join(__dirname, '../package.json')).version)
+    .description(pkg.description)
+    .version(pkg.version)
     .usage('[options] <file ...>')
-    .option('-t, --filetype [filetype]', 'Force filetype to parse. Useful for handling files in streams [.js]')
-    .option('-r, --reporter [reporter]', 'Which reporter to use (table|json|xml|markdown|raw) [table]', 'table')
+    .option('-t, --filetype [filetype]', 'Force the filetype to parse. Useful for streams (Default: .js)')
+    .option('-r, --reporter [reporter]', 'Use reporter (table|json|xml|markdown|raw) (Default: table)', 'table')
     .on('--help', function () {
         console.log('  Examples:');
         console.log('');
@@ -32,12 +29,12 @@ program
         console.log('    $ leasot index.js lib/*.js');
         console.log('    $ leasot --reporter json index.js');
         console.log('    $ cat index.js | leasot');
-        console.log('    $ cat index.coffee | leasot --filetype .coffee');
+        console.log('    $ cat index.cjsx | leasot --filetype .coffee');
         console.log('');
     })
     .parse(process.argv);
 
-function useReporter(reporter, todos) {
+function outputReport(reporter, todos) {
     try {
         var output = leasot.reporter(todos, {
             reporter: reporter
@@ -60,19 +57,20 @@ function parseContents(filetype, contents, file) {
 function run(contents, params) {
     params = params || {};
     var file = params.file;
-    var reporter = program.reporter;
-    var filetype = program.filetype || path.extname(file) || '.js';
-    var todos = parseContents(filetype, contents, file);
+    var filetype = program.filetype || path.extname(file) || DEFAULT_EXTENSION;
+    return parseContents(filetype, contents, file);
+}
+
+function outputTodos(todos) {
+    outputReport(program.reporter, todos);
     if (!todos.length) {
-        return true;
+        process.exit(0);
     }
-    useReporter(reporter, todos);
-    return false;
+    process.exit(1);
 }
 
 function readFiles(files) {
-
-    // Get all of the files, and globs of files
+    // Get all files and their resolved globs
     files = files.reduce(function (newFiles, file) {
         return newFiles.concat(glob(file, {
             sync: true,
@@ -82,8 +80,8 @@ function readFiles(files) {
     }, []);
 
     if (!files || !files.length) {
-        console.log(logSymbols.warning, messages.noFiles);
-        return process.exit(0);
+        console.log(logSymbols.warning, 'No files found for parsing');
+        return process.exit(1);
     }
 
     // Async read all of the given files
@@ -94,41 +92,23 @@ function readFiles(files) {
             console.log(err);
             return process.exit(1);
         }
-        var errors = results.map(function (contents, i) {
+        var todos = results.map(function (contents, i) {
             return run(contents, {
                 file: files[i]
             });
         }).filter(function (item) {
-            return !item;
-        });
+            return item && item.length;
+        }).reduce(function (items, item) {
+            return items.concat(item);
+        }, []);
 
-        var filesScannedMsg;
-        var msg;
-
-        if (files.length > 1) {
-            filesScannedMsg = 'Scanned a total of ' + files.length + ' files.';
-        } else {
-            filesScannedMsg = 'Scanned 1 file.';
-        }
-
-        if (!errors.length) {
-            msg = filesScannedMsg + ' ' + messages.ok;
-            console.log('\n' + logSymbols.success, msg);
-            return process.exit(0);
-        }
-        msg = filesScannedMsg + ' ' + errors.length + ' contained todos/fixmes.';
-        console.log('\n' + logSymbols.warning, msg);
-        process.exit(1);
+        outputTodos(todos);
     });
 }
 
 if (!process.stdin.isTTY) {
     return stdin(function (contents) {
-        if (run(contents)) {
-            console.log(logSymbols.success, messages.ok);
-            return process.exit(0);
-        }
-        process.exit(1);
+        outputTodos(run(contents));
     });
 }
 if (!program.args.length) {

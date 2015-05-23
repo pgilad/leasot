@@ -57,12 +57,14 @@ $ npm install --global leasot
 
   Usage: leasot [options] <file ...>
 
+  Parse and output TODOs and FIXMEs from comments in your files
+
   Options:
 
     -h, --help                 output usage information
     -V, --version              output the version number
-    -t, --filetype [filetype]  Force filetype to parse. Useful for handling files in streams [.js]
-    -r, --reporter [reporter]  Which reporter to use (table|json|xml|markdown|raw) [table]
+    -t, --filetype [filetype]  Force the filetype to parse. Useful for streams (Default: .js)
+    -r, --reporter [reporter]  Use reporter (table|json|xml|markdown|raw) (Default: table)
 
   Examples:
 
@@ -71,7 +73,7 @@ $ npm install --global leasot
     $ leasot index.js lib/*.js
     $ leasot --reporter json index.js
     $ cat index.js | leasot
-    $ cat index.coffee | leasot --filetype .coffee
+    $ cat index.cjsx | leasot --filetype .coffee
 ```
 
 ### Programmatic

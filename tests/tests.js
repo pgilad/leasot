@@ -3,10 +3,9 @@
 var fs = require('fs');
 var should = require('should');
 var path = require('path');
-var util = require('util');
 var leasot = require('../index');
-
-var binPath = path.resolve(__dirname, '..', 'bin', 'leasot.js');
+var chalk = require('chalk');
+var childProcess = require('child_process');
 
 var getFixturePath = function (file) {
     return path.join('./tests/fixtures/', file);
@@ -19,24 +18,20 @@ var getComments = function (file) {
 };
 
 var testCli = function (files, cb) {
-    var consoleLog = console.log;
-    var processExit = process.exit;
-    var log = '';
     var args = files.map(getFixturePath);
-    process.argv = ['node', binPath].concat(args);
 
-    console.log = function () {
-        var output = util.format.apply(util.format, arguments);
-        log += require('chalk').stripColor(output) + '\n';
-    };
-
-    process.exit = function (code) {
-        process.exit = processExit;
-        console.log = consoleLog;
-        delete require.cache[require.resolve('../bin/leasot')];
-        cb(code, log.split('\n'));
-    };
-    require('../bin/leasot');
+    var cp = childProcess.spawn('./bin/leasot.js', args, {
+        cwd: path.resolve(__dirname, '..'),
+        env: process.env,
+        stdio: [process.stdin, 'pipe', 'pipe']
+    });
+    var chunks;
+    cp.stdout.on('data', function (data) {
+        chunks = new Buffer(data).toString();
+    });
+    cp.on('close', function (exitCode) {
+        cb(exitCode, chalk.stripColor(chunks.split('\n')));
+    });
 };
 
 describe('check parsing', function () {
@@ -256,8 +251,9 @@ describe('check parsing', function () {
 describe('check cli', function () {
     describe('multiple files', function () {
         it('should parse multiple files (single file per arg)', function (done) {
-            testCli(['block.less', 'coffee.coffee'], function (code, log) {
-                code.should.equal(1);
+            this.timeout(10000);
+            testCli(['block.less', 'coffee.coffee'], function (exitCode, log) {
+                exitCode.should.equal(1);
                 log.should.eql([
                     '',
                     'tests/fixtures/block.less',
@@ -266,15 +262,11 @@ describe('check cli', function () {
                     '  line 10  FIXME  They won\'t appear in the CSS output,',
                     '  line 14  TODO   improve this syntax',
                     '',
-                    ' ✖ 4 problems',
-                    '',
                     'tests/fixtures/coffee.coffee',
-                    '  line 1  TODO   Do something',
-                    '  line 3  FIXME  Fix something',
+                    '  line 1   TODO   Do something',
+                    '  line 3   FIXME  Fix something',
                     '',
-                    ' ✖ 2 problems',
-                    '',
-                    '⚠ Scanned a total of 2 files. 2 contained todos/fixmes.',
+                    ' ✖ 6 todos/fixmes found',
                     ''
                 ]);
                 done();
@@ -282,34 +274,31 @@ describe('check cli', function () {
         });
 
         it('should parse multiple files (globbing)', function (done) {
-            testCli(['*.styl'], function (code, log) {
-                code.should.equal(1);
+            testCli(['*.styl'], function (exitCode, log) {
+                exitCode.should.equal(1);
                 log.should.eql([
                     '',
                     'tests/fixtures/block.styl',
                     '  line 5  TODO   single line comment with a todo',
                     '  line 6  FIXME  single line comment with a todo',
                     '',
-                    ' ✖ 2 problems',
-                    '',
                     'tests/fixtures/line.styl',
                     '  line 4  FIXME  use fixmes as well',
                     '',
-                    ' ✖ 1 problem',
-                    '',
-                    '⚠ Scanned a total of 2 files. 2 contained todos/fixmes.',
+                    ' ✖ 3 todos/fixmes found',
                     ''
                 ]);
                 done();
             });
         });
 
-        it('should get no error code if no todos or fixmes are found', function (done) {
-            testCli(['no-todos.js'], function (code, log) {
-                code.should.equal(0);
+        it('should get no error exitCode if no todos or fixmes are found', function (done) {
+            testCli(['no-todos.js'], function (exitCode, log) {
+                exitCode.should.equal(0);
                 log.should.eql([
                     '',
-                    '✔ Scanned 1 file. No todos/fixmes found.',
+                    '',
+                    ' ✔ No todos/fixmes found',
                     ''
                 ]);
                 done();
