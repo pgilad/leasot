@@ -299,7 +299,7 @@ See https://github.com/estheban/node-json2xml#options--behaviour
 
 Type: `Boolean`
 
-Default: 'undefined'
+Default: `undefined`
 
 ## License
 
