@@ -204,6 +204,21 @@ describe('check parsing', function () {
         });
     });
 
+    describe('twig', function () {
+        it('matches bang and html comment style', function () {
+            var file = getFixturePath('twig.twig');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('FIXME');
+            comments[0].line.should.equal(1);
+            comments[0].text.should.equal("Hey, I'm a fixme!");
+            comments[1].kind.should.equal('TODO');
+            comments[1].line.should.equal(13);
+            comments[1].text.should.equal("Hey, I'm a todo!");
+        });
+    });
+
     describe('jsx', function () {
         it('handles standard js comments in jsx', function () {
             var file = getFixturePath('react.jsx');
