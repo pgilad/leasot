@@ -171,6 +171,18 @@ describe('check parsing', function () {
         });
     });
 
+    describe('coffee-react', function () {
+        it('handle # comments', function () {
+            var file = getFixturePath('coffee-react.cjsx');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(1);
+            comments[0].text.should.equal('better document');
+        });
+    });
+
     describe('less', function () {
         it('handles block and inline comment forms', function () {
             var file = getFixturePath('block.less');
