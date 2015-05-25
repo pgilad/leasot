@@ -228,6 +228,42 @@ describe('check parsing', function () {
         });
     });
 
+    describe('zsh', function () {
+        it('handle # comments', function () {
+            var file = getFixturePath('zsh.zsh');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(17);
+            comments[0].text.should.equal('complete file');
+        });
+    });
+
+    describe('bash', function () {
+        it('handle # comments', function () {
+            var file = getFixturePath('bash.bash');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(5);
+            comments[0].text.should.equal('wrap variables in quotes');
+        });
+    });
+
+    describe('sh', function () {
+        it('handle # comments', function () {
+            var file = getFixturePath('sh.sh');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('FIXME');
+            comments[0].line.should.equal(31);
+            comments[0].text.should.equal('we now exit the program');
+        });
+    });
+
     describe('less', function () {
         it('handles block and inline comment forms', function () {
             var file = getFixturePath('block.less');
