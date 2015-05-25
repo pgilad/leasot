@@ -35,7 +35,6 @@
   "preferGlobal": true,
   "repository": "pgilad/leasot",
   "scripts": {
-    "test": "mocha -R spec ./tests/*.js",
-    "watch": "mocha -w -R spec ./tests/*.js"
+    "test": "mocha -R spec ./tests/*.js"
   }
 }

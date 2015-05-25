@@ -4,8 +4,6 @@ var fs = require('fs');
 var should = require('should');
 var path = require('path');
 var leasot = require('../index');
-var chalk = require('chalk');
-var childProcess = require('child_process');
 
 var getFixturePath = function (file) {
     return path.join('./tests/fixtures/', file);
@@ -15,23 +13,6 @@ var getComments = function (file) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
     return leasot.parse(ext, content, file);
-};
-
-var testCli = function (files, cb) {
-    var args = files.map(getFixturePath);
-
-    var cp = childProcess.spawn('./bin/leasot.js', args, {
-        cwd: path.resolve(__dirname, '..'),
-        env: process.env,
-        stdio: [process.stdin, 'pipe', 'pipe']
-    });
-    var chunks;
-    cp.stdout.on('data', function (data) {
-        chunks = new Buffer(data).toString();
-    });
-    cp.on('close', function (exitCode) {
-        cb(exitCode, chalk.stripColor(chunks.split('\n')));
-    });
 };
 
 describe('check parsing', function () {
@@ -78,6 +59,48 @@ describe('check parsing', function () {
             comments[3].kind.should.equal('TODO');
             comments[3].line.should.equal(13);
             comments[3].text.should.equal('and again');
+        });
+    });
+
+    describe('c++', function () {
+        it('parse // and /* style comments', function () {
+            var file = getFixturePath('cplusplus.cpp');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(1);
+            comments[0].text.should.equal('document file operations');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(10);
+            comments[1].text.should.equal('make sure file can be closed');
+        });
+    });
+
+    describe('c', function () {
+        it('parse // and /* style comments', function () {
+            var file = getFixturePath('c.c');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(6);
+            comments[0].text.should.equal('decide whether to use a pointer');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(18);
+            comments[1].text.should.equal('make sure file can be closed');
+        });
+    });
+
+    describe('c header', function () {
+        it('parse // and /* style comments', function () {
+            var file = getFixturePath('c.h');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            comments[0].kind.should.equal('FIXME');
+            comments[0].line.should.equal(4);
+            comments[0].text.should.equal('should use a double');
         });
     });
 
@@ -259,65 +282,6 @@ describe('check parsing', function () {
             comments[2].kind.should.equal('TODO');
             comments[2].line.should.equal(14);
             comments[2].text.should.equal('supported?');
-        });
-    });
-});
-
-describe('check cli', function () {
-    describe('multiple files', function () {
-        it('should parse multiple files (single file per arg)', function (done) {
-            this.timeout(10000);
-            testCli(['block.less', 'coffee.coffee'], function (exitCode, log) {
-                exitCode.should.equal(1);
-                log.should.eql([
-                    '',
-                    'tests/fixtures/block.less',
-                    '  line 2   TODO   it will appear in the CSS output.',
-                    '  line 3   FIXME  this is a block comment too',
-                    '  line 10  FIXME  They won\'t appear in the CSS output,',
-                    '  line 14  TODO   improve this syntax',
-                    '',
-                    'tests/fixtures/coffee.coffee',
-                    '  line 1   TODO   Do something',
-                    '  line 3   FIXME  Fix something',
-                    '',
-                    ' ✖ 6 todos/fixmes found',
-                    ''
-                ]);
-                done();
-            });
-        });
-
-        it('should parse multiple files (globbing)', function (done) {
-            testCli(['*.styl'], function (exitCode, log) {
-                exitCode.should.equal(1);
-                log.should.eql([
-                    '',
-                    'tests/fixtures/block.styl',
-                    '  line 5  TODO   single line comment with a todo',
-                    '  line 6  FIXME  single line comment with a todo',
-                    '',
-                    'tests/fixtures/line.styl',
-                    '  line 4  FIXME  use fixmes as well',
-                    '',
-                    ' ✖ 3 todos/fixmes found',
-                    ''
-                ]);
-                done();
-            });
-        });
-
-        it('should get no error exitCode if no todos or fixmes are found', function (done) {
-            testCli(['no-todos.js'], function (exitCode, log) {
-                exitCode.should.equal(0);
-                log.should.eql([
-                    '',
-                    '',
-                    ' ✔ No todos/fixmes found',
-                    ''
-                ]);
-                done();
-            });
         });
     });
 });
