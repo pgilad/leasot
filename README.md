@@ -25,17 +25,18 @@ to extract your todos from comments.
 
 | Filetype     | Extension       | Notes                                           |
 | ------------ | --------------- | ------------------------------------------------|
-| Coffeescript | `.coffee`       | using regex. Supports `#` comments.             |
 | Coffee-React | `.cjsx`         | using regex. Supports `#` comments.             |
+| Coffeescript | `.coffee`       | using regex. Supports `#` comments.             |
 | Handlebars   | `.hbs`          | using regex. Supports `{{! }}` and `{{!-- --}}` |
-| Twig         | `.twig`         | using regex. Supports `{#  #}` and `<!-- -->`   |
 | Jade         | `.jade`         | using regex.                                    |
 | Javascript   | `.js`           | using regex. Supports `// and /* */` comments   |
+| Jsx          | `.jsx`          | using regex. Supports `// and /* */` comments.  |
+| Less         | `.less`         | using regex. Supports `// and /* */` comments.  |
+| Ruby         | `.rb`           | using regex. Supports `#` comments.             |
 | Sass         | `.sass` `.scss` | using regex. Supports `// and /* */` comments.  |
 | Stylus       | `.styl`         | using regex. Supports `// and /* */` comments.  |
+| Twig         | `.twig`         | using regex. Supports `{#  #}` and `<!-- -->`   |
 | Typescript   | `.ts`           | using regex. Supports `// and /* */` comments.  |
-| Less         | `.less`         | using regex. Supports `// and /* */` comments.  |
-| Jsx          | `.jsx`          | using regex. Supports `// and /* */` comments.  |
 
 Javascript is the default parser.
 
