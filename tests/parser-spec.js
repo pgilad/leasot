@@ -32,7 +32,6 @@ describe('check parsing', function () {
             comments[2].line.should.equal(3);
             comments[2].text.should.equal('text');
         });
-
     });
 
     describe('stylus', function () {
