@@ -39,6 +39,7 @@ to extract your todos from comments.
 | Typescript   | `.ts`            | using regex. Supports `// and /* */` comments.  |
 | C++/C        | `.cpp` `.c` `.h` | using regex. Supports `// and /* */` comments.  |
 | Go           | `.go`            | using regex. Supports `// and /* */` comments.  |
+| Shell        | `.sh` `.zsh`     | using regex. Supports `#` comments.             |
 
 Javascript is the default parser.
 
