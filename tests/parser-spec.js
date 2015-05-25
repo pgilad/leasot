@@ -16,6 +16,25 @@ var getComments = function (file) {
 };
 
 describe('check parsing', function () {
+    describe('test edge cases', function () {
+        it('javascript', function () {
+            var file = getFixturePath('edge-cases.js');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(1);
+            comments[0].text.should.equal('');
+            comments[1].kind.should.equal('TODO');
+            comments[1].line.should.equal(2);
+            comments[1].text.should.equal('');
+            comments[2].kind.should.equal('TODO');
+            comments[2].line.should.equal(3);
+            comments[2].text.should.equal('text');
+        });
+
+    });
+
     describe('stylus', function () {
         it('parse simple line comments', function () {
             var file = getFixturePath('line.styl');
