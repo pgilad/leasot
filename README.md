@@ -38,6 +38,7 @@ to extract your todos from comments.
 | Twig         | `.twig`          | using regex. Supports `{#  #}` and `<!-- -->`   |
 | Typescript   | `.ts`            | using regex. Supports `// and /* */` comments.  |
 | C++/C        | `.cpp` `.c` `.h` | using regex. Supports `// and /* */` comments.  |
+| Go           | `.go`            | using regex. Supports `// and /* */` comments.  |
 
 Javascript is the default parser.
 
