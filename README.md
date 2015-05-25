@@ -68,8 +68,8 @@ $ npm install --global leasot
 
     -h, --help                 output usage information
     -V, --version              output the version number
-    -t, --filetype [filetype]  Force the filetype to parse. Useful for streams (Default: .js)
     -r, --reporter [reporter]  Use reporter (table|json|xml|markdown|raw) (Default: table)
+    -t, --filetype [filetype]  Force the filetype to parse. Useful for streams (Default: .js)
 
   Examples:
 
