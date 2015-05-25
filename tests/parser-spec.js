@@ -315,6 +315,21 @@ describe('check parsing', function () {
         });
     });
 
+    describe('jade', function () {
+        it('handle // style comments', function () {
+            var file = getFixturePath('comments.jade');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(9);
+            comments[0].text.should.equal('this is a todo');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(11);
+            comments[1].text.should.equal('also should be caught');
+        });
+    });
+
     describe('php', function () {
         it('handles standard js comments in php', function () {
             var file = getFixturePath('sample.php');
