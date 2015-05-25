@@ -17,7 +17,7 @@ to extract your todos from comments.
 
 - Spaces are optional
 - Colon is optional
-- Must be in a comment (line or block) in its' own line (`some code(); //TOOD: do something` is not supported)
+- Must be in a comment (line or block) in its' own line (`some code(); //TODO: do something` is not supported)
 - Spaces are trimmed from comment text
 - Supported types are `TODO` and `FIXME` - case insensitive
 
