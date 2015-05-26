@@ -94,7 +94,22 @@ describe('check parsing', function () {
             comments[1].text.should.equal('make sure file can be closed');
         });
     });
-
+    
+    describe('c#', function () {
+        it('parse // and /* style comments', function () {
+            var file = getFixturePath('csharp.cs');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].line.should.equal(1);
+            comments[0].text.should.equal('document file operations');
+            comments[1].kind.should.equal('FIXME');
+            comments[1].line.should.equal(11);
+            comments[1].text.should.equal('do something with the file contents');
+        });
+    });
+        
     describe('c', function () {
         it('parse // and /* style comments', function () {
             var file = getFixturePath('c.c');
