@@ -15,11 +15,12 @@ to extract your todos from comments.
 
 `TODO: add some info`
 
-- Spaces are optional
-- Colon is optional
-- Must be in a comment (line or block) in its' own line (`some code(); //TODO: do something` is not supported)
-- Spaces are trimmed from comment text
-- Supported types are `TODO` and `FIXME` - case insensitive
+- Spaces are optional.
+- Colon is optional.
+- Must be in a comment (line or block) in its' own line (`some code(); //TODO: do something` is not supported).
+- Can be prefixed with a @ (i.e @TODO).
+- Spaces are trimmed around comment text.
+- Supported types are `TODO` and `FIXME` - case insensitive.
 
 ## Supported languages:
 
@@ -36,7 +37,8 @@ to extract your todos from comments.
 | Jsx          | `.jsx`               | Using regex. Supports `// and /* */` comments.  |
 | Less         | `.less`              | Using regex. Supports `// and /* */` comments.  |
 | PHP          | `.php`               | Using regex. Supports `// and /* */` comments.  |
-| Ruby         | `.rb`                | Using regex. Supports `#` comments.             |
+| Python       | `.py`                | Using regex. Supports `// and /* */` comments.  |
+| Ruby         | `.rb`                | Using regex. Supports `"""` and `#` comments.   |
 | Sass         | `.sass` `.scss`      | Using regex. Supports `// and /* */` comments.  |
 | Shell        | `.sh` `.zsh` `.bash` | Using regex. Supports `#` comments.             |
 | Stylus       | `.styl`              | Using regex. Supports `// and /* */` comments.  |
@@ -118,7 +120,6 @@ console.log(output);
 ### Build Time
 
 * [gulp-todo](https://github.com/pgilad/gulp-todo)
-
 
 ## API
 

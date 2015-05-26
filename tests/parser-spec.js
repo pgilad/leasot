@@ -94,7 +94,7 @@ describe('check parsing', function () {
             comments[1].text.should.equal('make sure file can be closed');
         });
     });
-    
+
     describe('c#', function () {
         it('parse // and /* style comments', function () {
             var file = getFixturePath('csharp.cs');
@@ -109,7 +109,7 @@ describe('check parsing', function () {
             comments[1].text.should.equal('do something with the file contents');
         });
     });
-        
+
     describe('c', function () {
         it('parse // and /* style comments', function () {
             var file = getFixturePath('c.c');
@@ -165,7 +165,7 @@ describe('check parsing', function () {
     });
 
     describe('python', function () {
-        it('parse # comments', function () {
+        it('parse # and """ comments', function () {
             var file = getFixturePath('python.py');
             var comments = getComments(file);
             should.exist(comments);
@@ -178,7 +178,7 @@ describe('check parsing', function () {
             comments[1].line.should.equal(12);
         });
     });
- 
+
     describe('sass', function () {
         it('parse // and /* comments', function () {
             var file = getFixturePath('block.sass');
