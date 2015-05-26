@@ -164,6 +164,21 @@ describe('check parsing', function () {
         });
     });
 
+    describe('ruby', function () {
+        it('parse # comments', function () {
+            var file = getFixturePath('ruby.rb');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].text.should.equal('initialize things lol');
+            comments[0].line.should.equal(4);
+            comments[1].kind.should.equal('FIXME');
+            comments[1].text.should.equal('just kidding, pizza is everything in life, nothing to fix here');
+            comments[1].line.should.equal(10);
+        });
+    });
+
     describe('sass', function () {
         it('parse // and /* comments', function () {
             var file = getFixturePath('block.sass');
