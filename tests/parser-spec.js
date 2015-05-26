@@ -164,6 +164,21 @@ describe('check parsing', function () {
         });
     });
 
+    describe('python', function () {
+        it('parse # comments', function () {
+            var file = getFixturePath('python.py');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].text.should.equal('refactor this');
+            comments[0].line.should.equal(6);
+            comments[1].kind.should.equal('FIXME');
+            comments[1].text.should.equal('Move this out');
+            comments[1].line.should.equal(12);
+        });
+    });
+ 
     describe('sass', function () {
         it('parse // and /* comments', function () {
             var file = getFixturePath('block.sass');
