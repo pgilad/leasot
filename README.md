@@ -37,8 +37,8 @@ to extract your todos from comments.
 | Jsx          | `.jsx`               | Using regex. Supports `// and /* */` comments.  |
 | Less         | `.less`              | Using regex. Supports `// and /* */` comments.  |
 | PHP          | `.php`               | Using regex. Supports `// and /* */` comments.  |
-| Python       | `.py`                | Using regex. Supports `// and /* */` comments.  |
-| Ruby         | `.rb`                | Using regex. Supports `"""` and `#` comments.   |
+| Python       | `.py`                | Using regex. Supports `"""` and `#` comments.   |
+| Ruby         | `.rb`                | Using regex. Supports `#` comments.             |
 | Sass         | `.sass` `.scss`      | Using regex. Supports `// and /* */` comments.  |
 | Shell        | `.sh` `.zsh` `.bash` | Using regex. Supports `#` comments.             |
 | Stylus       | `.styl`              | Using regex. Supports `// and /* */` comments.  |
