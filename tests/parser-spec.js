@@ -179,6 +179,36 @@ describe('check parsing', function () {
         });
     });
 
+    describe('perl module', function () {
+        it('parse # comments', function () {
+            var file = getFixturePath('perl_module.pm');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('FIXME');
+            comments[0].text.should.equal('Use python');
+            comments[0].line.should.equal(3);
+            comments[1].kind.should.equal('TODO');
+            comments[1].text.should.equal('still waiting for perl6?');
+            comments[1].line.should.equal(18);
+        });
+    });
+    
+    describe('perl script', function () {
+        it('parse # comments', function () {
+            var file = getFixturePath('perl.pl');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            comments[0].kind.should.equal('TODO');
+            comments[0].text.should.equal('Refactor this');
+            comments[0].line.should.equal(3);
+            comments[1].kind.should.equal('FIXME');
+            comments[1].text.should.equal('fix the code below');
+            comments[1].line.should.equal(6);
+        });
+    });
+
     describe('sass', function () {
         it('parse // and /* comments', function () {
             var file = getFixturePath('block.sass');
