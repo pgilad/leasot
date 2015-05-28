@@ -72,17 +72,28 @@ $ npm install --global leasot
 
     -h, --help                 output usage information
     -V, --version              output the version number
-    -r, --reporter [reporter]  Use reporter (table|json|xml|markdown|raw) (Default: table)
-    -t, --filetype [filetype]  Force the filetype to parse. Useful for streams (Default: .js)
+    -r, --reporter [reporter]  use reporter (table|json|xml|markdown|raw) (Default: table)
+    -t, --filetype [filetype]  force the filetype to parse. Useful for streams (Default: .js)
 
   Examples:
 
+    # Check a specific file
     $ leasot index.js
-    $ leasot **/*.js
-    $ leasot index.js lib/*.js
+
+    # Check php files with glob
+    $ leasot **/*.php
+
+    # Check multiple different filetypes
+    $ leasot app/**/*.js test.rb
+
+    # Use the json reporter
     $ leasot --reporter json index.js
-    $ cat index.js | leasot
-    $ cat index.cjsx | leasot --filetype .coffee
+
+    # Export TODOS as markdown to a TODO.md file
+    $ leasot --reporter markdown app/**/*.py > TODO.md
+
+    # Check a stream specifying the filetype as coffee
+    $ cat index.coffee | leasot --filetype .coffee
 ```
 
 ### Programmatic
