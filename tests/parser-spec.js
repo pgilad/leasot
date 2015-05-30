@@ -5,15 +5,21 @@ var should = require('should');
 var path = require('path');
 var leasot = require('../index');
 
-var getFixturePath = function (file) {
+function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
-};
+}
 
-var getComments = function (file) {
+function getComments(file) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
     return leasot.parse(ext, content, file);
-};
+}
+
+function verifyComment(actual, kind, line, text) {
+    actual.kind.should.equal(kind);
+    actual.line.should.equal(line);
+    actual.text.should.equal(text);
+}
 
 describe('check parsing', function () {
     describe('test edge cases', function () {
@@ -22,15 +28,9 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('');
-            comments[1].kind.should.equal('TODO');
-            comments[1].line.should.equal(2);
-            comments[1].text.should.equal('');
-            comments[2].kind.should.equal('TODO');
-            comments[2].line.should.equal(3);
-            comments[2].text.should.equal('text');
+            verifyComment(comments[0], 'TODO', 1, '');
+            verifyComment(comments[1], 'TODO', 2, '');
+            verifyComment(comments[2], 'TODO', 3, 'text');
         });
     });
 
@@ -40,9 +40,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('FIXME');
-            comments[0].line.should.equal(4);
-            comments[0].text.should.equal('use fixmes as well');
+            verifyComment(comments[0], 'FIXME', 4, 'use fixmes as well');
         });
 
         it('parse block line comments', function () {
@@ -50,12 +48,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(5);
-            comments[0].text.should.equal('single line comment with a todo');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(6);
-            comments[1].text.should.equal('single line comment with a todo');
+            verifyComment(comments[0], 'TODO', 5, 'single line comment with a todo');
+            verifyComment(comments[1], 'FIXME', 6, 'single line comment with a todo');
         });
     });
 
@@ -65,18 +59,10 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(2);
-            comments[0].text.should.equal('only output this author names if an author exists');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(8);
-            comments[1].text.should.equal('This comment will not be in the output');
-            comments[2].kind.should.equal('TODO');
-            comments[2].text.should.equal('Multiple line comment');
-            comments[2].line.should.equal(13);
-            comments[3].kind.should.equal('TODO');
-            comments[3].line.should.equal(13);
-            comments[3].text.should.equal('and again');
+            verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
+            verifyComment(comments[1], 'FIXME', 8, 'This comment will not be in the output');
+            verifyComment(comments[2], 'TODO', 13, 'Multiple line comment');
+            verifyComment(comments[3], 'TODO', 13, 'and again');
         });
     });
 
@@ -86,12 +72,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('document file operations');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(10);
-            comments[1].text.should.equal('make sure file can be closed');
+            verifyComment(comments[0], 'TODO', 1, 'document file operations');
+            verifyComment(comments[1], 'FIXME', 10, 'make sure file can be closed');
         });
     });
 
@@ -101,12 +83,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('document file operations');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(11);
-            comments[1].text.should.equal('do something with the file contents');
+            verifyComment(comments[0], 'TODO', 1, 'document file operations');
+            verifyComment(comments[1], 'FIXME', 11, 'do something with the file contents');
         });
     });
 
@@ -116,12 +94,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(6);
-            comments[0].text.should.equal('decide whether to use a pointer');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(18);
-            comments[1].text.should.equal('make sure file can be closed');
+            verifyComment(comments[0], 'TODO', 6, 'decide whether to use a pointer');
+            verifyComment(comments[1], 'FIXME', 18, 'make sure file can be closed');
         });
     });
 
@@ -131,9 +105,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(3);
-            comments[0].text.should.equal('be more explicit here');
+            verifyComment(comments[0], 'TODO', 3, 'be more explicit here');
         });
     });
 
@@ -143,9 +115,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('FIXME');
-            comments[0].line.should.equal(4);
-            comments[0].text.should.equal('should use a double');
+            verifyComment(comments[0], 'FIXME', 4, 'should use a double');
         });
     });
 
@@ -155,12 +125,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].text.should.equal('initialize things lol');
-            comments[0].line.should.equal(4);
-            comments[1].kind.should.equal('FIXME');
-            comments[1].text.should.equal('just kidding, pizza is everything in life, nothing to fix here');
-            comments[1].line.should.equal(10);
+            verifyComment(comments[0], 'TODO', 4, 'initialize things lol');
+            verifyComment(comments[1], 'FIXME', 10, 'just kidding, pizza is everything in life, nothing to fix here');
         });
     });
 
@@ -170,12 +136,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].text.should.equal('refactor this');
-            comments[0].line.should.equal(6);
-            comments[1].kind.should.equal('FIXME');
-            comments[1].text.should.equal('Move this out');
-            comments[1].line.should.equal(12);
+            verifyComment(comments[0], 'TODO', 6, 'refactor this');
+            verifyComment(comments[1], 'FIXME', 12, 'Move this out');
         });
     });
 
@@ -185,27 +147,19 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('FIXME');
-            comments[0].text.should.equal('Use python');
-            comments[0].line.should.equal(3);
-            comments[1].kind.should.equal('TODO');
-            comments[1].text.should.equal('still waiting for perl6?');
-            comments[1].line.should.equal(18);
+            verifyComment(comments[0], 'FIXME', 3, 'Use python');
+            verifyComment(comments[1], 'TODO', 18, 'still waiting for perl6?');
         });
     });
-    
+
     describe('perl script', function () {
         it('parse # comments', function () {
             var file = getFixturePath('perl.pl');
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].text.should.equal('Refactor this');
-            comments[0].line.should.equal(3);
-            comments[1].kind.should.equal('FIXME');
-            comments[1].text.should.equal('fix the code below');
-            comments[1].line.should.equal(6);
+            verifyComment(comments[0], 'TODO', 3, 'Refactor this');
+            verifyComment(comments[1], 'FIXME', 6, 'fix the code below');
         });
     });
 
@@ -215,18 +169,10 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
-            comments[0].kind.should.equal('TODO');
-            comments[0].text.should.equal('it will appear in the CSS output.');
-            comments[0].line.should.equal(2);
-            comments[1].kind.should.equal('FIXME');
-            comments[1].text.should.equal('this is a block comment too');
-            comments[1].line.should.equal(3);
-            comments[2].kind.should.equal('FIXME');
-            comments[2].text.should.equal('They won\'t appear in the CSS output,');
-            comments[2].line.should.equal(10);
-            comments[3].kind.should.equal('TODO');
-            comments[3].text.should.equal('improve this syntax');
-            comments[3].line.should.equal(14);
+            verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
+            verifyComment(comments[1], 'FIXME', 3, 'this is a block comment too');
+            verifyComment(comments[2], 'FIXME', 10, "They won't appear in the CSS output,");
+            verifyComment(comments[3], 'TODO', 14, 'improve this syntax');
         });
     });
 
@@ -236,9 +182,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].text.should.equal('add another class');
-            comments[0].line.should.equal(4);
+            verifyComment(comments[0], 'TODO', 4, 'add another class');
         });
     });
 
@@ -248,12 +192,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('change to public');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(11);
-            comments[1].text.should.equal('use jquery');
+            verifyComment(comments[0], 'TODO', 1, 'change to public');
+            verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
     });
 
@@ -263,9 +203,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(14);
-            comments[0].text.should.equal('Show my TODO please');
+            verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
         });
 
         it('handle jsdoc @todo comments', function () {
@@ -273,9 +211,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(9);
-            comments[0].text.should.equal('make this supported');
+            verifyComment(comments[0], 'TODO', 9, 'make this supported');
         });
     });
 
@@ -285,12 +221,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('Do something');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(3);
-            comments[1].text.should.equal('Fix something');
+            verifyComment(comments[0], 'TODO', 1, 'Do something');
+            verifyComment(comments[1], 'FIXME', 3, 'Fix something');
         });
     });
 
@@ -300,9 +232,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal('better document');
+            verifyComment(comments[0], 'TODO', 1, 'better document');
         });
     });
 
@@ -312,9 +242,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(17);
-            comments[0].text.should.equal('complete file');
+            verifyComment(comments[0], 'TODO', 17, 'complete file');
         });
     });
 
@@ -324,9 +252,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(5);
-            comments[0].text.should.equal('wrap variables in quotes');
+            verifyComment(comments[0], 'TODO', 5, 'wrap variables in quotes');
         });
     });
 
@@ -336,9 +262,7 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
-            comments[0].kind.should.equal('FIXME');
-            comments[0].line.should.equal(31);
-            comments[0].text.should.equal('we now exit the program');
+            verifyComment(comments[0], 'FIXME', 31, 'we now exit the program');
         });
     });
 
@@ -348,18 +272,10 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(2);
-            comments[0].text.should.equal('it will appear in the CSS output.');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(3);
-            comments[1].text.should.equal('this is a block comment too');
-            comments[2].kind.should.equal('FIXME');
-            comments[2].line.should.equal(10);
-            comments[2].text.should.equal('They won\'t appear in the CSS output,');
-            comments[3].kind.should.equal('TODO');
-            comments[3].line.should.equal(14);
-            comments[3].text.should.equal('improve this syntax');
+            verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
+            verifyComment(comments[1], 'FIXME', 3, 'this is a block comment too');
+            verifyComment(comments[2], 'FIXME', 10, "They won't appear in the CSS output,");
+            verifyComment(comments[3], 'TODO', 14, 'improve this syntax');
         });
     });
 
@@ -369,12 +285,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('FIXME');
-            comments[0].line.should.equal(1);
-            comments[0].text.should.equal("Hey, I'm a fixme!");
-            comments[1].kind.should.equal('TODO');
-            comments[1].line.should.equal(13);
-            comments[1].text.should.equal("Hey, I'm a todo!");
+            verifyComment(comments[0], 'FIXME', 1, "Hey, I'm a fixme!");
+            verifyComment(comments[1], 'TODO', 13, "Hey, I'm a todo!");
         });
     });
 
@@ -384,12 +296,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(14);
-            comments[0].text.should.equal('Show my TODO please');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(21);
-            comments[1].text.should.equal('illogical');
+            verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
+            verifyComment(comments[1], 'FIXME', 21, 'illogical');
         });
     });
 
@@ -399,12 +307,8 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(9);
-            comments[0].text.should.equal('this is a todo');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(11);
-            comments[1].text.should.equal('also should be caught');
+            verifyComment(comments[0], 'TODO', 9, 'this is a todo');
+            verifyComment(comments[1], 'FIXME', 11, 'also should be caught');
         });
     });
 
@@ -414,15 +318,9 @@ describe('check parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
-            comments[0].kind.should.equal('TODO');
-            comments[0].line.should.equal(2);
-            comments[0].text.should.equal('This is a single-line comment');
-            comments[1].kind.should.equal('FIXME');
-            comments[1].line.should.equal(7);
-            comments[1].text.should.equal('implement single line comment');
-            comments[2].kind.should.equal('TODO');
-            comments[2].line.should.equal(14);
-            comments[2].text.should.equal('supported?');
+            verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
+            verifyComment(comments[1], 'FIXME', 7, 'implement single line comment');
+            verifyComment(comments[2], 'TODO', 14, 'supported?');
         });
     });
 });
