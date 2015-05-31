@@ -9,10 +9,10 @@ function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
 }
 
-function getComments(file) {
+function getComments(file, customTags) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
-    return leasot.parse(ext, content, file);
+    return leasot.parse(ext, content, file, customTags);
 }
 
 function verifyComment(actual, kind, line, text) {
@@ -21,8 +21,37 @@ function verifyComment(actual, kind, line, text) {
     actual.text.should.equal(text);
 }
 
-describe('check parsing', function () {
-    describe('test edge cases', function () {
+describe('parsing', function () {
+    describe('options', function () {
+        it('custom tags must be an array', function () {
+            var file = getFixturePath('custom-tags.rb');
+
+            (function () {
+                getComments(file, {
+                    review: true
+                });
+            }).should.throw(/customTags/);
+        });
+
+        it('custom tags', function () {
+            var file = getFixturePath('custom-tags.rb');
+            var comments = getComments(file, ['review']);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'REVIEW', 4, 'make sure this works');
+            verifyComment(comments[1], 'FIXME', 10, 'just kidding');
+        });
+
+        it('custom tag is temporary', function () {
+            var file = getFixturePath('custom-tags.rb');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'FIXME', 10, 'just kidding');
+        });
+    });
+
+    describe('edge cases', function () {
         it('javascript', function () {
             var file = getFixturePath('edge-cases.js');
             var comments = getComments(file);

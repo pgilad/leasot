@@ -62,7 +62,7 @@ $ npm install --global leasot
 
 #### Examples
 
-```bash
+```sh
 ❯ leasot --help
 
   Usage: leasot [options] <file ...>
@@ -73,8 +73,9 @@ $ npm install --global leasot
 
     -h, --help                 output usage information
     -V, --version              output the version number
-    -r, --reporter [reporter]  use reporter (table|json|xml|markdown|raw) (Default: table)
-    -t, --filetype [filetype]  force the filetype to parse. Useful for streams (Default: .js)
+    -r, --reporter [reporter]  use reporter (table|json|xml|markdown|raw) (default: table)
+    -t, --filetype [filetype]  force the filetype to parse. Useful for streams (default: .js)
+    -T, --tags <tags>          add additional comment types to find (alongside todo & fixme)
 
   Examples:
 
@@ -89,6 +90,9 @@ $ npm install --global leasot
 
     # Use the json reporter
     $ leasot --reporter json index.js
+
+    # Search for REVIEW comments as well
+    $ leasot --tag review index.js
 
     # Export TODOS as markdown to a TODO.md file
     $ leasot --reporter markdown app/**/*.py > TODO.md
@@ -151,7 +155,7 @@ Specify an extension including the prefixing dot, for example:
 
 **Returns**: `Boolean`
 
-### .parse(extension, contents, filename)
+### .parse(extension, contents, filename, customTags)
 
 Parse the contents, using the provided `extension`. `filename` will be attached
 to the return object, so it is recommended to use it if you know it.
@@ -161,6 +165,8 @@ to the return object, so it is recommended to use it if you know it.
 `contents` is a string containing the contents to parse.
 
 `filename` is an optional string.
+
+`customTags` is an optional array with additional tags (comment types) to search for (alongside todo & fixme).
 
 **Returns**: `Array` of comments.
 

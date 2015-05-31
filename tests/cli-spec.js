@@ -1,15 +1,14 @@
-/* global describe,it */
 'use strict';
 var path = require('path');
 var chalk = require('chalk');
 var should = require('should');
 var childProcess = require('child_process');
 
-var getFixturePath = function (file) {
+function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
-};
+}
 
-var testCli = function (files, cb) {
+function testCli(files, cb) {
     var args = files.map(getFixturePath);
 
     var cp = childProcess.spawn('./bin/leasot.js', args, {
@@ -24,7 +23,7 @@ var testCli = function (files, cb) {
     cp.on('close', function (exitCode) {
         cb(exitCode, chalk.stripColor(chunks.split('\n')));
     });
-};
+}
 
 describe('check cli', function () {
     describe('multiple files', function () {
