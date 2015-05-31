@@ -20,7 +20,8 @@ to extract your todos from comments.
 - Must be in a comment (line or block) in its' own line (`some code(); //TODO: do something` is not supported).
 - Can be prefixed with a @ (i.e @TODO).
 - Spaces are trimmed around comment text.
-- Supported types are `TODO` and `FIXME` - case insensitive.
+- Supported default types are `TODO` and `FIXME` - case insensitive.
+- Additional types can be added (using `tags` in cli and `customTags` in `leasot.parse`)
 
 ## Supported languages:
 
