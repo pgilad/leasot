@@ -31,7 +31,7 @@ program
         console.log('    $ leasot --reporter json index.js');
         console.log('');
         console.log('    # Search for REVIEW comments as well');
-        console.log('    $ leasot --tag review index.js');
+        console.log('    $ leasot --tags review index.js');
         console.log('');
         console.log('    # Export TODOS as markdown to a TODO.md file');
         console.log('    $ leasot --reporter markdown app/**/*.py > TODO.md');

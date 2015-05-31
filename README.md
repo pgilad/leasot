@@ -56,7 +56,7 @@ Javascript is the default parser.
 
 #### Installation
 
-```bash
+```sh
 $ npm install --global leasot
 ```
 
@@ -92,7 +92,7 @@ $ npm install --global leasot
     $ leasot --reporter json index.js
 
     # Search for REVIEW comments as well
-    $ leasot --tag review index.js
+    $ leasot --tags review index.js
 
     # Export TODOS as markdown to a TODO.md file
     $ leasot --reporter markdown app/**/*.py > TODO.md
@@ -105,7 +105,7 @@ $ npm install --global leasot
 
 #### Installation
 
-```bash
+```sh
 $ npm install --save-dev leasot
 ```
 
