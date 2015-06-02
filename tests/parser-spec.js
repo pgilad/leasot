@@ -148,6 +148,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('erlang', function () {
+        it('parse % comments', function () {
+            var file = getFixturePath('erlang.erl');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 1, 're-write this');
+            verifyComment(comments[1], 'FIXME', 3, 'something useful');
+        });
+    });
+
     describe('ruby', function () {
         it('parse # comments', function () {
             var file = getFixturePath('ruby.rb');

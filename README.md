@@ -31,6 +31,7 @@ to extract your todos from comments.
 | C++/C        | `.cpp` `.c` `.h`     | Using regex. Supports `// and /* */` comments.  |
 | Coffee-React | `.cjsx`              | Using regex. Supports `#` comments.             |
 | Coffeescript | `.coffee`            | Using regex. Supports `#` comments.             |
+| Erlang       | `.erl`               | Using regex. Supports `%` comments.             |
 | Go           | `.go`                | Using regex. Supports `// and /* */` comments.  |
 | Handlebars   | `.hbs`               | Using regex. Supports `{{! }}` and `{{!-- --}}` |
 | Jade         | `.jade`              | Using regex. Supports `//` and `//-` comments.  |
