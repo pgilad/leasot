@@ -25,29 +25,29 @@ to extract your todos from comments.
 
 ## Supported languages:
 
-| Filetype     | Extension            | Notes                                           |
-| ------------ | -------------------- | ------------------------------------------------|
-| C#           | `.cs`                | Using regex. Supports `// and /* */` comments.  |
-| C++/C        | `.cpp` `.c` `.h`     | Using regex. Supports `// and /* */` comments.  |
-| Coffee-React | `.cjsx`              | Using regex. Supports `#` comments.             |
-| Coffeescript | `.coffee`            | Using regex. Supports `#` comments.             |
-| Erlang       | `.erl`               | Using regex. Supports `%` comments.             |
-| Go           | `.go`                | Using regex. Supports `// and /* */` comments.  |
-| Handlebars   | `.hbs`               | Using regex. Supports `{{! }}` and `{{!-- --}}` |
-| Haskell      | `.hs`                | Using regex. Supports `--`			|
-| Jade         | `.jade`              | Using regex. Supports `//` and `//-` comments.  |
-| Javascript   | `.js`                | Using regex. Supports `// and /* */` comments   |
-| Jsx          | `.jsx`               | Using regex. Supports `// and /* */` comments.  |
-| Less         | `.less`              | Using regex. Supports `// and /* */` comments.  |
-| Perl         | `.pl`, `.pm`         | Using regex. Supports `#` comments.             |
-| PHP          | `.php`               | Using regex. Supports `// and /* */` comments.  |
-| Python       | `.py`                | Using regex. Supports `"""` and `#` comments.   |
-| Ruby         | `.rb`                | Using regex. Supports `#` comments.             |
-| Sass         | `.sass` `.scss`      | Using regex. Supports `// and /* */` comments.  |
-| Shell        | `.sh` `.zsh` `.bash` | Using regex. Supports `#` comments.             |
-| Stylus       | `.styl`              | Using regex. Supports `// and /* */` comments.  |
-| Twig         | `.twig`              | Using regex. Supports `{#  #}` and `<!-- -->`   |
-| Typescript   | `.ts`                | Using regex. Supports `// and /* */` comments.  |
+| Filetype     | Extension            | Notes                              |
+| ------------ | -------------------- | -----------------------------------|
+| C#           | `.cs`                | Supports `// and /* */` comments.  |
+| C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  |
+| Coffee-React | `.cjsx`              | Supports `#` comments.             |
+| Coffeescript | `.coffee`            | Supports `#` comments.             |
+| Erlang       | `.erl`               | Supports `%` comments.             |
+| Go           | `.go`                | Supports `// and /* */` comments.  |
+| Handlebars   | `.hbs`               | Supports `{{! }}` and `{{!-- --}}` |
+| Haskell      | `.hs`                | Supports `--`                      |
+| Jade         | `.jade`              | Supports `//` and `//-` comments.  |
+| Javascript   | `.js`                | Supports `// and /* */` comments   |
+| Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
+| Less         | `.less`              | Supports `// and /* */` comments.  |
+| Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
+| PHP          | `.php`               | Supports `// and /* */` comments.  |
+| Python       | `.py`                | Supports `"""` and `#` comments.   |
+| Ruby         | `.rb`                | Supports `#` comments.             |
+| Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  |
+| Shell        | `.sh` `.zsh` `.bash` | Supports `#` comments.             |
+| Stylus       | `.styl`              | Supports `// and /* */` comments.  |
+| Twig         | `.twig`              | Supports `{#  #}` and `<!-- -->`   |
+| Typescript   | `.ts`                | Supports `// and /* */` comments.  |
 
 Javascript is the default parser.
 
