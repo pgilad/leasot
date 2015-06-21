@@ -34,6 +34,7 @@ to extract your todos from comments.
 | Erlang       | `.erl`               | Using regex. Supports `%` comments.             |
 | Go           | `.go`                | Using regex. Supports `// and /* */` comments.  |
 | Handlebars   | `.hbs`               | Using regex. Supports `{{! }}` and `{{!-- --}}` |
+| Haskell      | `.hs`                | Using regex. Supports `--`			|
 | Jade         | `.jade`              | Using regex. Supports `//` and `//-` comments.  |
 | Javascript   | `.js`                | Using regex. Supports `// and /* */` comments   |
 | Jsx          | `.jsx`               | Using regex. Supports `// and /* */` comments.  |

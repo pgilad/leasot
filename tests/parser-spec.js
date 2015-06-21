@@ -169,6 +169,17 @@ describe('parsing', function () {
             verifyComment(comments[1], 'FIXME', 10, 'just kidding, pizza is everything in life, nothing to fix here');
         });
     });
+    
+    describe('haskell', function () {
+        it('parse -- comments', function () {
+            var file = getFixturePath('haskell.hs');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 4, 'force evaluation of the given value');
+            verifyComment(comments[1], 'TODO', 10, 'this will be deprecated soon');
+        });
+    });
 
     describe('python', function () {
         it('parse # and """ comments', function () {
