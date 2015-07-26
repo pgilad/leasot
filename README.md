@@ -31,9 +31,10 @@ to extract your todos from comments.
 | C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  |
 | Coffee-React | `.cjsx`              | Supports `#` comments.             |
 | Coffeescript | `.coffee`            | Supports `#` comments.             |
+| CSS          | `.css`               | Supports `/* */` comments.         |
 | Erlang       | `.erl`               | Supports `%` comments.             |
 | Go           | `.go`                | Supports `// and /* */` comments.  |
-| Handlebars   | `.hbs`               | Supports `{{! }}` and `{{!-- --}}` |
+| Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
 | Haskell      | `.hs`                | Supports `--`                      |
 | Jade         | `.jade`              | Supports `//` and `//-` comments.  |
 | Javascript   | `.js`                | Supports `// and /* */` comments   |
