@@ -80,6 +80,7 @@ $ npm install --global leasot
     -r, --reporter [reporter]  use reporter (table|json|xml|markdown|raw) (default: table)
     -t, --filetype [filetype]  force the filetype to parse. Useful for streams (default: .js)
     -T, --tags <tags>          add additional comment types to find (alongside todo & fixme)
+    -S, --skip-unsupported     skip unsupported filetypes
 
   Examples:
 
