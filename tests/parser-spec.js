@@ -187,8 +187,8 @@ describe('parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            verifyComment(comments[0], 'FIXME', 4, 'change to this tag from Id to class');
-            verifyComment(comments[1], 'TODO', 10, 'Add in box shortcode here ');
+            verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
+            verifyComment(comments[1], 'TODO', 9, 'Please add something more interesting here');
         });
     });
 
@@ -199,8 +199,8 @@ describe('parsing', function () {
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
-            verifyComment(comments[0], 'FIXME', 4, 'change to this tag from Id to class');
-            verifyComment(comments[1], 'TODO', 10, 'Add in box shortcode here ');
+            verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
+            verifyComment(comments[1], 'TODO', 9, 'Please add something more interesting here');
         });
     });    
 
