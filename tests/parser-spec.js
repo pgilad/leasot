@@ -181,6 +181,29 @@ describe('parsing', function () {
         });
     });
 
+        describe('html', function () {
+        it('parse <!-- --> comments', function () {
+            var file = getFixturePath('HMTL.html');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 4, 'change to this tag from Id to class');
+            verifyComment(comments[1], 'TODO', 10, 'Add in box shortcode here ');
+        });
+    });
+
+
+       describe('htm', function () {
+        it('parse <!-- comments', function () {
+            var file = getFixturePath('HMTL.htm');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 4, 'change to this tag from Id to class');
+            verifyComment(comments[1], 'TODO', 10, 'Add in box shortcode here ');
+        });
+    });    
+
     describe('python', function () {
         it('parse # and """ comments', function () {
             var file = getFixturePath('python.py');
