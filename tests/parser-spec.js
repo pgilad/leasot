@@ -183,7 +183,7 @@ describe('parsing', function () {
 
         describe('html', function () {
         it('parse <!-- --> comments', function () {
-            var file = getFixturePath('HMTL.html');
+            var file = getFixturePath('HTML.html');
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
@@ -195,7 +195,7 @@ describe('parsing', function () {
 
        describe('htm', function () {
         it('parse <!-- comments', function () {
-            var file = getFixturePath('HMTL.htm');
+            var file = getFixturePath('HTML.htm');
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
