@@ -5,21 +5,21 @@
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": "./bin/leasot.js",
   "dependencies": {
-    "chalk": "^1.0.0",
+    "chalk": "^1.1.0",
     "commander": "^2.8.1",
     "get-line-from-pos": "^1.0.0",
     "get-stdin": "^4.0.1",
-    "glob": "^5.0.9",
-    "json2xml": "^0.1.1",
+    "glob": "^5.0.14",
+    "json2xml": "^0.1.2",
     "lodash.compact": "^3.0.0",
-    "lodash.defaults": "^3.1.1",
+    "lodash.defaults": "^3.1.2",
     "log-symbols": "^1.0.2",
     "map-async": "^0.1.1",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
-    "should": "^6.0.1"
+    "should": "^7.0.4"
   },
   "engines": {
     "node": ">=0.10.0"
