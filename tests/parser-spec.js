@@ -169,7 +169,7 @@ describe('parsing', function () {
             verifyComment(comments[1], 'FIXME', 10, 'just kidding, pizza is everything in life, nothing to fix here');
         });
     });
-    
+
     describe('haskell', function () {
         it('parse -- comments', function () {
             var file = getFixturePath('haskell.hs');
@@ -181,7 +181,7 @@ describe('parsing', function () {
         });
     });
 
-        describe('html', function () {
+    describe('html', function () {
         it('parse <!-- --> comments', function () {
             var file = getFixturePath('HTML.html');
             var comments = getComments(file);
@@ -192,8 +192,7 @@ describe('parsing', function () {
         });
     });
 
-
-       describe('htm', function () {
+    describe('htm', function () {
         it('parse <!-- comments', function () {
             var file = getFixturePath('HTML.htm');
             var comments = getComments(file);
@@ -202,7 +201,7 @@ describe('parsing', function () {
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
             verifyComment(comments[1], 'TODO', 9, 'Please add something more interesting here');
         });
-    });    
+    });
 
     describe('python', function () {
         it('parse # and """ comments', function () {
