@@ -37,6 +37,7 @@ to extract your todos from comments.
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
 | Haskell      | `.hs`                | Supports `--`                      |
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
+| EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
 | Jade         | `.jade`              | Supports `//` and `//-` comments.  |
 | Javascript   | `.js`                | Supports `// and /* */` comments   |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
