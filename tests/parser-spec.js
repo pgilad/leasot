@@ -203,6 +203,19 @@ describe('parsing', function () {
         });
     });
 
+    describe('ejs', function () {
+        it('parse <!-- --> and <%# %> comments', function () {
+            var file = getFixturePath('ejs.ejs');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(4);
+            verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
+            verifyComment(comments[1], 'FIXME', 2, 'change this tag from Id to class');
+            verifyComment(comments[2], 'TODO', 10, 'Please add something more interesting here');
+            verifyComment(comments[3], 'TODO', 11, 'Please add something more interesting here');
+        });
+    });
+
     describe('python', function () {
         it('parse # and """ comments', function () {
             var file = getFixturePath('python.py');
