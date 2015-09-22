@@ -5,10 +5,10 @@
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": "./bin/leasot.js",
   "dependencies": {
-    "chalk": "^1.1.0",
+    "chalk": "^1.1.1",
     "commander": "^2.8.1",
     "get-line-from-pos": "^1.0.0",
-    "get-stdin": "^4.0.1",
+    "get-stdin": "^5.0.0",
     "glob": "^5.0.14",
     "json2xml": "^0.1.2",
     "lodash.compact": "^3.0.0",
@@ -18,8 +18,8 @@
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "should": "^7.0.4"
+    "mocha": "^2.3.3",
+    "should": "^7.1.0"
   },
   "engines": {
     "node": ">=0.10.0"
