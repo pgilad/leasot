@@ -36,12 +36,14 @@ to extract your todos from comments.
 | Go           | `.go`                | Supports `// and /* */` comments.  |
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
 | Haskell      | `.hs`                | Supports `--`                      |
+| Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` |
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
 | EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
 | Jade         | `.jade`              | Supports `//` and `//-` comments.  |
 | Javascript   | `.js`                | Supports `// and /* */` comments   |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
 | Less         | `.less`              | Supports `// and /* */` comments.  |
+| Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` |
 | Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
 | PHP          | `.php`               | Supports `// and /* */` comments.  |
 | Python       | `.py`                | Supports `"""` and `#` comments.   |

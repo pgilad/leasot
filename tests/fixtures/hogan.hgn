@@ -1,0 +1,14 @@
+<div class="entry">
+    {{!-- TODO: only output this author names if an author exists --}}
+    {{#if author}}
+        <h1>{{firstName}} {{lastName}}</h1>
+    {{/if}}
+</div>
+<div class="entry">
+    {{! FIXME: This comment will not be in the output }}
+    <!-- This comment will be in the output -->
+</div>
+
+<div>
+    {{! TODO: Multiple line comment}} {{! TODO: and again}}
+</div>
