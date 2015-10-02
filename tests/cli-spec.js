@@ -26,7 +26,7 @@ function testCli(files, extraArgs, cb) {
 }
 
 describe('check cli', function () {
-    it('should parse multiple files (single file per arg)', function (done) {
+    it('should parse multiple files (single file per arg)', function (callback) {
         this.timeout(10000);
         testCli(['block.less', 'coffee.coffee'], null, function (exitCode, log) {
             should.exist(exitCode);
@@ -47,11 +47,11 @@ describe('check cli', function () {
                 ' ✖ 6 todos/fixmes found',
                 ''
             ]);
-            done();
+            callback();
         });
     });
 
-    it('should parse multiple files (globbing)', function (done) {
+    it('should parse multiple files (globbing)', function (callback) {
         testCli(['*.styl'], null, function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
@@ -68,11 +68,11 @@ describe('check cli', function () {
                 ' ✖ 3 todos/fixmes found',
                 ''
             ]);
-            done();
+            callback();
         });
     });
 
-    it('should test unsupported file', function (done) {
+    it('should test unsupported file', function (callback) {
         testCli(['file.unsupported'], [], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
@@ -81,11 +81,11 @@ describe('check cli', function () {
                 '✖ Filetype .unsupported is unsupported.',
                 '',
             ]);
-            done();
+            callback();
         });
     });
 
-    it('should skip unsupported files if asked', function (done) {
+    it('should skip unsupported files if asked', function (callback) {
         testCli(['file.unsupported'], ['--skip-unsupported'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
@@ -96,11 +96,11 @@ describe('check cli', function () {
                 ' ✔ No todos/fixmes found',
                 ''
             ]);
-            done();
+            callback();
         });
     });
 
-    it('should get no error exitCode if no todos or fixmes are found', function (done) {
+    it('should get no error exitCode if no todos or fixmes are found', function (callback) {
         testCli(['no-todos.js'], null, function (exitCode, log) {
             should.exist(log);
             should.exist(exitCode);
@@ -111,7 +111,7 @@ describe('check cli', function () {
                 ' ✔ No todos/fixmes found',
                 ''
             ]);
-            done();
+            callback();
         });
     });
 });

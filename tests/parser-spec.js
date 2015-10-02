@@ -9,10 +9,19 @@ function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
 }
 
-function getComments(file, customTags) {
+function getComments(file, options) {
+    options = options || {};
+    var customTags = options.customTags;
+    var withInlineFiles = options.withInlineFiles;
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
-    return leasot.parse(ext, content, file, customTags);
+    return leasot.parse({
+        ext: ext,
+        content: content,
+        fileName: file,
+        customTags: customTags,
+        withInlineFiles: withInlineFiles
+    });
 }
 
 function verifyComment(actual, kind, line, text) {
@@ -22,35 +31,6 @@ function verifyComment(actual, kind, line, text) {
 }
 
 describe('parsing', function () {
-    describe('options', function () {
-        it('custom tags must be an array', function () {
-            var file = getFixturePath('custom-tags.rb');
-
-            (function () {
-                getComments(file, {
-                    review: true
-                });
-            }).should.throw(/customTags/);
-        });
-
-        it('custom tags', function () {
-            var file = getFixturePath('custom-tags.rb');
-            var comments = getComments(file, ['review']);
-            should.exist(comments);
-            comments.should.have.length(2);
-            verifyComment(comments[0], 'REVIEW', 4, 'make sure this works');
-            verifyComment(comments[1], 'FIXME', 10, 'just kidding');
-        });
-
-        it('custom tag is temporary', function () {
-            var file = getFixturePath('custom-tags.rb');
-            var comments = getComments(file);
-            should.exist(comments);
-            comments.should.have.length(1);
-            verifyComment(comments[0], 'FIXME', 10, 'just kidding');
-        });
-    });
-
     describe('edge cases', function () {
         it('javascript', function () {
             var file = getFixturePath('edge-cases.js');
@@ -120,7 +100,6 @@ describe('parsing', function () {
             verifyComment(comments[3], 'TODO', 13, 'and again');
         });
     });
-
 
     describe('c++', function () {
         it('parse // and /* style comments', function () {
@@ -434,6 +413,58 @@ describe('parsing', function () {
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
             verifyComment(comments[1], 'FIXME', 7, 'implement single line comment');
             verifyComment(comments[2], 'TODO', 14, 'supported?');
+        });
+    });
+
+    describe('custom tags', function () {
+        it('custom tags must be an array', function () {
+            var file = getFixturePath('custom-tags.rb');
+
+            (function () {
+                getComments(file, {
+                    customTags: true
+                });
+            }).should.throw(/customTags/);
+        });
+
+        it('custom tags', function () {
+            var file = getFixturePath('custom-tags.rb');
+            var comments = getComments(file, {
+                customTags: ['review']
+            });
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'REVIEW', 4, 'make sure this works');
+            verifyComment(comments[1], 'FIXME', 10, 'just kidding');
+        });
+
+        it('custom tag is temporary', function () {
+            var file = getFixturePath('custom-tags.rb');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'FIXME', 10, 'just kidding');
+        });
+    });
+
+    describe('with inline files', function () {
+        it('parses a php file without included files', function () {
+            var file = getFixturePath('with-inline.php');
+            var comments = getComments(file, {
+                withInlineFiles: false
+            });
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
+        });
+
+        it('parses a php file with just php', function () {
+            var file = getFixturePath('with-inline.php');
+            var comments = getComments(file, {
+                withInlineFiles: true
+            });
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
+            verifyComment(comments[1], 'FIXME', 9, 'change this tag from Id to class');
         });
     });
 });

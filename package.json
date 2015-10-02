@@ -13,6 +13,7 @@
     "json2xml": "^0.1.2",
     "lodash.compact": "^3.0.0",
     "lodash.defaults": "^3.1.2",
+    "lodash.uniq": "^3.2.2",
     "log-symbols": "^1.0.2",
     "map-async": "^0.1.1",
     "text-table": "^0.2.0"

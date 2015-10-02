@@ -29,23 +29,23 @@ to extract your todos from comments.
 | ------------ | -------------------- | -----------------------------------|
 | C#           | `.cs`                | Supports `// and /* */` comments.  |
 | C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  |
+| CSS          | `.css`               | Supports `/* */` comments.         |
 | Coffee-React | `.cjsx`              | Supports `#` comments.             |
 | Coffeescript | `.coffee`            | Supports `#` comments.             |
-| CSS          | `.css`               | Supports `/* */` comments.         |
+| EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
 | Erlang       | `.erl`               | Supports `%` comments.             |
 | Go           | `.go`                | Supports `// and /* */` comments.  |
+| HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
 | Haskell      | `.hs`                | Supports `--`                      |
 | Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` |
-| HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
-| EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
 | Jade         | `.jade`              | Supports `//` and `//-` comments.  |
 | Javascript   | `.js`                | Supports `// and /* */` comments   |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
 | Less         | `.less`              | Supports `// and /* */` comments.  |
 | Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` |
-| Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
 | PHP          | `.php`               | Supports `// and /* */` comments.  |
+| Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
 | Python       | `.py`                | Supports `"""` and `#` comments.   |
 | Ruby         | `.rb`                | Supports `#` comments.             |
 | Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  |
@@ -85,6 +85,7 @@ $ npm install --global leasot
     -t, --filetype [filetype]  force the filetype to parse. Useful for streams (default: .js)
     -T, --tags <tags>          add additional comment types to find (alongside todo & fixme)
     -S, --skip-unsupported     skip unsupported filetypes
+    -I, --inline-files         parse possible inline files
 
   Examples:
 
@@ -165,20 +166,17 @@ Specify an extension including the prefixing dot, for example:
 
 **Returns**: `Boolean`
 
-### .parse(extension, contents, filename, customTags)
+### .parse(options)
 
-Parse the contents, using the provided `extension`. `filename` will be attached
-to the return object, so it is recommended to use it if you know it.
+| Name                | Type       | Required | Default | Description                                           |
+| ----                | ----       | -------- | ------- | -----------                                           |
+| `ext`               | `string`   | Yes      |         | The extension the parse as including a prefixing dot. |
+| `content`           | `string`   | Yes      |         | Content to parse                                      |
+| `fileName`          | `string`   | No       |         | fileName to attach to todos output                    |
+| `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
+| `withIncludedFiles` | `boolean` | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
 
-`extension` is the extension to parse as, including a prefixing dot.
-
-`contents` is a string containing the contents to parse.
-
-`filename` is an optional string.
-
-`customTags` is an optional array with additional tags (comment types) to search for (alongside todo & fixme).
-
-**Returns**: `Array` of comments.
+**Returns**: `array` of comments.
 
 ```js
 [{

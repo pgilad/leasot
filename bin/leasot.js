@@ -16,6 +16,7 @@ program
     .option('-t, --filetype [filetype]', 'force the filetype to parse. Useful for streams (default: .js)')
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
     .option('-S, --skip-unsupported', 'skip unsupported filetypes', false)
+    .option('-I, --inline-files', 'parse possible inline files', false)
     .on('--help', function () {
         console.log('  Examples:');
         console.log('');
