@@ -40,7 +40,7 @@ to extract your todos from comments.
 | Haskell      | `.hs`                | Supports `--`                      |
 | Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` |
 | Jade         | `.jade`              | Supports `//` and `//-` comments.  |
-| Javascript   | `.js`                | Supports `// and /* */` comments   |
+| Javascript   | `.js` `.es` `.es6`   | Supports `// and /* */` comments   |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
 | Less         | `.less`              | Supports `// and /* */` comments.  |
 | Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` |
