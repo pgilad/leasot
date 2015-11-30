@@ -222,6 +222,19 @@ describe('parsing', function () {
         });
     });
 
+    describe('pascal', function () {
+        it('parse // and { } comments', function () {
+            var file = getFixturePath('pascal.pas');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(4);
+            verifyComment(comments[0], 'TODO', 1, 'Add more stuff');
+            verifyComment(comments[1], 'FIXME', 4, 'Say something cool');
+            verifyComment(comments[2], 'FIXME', 6, 'Add a space');
+            verifyComment(comments[3], 'TODO', 10, 'Display the user\'s name');
+        });
+    });
+
     describe('python', function () {
         it('parse # and """ comments', function () {
             var file = getFixturePath('python.py');
