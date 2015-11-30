@@ -44,6 +44,7 @@ to extract your todos from comments.
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
 | Less         | `.less`              | Supports `// and /* */` comments.  |
 | Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` |
+| Pascal       | `.pas`               | Supports `// and { }` comments.    |
 | PHP          | `.php`               | Supports `// and /* */` comments.  |
 | Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
 | Python       | `.py`                | Supports `"""` and `#` comments.   |
