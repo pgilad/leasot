@@ -33,6 +33,7 @@ to extract your todos from comments.
 | Coffee-React | `.cjsx`              | Supports `#` comments.             |
 | Coffeescript | `.coffee`            | Supports `#` comments.             |
 | EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
+| erb          | `.erb`               | Supports `<!-- -->`                |
 | Erlang       | `.erl`               | Supports `%` comments.             |
 | Go           | `.go`                | Supports `// and /* */` comments.  |
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
