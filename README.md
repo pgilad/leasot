@@ -36,6 +36,7 @@ to extract your todos from comments.
 | erb          | `.erb`               | Supports `<!-- -->`                |
 | Erlang       | `.erl`               | Supports `%` comments.             |
 | Go           | `.go`                | Supports `// and /* */` comments.  |
+| Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`|
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
 | Haskell      | `.hs`                | Supports `--`                      |
