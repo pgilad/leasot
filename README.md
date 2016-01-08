@@ -53,6 +53,7 @@ to extract your todos from comments.
 | Ruby         | `.rb`                | Supports `#` comments.             |
 | Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  |
 | Shell        | `.sh` `.zsh` `.bash` | Supports `#` comments.             |
+| SilverStripe | `.ss`                | Supports `<%-- --%>` comments.     |
 | Stylus       | `.styl`              | Supports `// and /* */` comments.  |
 | Twig         | `.twig`              | Supports `{#  #}` and `<!-- -->`   |
 | Typescript   | `.ts`                | Supports `// and /* */` comments.  |

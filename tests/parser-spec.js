@@ -383,6 +383,18 @@ describe('parsing', function () {
             verifyComment(comments[0], 'FIXME', 31, 'we now exit the program');
         });
     });
+    
+    describe('ss', function () {
+        it('handle <%-- --%> and <!-- --> comments', function () {
+            var file = getFixturePath('silverstripe.ss');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'FIXME', 4, 'title is incorrect');
+            verifyComment(comments[1], 'TODO', 6, 'add stylesheets and scripts');
+            verifyComment(comments[2], 'FIXME', 11, '$Condition is not defined');
+        });
+    });
 
     describe('less', function () {
         it('handles block and inline comment forms', function () {
