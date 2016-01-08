@@ -176,6 +176,19 @@ describe('parsing', function () {
         });
     });
 
+    describe('haml', function () {
+        it('parse -# comments and / comments', function () {
+            var file = getFixturePath('haml.haml');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(4);
+            verifyComment(comments[0], 'TODO', 2, 'All your base are belong to us.');
+            verifyComment(comments[1], 'FIXME', 5, 'Someone set up us the bomb.');
+            verifyComment(comments[2], 'TODO', 9, 'All your base are belong to us. You are on the way to destruction.');
+            verifyComment(comments[3], 'FIXME', 11, 'You have no chance to survive make your time. Ha ha ha...');
+        });
+    });
+
     describe('haskell', function () {
         it('parse -- comments', function () {
             var file = getFixturePath('haskell.hs');
