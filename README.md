@@ -168,7 +168,7 @@ Associates a bundled parser with a new extension.
 
 The parsers object must be completed in the following format:
 
-```json
+```js
 { 
     '.cls': { 
         parserName: 'defaultParser'
