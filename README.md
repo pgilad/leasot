@@ -166,7 +166,7 @@ var leasot = require('leasot');
 
 Associates a bundled parser with a new extension.
 
-The parsers object must be completed in the following format:
+The `parsers` parameter must be completed in the following format:
 
 ```js
 { 
