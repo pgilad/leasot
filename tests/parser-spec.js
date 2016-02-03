@@ -15,12 +15,14 @@ function getComments(file, options) {
     var withInlineFiles = options.withInlineFiles;
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
+    var associateParser = options.associateParser;
     return leasot.parse({
         ext: ext,
         content: content,
         fileName: file,
         customTags: customTags,
-        withInlineFiles: withInlineFiles
+        withInlineFiles: withInlineFiles,
+        associateParser: associateParser
     });
 }
 
@@ -503,6 +505,27 @@ describe('parsing', function () {
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
             verifyComment(comments[1], 'FIXME', 9, 'change this tag from Id to class');
+        });
+    });
+
+    describe('associate parser', function () {
+        it('supports new extension', function () {
+            var association = { '.cls': { parserName: 'defaultParser'} };
+            leasot.associateExtWithParser(association);
+
+            leasot.isExtSupported('.cls').should.equal(true);
+
+        });
+
+        it('parses newly associated file using specified parser', function () {
+            var file = getFixturePath('salesforce-apex.cls');
+            var comments = getComments(file, {
+                associateParser: { '.cls': { parserName: 'defaultParser'} }
+            });
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Add detail');
+            verifyComment(comments[1], 'FIXME', 7, 'do something with the file contents');
         });
     });
 });
