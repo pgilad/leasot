@@ -100,6 +100,37 @@ describe('check cli', function () {
         });
     });
 
+    it('should not parse file with unknown extension', function (callback) {
+        testCli(['salesforce-apex.cls'], [], function (exitCode, log) {
+            should.exist(exitCode);
+            should.exist(log);
+            exitCode.should.equal(1);
+            log.should.eql([
+                '✖ Filetype .cls is unsupported.',
+                ''
+            ]);
+            callback();
+        });
+    });
+
+    it('should parse file with newly associated extension', function (callback) {
+        testCli(['salesforce-apex.cls'], ['--associate-parser', '.cls,defaultParser'], function (exitCode, log) {
+            should.exist(exitCode);
+            should.exist(log);
+            exitCode.should.equal(1);
+            log.should.eql([
+                '',
+                'tests/fixtures/salesforce-apex.cls',
+                '  line 4  TODO   Add detail',
+                '  line 7  FIXME  do something with the file contents',
+                '',
+                ' ✖ 2 todos/fixmes found',
+                ''
+            ]);
+            callback();
+        });
+    });
+
     it('should get no error exitCode if no todos or fixmes are found', function (callback) {
         testCli(['no-todos.js'], null, function (exitCode, log) {
             should.exist(log);

@@ -22,41 +22,42 @@ to extract your todos from comments.
 - Spaces are trimmed around comment text.
 - Supported default types are `TODO` and `FIXME` - case insensitive.
 - Additional types can be added (using `tags` in cli and `customTags` in `leasot.parse`)
+- New extensions can be associated with bundled parsers as many languages have overlapping syntax
 
 ## Supported languages:
 
-| Filetype     | Extension            | Notes                              |
-| ------------ | -------------------- | -----------------------------------|
-| C#           | `.cs`                | Supports `// and /* */` comments.  |
-| C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  |
-| CSS          | `.css`               | Supports `/* */` comments.         |
-| Coffee-React | `.cjsx`              | Supports `#` comments.             |
-| Coffeescript | `.coffee`            | Supports `#` comments.             |
-| EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   |
-| erb          | `.erb`               | Supports `<!-- -->`                |
-| Erlang       | `.erl`               | Supports `%` comments.             |
-| Go           | `.go`                | Supports `// and /* */` comments.  |
-| Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`|
-| HTML         | `.html` `.htm`       | Supports `<!-- -->`                |
-| Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` |
-| Haskell      | `.hs`                | Supports `--`                      |
-| Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` |
-| Jade         | `.jade`              | Supports `//` and `//-` comments.  |
-| Javascript   | `.js` `.es` `.es6`   | Supports `// and /* */` comments   |
-| Jsx          | `.jsx`               | Supports `// and /* */` comments.  |
-| Less         | `.less`              | Supports `// and /* */` comments.  |
-| Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` |
-| Pascal       | `.pas`               | Supports `// and { }` comments.    |
-| PHP          | `.php`               | Supports `// and /* */` comments.  |
-| Perl         | `.pl`, `.pm`         | Supports `#` comments.             |
-| Python       | `.py`                | Supports `"""` and `#` comments.   |
-| Ruby         | `.rb`                | Supports `#` comments.             |
-| Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  |
-| Shell        | `.sh` `.zsh` `.bash` | Supports `#` comments.             |
-| SilverStripe | `.ss`                | Supports `<%-- --%>` comments.     |
-| Stylus       | `.styl`              | Supports `// and /* */` comments.  |
-| Twig         | `.twig`              | Supports `{#  #}` and `<!-- -->`   |
-| Typescript   | `.ts`                | Supports `// and /* */` comments.  |
+| Filetype     | Extension            | Notes                              | Parser Name         |
+| ------------ | -------------------- | -----------------------------------| ------------------- |
+| C#           | `.cs`                | Supports `// and /* */` comments.  | defaultParser       |
+| C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  | defaultParser       |
+| CSS          | `.css`               | Supports `/* */` comments.         | defaultParser       |
+| Coffee-React | `.cjsx`              | Supports `#` comments.             | coffeeParser        |
+| Coffeescript | `.coffee`            | Supports `#` comments.             | coffeeParser        |
+| EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   | ejsParser           |
+| erb          | `.erb`               | Supports `<!-- -->`                | twigParser          |
+| Erlang       | `.erl`               | Supports `%` comments.             | erlangParser        |
+| Go           | `.go`                | Supports `// and /* */` comments.  | defaultParser       |
+| Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`| twigParser          |
+| HTML         | `.html` `.htm`       | Supports `<!-- -->`                | twigParser          |
+| Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
+| Haskell      | `.hs`                | Supports `--`                      | haskellParser       |
+| Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
+| Jade         | `.jade`              | Supports `//` and `//-` comments.  | jadeParser          |
+| Javascript   | `.js` `.es` `.es6`   | Supports `// and /* */` comments   | defaultParser       |
+| Jsx          | `.jsx`               | Supports `// and /* */` comments.  | defaultParser       |
+| Less         | `.less`              | Supports `// and /* */` comments.  | defaultParser       |
+| Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
+| Pascal       | `.pas`               | Supports `// and { }` comments.    | pascalParser        |
+| PHP          | `.php`               | Supports `// and /* */` comments.  | defaultParser       |
+| Perl         | `.pl`, `.pm`         | Supports `#` comments.             | coffeeParser        |
+| Python       | `.py`                | Supports `"""` and `#` comments.   | pythonParser        |
+| Ruby         | `.rb`                | Supports `#` comments.             | coffeeParser        |
+| Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  | defaultParser       |
+| Shell        | `.sh` `.zsh` `.bash` | Supports `#` comments.             | coffeeParser        |
+| SilverStripe | `.ss`                | Supports `<%-- --%>` comments.     | ssParser            |
+| Stylus       | `.styl`              | Supports `// and /* */` comments.  | defaultParser       |
+| Twig         | `.twig`              | Supports `{#  #}` and `<!-- -->`   | twigParser          |
+| Typescript   | `.ts`                | Supports `// and /* */` comments.  | defaultParser       |
 
 Javascript is the default parser.
 
@@ -83,13 +84,14 @@ $ npm install --global leasot
 
   Options:
 
-    -h, --help                 output usage information
-    -V, --version              output the version number
-    -r, --reporter [reporter]  use reporter (table|json|xml|markdown|raw) (default: table)
-    -t, --filetype [filetype]  force the filetype to parse. Useful for streams (default: .js)
-    -T, --tags <tags>          add additional comment types to find (alongside todo & fixme)
-    -S, --skip-unsupported     skip unsupported filetypes
-    -I, --inline-files         parse possible inline files
+    -h, --help                           output usage information
+    -V, --version                        output the version number
+    -r, --reporter [reporter]            use reporter (table|json|xml|markdown|raw) (default: table)
+    -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
+    -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme)
+    -S, --skip-unsupported               skip unsupported filetypes
+    -I, --inline-files                   parse possible inline files
+    -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
 
   Examples:
 
@@ -160,6 +162,20 @@ var leasot = require('leasot');
 
 `leasot` exposes the following API:
 
+### .associateExtWithParser(parsers)
+
+Associates a bundled parser with a new extension.
+
+The `parsers` parameter must be completed in the following format:
+
+```js
+{ 
+    '.cls': { 
+        parserName: 'defaultParser'
+    }
+}
+```
+
 ### .isExtSupported(extension)
 
 Check whether extension is supported by parser.
@@ -178,7 +194,8 @@ Specify an extension including the prefixing dot, for example:
 | `content`           | `string`   | Yes      |         | Content to parse                                      |
 | `fileName`          | `string`   | No       |         | fileName to attach to todos output                    |
 | `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
-| `withIncludedFiles` | `boolean` | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
+| `withIncludedFiles` | `boolean`  | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
+| `associateParser`   | `object`   | No       |         | See `.associateExtWithParser` for syntax              |
 
 **Returns**: `array` of comments.
 

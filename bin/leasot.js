@@ -8,6 +8,18 @@ function list(val) {
     return val.split(',');
 }
 
+function parseAssociateParser(val, req) {
+    var data = val.split(',');
+    if (data.length === 0 || data.length > 2) {
+        throw new Error('Incorrectly formatted extension / parser registration. (param: ' + val + ')');
+    }
+    var parser = data[1] || 'defaultParser';
+    var ext = data[0];
+
+    req[ext] = { parserName: parser };
+    return req;
+}
+
 program
     .description(pkg.description)
     .version(pkg.version)
@@ -17,6 +29,9 @@ program
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
     .option('-S, --skip-unsupported', 'skip unsupported filetypes', false)
     .option('-I, --inline-files', 'parse possible inline files', false)
+    .option('-A, --associate-parser [ext,parser]',
+            'associate unknown extensions with bundled parsers (parser optional / default: defaultParser)',
+            parseAssociateParser, {})
     .on('--help', function () {
         console.log('  Examples:');
         console.log('');
