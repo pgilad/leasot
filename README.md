@@ -34,11 +34,11 @@ to extract your todos from comments.
 | Coffee-React | `.cjsx`              | Supports `#` comments.             | coffeeParser        |
 | Coffeescript | `.coffee`            | Supports `#` comments.             | coffeeParser        |
 | EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   | ejsParser           |
-| erb          | `.erb`               | Supports `<!-- -->`                | twigParser          |
-| Erlang       | `.erl`               | Supports `%` comments.             | erlangParser        |
+| Erb          | `.erb`               | Supports `<!-- -->`                | twigParser          |
+| Erlang       | `.erl` `.hrl`        | Supports `%` comments.             | erlangParser        |
 | Go           | `.go`                | Supports `// and /* */` comments.  | defaultParser       |
-| Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`| twigParser          |
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                | twigParser          |
+| Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`| twigParser          |
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
 | Haskell      | `.hs`                | Supports `--`                      | haskellParser       |
 | Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
@@ -47,8 +47,8 @@ to extract your todos from comments.
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  | defaultParser       |
 | Less         | `.less`              | Supports `// and /* */` comments.  | defaultParser       |
 | Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
-| Pascal       | `.pas`               | Supports `// and { }` comments.    | pascalParser        |
 | PHP          | `.php`               | Supports `// and /* */` comments.  | defaultParser       |
+| Pascal       | `.pas`               | Supports `// and { }` comments.    | pascalParser        |
 | Perl         | `.pl`, `.pm`         | Supports `#` comments.             | coffeeParser        |
 | Python       | `.py`                | Supports `"""` and `#` comments.   | pythonParser        |
 | Ruby         | `.rb`                | Supports `#` comments.             | coffeeParser        |
@@ -169,8 +169,8 @@ Associates a bundled parser with a new extension.
 The `parsers` parameter must be completed in the following format:
 
 ```js
-{ 
-    '.cls': { 
+{
+    '.cls': {
         parserName: 'defaultParser'
     }
 }
