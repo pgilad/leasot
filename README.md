@@ -289,7 +289,7 @@ transformHeader: function (kind) {
 
 You are expected to return either an `Array of strings` or just a `string`. If you return an array - each item will be separated by a newline in the output.
 
-### transformComment(file, line, text, kind)
+### transformComment(file, line, text, kind, ref)
 
 Control the output for each comment.
 
@@ -297,7 +297,7 @@ Control the output for each comment.
 
 **Default**:
 ```js
-transformComment: function (file, line, text, kind) {
+transformComment: function (file, line, text, kind, ref) {
     return ['| ' + file + ' | ' + line + ' | ' + text];
 },
 ```
@@ -306,9 +306,11 @@ transformComment: function (file, line, text, kind) {
 
 **line**: line of comment.
 
-**text**: comment text
+**text**: comment text. Default ''.
 
 **kind**: will be be passed as the comment kind (todo/fixme).
+
+**ref**: a reference. Default ''.
 
 **Returns**: `String[]|String`
 
