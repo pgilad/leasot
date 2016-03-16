@@ -26,10 +26,14 @@ function getComments(file, options) {
     });
 }
 
-function verifyComment(actual, kind, line, text) {
+function verifyComment(actual, kind, line, text, ref) {
+    ref = arguments.length === 5 ? ref : null;
     actual.kind.should.equal(kind);
     actual.line.should.equal(line);
     actual.text.should.equal(text);
+    if (ref !== null) {
+        actual.ref.should.equal(ref);
+    }
 }
 
 describe('parsing', function () {
@@ -526,6 +530,15 @@ describe('parsing', function () {
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Add detail');
             verifyComment(comments[1], 'FIXME', 7, 'do something with the file contents');
+        });
+    });
+
+    describe('references', function() {
+        it('leading', function() {
+            var file = getFixturePath('reference-leading.js');
+            var comments = getComments(file);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
     });
 });

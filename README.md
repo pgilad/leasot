@@ -23,6 +23,7 @@ to extract your todos from comments.
 - Supported default types are `TODO` and `FIXME` - case insensitive.
 - Additional types can be added (using `tags` in cli and `customTags` in `leasot.parse`)
 - New extensions can be associated with bundled parsers as many languages have overlapping syntax
+- Supports leading references. E.g. `// TODO(tregusti): Make this better`
 
 ## Supported languages:
 
@@ -204,7 +205,8 @@ Specify an extension including the prefixing dot, for example:
     file: 'parsedFile.js',
     text: 'comment text',
     kind: 'TODO',
-    line: 8
+    line: 8,
+    ref: 'reference'
 }]
 ```
 
