@@ -540,5 +540,11 @@ describe('parsing', function () {
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
+        it('trailing', function() {
+            var file = getFixturePath('reference-trailing.rb');
+            var comments = getComments(file);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'FIXME', 2, 'Make it better', 'tregusti');
+        });
     });
 });
