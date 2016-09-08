@@ -154,6 +154,7 @@ console.log(output);
 
 * [gulp-todo](https://github.com/pgilad/gulp-todo)
 * [broccoli-leasot](https://github.com/sivakumar-kailasam/broccoli-leasot)
+* [todo-webpack-plugin](https://github.com/mikeerickson/todo-webpack-plugin)
 
 ## API
 
