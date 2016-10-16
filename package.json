@@ -1,7 +1,7 @@
 {
   "name": "leasot",
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": "./bin/leasot.js",
   "dependencies": {
