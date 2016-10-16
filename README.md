@@ -27,30 +27,31 @@ to extract your todos from comments.
 
 ## Supported languages:
 
-| Filetype     | Extension            | Notes                              | Parser Name         |
 | ------------ | -------------------- | -----------------------------------| ------------------- |
 | C#           | `.cs`                | Supports `// and /* */` comments.  | defaultParser       |
 | C++/C        | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.  | defaultParser       |
-| CSS          | `.css`               | Supports `/* */` comments.         | defaultParser       |
 | Coffee-React | `.cjsx`              | Supports `#` comments.             | coffeeParser        |
 | Coffeescript | `.coffee`            | Supports `#` comments.             | coffeeParser        |
+| CSon         | `.cson`              | Supports `#` comments.             | coffeeParser        |
+| CSS          | `.css`               | Supports `/* */` comments.         | defaultParser       |
 | EJS          | `.ejs`               | Supports `<!-- -->` and `<%# %>`   | ejsParser           |
 | Erb          | `.erb`               | Supports `<!-- -->` and `<%# %>`   | ejsParser           |
 | Erlang       | `.erl` `.hrl`        | Supports `%` comments.             | erlangParser        |
+| Filetype     | Extension            | Notes                              | Parser Name         |
 | Go           | `.go`                | Supports `// and /* */` comments.  | defaultParser       |
-| HTML         | `.html` `.htm`       | Supports `<!-- -->`                | twigParser          |
 | Haml         | `.haml`              | Supports `/ -# <!-- --> and <%# %>`| twigParser          |
 | Handlebars   | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
 | Haskell      | `.hs`                | Supports `--`                      | haskellParser       |
 | Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
+| HTML         | `.html` `.htm`       | Supports `<!-- -->`                | twigParser          |
 | Jade         | `.jade` `.pug`       | Supports `//` and `//-` comments.  | jadeParser          |
 | Javascript   | `.js` `.es` `.es6`   | Supports `// and /* */` comments   | defaultParser       |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  | defaultParser       |
 | Less         | `.less`              | Supports `// and /* */` comments.  | defaultParser       |
 | Mustache     | `.mustache`          | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
-| PHP          | `.php`               | Supports `// and /* */` comments.  | defaultParser       |
 | Pascal       | `.pas`               | Supports `// and { }` comments.    | pascalParser        |
 | Perl         | `.pl`, `.pm`         | Supports `#` comments.             | coffeeParser        |
+| PHP          | `.php`               | Supports `// and /* */` comments.  | defaultParser       |
 | Python       | `.py`                | Supports `"""` and `#` comments.   | pythonParser        |
 | Ruby         | `.rb`                | Supports `#` comments.             | coffeeParser        |
 | Sass         | `.sass` `.scss`      | Supports `// and /* */` comments.  | defaultParser       |
