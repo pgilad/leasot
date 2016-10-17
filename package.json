@@ -3,7 +3,10 @@
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
   "version": "4.1.0",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
-  "bin": "./bin/leasot.js",
+  "bin": {
+    "leasot": "./bin/leasot.js",
+    "leasot-reporter": "./bin/leasot-reporter.js"
+  },
   "dependencies": {
     "async": "^2.1.2",
     "chalk": "^1.1.1",

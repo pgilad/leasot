@@ -79,6 +79,7 @@ $ npm install --global leasot
 
 ```sh
 $ leasot --help
+
   Usage: leasot [options] <file ...>
 
   Parse and output TODOs and FIXMEs from comments in your files
@@ -120,6 +121,9 @@ $ leasot --help
 
     # Check a stream specifying the filetype as coffee
     $ cat index.coffee | leasot --filetype .coffee
+
+    # Report from leasot parsing and filter todos using `jq`
+    $ leasot tests/**/*.styl --reporter json | jq 'map(select(.kind == "TODO"))' | leasot-reporter
 ```
 
 ### Programmatic

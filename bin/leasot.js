@@ -61,6 +61,9 @@ program
         console.log('    # Check a stream specifying the filetype as coffee');
         console.log('    $ cat index.coffee | leasot --filetype .coffee');
         console.log('');
+        console.log('    # Report from leasot parsing and filter todos using `jq`');
+        console.log('    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.kind == "TODO"))\' | leasot-reporter');
+        console.log('');
     })
     .parse(process.argv);
 
