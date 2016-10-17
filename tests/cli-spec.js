@@ -26,6 +26,18 @@ function testCli(files, extraArgs, cb) {
 }
 
 describe('check cli', function () {
+    it('should be ok with no files found', function (callback) {
+        testCli(['*.impossible'], null, function (exitCode, log) {
+            should.exist(log);
+            should.exist(exitCode);
+            exitCode.should.equal(1);
+            log.should.eql([
+                '⚠ No files found for parsing',
+                ''
+            ]);
+            callback();
+        });
+    });
     it('should parse multiple files (single file per arg)', function (callback) {
         this.timeout(10000);
         testCli(['block.less', 'coffee.coffee'], null, function (exitCode, log) {
@@ -140,6 +152,23 @@ describe('check cli', function () {
                 '',
                 '',
                 ' ✔ No todos/fixmes found',
+                ''
+            ]);
+            callback();
+        });
+    });
+
+    it('should apply the ignore pattern', function (callback) {
+        testCli(['*.styl'], ['--ignore', '**/block.styl'], function (exitCode, log) {
+            should.exist(exitCode);
+            should.exist(log);
+            exitCode.should.equal(1);
+            log.should.eql([
+                '',
+                'tests/fixtures/line.styl',
+                '  line 4  FIXME  use fixmes as well',
+                '',
+                ' ✖ 1 todo/fixme found',
                 ''
             ]);
             callback();

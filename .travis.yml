@@ -1,6 +1,8 @@
 sudo: false
 language: node_js
-node_js: node
+node_js:
+- 6
+- 4
 notifications:
   email:
     on_success: never

@@ -5,25 +5,23 @@
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": "./bin/leasot.js",
   "dependencies": {
+    "async": "^2.1.2",
     "chalk": "^1.1.1",
     "commander": "^2.9.0",
     "get-line-from-pos": "^1.0.0",
     "get-stdin": "^5.0.1",
-    "glob": "^7.0.3",
+    "globby": "^6.0.0",
     "json2xml": "^0.1.2",
-    "lodash.compact": "^3.0.1",
-    "lodash.defaults": "^4.0.1",
-    "lodash.uniq": "^4.2.0",
+    "lodash": "^4.16.4",
     "log-symbols": "^1.0.2",
-    "map-async": "^0.1.1",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "mocha": "^3.0.2",
-    "should": "^11.1.0"
+    "mocha": "^3.1.2",
+    "should": "^11.1.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "files": [
     "index.js",

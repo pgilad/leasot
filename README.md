@@ -78,8 +78,7 @@ $ npm install --global leasot
 #### Examples
 
 ```sh
-❯ leasot --help
-
+$ leasot --help
   Usage: leasot [options] <file ...>
 
   Parse and output TODOs and FIXMEs from comments in your files
@@ -88,12 +87,13 @@ $ npm install --global leasot
 
     -h, --help                           output usage information
     -V, --version                        output the version number
+    -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
+    -i, --ignore <patterns>              add ignore patterns
+    -I, --inline-files                   parse possible inline files
     -r, --reporter [reporter]            use reporter (table|json|xml|markdown|raw) (default: table)
+    -S, --skip-unsupported               skip unsupported filetypes
     -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
     -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme)
-    -S, --skip-unsupported               skip unsupported filetypes
-    -I, --inline-files                   parse possible inline files
-    -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
 
   Examples:
 
@@ -112,8 +112,11 @@ $ npm install --global leasot
     # Search for REVIEW comments as well
     $ leasot --tags review index.js
 
-    # Export TODOS as markdown to a TODO.md file
-    $ leasot --reporter markdown app/**/*.py > TODO.md
+    # Add ignore pattern to filter matches
+    $ leasot app/**/*.js --ignore "**/custom.js"
+
+    # Search for REVIEW comments as well
+    $ leasot --tags review index.js
 
     # Check a stream specifying the filetype as coffee
     $ cat index.coffee | leasot --filetype .coffee
