@@ -44,6 +44,7 @@ to extract your todos from comments.
 | Haskell      | `.hs`                | Supports `--`                      | haskellParser       |
 | Hogan        | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}` | hbsParser           |
 | HTML         | `.html` `.htm`       | Supports `<!-- -->`                | twigParser          |
+| Nunjucks     | `.njk`               | Supports `{#  #}` and `<!-- -->`   | twigParser          |
 | Jade         | `.jade` `.pug`       | Supports `//` and `//-` comments.  | jadeParser          |
 | Javascript   | `.js` `.es` `.es6`   | Supports `// and /* */` comments   | defaultParser       |
 | Jsx          | `.jsx`               | Supports `// and /* */` comments.  | defaultParser       |
