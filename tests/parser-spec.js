@@ -42,10 +42,12 @@ describe('parsing', function () {
             var file = getFixturePath('edge-cases.js');
             var comments = getComments(file);
             should.exist(comments);
-            comments.should.have.length(3);
+            comments.should.have.length(5);
             verifyComment(comments[0], 'TODO', 1, '');
             verifyComment(comments[1], 'TODO', 2, '');
             verifyComment(comments[2], 'TODO', 3, 'text');
+            verifyComment(comments[3], 'TODO', 4, 'something / after slash');
+            verifyComment(comments[4], 'TODO', 5, 'something with a URL http://example.com/path');
         });
     });
 
