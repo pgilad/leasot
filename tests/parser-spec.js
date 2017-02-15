@@ -514,6 +514,28 @@ describe('parsing', function () {
         });
     });
 
+    describe('vue', function () {
+        it('parses a vue file without included files', function () {
+            var file = getFixturePath('vue.vue');
+            var comments = getComments(file, {
+                withInlineFiles: false
+            });
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 2, 'Vue template comment');
+        });
+
+        it('parses a vue file with just php', function () {
+            var file = getFixturePath('vue.vue');
+            var comments = getComments(file, {
+                withInlineFiles: true
+            });
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 2, 'Vue template comment');
+            verifyComment(comments[1], 'TODO', 7, 'Vue script comment');
+            verifyComment(comments[2], 'FIXME', 20, 'Vue style comment');
+        });
+    });
+
     describe('associate parser', function () {
         it('supports new extension', function () {
             var association = { '.cls': { parserName: 'defaultParser'} };
