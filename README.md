@@ -147,7 +147,7 @@ var contents = fs.readFileSync('./contents.js', 'utf8');
 var filetype = path.extname('./contents.js');
 // add file for better reporting
 var file = 'contents.js';
-var todos = leasot.parse({ext: filetype,content: contents,fileName: file});
+var todos = leasot.parse({ ext: filetype, content: contents, fileName: file });
 
 // -> todos now contains the array of todos/fixme parsed
 
@@ -310,7 +310,7 @@ Control the output for each comment.
 ```js
 transformComment: function (file, line, text, kind, ref) {
     return ['| ' + file + ' | ' + line + ' | ' + text];
-},
+}
 ```
 
 **file**: filename the comment was in.
