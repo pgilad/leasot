@@ -27,6 +27,7 @@ to extract your todos from comments.
 
 ## Supported languages:
 
+| Filetype      | Extension            | Notes                                      | Parser Name         |
 | ------------  | -------------------- | -------------------------------------------| ------------------- |
 | C#            | `.cs`                | Supports `// and /* */` comments.          | defaultParser       |
 | C++/C         | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.          | defaultParser       |
@@ -37,7 +38,6 @@ to extract your todos from comments.
 | EJS           | `.ejs`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erb           | `.erb`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erlang        | `.erl` `.hrl`        | Supports `%` comments.                     | erlangParser        |
-| Filetype      | Extension            | Notes                                      | Parser Name         |
 | Go            | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
 | Haml          | `.haml`              | Supports `/ -# <!-- --> and <%# %>`        | twigParser          |
 | Handlebars    | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
