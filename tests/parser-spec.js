@@ -391,7 +391,7 @@ describe('parsing', function () {
             verifyComment(comments[0], 'FIXME', 31, 'we now exit the program');
         });
     });
-    
+
     describe('ss', function () {
         it('handle <%-- --%> and <!-- --> comments', function () {
             var file = getFixturePath('silverstripe.ss');
@@ -425,6 +425,26 @@ describe('parsing', function () {
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, "Hey, I'm a fixme!");
             verifyComment(comments[1], 'TODO', 13, "Hey, I'm a todo!");
+        });
+    });
+
+    describe('Objective-C', function () {
+        it('handles standard js comments', function () {
+            var file = getFixturePath('objective.m');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 4, 'better rename this variable');
+        });
+    });
+
+    describe('Objective-C++', function () {
+        it('handles standard js comments', function () {
+            var file = getFixturePath('objective.mm');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'FIXME', 4, 'better rename this variable');
         });
     });
 
