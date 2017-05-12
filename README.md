@@ -189,7 +189,14 @@ The `parsers` parameter must be completed in the following format:
     }
 }
 ```
-
+The `parserName` property can also be an array of parsers.
+```js
+{
+    '.sql': {
+        parserName: ['defaultParser', 'haskellParser']
+    }
+}
+```
 ### .isExtSupported(extension)
 
 Check whether extension is supported by parser.
