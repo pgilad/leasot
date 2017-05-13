@@ -60,6 +60,7 @@ to extract your todos from comments.
 | Sass          | `.sass` `.scss`      | Supports `// and /* */` comments.          | defaultParser       |
 | Shell         | `.sh` `.zsh` `.bash` | Supports `#` comments.                     | coffeeParser        |
 | SilverStripe  | `.ss`                | Supports `<%-- --%>` comments.             | ssParser            |
+| SQL           | `.sql`               | Supports `--` and `/* */` comments         | defaultParser & haskellParser |
 | Stylus        | `.styl`              | Supports `// and /* */` comments.          | defaultParser       |
 | Twig          | `.twig`              | Supports `{#  #}` and `<!-- -->`           | twigParser          |
 | Typescript    | `.ts`                | Supports `// and /* */` comments.          | defaultParser       |
@@ -186,6 +187,15 @@ The `parsers` parameter must be completed in the following format:
 {
     '.cls': {
         parserName: 'defaultParser'
+    }
+}
+
+```
+The `parserName` property can also be an array of parsers.
+```js
+{
+    '.sql': {
+        parserName: ['defaultParser', 'haskellParser']
     }
 }
 ```

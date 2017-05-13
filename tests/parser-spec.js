@@ -208,6 +208,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('sql', function () {
+        it('parse -- and /* comments', function () {
+            var file = getFixturePath('sql.sql');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Sql multi comment');
+            verifyComment(comments[1], 'TODO', 10, 'Sql single comment');
+        });
+    });
+
     describe('html', function () {
         it('parse <!-- --> comments', function () {
             var file = getFixturePath('HTML.html');
