@@ -199,7 +199,14 @@ The `parserName` property can also be an array of parsers.
     }
 }
 ```
-
+The `parserName` property can also be an array of parsers.
+```js
+{
+    '.sql': {
+        parserName: ['defaultParser', 'haskellParser']
+    }
+}
+```
 ### .isExtSupported(extension)
 
 Check whether extension is supported by parser.

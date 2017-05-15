@@ -586,6 +586,17 @@ describe('parsing', function () {
             verifyComment(comments[0], 'TODO', 4, 'Add detail');
             verifyComment(comments[1], 'FIXME', 7, 'do something with the file contents');
         });
+
+        it('parses newly associated file using multiple parsers', function () {
+            var file = getFixturePath('sql.sql');
+            var comments = getComments(file, {
+                associateParser: { '.sql': { parserName: ['defaultParser', 'haskellParser']} }
+            });
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Sql multi comment');
+            verifyComment(comments[1], 'TODO', 10, 'Sql single comment');
+        });
     });
 
     describe('references', function() {
