@@ -184,6 +184,16 @@ describe('parsing', function () {
         });
     });
 
+    describe('crystal', function () {
+        it('parse # comments', function () {
+            var file = getFixturePath('crystal.cr');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 4, 'Write tests');
+        });
+    });
+
     describe('haml', function () {
         it('parse -# comments and / comments', function () {
             var file = getFixturePath('haml.haml');
