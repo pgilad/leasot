@@ -33,6 +33,7 @@ to extract your todos from comments.
 | C++/C         | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.          | defaultParser       |
 | Coffee-React  | `.cjsx`              | Supports `#` comments.                     | coffeeParser        |
 | Coffeescript  | `.coffee`            | Supports `#` comments.                     | coffeeParser        |
+| Crystal       | `.cr`                | Supports `#` comments.                     | coffeeParser        |
 | CSon          | `.cson`              | Supports `#` comments.                     | coffeeParser        |
 | CSS           | `.css`               | Supports `/* */` comments.                 | defaultParser       |
 | EJS           | `.ejs`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
