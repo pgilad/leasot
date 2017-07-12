@@ -503,6 +503,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('swift', function () {
+        it('handles standard comments in swift', function () {
+            var file = getFixturePath('swift.swift');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 2, 'perimeter of the Shape.');
+            verifyComment(comments[1], 'FIXME', 5, 'perimeter');
+        });
+    });
+
     describe('custom tags', function () {
         it('custom tags must be an array', function () {
             var file = getFixturePath('custom-tags.rb');

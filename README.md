@@ -63,6 +63,7 @@ to extract your todos from comments.
 | SilverStripe  | `.ss`                | Supports `<%-- --%>` comments.             | ssParser            |
 | SQL           | `.sql`               | Supports `--` and `/* */` comments         | defaultParser & haskellParser |
 | Stylus        | `.styl`              | Supports `// and /* */` comments.          | defaultParser       |
+| Swift         | `.swift`             | Supports `// and /* */` comments.          | defaultParser       |
 | Twig          | `.twig`              | Supports `{#  #}` and `<!-- -->`           | twigParser          |
 | Typescript    | `.ts`                | Supports `// and /* */` comments.          | defaultParser       |
 | Vue           | `.vue`               | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
