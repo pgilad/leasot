@@ -1,0 +1,15 @@
+---
+# Routes
+router:
+  routes:
+    # Fetch route
+    fetch:
+      # TODO: Support POST
+      method: "GET"
+      path: "/"
+    update:
+      # TODO Support params
+      method: "POST"
+      path: "/update"
+
+# TODO: complete file

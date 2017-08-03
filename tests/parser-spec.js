@@ -393,6 +393,16 @@ describe('parsing', function () {
         });
     });
 
+    describe('yaml', function () {
+        it('handle # comments', function () {
+            var file = getFixturePath('yaml.yaml');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 7, 'Support POST');
+        });
+    });
+
     describe('bash', function () {
         it('handle # comments', function () {
             var file = getFixturePath('bash.bash');
