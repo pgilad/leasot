@@ -633,4 +633,22 @@ describe('parsing', function () {
             verifyComment(comments[0], 'FIXME', 2, 'Make it better', 'tregusti');
         });
     });
+
+    describe('java', function () {
+        it('handle java lines comments', function () {
+            var file = getFixturePath('java.java');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 6, 'Change language');
+        });
+
+        it('handle java block comments', function () {
+            var file = getFixturePath('java.java');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[1], 'FIXME', 9, 'Log response');
+        });
+    });
 });
