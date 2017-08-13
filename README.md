@@ -135,6 +135,22 @@ $ leasot --help
     $ leasot tests/**/*.styl --reporter json | jq 'map(select(.kind == "TODO"))' | leasot-reporter
 ```
 
+#### Using in NPM
+
+This _package.json_ snippet shows how to include leasot in your project development environment and set up as a task (`todo`). The `todo_suppress_error` task stops leasot causing npm to error, so it can be used in a build process without halting it.
+
+```json
+{
+    "scripts": {
+        "todo": "leasot src/**/*.js",
+        "todo_suppress_error": "leasot src/**/*.js || true",
+    },
+    "devDependencies": {
+        "leasot": "*"
+    }
+}
+```
+
 ### Programmatic
 
 #### Installation
