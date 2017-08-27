@@ -60,6 +60,7 @@ to extract your todos from comments.
 | Python        | `.py`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Ruby          | `.rb`                | Supports `#` comments.                     | coffeeParser        |
 | Sass          | `.sass` `.scss`      | Supports `// and /* */` comments.          | defaultParser       |
+| Scala         | `.scala`             | Supports `// and /* */` comments.          | defaultParser       |
 | Shell         | `.sh` `.zsh` `.bash` | Supports `#` comments.                     | coffeeParser        |
 | SilverStripe  | `.ss`                | Supports `<%-- --%>` comments.             | ssParser            |
 | SQL           | `.sql`               | Supports `--` and `/* */` comments         | defaultParser & haskellParser |
