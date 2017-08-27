@@ -651,4 +651,22 @@ describe('parsing', function () {
             verifyComment(comments[1], 'FIXME', 9, 'Log response');
         });
     });
+
+    describe('scala', function () {
+        it('handle scala line comments', function () {
+            var file = getFixturePath('Scala.scala');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Do something');
+        });
+
+        it('handle scala block comments', function () {
+            var file = getFixturePath('Scala.scala');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[1], 'FIXME', 8, 'Fix something');
+        });
+    });
 });
