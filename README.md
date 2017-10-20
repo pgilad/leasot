@@ -49,6 +49,7 @@ to extract your todos from comments.
 | Java          | `.java`              | Supports `// and /* */` comments           | defaultParser        |
 | Javascript    | `.js` `.es` `.es6`   | Supports `// and /* */` comments           | defaultParser       |
 | Jsx           | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
+| Kotlin        | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
 | Less          | `.less`              | Supports `// and /* */` comments.          | defaultParser       |
 | Mustache      | `.mustache`          | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Nunjucks      | `.njk`               | Supports `{#  #}` and `<!-- -->`           | twigParser          |

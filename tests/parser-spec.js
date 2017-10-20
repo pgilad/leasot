@@ -652,6 +652,24 @@ describe('parsing', function () {
         });
     });
 
+    describe('kotlin', function () {
+        it('handle kotlin lines comments', function () {
+            var file = getFixturePath('kotlin.kt');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Change language');
+        });
+
+        it('handle kotlin block comments', function () {
+            var file = getFixturePath('kotlin.kt');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[1], 'FIXME', 7, 'Log response');
+        });
+    });
+
     describe('scala', function () {
         it('handle scala line comments', function () {
             var file = getFixturePath('Scala.scala');
