@@ -43,7 +43,7 @@ describe('check cli', function () {
         testCli(['block.less', 'coffee.coffee'], null, function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
-            exitCode.should.equal(1);
+            exitCode.should.equal(0);
             log.should.eql([
                 '',
                 'tests/fixtures/block.less',
@@ -67,7 +67,7 @@ describe('check cli', function () {
         testCli(['*.styl'], null, function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
-            exitCode.should.equal(1);
+            exitCode.should.equal(0);
             log.should.eql([
                 '',
                 'tests/fixtures/block.styl',
@@ -101,7 +101,7 @@ describe('check cli', function () {
         testCli(['file.unsupported'], ['--skip-unsupported'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
-            exitCode.should.equal(0);
+            exitCode.should.equal(1);
             log.should.eql([
                 '',
                 '',
@@ -129,7 +129,7 @@ describe('check cli', function () {
         testCli(['salesforce-apex.cls'], ['--associate-parser', '.cls,defaultParser'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
-            exitCode.should.equal(1);
+            exitCode.should.equal(0);
             log.should.eql([
                 '',
                 'tests/fixtures/salesforce-apex.cls',
@@ -147,7 +147,7 @@ describe('check cli', function () {
         testCli(['no-todos.js'], null, function (exitCode, log) {
             should.exist(log);
             should.exist(exitCode);
-            exitCode.should.equal(0);
+            exitCode.should.equal(1);
             log.should.eql([
                 '',
                 '',
@@ -162,7 +162,7 @@ describe('check cli', function () {
         testCli(['*.styl'], ['--ignore', '**/block.styl'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
-            exitCode.should.equal(1);
+            exitCode.should.equal(0);
             log.should.eql([
                 '',
                 'tests/fixtures/line.styl',
