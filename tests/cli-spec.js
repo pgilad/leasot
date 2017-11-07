@@ -174,4 +174,23 @@ describe('check cli', function () {
             callback();
         });
     });
+
+    it('should exit with 0 on output', function (callback) {
+        this.timeout(10000);
+        testCli(['coffee.coffee'], ['--exit-nicely'], function (exitCode, log) {
+            should.exist(exitCode);
+            should.exist(log);
+            exitCode.should.equal(0);
+            log.should.eql([
+                '',
+                'tests/fixtures/coffee.coffee',
+                '  line 1  TODO   Do something',
+                '  line 3  FIXME  Fix something',
+                '',
+                ' ✖ 2 todos/fixmes found',
+                ''
+            ]);
+            callback();
+        });
+    });
 });
