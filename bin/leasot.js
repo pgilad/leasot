@@ -34,6 +34,7 @@ program
     .option('-S, --skip-unsupported', 'skip unsupported filetypes', false)
     .option('-t, --filetype [filetype]', 'force the filetype to parse. Useful for streams (default: .js)')
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
+    .option('-x, --exit-nicely', 'exit with 0 when output is produced', false)
     .on('--help', function () {
         console.log('  Examples:');
         console.log('');
