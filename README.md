@@ -106,6 +106,7 @@ $ leasot --help
     -S, --skip-unsupported               skip unsupported filetypes
     -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
     -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme)
+    -x, --exit-nicely                    exit with exit code 0 even if todos/fixmes are found
 
   Examples:
 
