@@ -102,7 +102,7 @@ $ leasot --help
     -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
     -i, --ignore <patterns>              add ignore patterns
     -I, --inline-files                   parse possible inline files
-    -r, --reporter [reporter]            use reporter (table|json|xml|markdown|raw) (default: table)
+    -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table)
     -S, --skip-unsupported               skip unsupported filetypes
     -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
     -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme)
@@ -286,6 +286,7 @@ Could also be a custom function `(comments, config)`
 - raw
 - table
 - markdown
+- vscode
 
 Each reporter might contain config params that are useful only for that reporter:
 
@@ -361,6 +362,12 @@ transformComment: function (file, line, text, kind, ref) {
 **Returns**: `String[]|String`
 
 You are expected to return either an `Array of strings` or just a `string`. If you return an array - each item will be separated by a newline in the output.
+
+### VSCode
+
+Returns a markdown version of the todos customized for Visual Studio Code. The file names are
+transformed as URLs and the line numbers as anchors which makes them clickable when the markdown
+content produced with this reporter is opened on Visual Studio Code.
 
 ### Table
 
