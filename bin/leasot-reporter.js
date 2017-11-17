@@ -13,7 +13,7 @@ program
     .version(pkg.version)
     .usage('[options] <file ...>')
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
-    .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|raw) (default: table)', 'table')
+    .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|vscode|raw) (default: table)', 'table')
     .option('-x, --exit-nicely', 'exit with exit code 0 even if todos/fixmes are found', false)
     .on('--help', function () {
         console.log('  Examples:');
