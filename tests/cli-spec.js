@@ -3,6 +3,7 @@ var path = require('path');
 var chalk = require('chalk');
 var should = require('should');
 var childProcess = require('child_process');
+var stripAnsi = require('strip-ansi');
 
 function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
@@ -21,7 +22,7 @@ function testCli(files, extraArgs, cb) {
         chunks = new Buffer(data).toString();
     });
     cp.on('close', function (exitCode) {
-        cb(exitCode, chalk.stripColor(chunks.split('\n')));
+        cb(exitCode, stripAnsi(chunks.split('\n')));
     });
 }
 
