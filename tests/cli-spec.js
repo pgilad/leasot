@@ -10,9 +10,9 @@ function getFixturePath(file) {
 }
 
 function testCli(files, extraArgs, cb) {
-    var args = files.map(getFixturePath).concat(extraArgs || []);
+    var args = ['./bin/leasot.js'].concat(files.map(getFixturePath).concat(extraArgs || []));
 
-    var cp = childProcess.spawn('./bin/leasot.js', args, {
+    var cp = childProcess.spawn('node', args, {
         cwd: path.resolve(__dirname, '..'),
         env: process.env,
         stdio: [process.stdin, 'pipe', 'pipe']
