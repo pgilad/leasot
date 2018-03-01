@@ -1,5 +1,6 @@
 'use strict';
 var eol = require('eol');
+var logSymbols = require('log-symbols');
 var path = require('path');
 var chalk = require('chalk');
 var should = require('should');
@@ -34,7 +35,7 @@ describe('check cli', function () {
             should.exist(exitCode);
             exitCode.should.equal(1);
             log.should.eql([
-                '⚠ No files found for parsing',
+                stripAnsi(logSymbols.warning) + ' No files found for parsing',
                 ''
             ]);
             callback();
@@ -58,7 +59,7 @@ describe('check cli', function () {
                 '  line 1   TODO   Do something',
                 '  line 3   FIXME  Fix something',
                 '',
-                ' ✖ 6 todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.error) + ' 6 todos/fixmes found',
                 ''
             ]);
             callback();
@@ -79,7 +80,7 @@ describe('check cli', function () {
                 'tests/fixtures/line.styl',
                 '  line 4  FIXME  use fixmes as well',
                 '',
-                ' ✖ 3 todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.error) + ' 3 todos/fixmes found',
                 ''
             ]);
             callback();
@@ -92,7 +93,7 @@ describe('check cli', function () {
             should.exist(log);
             exitCode.should.equal(1);
             log.should.eql([
-                '✖ Filetype .unsupported is unsupported.',
+                stripAnsi(logSymbols.error) + ' Filetype .unsupported is unsupported.',
                 '',
             ]);
             callback();
@@ -107,7 +108,7 @@ describe('check cli', function () {
             log.should.eql([
                 '',
                 '',
-                ' ✔ No todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.success) + ' No todos/fixmes found',
                 ''
             ]);
             callback();
@@ -120,7 +121,7 @@ describe('check cli', function () {
             should.exist(log);
             exitCode.should.equal(1);
             log.should.eql([
-                '✖ Filetype .cls is unsupported.',
+                stripAnsi(logSymbols.error) + ' Filetype .cls is unsupported.',
                 ''
             ]);
             callback();
@@ -138,7 +139,7 @@ describe('check cli', function () {
                 '  line 4  TODO   Add detail',
                 '  line 7  FIXME  do something with the file contents',
                 '',
-                ' ✖ 2 todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.error) + ' 2 todos/fixmes found',
                 ''
             ]);
             callback();
@@ -153,7 +154,7 @@ describe('check cli', function () {
             log.should.eql([
                 '',
                 '',
-                ' ✔ No todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.success) + ' No todos/fixmes found',
                 ''
             ]);
             callback();
@@ -170,7 +171,7 @@ describe('check cli', function () {
                 'tests/fixtures/line.styl',
                 '  line 4  FIXME  use fixmes as well',
                 '',
-                ' ✖ 1 todo/fixme found',
+                ' ' + stripAnsi(logSymbols.error) + ' 1 todo/fixme found',
                 ''
             ]);
             callback();
@@ -189,7 +190,7 @@ describe('check cli', function () {
                 '  line 1  TODO   Do something',
                 '  line 3  FIXME  Fix something',
                 '',
-                ' ✖ 2 todos/fixmes found',
+                ' ' + stripAnsi(logSymbols.error) + ' 2 todos/fixmes found',
                 ''
             ]);
             callback();
