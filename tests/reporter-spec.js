@@ -23,7 +23,7 @@ function getReport(fileName, reporterOptions, parseOptions) {
 
 describe('reporting', function () {
     describe('vscode', function () {
-        it.only('typescript', function () {
+        it('typescript', function () {
             var file = getFixturePath('typescript.ts');
             var report = getReport(file, { reporter: 'vscode' });
             report.should.eql([
@@ -38,7 +38,7 @@ describe('reporting', function () {
                 '| [' + file + '](' + file + '#L11) | 11 | use jquery'
             ]);
         });
-        it.only('reference-leading', function () {
+        it('reference-leading', function () {
             var file = getFixturePath('reference-leading.js');
             var report = getReport(file, { reporter: 'vscode' });
             report.should.eql([
@@ -48,7 +48,7 @@ describe('reporting', function () {
                 '| [' + file + '](' + file + '#L3) | 3 | @tregusti Use Symbol instead'
             ]);
         });
-        it.only('edge-cases', function () {
+        it('edge-cases', function () {
             var file = getFixturePath('edge-cases.js');
             var report = getReport(file, { reporter: 'vscode' });
             report.should.eql([
