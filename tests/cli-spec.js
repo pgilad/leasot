@@ -1,4 +1,5 @@
 'use strict';
+var eol = require('eol');
 var path = require('path');
 var chalk = require('chalk');
 var should = require('should');
@@ -22,7 +23,7 @@ function testCli(files, extraArgs, cb) {
         chunks = new Buffer(data).toString();
     });
     cp.on('close', function (exitCode) {
-        cb(exitCode, stripAnsi(chunks.split('\n')));
+        cb(exitCode, stripAnsi(eol.split(chunks)));
     });
 }
 
