@@ -12,7 +12,6 @@
     "chalk": "^2.3.0",
     "commander": "^2.9.0",
     "eol": "^0.9.1",
-    "get-line-from-pos": "^1.0.0",
     "get-stdin": "^5.0.1",
     "globby": "^7.1.1",
     "json2xml": "^0.1.2",
