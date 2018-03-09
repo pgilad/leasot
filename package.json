@@ -1,7 +1,7 @@
 {
   "name": "leasot",
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
-  "version": "4.13.0",
+  "version": "5.0.0",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": {
     "leasot": "./bin/leasot.js",
@@ -11,7 +11,7 @@
     "async": "^2.1.2",
     "chalk": "^2.3.0",
     "commander": "^2.9.0",
-    "get-line-from-pos": "^1.0.0",
+    "eol": "^0.9.1",
     "get-stdin": "^5.0.1",
     "globby": "^7.1.1",
     "json2xml": "^0.1.2",
