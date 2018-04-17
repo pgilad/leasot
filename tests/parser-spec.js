@@ -334,8 +334,16 @@ describe('parsing', function () {
     });
 
     describe('typescript', function () {
-        it('parse // and /* comments', function () {
+        it('parse // and /* comments with ts extension', function () {
             var file = getFixturePath('typescript.ts');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 1, 'change to public');
+            verifyComment(comments[1], 'FIXME', 11, 'use jquery');
+        });
+        it('parse // and /* comments with tsx extension', function () {
+            var file = getFixturePath('typescript.tsx');
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
