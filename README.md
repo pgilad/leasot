@@ -68,7 +68,7 @@ to extract your todos from comments.
 | Stylus        | `.styl`              | Supports `// and /* */` comments.          | defaultParser       |
 | Swift         | `.swift`             | Supports `// and /* */` comments.          | defaultParser       |
 | Twig          | `.twig`              | Supports `{#  #}` and `<!-- -->`           | twigParser          |
-| Typescript    | `.ts`                | Supports `// and /* */` comments.          | defaultParser       |
+| Typescript    | `.ts`, `.tsx`        | Supports `// and /* */` comments.          | defaultParser       |
 | Vue           | `.vue`               | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
 | Yaml          | `.yaml` `.yml`       | Supports `#` comments.                     | coffeeParser        |
 
