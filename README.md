@@ -76,6 +76,89 @@ Javascript is the default parser.
 
 **PRs for additional filetypes is most welcomed!!**
 
+## Custom Parsers
+
+Custom parsers can be supplied via the `customParsers` option to the `parse` programatic api. These are in the format:
+
+```js
+{
+    '<parserName>': () => parserFactory
+}
+```
+
+eg:
+
+```js
+var leasot = require('leasot');
+
+var todos = leasot.parse({
+        ext: filetype,
+        content: contents,
+        fileName: file,
+        associateParser: {
+            '.myExt1': { parserName: 'myCustomParser1' },
+            '.myExt2': { parserName: 'myCustomParser2' },
+        },
+        customParsers: {
+            myCustomParser1: function (parseOptions) {
+                return function parse(contents, file) {
+                    var comments = [];
+                     comments.push({
+                        file: '',   // The file path, eg |file || 'unknown file'""
+                        kind: '',   // One of the keywords such as `TODO` and `FIXME`.
+                        line: 0,    // The line number
+                        text: '',   // The commment text
+                        ref: ''     // The optional (eg. leading and trailing) references in the comment
+                    });
+                    return comments;
+                }
+            },
+            myCustomParser2: function (parseOptions) {
+                // etc
+            },
+        }
+    });
+```
+
+Note as above  ou will need to associate any new extensions using `associateExtWithParser`. You can overwrite the built in parsers by naming them the same, eg, overwrite the default parser:
+
+```js
+ customParsers: {
+        defaultParser: function (parseOptions) {
+            // etc
+        },
+    }
+```
+
+### Utils
+
+There are some built in utils for todo parsing that may be useful for custom parsers:
+
+```js
+var leasot = require('leasot');
+
+var todos = leasot.parse({
+        ext: filetype,
+        content: contents,
+        fileName: file,
+        associateParser: {
+            '.myExt': { parserName: 'myCustomParser' },
+        },
+        customParsers: {
+            myCustomParser: function (parseOptions) {
+                return function parse(contents, file) {
+                    var comments = [];
+                    var comment = leasot.utils.comments.prepareComment(match, index + 1, file);
+                     comments.push(comment);
+                    return comments;
+                }
+            }
+        }
+    });
+```
+
+See the built in parsers for examples.
+
 ## Usage
 
 ### Command Line
@@ -243,6 +326,7 @@ Specify an extension including the prefixing dot, for example:
 | `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
 | `withIncludedFiles` | `boolean`  | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
 | `associateParser`   | `object`   | No       |         | See `.associateExtWithParser` for syntax              |
+| `customParsers`     | `object`   | No       |         | See `Custom Parsers` for syntax              |
 
 **Returns**: `array` of comments.
 

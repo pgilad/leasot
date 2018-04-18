@@ -16,13 +16,15 @@ function getComments(file, options) {
     var content = fs.readFileSync(file, 'utf8');
     var ext = path.extname(file);
     var associateParser = options.associateParser;
+    var customParsers = options.customParsers;
     return leasot.parse({
         ext: ext,
         content: content,
         fileName: file,
         customTags: customTags,
         withInlineFiles: withInlineFiles,
-        associateParser: associateParser
+        associateParser: associateParser,
+        customParsers: customParsers
     });
 }
 
@@ -608,7 +610,7 @@ describe('parsing', function () {
 
     describe('associate parser', function () {
         it('supports new extension', function () {
-            var association = { '.cls': { parserName: 'defaultParser'} };
+            var association = { '.cls': { parserName: 'defaultParser' } };
             leasot.associateExtWithParser(association);
 
             leasot.isExtSupported('.cls').should.equal(true);
@@ -618,7 +620,7 @@ describe('parsing', function () {
         it('parses newly associated file using specified parser', function () {
             var file = getFixturePath('salesforce-apex.cls');
             var comments = getComments(file, {
-                associateParser: { '.cls': { parserName: 'defaultParser'} }
+                associateParser: { '.cls': { parserName: 'defaultParser' } }
             });
             should.exist(comments);
             comments.should.have.length(2);
@@ -627,14 +629,14 @@ describe('parsing', function () {
         });
     });
 
-    describe('references', function() {
-        it('leading', function() {
+    describe('references', function () {
+        it('leading', function () {
             var file = getFixturePath('reference-leading.js');
             var comments = getComments(file);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
-        it('trailing', function() {
+        it('trailing', function () {
             var file = getFixturePath('reference-trailing.rb');
             var comments = getComments(file);
             comments.should.have.length(1);
@@ -693,6 +695,38 @@ describe('parsing', function () {
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 8, 'Fix something');
+        });
+    });
+
+    describe('custom parsers', function () {
+        it('returns custom parser todos', function () {
+            var file = getFixturePath('file.unsupported');
+            var comments = getComments(file, {
+                associateParser: { '.unsupported': { parserName: 'customParser' } },
+                customParsers: {
+                    'customParser': function (parseOptions) {
+                        return function parse(contents, file) {
+                            var comments = [{
+                                file: file,
+                                kind: 'TODO',
+                                line: 4,
+                                text: 'Do something',
+                                ref: ''
+                            }, {
+                                file: file,
+                                kind: 'TODO',
+                                line: 5,
+                                text: 'Do something else',
+                                ref: ''
+                            }];
+                            return comments;
+                        }
+                    }
+                }
+            });
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Do something');
         });
     });
 });
