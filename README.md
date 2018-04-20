@@ -257,6 +257,8 @@ Specify an extension including the prefixing dot, for example:
 }]
 ```
 
+**Note** that tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS
+
 ### .reporter(comments, config)
 
 Use the specified reporter to report the comments.

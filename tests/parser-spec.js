@@ -557,6 +557,19 @@ describe('parsing', function() {
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 10, 'just kidding');
         });
+
+        it('custom tag matches strict', function() {
+            const file = getFixturePath('strict-tags.php');
+            const comments = getComments(file, {
+                customTags: ['prod'],
+            });
+            should.exist(comments);
+            comments.should.have.length(4);
+            verifyComment(comments[0], 'PROD', 7, 'list1');
+            verifyComment(comments[1], 'PROD', 8, 'list2');
+            verifyComment(comments[2], 'PROD', 9, 'list3');
+            verifyComment(comments[3], 'PROD', 11, 'list4');
+        });
     });
 
     describe('with inline files', function() {
