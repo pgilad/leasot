@@ -9,23 +9,25 @@
   },
   "dependencies": {
     "async": "^2.1.2",
-    "chalk": "^2.3.0",
-    "commander": "^2.9.0",
+    "chalk": "^2.4.0",
+    "commander": "^2.15.1",
     "eol": "^0.9.1",
-    "get-stdin": "^5.0.1",
-    "globby": "^7.1.1",
+    "get-stdin": "^6.0.0",
+    "globby": "^8.0.1",
     "json2xml": "^0.1.2",
-    "lodash": "^4.16.4",
-    "log-symbols": "^2.1.0",
+    "lodash": "^4.17.5",
+    "log-symbols": "^2.2.0",
     "strip-ansi": "^4.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "mocha": "^4.0.1",
-    "should": "^13.1.3"
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.1",
+    "prettier": "1.12.1",
+    "should": "^13.2.1"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.4.0"
   },
   "files": [
     "index.js",
@@ -35,9 +37,11 @@
   "keywords": "fixme, todo, comments, list, parse, generator, ci, productivity, automation",
   "license": "MIT",
   "main": "index.js",
-  "preferGlobal": true,
   "repository": "pgilad/leasot",
   "scripts": {
-    "test": "mocha -R spec ./tests/*.js"
+    "test": "mocha -R spec ./tests/*.js",
+    "lint": "eslint .",
+    "prettier": "prettier --write '{bin,lib}/**/*.js' 'tests/*.js'",
+    "prettier-check": "prettier --list-different '{bin,lib}/**/*.js' 'tests/*.js'"
   }
 }

@@ -1,28 +1,24 @@
-/* global describe,it */
-'use strict';
-var fs = require('fs');
-var should = require('should');
-var path = require('path');
-var leasot = require('../index');
+const fs = require('fs');
+const path = require('path');
+const should = require('should');
+
+const leasot = require('../index');
 
 function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
 }
 
-function getComments(file, options) {
-    options = options || {};
-    var customTags = options.customTags;
-    var withInlineFiles = options.withInlineFiles;
-    var content = fs.readFileSync(file, 'utf8');
-    var ext = path.extname(file);
-    var associateParser = options.associateParser;
+function getComments(file, { customTags, withInlineFiles, associateParser } = {}) {
+    const content = fs.readFileSync(file, 'utf8');
+    const ext = path.extname(file);
+
     return leasot.parse({
         ext: ext,
         content: content,
         fileName: file,
         customTags: customTags,
         withInlineFiles: withInlineFiles,
-        associateParser: associateParser
+        associateParser: associateParser,
     });
 }
 
@@ -36,11 +32,11 @@ function verifyComment(actual, kind, line, text, ref) {
     }
 }
 
-describe('parsing', function () {
-    describe('edge cases', function () {
-        it('javascript', function () {
-            var file = getFixturePath('edge-cases.js');
-            var comments = getComments(file);
+describe('parsing', function() {
+    describe('edge cases', function() {
+        it('javascript', function() {
+            const file = getFixturePath('edge-cases.js');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(5);
             verifyComment(comments[0], 'TODO', 1, '');
@@ -51,18 +47,18 @@ describe('parsing', function () {
         });
     });
 
-    describe('stylus', function () {
-        it('parse simple line comments', function () {
-            var file = getFixturePath('line.styl');
-            var comments = getComments(file);
+    describe('stylus', function() {
+        it('parse simple line comments', function() {
+            const file = getFixturePath('line.styl');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'use fixmes as well');
         });
 
-        it('parse block line comments', function () {
-            var file = getFixturePath('block.styl');
-            var comments = getComments(file);
+        it('parse block line comments', function() {
+            const file = getFixturePath('block.styl');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 5, 'single line comment with a todo');
@@ -70,10 +66,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('handlebars', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
-            var file = getFixturePath('handlebars.hbs');
-            var comments = getComments(file);
+    describe('handlebars', function() {
+        it('parse {{! }} and {{!-- --}} comments', function() {
+            const file = getFixturePath('handlebars.hbs');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -83,10 +79,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('mustache', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
-            var file = getFixturePath('mustache.mustache');
-            var comments = getComments(file);
+    describe('mustache', function() {
+        it('parse {{! }} and {{!-- --}} comments', function() {
+            const file = getFixturePath('mustache.mustache');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -96,10 +92,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('hogan', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
-            var file = getFixturePath('hogan.hgn');
-            var comments = getComments(file);
+    describe('hogan', function() {
+        it('parse {{! }} and {{!-- --}} comments', function() {
+            const file = getFixturePath('hogan.hgn');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -109,10 +105,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('c++', function () {
-        it('parse // and /* style comments', function () {
-            var file = getFixturePath('cplusplus.cpp');
-            var comments = getComments(file);
+    describe('c++', function() {
+        it('parse // and /* style comments', function() {
+            const file = getFixturePath('cplusplus.cpp');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'document file operations');
@@ -120,10 +116,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('c#', function () {
-        it('parse // and /* style comments', function () {
-            var file = getFixturePath('csharp.cs');
-            var comments = getComments(file);
+    describe('c#', function() {
+        it('parse // and /* style comments', function() {
+            const file = getFixturePath('csharp.cs');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'document file operations');
@@ -131,10 +127,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('c', function () {
-        it('parse // and /* style comments', function () {
-            var file = getFixturePath('c.c');
-            var comments = getComments(file);
+    describe('c', function() {
+        it('parse // and /* style comments', function() {
+            const file = getFixturePath('c.c');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'decide whether to use a pointer');
@@ -142,30 +138,30 @@ describe('parsing', function () {
         });
     });
 
-    describe('go', function () {
-        it('parse // and /* style comments', function () {
-            var file = getFixturePath('go.go');
-            var comments = getComments(file);
+    describe('go', function() {
+        it('parse // and /* style comments', function() {
+            const file = getFixturePath('go.go');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'be more explicit here');
         });
     });
 
-    describe('c header', function () {
-        it('parse // and /* style comments', function () {
-            var file = getFixturePath('c.h');
-            var comments = getComments(file);
+    describe('c header', function() {
+        it('parse // and /* style comments', function() {
+            const file = getFixturePath('c.h');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'should use a double');
         });
     });
 
-    describe('erlang', function () {
-        it('parse % comments', function () {
-            var file = getFixturePath('erlang.erl');
-            var comments = getComments(file);
+    describe('erlang', function() {
+        it('parse % comments', function() {
+            const file = getFixturePath('erlang.erl');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 're-write this');
@@ -173,10 +169,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('ruby', function () {
-        it('parse # comments', function () {
-            var file = getFixturePath('ruby.rb');
-            var comments = getComments(file);
+    describe('ruby', function() {
+        it('parse # comments', function() {
+            const file = getFixturePath('ruby.rb');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'initialize things lol');
@@ -184,20 +180,20 @@ describe('parsing', function () {
         });
     });
 
-    describe('crystal', function () {
-        it('parse # comments', function () {
-            var file = getFixturePath('crystal.cr');
-            var comments = getComments(file);
+    describe('crystal', function() {
+        it('parse # comments', function() {
+            const file = getFixturePath('crystal.cr');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'Write tests');
         });
     });
 
-    describe('haml', function () {
-        it('parse -# comments and / comments', function () {
-            var file = getFixturePath('haml.haml');
-            var comments = getComments(file);
+    describe('haml', function() {
+        it('parse -# comments and / comments', function() {
+            const file = getFixturePath('haml.haml');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'All your base are belong to us.');
@@ -207,10 +203,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('haskell', function () {
-        it('parse -- comments', function () {
-            var file = getFixturePath('haskell.hs');
-            var comments = getComments(file);
+    describe('haskell', function() {
+        it('parse -- comments', function() {
+            const file = getFixturePath('haskell.hs');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 4, 'force evaluation of the given value');
@@ -218,10 +214,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('sql', function () {
-        it('parse -- and /* comments', function () {
-            var file = getFixturePath('sql.sql');
-            var comments = getComments(file);
+    describe('sql', function() {
+        it('parse -- and /* comments', function() {
+            const file = getFixturePath('sql.sql');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Sql multi comment');
@@ -229,10 +225,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('html', function () {
-        it('parse <!-- --> comments', function () {
-            var file = getFixturePath('HTML.html');
-            var comments = getComments(file);
+    describe('html', function() {
+        it('parse <!-- --> comments', function() {
+            const file = getFixturePath('HTML.html');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -240,10 +236,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('htm', function () {
-        it('parse <!-- comments', function () {
-            var file = getFixturePath('HTML.htm');
-            var comments = getComments(file);
+    describe('htm', function() {
+        it('parse <!-- comments', function() {
+            const file = getFixturePath('HTML.htm');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -251,10 +247,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('ejs', function () {
-        it('parse <!-- --> and <%# %> comments', function () {
-            var file = getFixturePath('ejs.ejs');
-            var comments = getComments(file);
+    describe('ejs', function() {
+        it('parse <!-- --> and <%# %> comments', function() {
+            const file = getFixturePath('ejs.ejs');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -264,23 +260,23 @@ describe('parsing', function () {
         });
     });
 
-    describe('pascal', function () {
-        it('parse // and { } comments', function () {
-            var file = getFixturePath('pascal.pas');
-            var comments = getComments(file);
+    describe('pascal', function() {
+        it('parse // and { } comments', function() {
+            const file = getFixturePath('pascal.pas');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 1, 'Add more stuff');
             verifyComment(comments[1], 'FIXME', 4, 'Say something cool');
             verifyComment(comments[2], 'FIXME', 6, 'Add a space');
-            verifyComment(comments[3], 'TODO', 10, 'Display the user\'s name');
+            verifyComment(comments[3], 'TODO', 10, "Display the user's name");
         });
     });
 
-    describe('python', function () {
-        it('parse # and """ comments', function () {
-            var file = getFixturePath('python.py');
-            var comments = getComments(file);
+    describe('python', function() {
+        it('parse # and """ comments', function() {
+            const file = getFixturePath('python.py');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'refactor this');
@@ -288,10 +284,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('perl module', function () {
-        it('parse # comments', function () {
-            var file = getFixturePath('perl_module.pm');
-            var comments = getComments(file);
+    describe('perl module', function() {
+        it('parse # comments', function() {
+            const file = getFixturePath('perl_module.pm');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 3, 'Use python');
@@ -299,10 +295,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('perl script', function () {
-        it('parse # comments', function () {
-            var file = getFixturePath('perl.pl');
-            var comments = getComments(file);
+    describe('perl script', function() {
+        it('parse # comments', function() {
+            const file = getFixturePath('perl.pl');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 3, 'Refactor this');
@@ -310,10 +306,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('sass', function () {
-        it('parse // and /* comments', function () {
-            var file = getFixturePath('block.sass');
-            var comments = getComments(file);
+    describe('sass', function() {
+        it('parse // and /* comments', function() {
+            const file = getFixturePath('block.sass');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
@@ -323,28 +319,28 @@ describe('parsing', function () {
         });
     });
 
-    describe('scss', function () {
-        it('parse // and /* comments', function () {
-            var file = getFixturePath('block.scss');
-            var comments = getComments(file);
+    describe('scss', function() {
+        it('parse // and /* comments', function() {
+            const file = getFixturePath('block.scss');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'add another class');
         });
     });
 
-    describe('typescript', function () {
-        it('parse // and /* comments with ts extension', function () {
-            var file = getFixturePath('typescript.ts');
-            var comments = getComments(file);
+    describe('typescript', function() {
+        it('parse // and /* comments with ts extension', function() {
+            const file = getFixturePath('typescript.ts');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
             verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
-        it('parse // and /* comments with tsx extension', function () {
-            var file = getFixturePath('typescript.tsx');
-            var comments = getComments(file);
+        it('parse // and /* comments with tsx extension', function() {
+            const file = getFixturePath('typescript.tsx');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
@@ -352,28 +348,28 @@ describe('parsing', function () {
         });
     });
 
-    describe('jsdoc', function () {
-        it('handle jsdoc comments', function () {
-            var file = getFixturePath('jsdoc.js');
-            var comments = getComments(file);
+    describe('jsdoc', function() {
+        it('handle jsdoc comments', function() {
+            const file = getFixturePath('jsdoc.js');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
         });
 
-        it('handle jsdoc @todo comments', function () {
-            var file = getFixturePath('jsdoc2.js');
-            var comments = getComments(file);
+        it('handle jsdoc @todo comments', function() {
+            const file = getFixturePath('jsdoc2.js');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 9, 'make this supported');
         });
     });
 
-    describe('coffeescript', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('coffee.coffee');
-            var comments = getComments(file);
+    describe('coffeescript', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('coffee.coffee');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'Do something');
@@ -381,60 +377,60 @@ describe('parsing', function () {
         });
     });
 
-    describe('coffee-react', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('coffee-react.cjsx');
-            var comments = getComments(file);
+    describe('coffee-react', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('coffee-react.cjsx');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 1, 'better document');
         });
     });
 
-    describe('zsh', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('zsh.zsh');
-            var comments = getComments(file);
+    describe('zsh', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('zsh.zsh');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 17, 'complete file');
         });
     });
 
-    describe('yaml', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('yaml.yaml');
-            var comments = getComments(file);
+    describe('yaml', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('yaml.yaml');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 7, 'Support POST');
         });
     });
 
-    describe('bash', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('bash.bash');
-            var comments = getComments(file);
+    describe('bash', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('bash.bash');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 5, 'wrap variables in quotes');
         });
     });
 
-    describe('sh', function () {
-        it('handle # comments', function () {
-            var file = getFixturePath('sh.sh');
-            var comments = getComments(file);
+    describe('sh', function() {
+        it('handle # comments', function() {
+            const file = getFixturePath('sh.sh');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 31, 'we now exit the program');
         });
     });
 
-    describe('ss', function () {
-        it('handle <%-- --%> and <!-- --> comments', function () {
-            var file = getFixturePath('silverstripe.ss');
-            var comments = getComments(file);
+    describe('ss', function() {
+        it('handle <%-- --%> and <!-- --> comments', function() {
+            const file = getFixturePath('silverstripe.ss');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'FIXME', 4, 'title is incorrect');
@@ -443,10 +439,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('less', function () {
-        it('handles block and inline comment forms', function () {
-            var file = getFixturePath('block.less');
-            var comments = getComments(file);
+    describe('less', function() {
+        it('handles block and inline comment forms', function() {
+            const file = getFixturePath('block.less');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
@@ -456,10 +452,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('twig', function () {
-        it('matches bang and html comment style', function () {
-            var file = getFixturePath('twig.twig');
-            var comments = getComments(file);
+    describe('twig', function() {
+        it('matches bang and html comment style', function() {
+            const file = getFixturePath('twig.twig');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, "Hey, I'm a fixme!");
@@ -467,30 +463,30 @@ describe('parsing', function () {
         });
     });
 
-    describe('Objective-C', function () {
-        it('handles standard js comments', function () {
-            var file = getFixturePath('objective.m');
-            var comments = getComments(file);
+    describe('Objective-C', function() {
+        it('handles standard js comments', function() {
+            const file = getFixturePath('objective.m');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'better rename this variable');
         });
     });
 
-    describe('Objective-C++', function () {
-        it('handles standard js comments', function () {
-            var file = getFixturePath('objective.mm');
-            var comments = getComments(file);
+    describe('Objective-C++', function() {
+        it('handles standard js comments', function() {
+            const file = getFixturePath('objective.mm');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'better rename this variable');
         });
     });
 
-    describe('jsx', function () {
-        it('handles standard js comments in jsx', function () {
-            var file = getFixturePath('react.jsx');
-            var comments = getComments(file);
+    describe('jsx', function() {
+        it('handles standard js comments in jsx', function() {
+            const file = getFixturePath('react.jsx');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
@@ -498,10 +494,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('jade', function () {
-        it('handle // style comments', function () {
-            var file = getFixturePath('comments.jade');
-            var comments = getComments(file);
+    describe('jade', function() {
+        it('handle // style comments', function() {
+            const file = getFixturePath('comments.jade');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 9, 'this is a todo');
@@ -509,10 +505,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('php', function () {
-        it('handles standard js comments in php', function () {
-            var file = getFixturePath('sample.php');
-            var comments = getComments(file);
+    describe('php', function() {
+        it('handles standard js comments in php', function() {
+            const file = getFixturePath('sample.php');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
@@ -521,10 +517,10 @@ describe('parsing', function () {
         });
     });
 
-    describe('swift', function () {
-        it('handles standard comments in swift', function () {
-            var file = getFixturePath('swift.swift');
-            var comments = getComments(file);
+    describe('swift', function() {
+        it('handles standard comments in swift', function() {
+            const file = getFixturePath('swift.swift');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 2, 'perimeter of the Shape.');
@@ -532,21 +528,21 @@ describe('parsing', function () {
         });
     });
 
-    describe('custom tags', function () {
-        it('custom tags must be an array', function () {
-            var file = getFixturePath('custom-tags.rb');
+    describe('custom tags', function() {
+        it('custom tags must be an array', function() {
+            const file = getFixturePath('custom-tags.rb');
 
-            (function () {
+            (function() {
                 getComments(file, {
-                    customTags: true
+                    customTags: true,
                 });
-            }).should.throw(/customTags/);
+            }.should.throw(/customTags/));
         });
 
-        it('custom tags', function () {
-            var file = getFixturePath('custom-tags.rb');
-            var comments = getComments(file, {
-                customTags: ['review']
+        it('custom tags', function() {
+            const file = getFixturePath('custom-tags.rb');
+            const comments = getComments(file, {
+                customTags: ['review'],
             });
             should.exist(comments);
             comments.should.have.length(2);
@@ -554,29 +550,29 @@ describe('parsing', function () {
             verifyComment(comments[1], 'FIXME', 10, 'just kidding');
         });
 
-        it('custom tag is temporary', function () {
-            var file = getFixturePath('custom-tags.rb');
-            var comments = getComments(file);
+        it('custom tag is temporary', function() {
+            const file = getFixturePath('custom-tags.rb');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 10, 'just kidding');
         });
     });
 
-    describe('with inline files', function () {
-        it('parses a php file without included files', function () {
-            var file = getFixturePath('with-inline.php');
-            var comments = getComments(file, {
-                withInlineFiles: false
+    describe('with inline files', function() {
+        it('parses a php file without included files', function() {
+            const file = getFixturePath('with-inline.php');
+            const comments = getComments(file, {
+                withInlineFiles: false,
             });
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
         });
 
-        it('parses a php file with just php', function () {
-            var file = getFixturePath('with-inline.php');
-            var comments = getComments(file, {
-                withInlineFiles: true
+        it('parses a php file with just php', function() {
+            const file = getFixturePath('with-inline.php');
+            const comments = getComments(file, {
+                withInlineFiles: true,
             });
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
@@ -584,20 +580,20 @@ describe('parsing', function () {
         });
     });
 
-    describe('vue', function () {
-        it('parses a vue file without included files', function () {
-            var file = getFixturePath('vue.vue');
-            var comments = getComments(file, {
-                withInlineFiles: false
+    describe('vue', function() {
+        it('parses a vue file without included files', function() {
+            const file = getFixturePath('vue.vue');
+            const comments = getComments(file, {
+                withInlineFiles: false,
             });
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 2, 'Vue template comment');
         });
 
-        it('parses a vue file with just php', function () {
-            var file = getFixturePath('vue.vue');
-            var comments = getComments(file, {
-                withInlineFiles: true
+        it('parses a vue file with just php', function() {
+            const file = getFixturePath('vue.vue');
+            const comments = getComments(file, {
+                withInlineFiles: true,
             });
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 2, 'Vue template comment');
@@ -606,19 +602,18 @@ describe('parsing', function () {
         });
     });
 
-    describe('associate parser', function () {
-        it('supports new extension', function () {
-            var association = { '.cls': { parserName: 'defaultParser'} };
+    describe('associate parser', function() {
+        it('supports new extension', function() {
+            const association = { '.cls': { parserName: 'defaultParser' } };
             leasot.associateExtWithParser(association);
 
             leasot.isExtSupported('.cls').should.equal(true);
-
         });
 
-        it('parses newly associated file using specified parser', function () {
-            var file = getFixturePath('salesforce-apex.cls');
-            var comments = getComments(file, {
-                associateParser: { '.cls': { parserName: 'defaultParser'} }
+        it('parses newly associated file using specified parser', function() {
+            const file = getFixturePath('salesforce-apex.cls');
+            const comments = getComments(file, {
+                associateParser: { '.cls': { parserName: 'defaultParser' } },
             });
             should.exist(comments);
             comments.should.have.length(2);
@@ -629,67 +624,67 @@ describe('parsing', function () {
 
     describe('references', function() {
         it('leading', function() {
-            var file = getFixturePath('reference-leading.js');
-            var comments = getComments(file);
+            const file = getFixturePath('reference-leading.js');
+            const comments = getComments(file);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
         it('trailing', function() {
-            var file = getFixturePath('reference-trailing.rb');
-            var comments = getComments(file);
+            const file = getFixturePath('reference-trailing.rb');
+            const comments = getComments(file);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 2, 'Make it better', 'tregusti');
         });
     });
 
-    describe('java', function () {
-        it('handle java lines comments', function () {
-            var file = getFixturePath('java.java');
-            var comments = getComments(file);
+    describe('java', function() {
+        it('handle java lines comments', function() {
+            const file = getFixturePath('java.java');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'Change language');
         });
 
-        it('handle java block comments', function () {
-            var file = getFixturePath('java.java');
-            var comments = getComments(file);
+        it('handle java block comments', function() {
+            const file = getFixturePath('java.java');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 9, 'Log response');
         });
     });
 
-    describe('kotlin', function () {
-        it('handle kotlin lines comments', function () {
-            var file = getFixturePath('kotlin.kt');
-            var comments = getComments(file);
+    describe('kotlin', function() {
+        it('handle kotlin lines comments', function() {
+            const file = getFixturePath('kotlin.kt');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Change language');
         });
 
-        it('handle kotlin block comments', function () {
-            var file = getFixturePath('kotlin.kt');
-            var comments = getComments(file);
+        it('handle kotlin block comments', function() {
+            const file = getFixturePath('kotlin.kt');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 7, 'Log response');
         });
     });
 
-    describe('scala', function () {
-        it('handle scala line comments', function () {
-            var file = getFixturePath('Scala.scala');
-            var comments = getComments(file);
+    describe('scala', function() {
+        it('handle scala line comments', function() {
+            const file = getFixturePath('Scala.scala');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Do something');
         });
 
-        it('handle scala block comments', function () {
-            var file = getFixturePath('Scala.scala');
-            var comments = getComments(file);
+        it('handle scala block comments', function() {
+            const file = getFixturePath('Scala.scala');
+            const comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 8, 'Fix something');
