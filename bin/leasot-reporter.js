@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+
 const cli = require('../lib/cli-reporter');
 const pkg = require('../package.json');
 
