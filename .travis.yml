@@ -1,9 +1,21 @@
 sudo: false
 language: node_js
 node_js:
-- 9
-- 8
 - 6
+- 8
+- 9
+cache:
+  directories:
+    - node_modules
+env:
+  - NODE_ENV=development
+  - NODE_ENV=production
+matrix:
+  fast_finish: true
+script:
+  - npm run lint
+  - npm run prettier-check
+  - npm run test
 notifications:
   email:
     on_success: never

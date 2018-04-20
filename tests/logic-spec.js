@@ -1,43 +1,31 @@
-/* global describe,it */
-var cli = require('../lib/cli');
-var assert = require('assert');
+const assert = require('assert');
 
-describe('cli unit tests', function () {
-    describe('getFileType', function () {
-        it('should return default on no args', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype();
-            assert.equal(ext, '.js');
+const cli = require('../lib/cli');
+
+describe('cli unit tests', function() {
+    describe('getFileType', function() {
+        it('should return default on no args', function() {
+            assert.equal(cli.getFiletype(), '.js');
         });
 
-        it('should return specified', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype('.php');
-            assert.equal(ext, '.php');
+        it('should return specified', function() {
+            assert.equal(cli.getFiletype('.php'), '.php');
         });
 
-        it('should return default if file is null', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype(null, null);
-            assert.equal(ext, '.js');
+        it('should return default if file is null', function() {
+            assert.equal(cli.getFiletype(null, null), '.js');
         });
 
-        it('should return default if file is empty', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype(null, '');
-            assert.equal(ext, '.js');
+        it('should return default if file is empty', function() {
+            assert.equal(cli.getFiletype(null, ''), '.js');
         });
 
-        it('should return file extension', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype(null, 'file.php');
-            assert.equal(ext, '.php');
+        it('should return file extension', function() {
+            assert.equal(cli.getFiletype(null, 'file.php'), '.php');
         });
 
-        it('should return default if no file extension found', function () {
-            var getFiletype = cli.getFiletype;
-            var ext = getFiletype(null, 'file');
-            assert.equal(ext, '.js');
+        it('should return default if no file extension found', function() {
+            assert.equal(cli.getFiletype(null, 'file'), '.js');
         });
     });
 });

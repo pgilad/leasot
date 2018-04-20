@@ -1,32 +1,35 @@
 #!/usr/bin/env node
 
-var program = require('commander');
-var cli = require('../lib/cli');
-var pkg = require('../package.json');
+const program = require('commander');
+const cli = require('../lib/cli');
+const pkg = require('../package.json');
 
 function list(val) {
     return val.split(',');
 }
 
 function parseAssociateParser(val, req) {
-    var data = val.split(',');
+    const data = val.split(',');
     if (data.length === 0 || data.length > 2) {
-        throw new Error('Incorrectly formatted extension / parser registration. (param: ' + val + ')');
+        throw new TypeError('Incorrectly formatted extension / parser registration. (param: ' + val + ')');
     }
-    var parser = data[1] || 'defaultParser';
-    var ext = data[0];
+    const parser = data[1] || 'defaultParser';
+    const ext = data[0];
 
     req[ext] = { parserName: parser };
     return req;
 }
 
+/* eslint-disable no-console */
 program
     .description(pkg.description)
     .version(pkg.version)
     .usage('[options] <file ...>')
-    .option('-A, --associate-parser [ext,parser]',
+    .option(
+        '-A, --associate-parser [ext,parser]',
         'associate unknown extensions with bundled parsers (parser optional / default: defaultParser)',
-        parseAssociateParser, {}
+        parseAssociateParser,
+        {}
     )
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
     .option('-I, --inline-files', 'parse possible inline files', false)
@@ -35,7 +38,7 @@ program
     .option('-t, --filetype [filetype]', 'force the filetype to parse. Useful for streams (default: .js)')
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
     .option('-x, --exit-nicely', 'exit with exit code 0 even if todos/fixmes are found', false)
-    .on('--help', function () {
+    .on('--help', function() {
         console.log('  Examples:');
         console.log('');
         console.log('    # Check a specific file');
@@ -63,7 +66,9 @@ program
         console.log('    $ cat index.coffee | leasot --filetype .coffee');
         console.log('');
         console.log('    # Report from leasot parsing and filter todos using `jq`');
-        console.log('    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.kind == "TODO"))\' | leasot-reporter');
+        console.log(
+            '    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.kind == "TODO"))\' | leasot-reporter'
+        );
         console.log('');
     })
     .parse(process.argv);
