@@ -1,7 +1,8 @@
+const path = require('path');
+
 const childProcess = require('child_process');
 const eol = require('eol');
 const logSymbols = require('log-symbols');
-const path = require('path');
 const should = require('should');
 const stripAnsi = require('strip-ansi');
 

@@ -8,17 +8,18 @@ function getFixturePath(file) {
     return path.join('./tests/fixtures/', file);
 }
 
-function getComments(file, { customTags, withInlineFiles, associateParser } = {}) {
+function getComments(file, { customTags, withInlineFiles, associateParser, customParsers } = {}) {
     const content = fs.readFileSync(file, 'utf8');
     const ext = path.extname(file);
 
     return leasot.parse({
-        ext: ext,
-        content: content,
-        fileName: file,
-        customTags: customTags,
-        withInlineFiles: withInlineFiles,
         associateParser: associateParser,
+        content: content,
+        customParsers: customParsers,
+        customTags: customTags,
+        ext: ext,
+        fileName: file,
+        withInlineFiles: withInlineFiles,
     });
 }
 
@@ -642,6 +643,7 @@ describe('parsing', function() {
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
+
         it('trailing', function() {
             const file = getFixturePath('reference-trailing.rb');
             const comments = getComments(file);
@@ -701,6 +703,42 @@ describe('parsing', function() {
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 8, 'Fix something');
+        });
+    });
+
+    describe('custom parsers', function() {
+        it('returns custom parser todos', function() {
+            const file = getFixturePath('file.unsupported');
+            const comments = getComments(file, {
+                associateParser: { '.unsupported': { parserName: 'customParser' } },
+                customParsers: {
+                    // eslint-disable-next-line no-unused-vars
+                    customParser: function(parseOptions) {
+                        return function parse(contents, file) {
+                            return [
+                                {
+                                    file: file,
+                                    kind: 'TODO',
+                                    line: 4,
+                                    text: 'Do something',
+                                    ref: '',
+                                },
+                                {
+                                    file: file,
+                                    kind: 'TODO',
+                                    line: 5,
+                                    text: 'Do something else',
+                                    ref: '',
+                                },
+                            ];
+                        };
+                    },
+                },
+            });
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 4, 'Do something');
+            verifyComment(comments[1], 'TODO', 5, 'Do something else');
         });
     });
 });

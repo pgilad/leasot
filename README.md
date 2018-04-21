@@ -147,7 +147,7 @@ This _package.json_ snippet shows how to include leasot in your project developm
 {
     "scripts": {
         "todo": "leasot src/**/*.js",
-        "todo_suppress_error": "leasot src/**/*.js || true",
+        "todo_suppress_error": "leasot src/**/*.js || true"
     },
     "devDependencies": {
         "leasot": "*"
@@ -166,19 +166,19 @@ $ npm install --save-dev leasot
 #### Examples
 
 ```js
-var fs = require('fs');
-var leasot = require('leasot');
+const fs = require('fs');
+const leasot = require('leasot');
 
-var contents = fs.readFileSync('./contents.js', 'utf8');
+const contents = fs.readFileSync('./contents.js', 'utf8');
 // get the filetype of the file, or force a special parser
-var filetype = path.extname('./contents.js');
+const filetype = path.extname('./contents.js');
 // add file for better reporting
-var file = 'contents.js';
-var todos = leasot.parse({ ext: filetype, content: contents, fileName: file });
+const file = 'contents.js';
+const todos = leasot.parse({ ext: filetype, content: contents, fileName: file });
 
 // -> todos now contains the array of todos/fixme parsed
 
-var output = leasot.reporter(todos, {
+const output = leasot.reporter(todos, {
     reporter: 'json',
     spacing: 2
 });
@@ -196,14 +196,14 @@ console.log(output);
 ## API
 
 ```js
-var leasot = require('leasot');
+const leasot = require('leasot');
 ```
 
 `leasot` exposes the following API:
 
 ### .associateExtWithParser(parsers)
 
-Associates a bundled parser with a new extension.
+Associates a parser with a new extension.
 
 The `parsers` parameter must be completed in the following format:
 
@@ -215,7 +215,8 @@ The `parsers` parameter must be completed in the following format:
 }
 
 ```
-The `parserName` property can also be an array of parsers.
+The `parserName` property can also be an array of parser names.
+
 ```js
 {
     '.sql': {
@@ -226,7 +227,7 @@ The `parserName` property can also be an array of parsers.
 
 ### .isExtSupported(extension)
 
-Check whether extension is supported by parser.
+Check whether extension is supported by a built-in parser.
 
 Specify an extension including the prefixing dot, for example:
 
@@ -240,10 +241,11 @@ Specify an extension including the prefixing dot, for example:
 | ----                | ----       | -------- | ------- | -----------                                           |
 | `ext`               | `string`   | Yes      |         | The extension the parse as including a prefixing dot. |
 | `content`           | `string`   | Yes      |         | Content to parse                                      |
-| `fileName`          | `string`   | No       |         | fileName to attach to todos output                    |
-| `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
-| `withIncludedFiles` | `boolean`  | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
 | `associateParser`   | `object`   | No       |         | See `.associateExtWithParser` for syntax              |
+| `customParsers`     | `object`   | No       |         | See `Custom Parsers` for syntax              |
+| `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
+| `fileName`          | `string`   | No       |         | fileName to attach to todos output                    |
+| `withIncludedFiles` | `boolean`  | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
 
 **Returns**: `array` of comments.
 
@@ -258,6 +260,91 @@ Specify an extension including the prefixing dot, for example:
 ```
 
 **Note** that tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS
+
+#### Custom Parsers
+
+Custom parsers can be supplied via the `customParsers` option to the `parse` programmatic api. These are in the format:
+
+```js
+{
+    '<parserName>': () => parserFactory
+}
+```
+
+Example:
+
+```js
+const leasot = require('leasot');
+
+const todos = leasot.parse({
+        ext: filetype,
+        content: contents,
+        fileName: file,
+        associateParser: {
+            '.myExt1': { parserName: 'myCustomParser1' },
+            '.myExt2': { parserName: 'myCustomParser2' },
+        },
+        customParsers: {
+            myCustomParser1: function (parseOptions) {
+                return function parse(contents, file) {
+                    const comments = [];
+                     comments.push({
+                        file: '',   // The file path, eg |file || 'unknown file'""
+                        kind: '',   // One of the keywords such as `TODO` and `FIXME`.
+                        line: 0,    // The line number
+                        text: '',   // The comment text
+                        ref: ''     // The optional (eg. leading and trailing) references in the comment
+                    });
+                    return comments;
+                }
+            },
+            myCustomParser2: function (parseOptions) {
+                // etc
+            },
+        }
+    });
+```
+
+Note as above you will need to associate any **new** extensions using `associateExtWithParser`.
+You can overwrite the built in parsers by naming them the same, eg, overwrite the default parser:
+
+```js
+ customParsers: {
+        defaultParser: function (parseOptions) {
+            // etc
+        }
+    }
+```
+
+See the [built-in parsers](lib/parsers) for examples
+
+### Utils
+
+There are some built in utils for todo parsing that may be useful for custom parsers:
+
+```js
+const leasot = require('leasot');
+const prepareComment = require('leasot/lib/utils/comments').prepareComment;
+
+const todos = leasot.parse({
+        ext: '.myExt',
+        content: contents,
+        fileName: file,
+        associateParser: {
+            '.myExt': { parserName: 'myCustomParser' },
+        },
+        customParsers: {
+            myCustomParser: function (parseOptions) {
+                return function parse(contents, file) {
+                    const comment = prepareComment(match, index + 1, file);
+                    comments.push(comment);
+                    return comments;
+                }
+            }
+        }
+    });
+```
+
 
 ### .reporter(comments, config)
 
