@@ -139,15 +139,16 @@ $ leasot --help
     $ leasot tests/**/*.styl --reporter json | jq 'map(select(.kind == "TODO"))' | leasot-reporter
 ```
 
-#### Using in NPM
+#### Usage in NPM scripts
 
-This _package.json_ snippet shows how to include leasot in your project development environment and set up as a task (`todo`). The `todo_suppress_error` task stops leasot causing npm to error, so it can be used in a build process without halting it.
+Use `leasot -x` in order to prevent exiting with a non-zero exit code. This is a good solution if you plan to
+run `leasot` in a CI tool.
 
 ```json
 {
     "scripts": {
-        "todo": "leasot src/**/*.js",
-        "todo_suppress_error": "leasot src/**/*.js || true"
+        "todo": "leasot 'src/**/*.js'",
+        "todo-ci": "leasot -x 'src/**/*.js'"
     },
     "devDependencies": {
         "leasot": "*"
@@ -318,7 +319,7 @@ You can overwrite the built in parsers by naming them the same, eg, overwrite th
 
 See the [built-in parsers](lib/parsers) for examples
 
-### Utils
+#### Utils
 
 There are some built in utils for todo parsing that may be useful for custom parsers:
 
