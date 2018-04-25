@@ -142,13 +142,13 @@ $ leasot --help
 #### Usage in NPM scripts
 
 Use `leasot -x` in order to prevent exiting with a non-zero exit code. This is a good solution if you plan to
-run `leasot` in a CI tool.
+run `leasot` in a CI tool to generate todos.
 
 ```json
 {
     "scripts": {
         "todo": "leasot 'src/**/*.js'",
-        "todo-ci": "leasot -x 'src/**/*.js'"
+        "todo-ci": "leasot -x --reporter markdown > TODO.md 'src/**/*.js'"
     },
     "devDependencies": {
         "leasot": "*"
@@ -357,7 +357,7 @@ Use the specified reporter to report the comments.
 
 It may also contain the specified reporter:
 
-#### config.reporter
+#### `config.reporter`
 
 Can be a string indicating the [built-in reporter](#built-in-reporters) to use,
  or an external library used as a reporter.
@@ -387,7 +387,7 @@ Returns a markdown version of the todos.
 
 ### Options
 
-#### newLine
+#### `newLine`
 
 How to separate lines in the output file. Defaults to your OS's default line separator.
 
@@ -395,7 +395,7 @@ How to separate lines in the output file. Defaults to your OS's default line sep
 
 **Default**: `Your system default line feed`
 
-### padding
+### `padding`
 
 How many `newLine`s should separate between comment type blocks.
 
@@ -405,7 +405,7 @@ How many `newLine`s should separate between comment type blocks.
 
 **Minimum**: `0`
 
-### transformHeader(kind)
+### `transformHeader(kind)`
 
 Control the output of a header for each comment kind (*i.e todo, fixme*).
 
@@ -427,7 +427,7 @@ transformHeader: function (kind) {
 
 You are expected to return either an `Array of strings` or just a `string`. If you return an array - each item will be separated by a newline in the output.
 
-### transformComment(file, line, text, kind, ref)
+### `transformComment(file, line, text, kind, ref)`
 
 Control the output for each comment.
 
@@ -474,7 +474,7 @@ Return a JSON valid representation of the todos.
 
 #### Options
 
-##### spacing
+##### `spacing`
 
 Type: `Number`
 
@@ -488,7 +488,7 @@ Parsed using [json2xml](https://github.com/estheban/node-json2xml)
 
 #### Options
 
-##### header
+##### `header`
 
 Whether to include xml header
 
@@ -496,7 +496,7 @@ Type: `Boolean`
 
 Default: `true`
 
-##### attributes_key
+##### `attributes_key`
 
 See https://github.com/estheban/node-json2xml#options--behaviour
 
