@@ -148,7 +148,7 @@ run `leasot` in a CI tool to generate todos.
 {
     "scripts": {
         "todo": "leasot 'src/**/*.js'",
-        "todo-ci": "leasot -x --reporter markdown > TODO.md 'src/**/*.js'"
+        "todo-ci": "leasot -x --reporter markdown 'src/**/*.js' > TODO.md"
     },
     "devDependencies": {
         "leasot": "*"
