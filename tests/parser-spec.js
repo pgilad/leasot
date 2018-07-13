@@ -285,6 +285,17 @@ describe('parsing', function() {
         });
     });
 
+    describe('latex', function() {
+        it('parse # and """ comments', function() {
+            const file = getFixturePath('tex.tex');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 3, 'refactor this');
+            verifyComment(comments[1], 'FIXME', 9, 'Move this out');
+        });
+    });
+
     describe('perl module', function() {
         it('parse # comments', function() {
             const file = getFixturePath('perl_module.pm');
