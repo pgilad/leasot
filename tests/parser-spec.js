@@ -286,13 +286,14 @@ describe('parsing', function() {
     });
 
     describe('latex', function() {
-        it('parse # and """ comments', function() {
+        it('parse % and \\begin{comment} comments', function() {
             const file = getFixturePath('tex.tex');
             const comments = getComments(file);
             should.exist(comments);
-            comments.should.have.length(2);
+            comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 3, 'refactor this');
             verifyComment(comments[1], 'FIXME', 9, 'Move this out');
+            verifyComment(comments[2], 'TODO', 15, 'Do many multiple multiple line comments work?');
         });
     });
 
