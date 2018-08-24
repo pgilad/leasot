@@ -20,7 +20,7 @@ function testCli(files, extraArgs, cb) {
     });
     let chunks = '';
     cp.stdout.on('data', function(data) {
-        chunks = new Buffer(data).toString();
+        chunks = Buffer.from(data).toString();
     });
     cp.on('close', function(exitCode) {
         cb(exitCode, stripAnsi(eol.split(chunks)));

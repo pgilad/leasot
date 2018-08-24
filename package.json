@@ -1,31 +1,31 @@
 {
   "name": "leasot",
   "description": "Parse and output TODOs and FIXMEs from comments in your files",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": {
     "leasot": "./bin/leasot.js",
     "leasot-reporter": "./bin/leasot-reporter.js"
   },
   "dependencies": {
-    "async": "^2.1.2",
-    "chalk": "^2.4.0",
-    "commander": "^2.15.1",
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "commander": "^2.17.1",
     "eol": "^0.9.1",
     "get-stdin": "^6.0.0",
     "globby": "^8.0.1",
     "json2xml": "^0.1.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "log-symbols": "^2.2.0",
     "strip-ansi": "^4.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.4.0",
     "jsdoc-to-markdown": "^4.0.1",
-    "mocha": "^5.1.1",
-    "prettier": "1.12.1",
-    "should": "^13.2.1"
+    "mocha": "^5.2.0",
+    "prettier": "^1.14.2",
+    "should": "^13.2.3"
   },
   "engines": {
     "node": ">=6.4.0"
