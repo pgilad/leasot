@@ -1,1 +1,4 @@
-tests/fixtures
+tests/fixtures/
+.idea/
+docs/
+media/
