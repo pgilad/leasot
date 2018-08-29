@@ -51,6 +51,7 @@ to extract your todos from comments.
 | Javascript    | `.js` `.es` `.es6`   | Supports `// and /* */` comments           | defaultParser       |
 | Jsx           | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
 | Kotlin        | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
+| Latex         | `.tex`               | Supports `\begin{comment}` and `%` comments| latexParser         |
 | Less          | `.less`              | Supports `// and /* */` comments.          | defaultParser       |
 | Mustache      | `.mustache`          | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Nunjucks      | `.njk`               | Supports `{#  #}` and `<!-- -->`           | twigParser          |
@@ -190,9 +191,9 @@ console.log(output);
 
 ### Build Time
 
-* [gulp-todo](https://github.com/pgilad/gulp-todo)
-* [broccoli-leasot](https://github.com/sivakumar-kailasam/broccoli-leasot)
-* [todo-webpack-plugin](https://github.com/mikeerickson/todo-webpack-plugin)
+- [gulp-todo](https://github.com/pgilad/gulp-todo)
+- [broccoli-leasot](https://github.com/sivakumar-kailasam/broccoli-leasot)
+- [todo-webpack-plugin](https://github.com/mikeerickson/todo-webpack-plugin)
 
 ## API
 
@@ -214,8 +215,8 @@ The `parsers` parameter must be completed in the following format:
         parserName: 'defaultParser'
     }
 }
-
 ```
+
 The `parserName` property can also be an array of parser names.
 
 ```js
@@ -346,8 +347,7 @@ const todos = leasot.parse({
     });
 ```
 
-
-### .reporter(comments, config)
+### `.reporter(comments, config)`
 
 Use the specified reporter to report the comments.
 

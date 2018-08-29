@@ -35,7 +35,7 @@
     "lib",
     "bin"
   ],
-  "keywords": "fixme, todo, comments, list, parse, generator, ci, productivity, automation",
+  "keywords": ["fixme", "todo", "comments", "list", "parse", "generator", "ci", "productivity", "automation"],
   "license": "MIT",
   "main": "index.js",
   "repository": "pgilad/leasot",
