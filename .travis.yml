@@ -1,19 +1,19 @@
 sudo: false
 language: node_js
 node_js:
-- 6
-- 8
-- 9
+    - 6
+    - 8
+    - 9
 cache:
-  directories:
-    - node_modules
+    directories:
+        - node_modules
 matrix:
-  fast_finish: true
+    fast_finish: true
 script:
-  - npm run lint
-  - npm run prettier-check
-  - npm run test
+    - npm run lint
+    - npm run prettier-check
+    - npm run test
 notifications:
-  email:
-    on_success: never
-    on_failure: always
+    email:
+        on_success: never
+        on_failure: always

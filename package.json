@@ -22,7 +22,9 @@
   },
   "devDependencies": {
     "eslint": "^5.4.0",
+    "husky": "^1.0.0-rc.13",
     "jsdoc-to-markdown": "^4.0.1",
+    "lint-staged": "^7.2.2",
     "mocha": "^5.2.0",
     "prettier": "^1.14.2",
     "should": "^13.2.3"
@@ -52,7 +54,16 @@
   "scripts": {
     "test": "mocha -R spec ./tests/*.js",
     "lint": "eslint .",
-    "prettier": "prettier --write '{bin,lib}/**/*.js' 'tests/*.js'",
-    "prettier-check": "prettier --list-different '{bin,lib}/**/*.js' 'tests/*.js'"
+    "prettier": "prettier --write '**/*.{js,yml}'",
+    "prettier-check": "prettier --list-different '**/*.{js,yml}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.yml": ["prettier --write", "git add"],
+    "*.js": ["prettier --write", "eslint", "git add"]
   }
 }
