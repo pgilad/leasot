@@ -52,7 +52,7 @@
   "main": "index.js",
   "repository": "pgilad/leasot",
   "scripts": {
-    "test": "mocha -R spec ./tests/*.js",
+    "test": "mocha -R spec './tests/*.js'",
     "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,yml}'",
     "prettier-check": "prettier --list-different '**/*.{js,yml}'"
