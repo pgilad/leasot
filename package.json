@@ -63,7 +63,14 @@
     }
   },
   "lint-staged": {
-    "*.yml": ["prettier --write", "git add"],
-    "*.js": ["prettier --write", "eslint", "git add"]
+    "*.yml": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
   }
 }
