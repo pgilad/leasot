@@ -9,17 +9,11 @@ node_js:
 cache:
     directories:
         - node_modules
-matrix:
-    fast_finish: true
 
-jobs:
-    include:
-        - name: lint
-          script: npm run lint
-        - name: prettier
-          script: npm run prettier-check
-        - name: test
-          script: npm test
+script:
+    - npm run lint
+    - npm run prettier-check
+    - npm run test
 
 notifications:
     email: false
