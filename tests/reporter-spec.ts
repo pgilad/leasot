@@ -1,26 +1,28 @@
-"use strict";
-exports.__esModule = true;
-var fs = require("fs");
-var leasot = require("../src/index");
-var path = require("path");
-var should = require("should");
-var definitions_1 = require("../src/definitions");
-var eol_1 = require("eol");
-function getFixturePath(file) {
+import * as fs from 'fs';
+import * as leasot from '../src/index';
+import * as path from 'path';
+import * as should from 'should';
+import { BuiltinReporters, ParseConfig, ReporterName } from '../src/definitions';
+import { split } from 'eol';
+
+function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);
 }
-function getReport(filename, reporter, parseOptions) {
+
+function getReport(filename: string, reporter: ReporterName, parseOptions: ParseConfig) {
     parseOptions.filename = filename;
-    var content = fs.readFileSync(filename, 'utf8');
-    var comments = leasot.parse(content, parseOptions);
-    var report = leasot.report(comments, reporter);
-    return eol_1.split(report);
+
+    const content = fs.readFileSync(filename, 'utf8');
+    const comments = leasot.parse(content, parseOptions);
+    const report = leasot.report(comments, reporter);
+    return split(report);
 }
-describe('reporting', function () {
-    describe('vscode', function () {
-        it('typescript', function () {
-            var file = getFixturePath('typescript.ts');
-            var report = getReport(file, definitions_1.BuiltinReporters.vscode, { extension: '.ts' });
+
+describe('reporting', function() {
+    describe('vscode', function() {
+        it('typescript', function() {
+            const file = getFixturePath('typescript.ts');
+            const report = getReport(file, BuiltinReporters.vscode, { extension: '.ts' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',
@@ -34,9 +36,10 @@ describe('reporting', function () {
                 '| [' + file + '](' + file + '#L11) | 11 | use jquery',
             ]);
         });
-        it('reference-leading', function () {
-            var file = getFixturePath('reference-leading.js');
-            var report = getReport(file, definitions_1.BuiltinReporters.vscode, { extension: '.js' });
+
+        it('reference-leading', function() {
+            const file = getFixturePath('reference-leading.js');
+            const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',
@@ -45,9 +48,10 @@ describe('reporting', function () {
                 '| [' + file + '](' + file + '#L3) | 3 | @tregusti Use Symbol instead',
             ]);
         });
-        it('edge-cases', function () {
-            var file = getFixturePath('edge-cases.js');
-            var report = getReport(file, definitions_1.BuiltinReporters.vscode, { extension: '.js' });
+
+        it('edge-cases', function() {
+            const file = getFixturePath('edge-cases.js');
+            const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',

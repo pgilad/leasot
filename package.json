@@ -4,37 +4,48 @@
   "version": "6.6.2",
   "author": "Gilad Peleg <giladp007@gmail.com> (http://giladpeleg.com)",
   "bin": {
-    "leasot": "./bin/leasot.js",
-    "leasot-reporter": "./bin/leasot-reporter.js"
+    "leasot": "./bin/leasot",
+    "leasot-reporter": "./bin/leasot-reporter"
   },
   "dependencies": {
     "async": "^2.6.1",
     "chalk": "^2.4.1",
-    "commander": "^2.17.1",
+    "commander": "^2.18.0",
     "eol": "^0.9.1",
     "get-stdin": "^6.0.0",
     "globby": "^8.0.1",
     "json2xml": "^0.1.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "log-symbols": "^2.2.0",
     "strip-ansi": "^4.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
-    "husky": "^1.0.0-rc.13",
+    "@types/async": "^2.0.49",
+    "@types/get-stdin": "^5.0.1",
+    "@types/globby": "^8.0.0",
+    "@types/log-symbols": "^2.0.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.10.3",
+    "@types/strip-ansi": "^3.0.0",
+    "@types/text-table": "^0.2.0",
+    "gh-pages": "^2.0.0",
+    "husky": "^1.0.0-rc.15",
     "jsdoc-to-markdown": "^4.0.1",
-    "lint-staged": "^7.2.2",
+    "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
-    "prettier": "^1.14.2",
-    "should": "^13.2.3"
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "should": "^13.2.3",
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.12.0",
+    "typescript": "^3.0.3"
   },
   "engines": {
-    "node": ">=6.4.0"
+    "node": ">=6.14.4"
   },
   "files": [
-    "index.js",
-    "lib",
+    "dist",
     "bin"
   ],
   "keywords": [
@@ -46,16 +57,22 @@
     "generator",
     "ci",
     "productivity",
-    "automation"
+    "automation",
+    "typescript",
+    "prettier"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "pgilad/leasot",
   "scripts": {
-    "test": "mocha -R spec './tests/*.js'",
-    "lint": "eslint .",
-    "prettier": "prettier --write '**/*.{js,yml}'",
-    "prettier-check": "prettier --list-different '**/*.{js,yml}'"
+    "clean": "rimraf docs dist",
+    "build": "tsc -p tsconfig.json",
+    "docs": "typedoc --name leasot --readme none --out docs --target es6 --mode file --excludeNotExported --excludePrivate src",
+    "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
+    "test": "mocha --require ts-node/register -R spec './tests/*.ts'",
+    "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
+    "prettier-check": "prettier --list-different 'src/**/*.ts' 'tests/*.ts'"
   },
   "husky": {
     "hooks": {
@@ -67,8 +84,7 @@
       "prettier --write",
       "git add"
     ],
-    "*.js": [
-      "eslint --fix",
+    "*.ts": [
       "prettier --write",
       "git add"
     ]

@@ -11,8 +11,8 @@ cache:
         - node_modules
 
 script:
-    - npm run lint
     - npm run prettier-check
+    - npm run build
     - npm run test
 
 notifications:

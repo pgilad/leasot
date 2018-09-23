@@ -10,6 +10,14 @@
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
+**NEW!! Version `7.0.0`**
+
+**Re-written completely in Typescript**
+
+**Warning: version `7.0.0` introduced breaking changes. If you rely on `leasot`'s API. Please upgrade carefully!!**
+
+Documentation is up at https://pgilad.github.io/leasot
+
 ![Basic output example of leasot](media/table.png)
 
 ## Comment format
@@ -24,7 +32,9 @@ to extract your todos from comments.
 - Supported default types are `TODO` and `FIXME` - case insensitive.
 - Additional types can be added (using `tags` in cli and `customTags` in `leasot.parse`)
 - New extensions can be associated with bundled parsers as many languages have overlapping syntax
-- Supports both leading and trailing references. E.g. `// TODO(tregusti): Make this better` or `// TODO: Text /tregusti`
+- Supports both leading and trailing references. Examples:
+    - `// TODO(tregusti): Make this better`
+    - `// TODO: Text /tregusti`
 
 ## Supported languages:
 
@@ -152,7 +162,7 @@ run `leasot` in a CI tool to generate todos.
         "todo-ci": "leasot -x --reporter markdown 'src/**/*.js' > TODO.md"
     },
     "devDependencies": {
-        "leasot": "*"
+        "leasot": "^6.6.6"
     }
 }
 ```
@@ -176,14 +186,11 @@ const contents = fs.readFileSync('./contents.js', 'utf8');
 const filetype = path.extname('./contents.js');
 // add file for better reporting
 const file = 'contents.js';
-const todos = leasot.parse({ ext: filetype, content: contents, fileName: file });
+const todos = leasot.parse(content, { extension: filetype, filename: file });
 
 // -> todos now contains the array of todos/fixme parsed
 
-const output = leasot.reporter(todos, {
-    reporter: 'json',
-    spacing: 2
-});
+const output = leasot.reporter(todos, 'json', { spacing: 2 });
 
 console.log(output);
 // -> json output of the todos
@@ -201,185 +208,16 @@ console.log(output);
 const leasot = require('leasot');
 ```
 
-`leasot` exposes the following API:
+See [main exported functions](src/index.ts)
 
-### .associateExtWithParser(parsers)
+Mainly, you should be using 2 functions:
 
-Associates a parser with a new extension.
-
-The `parsers` parameter must be completed in the following format:
-
-```js
-{
-    '.cls': {
-        parserName: 'defaultParser'
-    }
-}
-```
-
-The `parserName` property can also be an array of parser names.
-
-```js
-{
-    '.sql': {
-        parserName: ['defaultParser', 'haskellParser']
-    }
-}
-```
-
-### .isExtSupported(extension)
-
-Check whether extension is supported by a built-in parser.
-
-Specify an extension including the prefixing dot, for example:
-
-`leasot.isExtSupported('.js'); //-> true`
-
-**Returns**: `Boolean`
-
-### .parse(options)
-
-| Name                | Type       | Required | Default | Description                                           |
-| ----                | ----       | -------- | ------- | -----------                                           |
-| `ext`               | `string`   | Yes      |         | The extension the parse as including a prefixing dot. |
-| `content`           | `string`   | Yes      |         | Content to parse                                      |
-| `associateParser`   | `object`   | No       |         | See `.associateExtWithParser` for syntax              |
-| `customParsers`     | `object`   | No       |         | See `Custom Parsers` for syntax              |
-| `customTags`        | `array`    | No       | `[]`    | Additional tags (comment types) to search for (alongside todo & fixme) |
-| `fileName`          | `string`   | No       |         | fileName to attach to todos output                    |
-| `withIncludedFiles` | `boolean`  | No       | `false` | Parse also possible included file types (for example: `css` inside a `php` file |
-
-**Returns**: `array` of comments.
-
-```js
-[{
-    file: 'parsedFile.js',
-    text: 'comment text',
-    kind: 'TODO',
-    line: 8,
-    ref: 'reference'
-}]
-```
-
-**Note** that tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS
-
-#### Custom Parsers
-
-Custom parsers can be supplied via the `customParsers` option to the `parse` programmatic api. These are in the format:
-
-```js
-{
-    '<parserName>': () => parserFactory
-}
-```
-
-Example:
-
-```js
-const leasot = require('leasot');
-
-const todos = leasot.parse({
-        ext: filetype,
-        content: contents,
-        fileName: file,
-        associateParser: {
-            '.myExt1': { parserName: 'myCustomParser1' },
-            '.myExt2': { parserName: 'myCustomParser2' },
-        },
-        customParsers: {
-            myCustomParser1: function (parseOptions) {
-                return function parse(contents, file) {
-                    const comments = [];
-                     comments.push({
-                        file: '',   // The file path, eg |file || 'unknown file'""
-                        kind: '',   // One of the keywords such as `TODO` and `FIXME`.
-                        line: 0,    // The line number
-                        text: '',   // The comment text
-                        ref: ''     // The optional (eg. leading and trailing) references in the comment
-                    });
-                    return comments;
-                }
-            },
-            myCustomParser2: function (parseOptions) {
-                // etc
-            },
-        }
-    });
-```
-
-Note as above you will need to associate any **new** extensions using `associateExtWithParser`.
-You can overwrite the built in parsers by naming them the same, eg, overwrite the default parser:
-
-```js
- customParsers: {
-        defaultParser: function (parseOptions) {
-            // etc
-        }
-    }
-```
-
-See the [built-in parsers](lib/parsers) for examples
-
-#### Utils
-
-There are some built in utils for todo parsing that may be useful for custom parsers:
-
-```js
-const leasot = require('leasot');
-const prepareComment = require('leasot/lib/utils/comments').prepareComment;
-
-const todos = leasot.parse({
-        ext: '.myExt',
-        content: contents,
-        fileName: file,
-        associateParser: {
-            '.myExt': { parserName: 'myCustomParser' },
-        },
-        customParsers: {
-            myCustomParser: function (parseOptions) {
-                return function parse(contents, file) {
-                    const comment = prepareComment(match, index + 1, file);
-                    comments.push(comment);
-                    return comments;
-                }
-            }
-        }
-    });
-```
-
-### `.reporter(comments, config)`
-
-Use the specified reporter to report the comments.
-
-`comments` is the array of comments received from `leasot.parse()`.
-
-`config` is an object that will also be passed to the reporter itself (allowing custom options for each reporter).
-
-It may also contain the specified reporter:
-
-#### `config.reporter`
-
-Can be a string indicating the [built-in reporter](#built-in-reporters) to use,
- or an external library used as a reporter.
-
-Could also be a custom function `(comments, config)`
-
-**Type**: `String|Function`
-
-**Required**: `false`
-
-**Default**: `raw`
+- [parse](https://pgilad.github.io/leasot/index.html#parse) for parsing file contents
+- [report](https://pgilad.github.io/leasot/index.html#report) for reporting the todos
 
 ## Built-in Reporters
 
-- json
-- xml
-- raw
-- table
-- markdown
-- vscode
-
-See the [docs](docs/REPORTERS.md)
+See [built-in reporters](https://pgilad.github.io/leasot/enums/builtinreporters.html)
 
 ## License
 

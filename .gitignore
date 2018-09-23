@@ -1,4 +1,6 @@
-/.idea
-/node_modules
-/npm-debug.log
-/tmp
+.idea/
+node_modules/
+npm-debug.log
+tmp/
+dist/
+docs/

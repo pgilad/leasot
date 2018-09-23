@@ -1,0 +1,11 @@
+'use strict';
+exports.__esModule = true;
+var parsers_1 = require('./lib/parsers');
+exports.associateExtWithParser = parsers_1.associateExtWithParser;
+exports.isExtensionSupported = parsers_1.isExtensionSupported;
+exports.parse = parsers_1.parse;
+var reporters_1 = require('./lib/reporters');
+exports.report = reporters_1.report;
+var utils_1 = require('./lib/utils');
+exports.getRegex = utils_1.getRegex;
+exports.prepareComment = utils_1.prepareComment;
