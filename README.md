@@ -10,7 +10,9 @@
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
-**NEW!! Version `7.0.0`**
+**NEW!! Version `7.0.0-rc.1` RFC**
+
+Install using `npm i -D leasot@next` 
 
 **Re-written completely in Typescript**
 
