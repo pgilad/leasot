@@ -51,7 +51,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="index.html">Globals</a>
 				</li>
 			</ul>
 			<h1> leasot</h1>
@@ -61,420 +61,658 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<p><img src="media/leasot.png" alt="leasot"></p>
-				<blockquote>
-					<p>Parse and output TODOs and FIXMEs from comments in your files</p>
-				</blockquote>
-				<p><a href="https://npmjs.org/package/leasot"><img src="http://img.shields.io/npm/v/leasot.svg?style=flat" alt="NPM Version"></a>
-					<a href="https://npmjs.org/package/leasot"><img src="http://img.shields.io/npm/dm/leasot.svg?style=flat" alt="NPM Downloads"></a>
-					<a href="https://travis-ci.org/pgilad/leasot"><img src="http://img.shields.io/travis/pgilad/leasot.svg?style=flat" alt="Build Status"></a>
-				<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier"></a></p>
-				<p>Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
-				to extract your todos from comments.</p>
-				<p><strong>Re-written completely in Typescript</strong></p>
-				<p><strong>Warning: version <code>7.0.0</code> introduced breaking changes. If you rely on <code>leasot</code>&#39;s API. Please upgrade carefully!!</strong></p>
-				<p><img src="media/table.png" alt="Basic output example of leasot"></p>
-				<h2 id="comment-format">Comment format</h2>
-				<p><code>TODO: add some info</code></p>
-				<ul>
-					<li>Spaces are optional.</li>
-					<li>Colon is optional.</li>
-					<li>Must be in a comment (line or block) in its&#39; own line (<code>some code(); //TODO: do something</code> is not supported).</li>
-					<li>Can be prefixed with a @ (i.e @TODO).</li>
-					<li>Spaces are trimmed around comment text.</li>
-					<li>Supported default types are <code>TODO</code> and <code>FIXME</code> - case insensitive.</li>
-					<li>Additional types can be added (using <code>tags</code> in cli and <code>customTags</code> in <code>leasot.parse</code>)</li>
-					<li>New extensions can be associated with bundled parsers as many languages have overlapping syntax</li>
-					<li>Supports both leading and trailing references. Examples:<ul>
-							<li><code>// TODO(tregusti): Make this better</code></li>
-							<li><code>// TODO: Text /tregusti</code></li>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum"><a href="enums/builtinreporters.html" class="tsd-kind-icon">Builtin<wbr>Reporters</a></li>
+								<li class="tsd-kind-enum"><a href="enums/defaulttags.html" class="tsd-kind-icon">Default<wbr>Tags</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/customparsers.html" class="tsd-kind-icon">Custom<wbr>Parsers</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/extensionconfig.html" class="tsd-kind-icon">Extension<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/extensionsdb.html" class="tsd-kind-icon">Extensions<wbr>Db</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/jsonreporterconfig.html" class="tsd-kind-icon">Json<wbr>Reporter<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/parseconfig.html" class="tsd-kind-icon">Parse<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/parserfactoryconfig.html" class="tsd-kind-icon">Parser<wbr>Factory<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/reporterconfig.html" class="tsd-kind-icon">Reporter<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/todocomment.html" class="tsd-kind-icon">Todo<wbr>Comment</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/transformedcomments.html" class="tsd-kind-icon">Transformed<wbr>Comments</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/xmlreporterconfig.html" class="tsd-kind-icon">XMLReporter<wbr>Config</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="index.html#parser" class="tsd-kind-icon">Parser</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#parserfactory" class="tsd-kind-icon">Parser<wbr>Factory</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#reportitems" class="tsd-kind-icon">Report<wbr>Items</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#reportername" class="tsd-kind-icon">Reporter<wbr>Name</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#tag" class="tsd-kind-icon">Tag</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#transformcomment" class="tsd-kind-icon">Transform<wbr>Comment</a></li>
+								<li class="tsd-kind-type-alias"><a href="index.html#transformheader" class="tsd-kind-icon">Transform<wbr>Header</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="index.html#associateextwithparser" class="tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser</a></li>
+								<li class="tsd-kind-function"><a href="index.html#getregex" class="tsd-kind-icon">get<wbr>Regex</a></li>
+								<li class="tsd-kind-function"><a href="index.html#isextensionsupported" class="tsd-kind-icon">is<wbr>Extension<wbr>Supported</a></li>
+								<li class="tsd-kind-function"><a href="index.html#loadreporter" class="tsd-kind-icon">load<wbr>Reporter</a></li>
+								<li class="tsd-kind-function"><a href="index.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-function"><a href="index.html#preparecomment" class="tsd-kind-icon">prepare<wbr>Comment</a></li>
+								<li class="tsd-kind-function"><a href="index.html#report" class="tsd-kind-icon">report</a></li>
+								<li class="tsd-kind-function"><a href="index.html#reporter" class="tsd-kind-icon">reporter</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="parser" class="tsd-anchor"></a>
+					<h3>Parser</h3>
+					<div class="tsd-signature tsd-kind-icon">Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L136">definitions.ts:136</a></li>
 						</ul>
-					</li>
-				</ul>
-				<h2 id="supported-languages-">Supported languages:</h2>
-				<table>
-					<thead>
-						<tr>
-							<th>Filetype</th>
-							<th>Extension</th>
-							<th>Notes</th>
-							<th>Parser Name</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>C#</td>
-							<td><code>.cs</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>C++/C</td>
-							<td><code>.cpp</code> <code>.c</code> <code>.h</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Coffee-React</td>
-							<td><code>.cjsx</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>Coffeescript</td>
-							<td><code>.coffee</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>Crystal</td>
-							<td><code>.cr</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>CSon</td>
-							<td><code>.cson</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>CSS</td>
-							<td><code>.css</code></td>
-							<td>Supports <code>/* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>EJS</td>
-							<td><code>.ejs</code></td>
-							<td>Supports <code>&lt;!-- --&gt;</code> and <code>&lt;%# %&gt;</code></td>
-							<td>ejsParser</td>
-						</tr>
-						<tr>
-							<td>Erb</td>
-							<td><code>.erb</code></td>
-							<td>Supports <code>&lt;!-- --&gt;</code> and <code>&lt;%# %&gt;</code></td>
-							<td>ejsParser</td>
-						</tr>
-						<tr>
-							<td>Erlang</td>
-							<td><code>.erl</code> <code>.hrl</code></td>
-							<td>Supports <code>%</code> comments.</td>
-							<td>erlangParser</td>
-						</tr>
-						<tr>
-							<td>Go</td>
-							<td><code>.go</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Haml</td>
-							<td><code>.haml</code></td>
-							<td>Supports <code>/ -# &lt;!-- --&gt; and &lt;%# %&gt;</code></td>
-							<td>twigParser</td>
-						</tr>
-						<tr>
-							<td>Handlebars</td>
-							<td><code>.hbs</code> <code>.handlebars</code></td>
-							<td>Supports <code>{{! }}</code> and <code>{{!-- --}}</code></td>
-							<td>hbsParser</td>
-						</tr>
-						<tr>
-							<td>Haskell</td>
-							<td><code>.hs</code></td>
-							<td>Supports <code>--</code></td>
-							<td>haskellParser</td>
-						</tr>
-						<tr>
-							<td>Hogan</td>
-							<td><code>.hgn</code> <code>.hogan</code></td>
-							<td>Supports <code>{{! }}</code> and <code>{{!-- --}}</code></td>
-							<td>hbsParser</td>
-						</tr>
-						<tr>
-							<td>HTML</td>
-							<td><code>.html</code> <code>.htm</code></td>
-							<td>Supports <code>&lt;!-- --&gt;</code></td>
-							<td>twigParser</td>
-						</tr>
-						<tr>
-							<td>Jade</td>
-							<td><code>.jade</code> <code>.pug</code></td>
-							<td>Supports <code>//</code> and <code>//-</code> comments.</td>
-							<td>jadeParser</td>
-						</tr>
-						<tr>
-							<td>Java</td>
-							<td><code>.java</code></td>
-							<td>Supports <code>// and /* */</code> comments</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Javascript</td>
-							<td><code>.js</code> <code>.es</code> <code>.es6</code></td>
-							<td>Supports <code>// and /* */</code> comments</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Jsx</td>
-							<td><code>.jsx</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Kotlin</td>
-							<td><code>.kt</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Latex</td>
-							<td><code>.tex</code></td>
-							<td>Supports <code>\begin{comment}</code> and <code>%</code> comments</td>
-							<td>latexParser</td>
-						</tr>
-						<tr>
-							<td>Less</td>
-							<td><code>.less</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Mustache</td>
-							<td><code>.mustache</code></td>
-							<td>Supports <code>{{! }}</code> and <code>{{!-- --}}</code></td>
-							<td>hbsParser</td>
-						</tr>
-						<tr>
-							<td>Nunjucks</td>
-							<td><code>.njk</code></td>
-							<td>Supports <code>{#  #}</code> and <code>&lt;!-- --&gt;</code></td>
-							<td>twigParser</td>
-						</tr>
-						<tr>
-							<td>Objective-C</td>
-							<td><code>.m</code></td>
-							<td>Supports <code>// and /* */</code> comments</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Objective-C++</td>
-							<td><code>.mm</code></td>
-							<td>Supports <code>// and /* */</code> comments</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Pascal</td>
-							<td><code>.pas</code></td>
-							<td>Supports <code>// and { }</code> comments.</td>
-							<td>pascalParser</td>
-						</tr>
-						<tr>
-							<td>Perl</td>
-							<td><code>.pl</code>, <code>.pm</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>PHP</td>
-							<td><code>.php</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Python</td>
-							<td><code>.py</code></td>
-							<td>Supports <code>&quot;&quot;&quot;</code> and <code>#</code> comments.</td>
-							<td>pythonParser</td>
-						</tr>
-						<tr>
-							<td>Ruby</td>
-							<td><code>.rb</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>Sass</td>
-							<td><code>.sass</code> <code>.scss</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Scala</td>
-							<td><code>.scala</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Shell</td>
-							<td><code>.sh</code> <code>.zsh</code> <code>.bash</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-						<tr>
-							<td>SilverStripe</td>
-							<td><code>.ss</code></td>
-							<td>Supports <code>&lt;%-- --%&gt;</code> comments.</td>
-							<td>ssParser</td>
-						</tr>
-						<tr>
-							<td>SQL</td>
-							<td><code>.sql</code></td>
-							<td>Supports <code>--</code> and <code>/* */</code> comments</td>
-							<td>defaultParser &amp; haskellParser</td>
-						</tr>
-						<tr>
-							<td>Stylus</td>
-							<td><code>.styl</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Swift</td>
-							<td><code>.swift</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Twig</td>
-							<td><code>.twig</code></td>
-							<td>Supports <code>{#  #}</code> and <code>&lt;!-- --&gt;</code></td>
-							<td>twigParser</td>
-						</tr>
-						<tr>
-							<td>Typescript</td>
-							<td><code>.ts</code>, <code>.tsx</code></td>
-							<td>Supports <code>// and /* */</code> comments.</td>
-							<td>defaultParser</td>
-						</tr>
-						<tr>
-							<td>Vue</td>
-							<td><code>.vue</code></td>
-							<td>Supports <code>//</code> <code>/* */</code> <code>&lt;!-- --&gt;</code> comments.</td>
-							<td>twigParser</td>
-						</tr>
-						<tr>
-							<td>Yaml</td>
-							<td><code>.yaml</code> <code>.yml</code></td>
-							<td>Supports <code>#</code> comments.</td>
-							<td>coffeeParser</td>
-						</tr>
-				</tbody></table>
-				<p>Javascript is the default parser.</p>
-				<p><strong>PRs for additional filetypes is most welcomed!!</strong></p>
-				<h2 id="usage">Usage</h2>
-				<h3 id="command-line">Command Line</h3>
-				<h4 id="installation">Installation</h4>
-				<pre><code class="language-sh">$ npm install --global leasot</code></pre>
-				<h4 id="examples">Examples</h4>
-				<pre><code class="language-sh">$ leasot --<span class="hljs-built_in">help</span>
-
-  Usage: leasot [options] &lt;file ...&gt;
-
-  Parse and output TODOs and FIXMEs from comments <span class="hljs-keyword">in</span> your files
-
-  Options:
-
-    -h, --<span class="hljs-built_in">help</span>                           output usage information
-    -V, --version                        output the version number
-    -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
-    -i, --ignore &lt;patterns&gt;              add ignore patterns
-    -I, --inline-files                   parse possible inline files
-    -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table)
-    -S, --skip-unsupported               skip unsupported filetypes
-    -t, --filetype [filetype]            force the filetype to parse. Useful <span class="hljs-keyword">for</span> streams (default: .js)
-    -T, --tags &lt;tags&gt;                    add additional comment types to find (alongside todo &amp; fixme)
-    -x, --<span class="hljs-built_in">exit</span>-nicely                    <span class="hljs-built_in">exit</span> with <span class="hljs-built_in">exit</span> code 0 even <span class="hljs-keyword">if</span> todos/fixmes are found
-
-  Examples:
-
-    <span class="hljs-comment"># Check a specific file</span>
-    $ leasot index.js
-
-    <span class="hljs-comment"># Check php files with glob</span>
-    $ leasot **/*.php
-
-    <span class="hljs-comment"># Check multiple different filetypes</span>
-    $ leasot app/**/*.js test.rb
-
-    <span class="hljs-comment"># Use the json reporter</span>
-    $ leasot --reporter json index.js
-
-    <span class="hljs-comment"># Search for REVIEW comments as well</span>
-    $ leasot --tags review index.js
-
-    <span class="hljs-comment"># Add ignore pattern to filter matches</span>
-    $ leasot app/**/*.js --ignore <span class="hljs-string">"**/custom.js"</span>
-
-    <span class="hljs-comment"># Search for REVIEW comments as well</span>
-    $ leasot --tags review index.js
-
-    <span class="hljs-comment"># Check a stream specifying the filetype as coffee</span>
-    $ cat index.coffee | leasot --filetype .coffee
-
-    <span class="hljs-comment"># Report from leasot parsing and filter todos using `jq`</span>
-    $ leasot tests/**/*.styl --reporter json | jq <span class="hljs-string">'map(select(.kind == "TODO"))'</span> | leasot-reporter</code></pre>
-				<h4 id="usage-in-npm-scripts">Usage in NPM scripts</h4>
-				<p>Use <code>leasot -x</code> in order to prevent exiting with a non-zero exit code. This is a good solution if you plan to
-				run <code>leasot</code> in a CI tool to generate todos.</p>
-				<pre><code class="language-json">{
-    <span class="hljs-attr">"scripts"</span>: {
-        <span class="hljs-attr">"todo"</span>: <span class="hljs-string">"leasot 'src/**/*.js'"</span>,
-        <span class="hljs-attr">"todo-ci"</span>: <span class="hljs-string">"leasot -x --reporter markdown 'src/**/*.js' &gt; TODO.md"</span>
-    },
-    <span class="hljs-attr">"devDependencies"</span>: {
-        <span class="hljs-attr">"leasot"</span>: <span class="hljs-string">"*"</span>
-    }
-}</code></pre>
-				<h3 id="programmatic">Programmatic</h3>
-				<h4 id="installation">Installation</h4>
-				<pre><code class="language-sh">$ npm install --save-dev leasot</code></pre>
-				<h4 id="examples">Examples</h4>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
-<span class="hljs-keyword">const</span> leasot = <span class="hljs-built_in">require</span>(<span class="hljs-string">'leasot'</span>);
-
-<span class="hljs-keyword">const</span> contents = fs.readFileSync(<span class="hljs-string">'./contents.js'</span>, <span class="hljs-string">'utf8'</span>);
-<span class="hljs-comment">// get the filetype of the file, or force a special parser</span>
-<span class="hljs-keyword">const</span> filetype = path.extname(<span class="hljs-string">'./contents.js'</span>);
-<span class="hljs-comment">// add file for better reporting</span>
-<span class="hljs-keyword">const</span> file = <span class="hljs-string">'contents.js'</span>;
-<span class="hljs-keyword">const</span> todos = leasot.parse(content, { <span class="hljs-attr">ext</span>: filetype, <span class="hljs-attr">filename</span>: file });
-
-<span class="hljs-comment">// -&gt; todos now contains the array of todos/fixme parsed</span>
-
-<span class="hljs-keyword">const</span> output = leasot.reporter(todos, <span class="hljs-string">'json'</span>, { <span class="hljs-attr">spacing</span>: <span class="hljs-number">2</span> });
-
-<span class="hljs-built_in">console</span>.log(output);
-<span class="hljs-comment">// -&gt; json output of the todos</span></code></pre>
-				<h3 id="build-time">Build Time</h3>
-				<ul>
-					<li><a href="https://github.com/pgilad/gulp-todo">gulp-todo</a></li>
-					<li><a href="https://github.com/sivakumar-kailasam/broccoli-leasot">broccoli-leasot</a></li>
-					<li><a href="https://github.com/mikeerickson/todo-webpack-plugin">todo-webpack-plugin</a></li>
-				</ul>
-				<h2 id="api">API</h2>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> leasot = <span class="hljs-built_in">require</span>(<span class="hljs-string">'leasot'</span>);</code></pre>
-				<p>See <a href="src/index.ts">main exported functions</a></p>
-				<h2 id="built-in-reporters">Built-in Reporters</h2>
-				<p>See <a href="src/definitions.ts#BuiltinReporters">built-in reporters</a></p>
-				<ul>
-					<li>json</li>
-					<li>xml</li>
-					<li>raw</li>
-					<li>table</li>
-					<li>markdown</li>
-					<li>vscode</li>
-				</ul>
-				<h2 id="license">License</h2>
-				<p>MIT ©<a href="http://giladpeleg.com">Gilad Peleg</a></p>
-			</div>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>receive the contents and file and return a list of parsed items</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>contents: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>file: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="parserfactory" class="tsd-anchor"></a>
+					<h3>Parser<wbr>Factory</h3>
+					<div class="tsd-signature tsd-kind-icon">Parser<wbr>Factory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L141">definitions.ts:141</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A factory to return a parser</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="interfaces/parserfactoryconfig.html" class="tsd-signature-type">ParserFactoryConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#parser" class="tsd-signature-type">Parser</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>config: <a href="interfaces/parserfactoryconfig.html" class="tsd-signature-type">ParserFactoryConfig</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="index.html#parser" class="tsd-signature-type">Parser</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="reportitems" class="tsd-anchor"></a>
+					<h3>Report<wbr>Items</h3>
+					<div class="tsd-signature tsd-kind-icon">Report<wbr>Items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L150">definitions.ts:150</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Report the provided items</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>comments<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>comments: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+											<li>
+												<h5>config: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="reportername" class="tsd-anchor"></a>
+					<h3>Reporter<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">Reporter<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L151">definitions.ts:151</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="tag" class="tsd-anchor"></a>
+					<h3>Tag</h3>
+					<div class="tsd-signature tsd-kind-icon">Tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L12">definitions.ts:12</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Sometimes referred to as kind, this is usually a TODO or FIXME but can be any custom string</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="transformcomment" class="tsd-anchor"></a>
+					<h3>Transform<wbr>Comment</h3>
+					<div class="tsd-signature tsd-kind-icon">Transform<wbr>Comment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L153">definitions.ts:153</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, line<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, ref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">: </span><a href="index.html#tag" class="tsd-signature-type">Tag</a>, text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>file: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>line: <span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li>
+												<h5>ref: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>tag: <a href="index.html#tag" class="tsd-signature-type">Tag</a></h5>
+											</li>
+											<li>
+												<h5>text: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+											<span class="tsd-signature-symbol"> | </span>
+											<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+										</h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="transformheader" class="tsd-anchor"></a>
+					<h3>Transform<wbr>Header</h3>
+					<div class="tsd-signature tsd-kind-icon">Transform<wbr>Header<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/definitions.ts#L155">definitions.ts:155</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>tag<span class="tsd-signature-symbol">: </span><a href="index.html#tag" class="tsd-signature-type">Tag</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>tag: <a href="index.html#tag" class="tsd-signature-type">Tag</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+											<span class="tsd-signature-symbol"> | </span>
+											<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+										</h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="associateextwithparser" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> associate<wbr>Ext<wbr>With<wbr>Parser</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser<span class="tsd-signature-symbol">(</span>extendedDb<span class="tsd-signature-symbol">: </span><a href="interfaces/extensionsdb.html" class="tsd-signature-type">ExtensionsDb</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/parsers.ts#L68">lib/parsers.ts:68</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extend the extensions database at runtime, by either adding support for new extensions or overriding existing ones</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>extendedDb: <a href="interfaces/extensionsdb.html" class="tsd-signature-type">ExtensionsDb</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The extension database to extend with</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="getregex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Regex</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Regex<span class="tsd-signature-symbol">(</span>customTags<span class="tsd-signature-symbol">?: </span><a href="index.html#tag" class="tsd-signature-type">Tag</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/utils/comments.ts#L5">lib/utils/comments.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> customTags: <a href="index.html#tag" class="tsd-signature-type">Tag</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="isextensionsupported" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Extension<wbr>Supported</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Extension<wbr>Supported<span class="tsd-signature-symbol">(</span>extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/parsers.ts#L91">lib/parsers.ts:91</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check whether the provided extension is currently supported</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>extension: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>the extension to check</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="loadreporter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> load<wbr>Reporter</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Reporter<span class="tsd-signature-symbol">(</span>reporter<span class="tsd-signature-symbol">: </span><a href="index.html#reportername" class="tsd-signature-type">ReporterName</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters.ts#L7">lib/reporters.ts:7</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load the given reporter</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reporter: <a href="index.html#reportername" class="tsd-signature-type">ReporterName</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">void</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="parse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> parse</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, config<span class="tsd-signature-symbol">: </span><a href="interfaces/parseconfig.html" class="tsd-signature-type">ParseConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/parsers.ts#L116">lib/parsers.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parse the provided content and return an array of parsed items</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>content: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The contents to parse</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>config: <a href="interfaces/parseconfig.html" class="tsd-signature-type">ParseConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The parse configuration</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="preparecomment" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> prepare<wbr>Comment</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">prepare<wbr>Comment<span class="tsd-signature-symbol">(</span>match<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, line<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, filename<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/utils/comments.ts#L36">lib/utils/comments.ts:36</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>match: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>line: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> filename: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;unknown&quot;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="report" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> report</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">report<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, reporter<span class="tsd-signature-symbol">?: </span><a href="enums/builtinreporters.html" class="tsd-signature-type">BuiltinReporters</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportername" class="tsd-signature-type">ReporterName</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters.ts#L36">lib/reporters.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Report the provided items</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>items: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The items to report</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reporter: <a href="enums/builtinreporters.html" class="tsd-signature-type">BuiltinReporters</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportername" class="tsd-signature-type">ReporterName</a><span class="tsd-signature-symbol"> | </span><a href="index.html#reportitems" class="tsd-signature-type">ReportItems</a><span class="tsd-signature-symbol"> =&nbsp;BuiltinReporters.raw</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The reporter to use</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Reporter configuration</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="reporter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reporter</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/jsonreporterconfig.html" class="tsd-signature-type">JsonReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">reporter<span class="tsd-signature-symbol">(</span>todos<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="interfaces/xmlreporterconfig.html" class="tsd-signature-type">XMLReporterConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/custom.ts#L92">lib/reporters/custom.ts:92</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> config: <a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/json.ts#L7">lib/reporters/json.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="interfaces/jsonreporterconfig.html" class="tsd-signature-type">JsonReporterConfig</a><span class="tsd-signature-symbol"> =&nbsp;{ spacing: 2 }</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/markdown.ts#L16">lib/reporters/markdown.ts:16</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> config: <a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/raw.ts#L3">lib/reporters/raw.ts:3</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/table.ts#L57">lib/reporters/table.ts:57</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/vscode.ts#L16">lib/reporters/vscode.ts:16</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> config: <a href="interfaces/reporterconfig.html" class="tsd-signature-type">ReporterConfig</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/f5cc3fd/src/lib/reporters/xml.ts#L12">lib/reporters/xml.ts:12</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>todos: <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="interfaces/xmlreporterconfig.html" class="tsd-signature-type">XMLReporterConfig</a><span class="tsd-signature-symbol"> =&nbsp;{ header: true }</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class="globals current ">
+						<a href="index.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
@@ -496,6 +734,9 @@
 						<a href="interfaces/extensionsdb.html" class="tsd-kind-icon">Extensions<wbr>Db</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/jsonreporterconfig.html" class="tsd-kind-icon">Json<wbr>Reporter<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/parseconfig.html" class="tsd-kind-icon">Parse<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -510,50 +751,53 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/transformedcomments.html" class="tsd-kind-icon">Transformed<wbr>Comments</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#parser" class="tsd-kind-icon">Parser</a>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/xmlreporterconfig.html" class="tsd-kind-icon">XMLReporter<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#parserfactory" class="tsd-kind-icon">Parser<wbr>Factory</a>
+						<a href="index.html#parser" class="tsd-kind-icon">Parser</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#reporter" class="tsd-kind-icon">Reporter</a>
+						<a href="index.html#parserfactory" class="tsd-kind-icon">Parser<wbr>Factory</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#reportername" class="tsd-kind-icon">Reporter<wbr>Name</a>
+						<a href="index.html#reportitems" class="tsd-kind-icon">Report<wbr>Items</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#tag" class="tsd-kind-icon">Tag</a>
+						<a href="index.html#reportername" class="tsd-kind-icon">Reporter<wbr>Name</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#transformcomment" class="tsd-kind-icon">Transform<wbr>Comment</a>
+						<a href="index.html#tag" class="tsd-kind-icon">Tag</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#transformheader" class="tsd-kind-icon">Transform<wbr>Header</a>
+						<a href="index.html#transformcomment" class="tsd-kind-icon">Transform<wbr>Comment</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="index.html#transformheader" class="tsd-kind-icon">Transform<wbr>Header</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#associateextwithparser" class="tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser</a>
+						<a href="index.html#associateextwithparser" class="tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#getregex" class="tsd-kind-icon">get<wbr>Regex</a>
+						<a href="index.html#getregex" class="tsd-kind-icon">get<wbr>Regex</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#isextensionsupported" class="tsd-kind-icon">is<wbr>Extension<wbr>Supported</a>
+						<a href="index.html#isextensionsupported" class="tsd-kind-icon">is<wbr>Extension<wbr>Supported</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#loadreporter" class="tsd-kind-icon">load<wbr>Reporter</a>
+						<a href="index.html#loadreporter" class="tsd-kind-icon">load<wbr>Reporter</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
+						<a href="index.html#parse" class="tsd-kind-icon">parse</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#preparecomment" class="tsd-kind-icon">prepare<wbr>Comment</a>
+						<a href="index.html#preparecomment" class="tsd-kind-icon">prepare<wbr>Comment</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#report" class="tsd-kind-icon">report</a>
+						<a href="index.html#report" class="tsd-kind-icon">report</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#reporter" class="tsd-kind-icon">reporter</a>
+						<a href="index.html#reporter" class="tsd-kind-icon">reporter</a>
 					</li>
 				</ul>
 			</nav>
