@@ -73,7 +73,7 @@
     "test": "mocha --require ts-node/register -R spec './tests/*.ts'",
     "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
     "prettier-check": "prettier --list-different 'src/**/*.ts' 'tests/*.ts'",
-    "prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs"
+    "release:prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs"
   },
   "husky": {
     "hooks": {
