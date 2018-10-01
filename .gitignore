@@ -6,3 +6,4 @@ dist/
 docs/
 src/**/*.js
 tests/*.js
+.vscode/

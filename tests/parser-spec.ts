@@ -1,8 +1,8 @@
-import * as leasot from '../src/index';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as should from 'should';
+import should from 'should';
 import { CustomParsers, ParseConfig, Tag, TodoComment } from '../src/definitions';
+import * as leasot from '../src/index';
 
 function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);
@@ -540,17 +540,6 @@ describe('parsing', function() {
     });
 
     describe('custom tags', function() {
-        it('custom tags must be an array', function() {
-            const file = getFixturePath('custom-tags.rb');
-
-            (function() {
-                // @ts-ignore
-                getComments(file, {
-                    customTags: true,
-                });
-            }.should.throw(/customTags/));
-        });
-
         it('custom tags', function() {
             const file = getFixturePath('custom-tags.rb');
             const comments = getComments(file, {
