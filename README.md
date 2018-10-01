@@ -2,15 +2,16 @@
 
 > Parse and output TODOs and FIXMEs from comments in your files
 
-[![NPM Version](http://img.shields.io/npm/v/leasot.svg?style=flat)](https://npmjs.org/package/leasot)
-[![NPM Downloads](http://img.shields.io/npm/dm/leasot.svg?style=flat)](https://npmjs.org/package/leasot)
-[![Build Status](http://img.shields.io/travis/pgilad/leasot.svg?style=flat)](https://travis-ci.org/pgilad/leasot)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![npm](https://img.shields.io/npm/v/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
+[![npm (tag)](https://img.shields.io/npm/v/leasot/next.svg?style=for-the-badge)](https://npmjs.org/package/leasot)
+[![npm downloads](https://img.shields.io/npm/dm/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
+[![Travis (.org)](https://img.shields.io/travis/pgilad/leasot.svg?style=for-the-badge)](https://travis-ci.org/pgilad/leasot)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
-**NEW!! Version `7.0.0-rc.5` RFC**
+**NEW!! Leasot is in RC stage for version 7.0.0**
 
 Install using `npm i -D leasot@next`
 
