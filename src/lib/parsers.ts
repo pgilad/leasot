@@ -1,4 +1,4 @@
-import uniqWith from 'lodash/uniqwith';
+import uniqWith from 'lodash/uniqWith';
 import uniq from 'lodash/uniq';
 import { ExtensionsDb, ParseConfig, ParserFactoryConfig, TodoComment } from '../definitions';
 
