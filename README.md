@@ -10,9 +10,9 @@
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
-**NEW!! Version `7.0.0-rc.1` RFC**
+**NEW!! Version `7.0.0-rc.5` RFC**
 
-Install using `npm i -D leasot@next` 
+Install using `npm i -D leasot@next`
 
 **Re-written completely in Typescript**
 
@@ -164,7 +164,7 @@ run `leasot` in a CI tool to generate todos.
         "todo-ci": "leasot -x --reporter markdown 'src/**/*.js' > TODO.md"
     },
     "devDependencies": {
-        "leasot": "^7.0.0-rc.2"
+        "leasot": "^7.0.0-rc.5"
     }
 }
 ```
