@@ -1,4 +1,5 @@
-import { compact, defaults } from 'lodash';
+import defaults from 'lodash/defaults';
+import compact from 'lodash/compact';
 import { EOL } from 'os';
 import { ReportItems, ReporterConfig, Tag, TodoComment, TransformedComments } from '../../definitions';
 
