@@ -4,3 +4,5 @@ npm-debug.log
 tmp/
 dist/
 docs/
+src/**/*.js
+tests/*.js
