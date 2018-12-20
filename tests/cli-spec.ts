@@ -181,4 +181,28 @@ describe('check cli', function() {
             callback();
         });
     });
+
+    it('should match subdirectory files', function(callback) {
+        testCli(['fixtures_subdir'], ['--ignore', '**/*.(h|jsx)'], function(exitCode, log) {
+            should.exist(exitCode);
+            should.exist(log);
+            exitCode.should.equal(1);
+            log.should.eql([
+                '',
+                'tests/fixtures/fixtures_subdir/edge-cases.js',
+                '  line 1  TODO',
+                '  line 2  TODO',
+                '  line 3  TODO  text',
+                '  line 4  TODO  something / after slash',
+                '  line 5  TODO  something with a URL http://example.com/path',
+                '',
+                'tests/fixtures/fixtures_subdir/jsdoc2.js',
+                '  line 9  TODO  make this supported',
+                '',
+                ' ' + stripAnsi(logSymbols.error) + ' 6 todos/fixmes found',
+                '',
+            ]);
+            callback();
+        });
+    });
 });
