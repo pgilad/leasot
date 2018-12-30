@@ -416,6 +416,13 @@ describe('parsing', function() {
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 7, 'Support POST');
         });
+        it('handle # comments with withInlineFiles', function() {
+            const file = getFixturePath('yaml.yaml');
+            const comments = getComments(file, { withInlineFiles: true });
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 7, 'Support POST');
+        });
     });
 
     describe('bash', function() {
