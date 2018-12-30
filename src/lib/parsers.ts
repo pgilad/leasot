@@ -59,6 +59,7 @@ const parsersDb: ExtensionsDb = {
     '.twig': { parserName: 'twigParser' },
     '.vue': { parserName: 'twigParser', includedFiles: ['.html', '.js', '.css'] },
     '.yaml': { parserName: 'coffeeParser', includedFiles: ['.yml'] },
+    '.yml': { parserName: 'coffeeParser' },
     '.zsh': { parserName: 'coffeeParser' },
 };
 
