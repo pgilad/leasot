@@ -1,6 +1,13 @@
-![leasot](media/leasot.png)
+<h1 align="center">
+	<br>
+	<br>
+	<img width="320" src="media/leasot.png" alt="Leasot">
+	<br>
+	<br>
+	<br>
+</h1>
 
-> Parse and output TODOs and FIXMEs from comments in your files
+> Intelligently parse and output TODOs and FIXMEs from comments in your files
 
 [![npm](https://img.shields.io/npm/v/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
 [![npm downloads](https://img.shields.io/npm/dm/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
@@ -11,8 +18,6 @@ Easily extract, collect and report TODOs and FIXMEs in your code. This project u
 to extract your todos from comments.
 
 Install using `npm i -D leasot`
-
-**Warning: version `7.0.0` introduced breaking changes. If you rely on `leasot`'s API. Please upgrade carefully!!**
 
 Documentation is up at https://pgilad.github.io/leasot
 
