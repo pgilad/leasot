@@ -3,7 +3,6 @@
 > Parse and output TODOs and FIXMEs from comments in your files
 
 [![npm](https://img.shields.io/npm/v/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
-[![npm (tag)](https://img.shields.io/npm/v/leasot/next.svg?style=for-the-badge)](https://npmjs.org/package/leasot)
 [![npm downloads](https://img.shields.io/npm/dm/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
 [![Travis (.org)](https://img.shields.io/travis/pgilad/leasot.svg?style=for-the-badge)](https://travis-ci.org/pgilad/leasot)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
@@ -11,11 +10,7 @@
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
-**NEW!! Leasot is in RC stage for version 7.0.0**
-
-Install using `npm i -D leasot@next`
-
-**Re-written completely in Typescript**
+Install using `npm i -D leasot`
 
 **Warning: version `7.0.0` introduced breaking changes. If you rely on `leasot`'s API. Please upgrade carefully!!**
 
@@ -97,13 +92,13 @@ Javascript is the default parser.
 
 #### Installation
 
-```sh
-$ npm install --global leasot@next
+```bash
+npm install --global leasot
 ```
 
 #### Examples
 
-```sh
+```bash
 $ leasot --help
 
   Usage: leasot [options] <file ...>
@@ -174,8 +169,8 @@ run `leasot` in a CI tool to generate todos.
 
 #### Installation
 
-```sh
-$ npm install --save-dev leasot@next
+```bash
+npm install --save-dev leasot
 ```
 
 #### Examples

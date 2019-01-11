@@ -8,3 +8,4 @@ src/**/*.js
 tests/*.js
 .vscode/
 .DS_Store
+package-lock.json
