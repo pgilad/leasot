@@ -153,7 +153,7 @@ run `leasot` in a CI tool to generate todos.
         "todo-ci": "leasot -x --reporter markdown 'src/**/*.js' > TODO.md"
     },
     "devDependencies": {
-        "leasot": "^7.0.0-rc.5"
+        "leasot": "^7.0.0"
     }
 }
 ```
