@@ -17,10 +17,6 @@
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
 to extract your todos from comments.
 
-Install using `npm i -D leasot`
-
-Documentation is up at https://pgilad.github.io/leasot
-
 ![Basic output example of leasot](media/table.png)
 
 ## Comment format
@@ -39,7 +35,7 @@ Documentation is up at https://pgilad.github.io/leasot
     - `// TODO(tregusti): Make this better`
     - `// TODO: Text /tregusti`
 
-## Supported languages:
+## Supported languages
 
 | Filetype      | Extension            | Notes                                      | Parser Name         |
 | ------------  | -------------------- | -------------------------------------------| ------------------- |
@@ -87,42 +83,34 @@ Documentation is up at https://pgilad.github.io/leasot
 | Vue           | `.vue`               | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
 | Yaml          | `.yaml` `.yml`       | Supports `#` comments.                     | coffeeParser        |
 
-Javascript is the default parser.
+Javascript is the default parser. **PRs for additional filetypes is most welcomed!!**
 
-**PRs for additional filetypes is most welcomed!!**
-
-## Usage
-
-### Command Line
-
-#### Installation
+## Usage in command line
 
 ```bash
 npm install --global leasot
 ```
 
-#### Examples
+## Command line help
 
 ```bash
 $ leasot --help
 
-  Usage: leasot [options] <file ...>
+Usage: leasot [options] <file ...>
 
-  Parse and output TODOs and FIXMEs from comments in your files
+Parse and output TODOs and FIXMEs from comments in your files
 
-  Options:
-
-    -h, --help                           output usage information
-    -V, --version                        output the version number
-    -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser)
-    -i, --ignore <patterns>              add ignore patterns
-    -I, --inline-files                   parse possible inline files
-    -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table)
-    -S, --skip-unsupported               skip unsupported filetypes
-    -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
-    -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme)
-    -x, --exit-nicely                    exit with exit code 0 even if todos/fixmes are found
-
+Options:
+  -V, --version                        output the version number
+  -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser) (default: {})
+  -i, --ignore <patterns>              add ignore patterns (default: [])
+  -I, --inline-files                   parse possible inline files
+  -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table) (default: "table")
+  -S, --skip-unsupported               skip unsupported filetypes
+  -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
+  -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme) (default: [])
+  -x, --exit-nicely                    exit with exit code 0 even if todos/fixmes are found
+  -h, --help                           output usage information
   Examples:
 
     # Check a specific file
@@ -150,10 +138,10 @@ $ leasot --help
     $ cat index.coffee | leasot --filetype .coffee
 
     # Report from leasot parsing and filter todos using `jq`
-    $ leasot tests/**/*.styl --reporter json | jq 'map(select(.kind == "TODO"))' | leasot-reporter
+    $ leasot tests/**/*.styl --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter
 ```
 
-#### Usage in NPM scripts
+### Usage in NPM scripts
 
 Use `leasot -x` in order to prevent exiting with a non-zero exit code. This is a good solution if you plan to
 run `leasot` in a CI tool to generate todos.
@@ -170,15 +158,13 @@ run `leasot` in a CI tool to generate todos.
 }
 ```
 
-### Programmatic
-
-#### Installation
+### Programmatic Installtion
 
 ```bash
 npm install --save-dev leasot
 ```
 
-#### Examples
+### Programmatic Examples
 
 ```js
 const fs = require('fs');
@@ -199,7 +185,7 @@ console.log(output);
 // -> json output of the todos
 ```
 
-### Build Time
+### Leasot with build tools
 
 - [gulp-todo](https://github.com/pgilad/gulp-todo)
 - [broccoli-leasot](https://github.com/sivakumar-kailasam/broccoli-leasot)
@@ -217,6 +203,8 @@ Mainly, you should be using 2 functions:
 
 - [parse](https://pgilad.github.io/leasot/index.html#parse) for parsing file contents
 - [report](https://pgilad.github.io/leasot/index.html#report) for reporting the todos
+
+[Type documentation](https://pgilad.github.io/leasot)
 
 ## Built-in Reporters
 
