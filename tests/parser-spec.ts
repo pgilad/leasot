@@ -723,6 +723,26 @@ describe('parsing', function() {
         });
     });
 
+    describe('markdown', function() {
+        it('parse <!-- --> comments in .markdown', function() {
+            const file = getFixturePath('markdown.markdown');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 3, 'Update instructions');
+            verifyComment(comments[1], 'TODO', 7, 'Add docs');
+        });
+
+        it('parse <!-- --> comments in .md', function() {
+            const file = getFixturePath('markdown.md');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 3, 'Update instructions');
+            verifyComment(comments[1], 'TODO', 7, 'Add docs');
+        });
+    });
+
     describe('custom parsers', function() {
         it('returns custom parser todos', function() {
             const file = getFixturePath('file.unsupported');
