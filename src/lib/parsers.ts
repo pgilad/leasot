@@ -35,6 +35,8 @@ const parsersDb: ExtensionsDb = {
     '.kt': { parserName: 'defaultParser' },
     '.less': { parserName: 'defaultParser' },
     '.m': { parserName: 'defaultParser' },
+    '.markdown': { parserName: 'twigParser' },
+    '.md': { parserName: 'twigParser' },
     '.mm': { parserName: 'defaultParser' },
     '.mustache': { parserName: 'hbsParser' },
     '.njk': { parserName: 'twigParser' },

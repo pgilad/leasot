@@ -62,6 +62,7 @@ to extract your todos from comments.
 | Kotlin        | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
 | Latex         | `.tex`               | Supports `\begin{comment}` and `%` comments| latexParser         |
 | Less          | `.less`              | Supports `// and /* */` comments.          | defaultParser       |
+| Markdown      | `.markdown`, `.md`   | Supports `<!-- -->`                        | twigParser           |
 | Mustache      | `.mustache`          | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Nunjucks      | `.njk`               | Supports `{#  #}` and `<!-- -->`           | twigParser          |
 | Objective-C   | `.m`                 | Supports `// and /* */` comments           | defaultParser       |
