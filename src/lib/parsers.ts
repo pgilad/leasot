@@ -44,6 +44,7 @@ const parsersDb: ExtensionsDb = {
     '.php': { parserName: 'defaultParser', includedFiles: ['.html', '.js', '.css'] },
     '.pl': { parserName: 'coffeeParser' },
     '.pm': { parserName: 'coffeeParser' },
+    '.proto': { parserName: 'defaultParser' },
     '.pug': { parserName: 'jadeParser' },
     '.py': { parserName: 'pythonParser' },
     '.rb': { parserName: 'coffeeParser' },
