@@ -47,6 +47,7 @@ const parsersDb: ExtensionsDb = {
     '.pug': { parserName: 'jadeParser' },
     '.py': { parserName: 'pythonParser' },
     '.rb': { parserName: 'coffeeParser' },
+    '.rs': { parserName: 'defaultParser' },
     '.sass': { parserName: 'defaultParser' },
     '.scala': { parserName: 'defaultParser' },
     '.scss': { parserName: 'defaultParser' },
