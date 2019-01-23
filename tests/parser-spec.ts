@@ -743,6 +743,25 @@ describe('parsing', function() {
         });
     });
 
+    describe('rust', function() {
+        it('handle rust lines comments', function() {
+            const file = getFixturePath('rust.rs');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 1, 'This is a single-line comment');
+        });
+
+        it('handle rust block comments', function() {
+            const file = getFixturePath('rust.rs');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[1], 'FIXME', 5, 'implement single line comment');
+            verifyComment(comments[2], 'TODO', 10, 'supported?');
+        });
+    });
+
     describe('custom parsers', function() {
         it('returns custom parser todos', function() {
             const file = getFixturePath('file.unsupported');
