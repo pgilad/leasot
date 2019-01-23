@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+/*
+ * FIXME: implement single line comment
+ *  This is a multiple-lines comment block
+ *  that spans over multiple
+ *  lines
+ */
+package example;
+
+service ChateService {
+    rpc Send(Message) returns (Empty);
+
+    // TODO: implements list method
+    //  rpc List (ChatFilter) returns (ChatList);
+}
+
+message Message {
+    string to = 1;
+    string content = 2;
+}
+
+message Empty {}
+
