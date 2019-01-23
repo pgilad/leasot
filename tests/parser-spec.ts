@@ -762,6 +762,24 @@ describe('parsing', function() {
         });
     });
 
+    describe('protocol-buffer', function() {
+        it('handle protocol-buffer lines comments', function() {
+            const file = getFixturePath('protocol-buffer.proto');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[1], 'TODO', 14, 'implements list method');
+        });
+
+        it('handle protocol-buffer block comments', function() {
+            const file = getFixturePath('protocol-buffer.proto');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'FIXME', 4, 'implement single line comment');
+        });
+    });
+
     describe('custom parsers', function() {
         it('returns custom parser todos', function() {
             const file = getFixturePath('file.unsupported');
