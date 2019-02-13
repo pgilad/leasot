@@ -5,6 +5,7 @@
 	<br>
 	<br>
 	<br>
+    Leasot
 </h1>
 
 > Intelligently parse and output TODOs and FIXMEs from comments in your files
@@ -215,4 +216,4 @@ See [built-in reporters](https://pgilad.github.io/leasot/enums/builtinreporters.
 
 ## License
 
-MIT ©[Gilad Peleg](http://giladpeleg.com)
+MIT © [Gilad Peleg](https://www.giladpeleg.com)

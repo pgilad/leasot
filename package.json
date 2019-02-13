@@ -8,7 +8,7 @@
     "leasot-reporter": "./bin/leasot-reporter"
   },
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.2",
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "eol": "^0.9.1",
@@ -26,7 +26,7 @@
     "@types/globby": "^8.0.0",
     "@types/log-symbols": "^2.0.0",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.23",
+    "@types/node": "^11.9.3",
     "@types/strip-ansi": "^3.0.0",
     "@types/text-table": "^0.2.0",
     "gh-pages": "^2.0.1",
