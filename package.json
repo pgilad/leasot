@@ -70,7 +70,7 @@
     "clean": "rimraf docs dist",
     "docs": "typedoc --name leasot --readme none --out docs --target es6 --mode file --excludeNotExported --excludePrivate src",
     "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
-    "predocs:publish": "npm run docs",
+    "predocs:publish": "npm run release:prepare",
     "prepublishOnly": "npm run release:prepare",
     "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
     "prettier-check": "prettier --list-different 'src/**/*.ts' 'tests/*.ts'",
