@@ -66,15 +66,16 @@
   "typings": "dist/index.d.ts",
   "repository": "pgilad/leasot",
   "scripts": {
-    "clean": "rimraf docs dist",
     "build": "tsc -p tsconfig.json",
+    "clean": "rimraf docs dist",
     "docs": "typedoc --name leasot --readme none --out docs --target es6 --mode file --excludeNotExported --excludePrivate src",
     "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
-    "test": "mocha --require ts-node/register -R spec './tests/*.ts'",
+    "predocs:publish": "npm run docs",
+    "prepublishOnly": "npm run release:prepare",
     "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
     "prettier-check": "prettier --list-different 'src/**/*.ts' 'tests/*.ts'",
     "release:prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs",
-    "prepublishOnly": "npm run release:prepare"
+    "test": "mocha --require ts-node/register -R spec './tests/*.ts'"
   },
   "husky": {
     "hooks": {
