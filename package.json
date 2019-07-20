@@ -22,12 +22,8 @@
   },
   "devDependencies": {
     "@types/async": "^3.0.0",
-    "@types/get-stdin": "^7.0.0",
-    "@types/globby": "^9.1.0",
-    "@types/log-symbols": "^3.0.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.8",
-    "@types/strip-ansi": "^5.2.1",
     "@types/text-table": "^0.2.1",
     "gh-pages": "^2.0.1",
     "husky": "^3.0.1",

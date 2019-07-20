@@ -1,5 +1,5 @@
 import getStdin from 'get-stdin';
-import * as globby from 'globby';
+import globby from 'globby';
 import * as logSymbols from 'log-symbols';
 import { mapLimit } from 'async';
 import { readFile } from 'fs';
