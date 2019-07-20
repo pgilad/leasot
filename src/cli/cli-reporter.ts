@@ -26,9 +26,7 @@ const outputTodos = (todos: TodoComment[], program: ReporterProgramArgs) => {
 const parseAndReportFiles = (fileGlobs: string[], program: ReporterProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globby.sync(fileGlobs, {
-        cwd: process.cwd(),
         ignore: program.ignore || [],
-        onlyFiles: true,
     });
 
     if (!files || !files.length) {

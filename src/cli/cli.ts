@@ -62,12 +62,7 @@ const outputTodos = (todos: TodoComment[], { reporter, exitNicely }: ProgramArgs
 const parseAndReportFiles = (fileGlobs: string[], program: ProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globby.sync(fileGlobs, {
-        cwd: process.cwd(),
         ignore: program.ignore || [],
-        onlyFiles: true,
-        deep: Infinity,
-        unique: true,
-        baseNameMatch: true,
     });
 
     if (!files || !files.length) {
