@@ -1,8 +1,8 @@
-import globby from 'globby';
-import * as logSymbols from 'log-symbols';
 import getStdin from 'get-stdin';
-import { extname, resolve } from 'path';
+import globby from 'globby';
+import logSymbols from 'log-symbols';
 import { associateExtWithParser, isExtensionSupported, parse, report } from '..';
+import { extname, resolve } from 'path';
 import { mapLimit } from 'async';
 import { ParseConfig, TodoComment } from '../definitions';
 import { ProgramArgs } from './leasot';
