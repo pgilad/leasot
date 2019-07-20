@@ -65,9 +65,9 @@ const parseAndReportFiles = (fileGlobs: string[], program: ProgramArgs): void =>
         cwd: process.cwd(),
         ignore: program.ignore || [],
         onlyFiles: true,
-        deep: true,
+        deep: Infinity,
         unique: true,
-        matchBase: true,
+        baseNameMatch: true,
     });
 
     if (!files || !files.length) {
