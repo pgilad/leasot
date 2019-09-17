@@ -57,10 +57,10 @@ commander
         console.log('    $ leasot index.js');
         console.log('');
         console.log('    # Check php files with glob');
-        console.log('    $ leasot **/*.php');
+        console.log(`    $ leasot '**/*.php'`);
         console.log('');
         console.log('    # Check multiple different filetypes');
-        console.log('    $ leasot app/**/*.js test.rb');
+        console.log(`    $ leasot 'app/**/*.js' test.rb`);
         console.log('');
         console.log('    # Use the json reporter');
         console.log('    $ leasot --reporter json index.js');
@@ -69,7 +69,7 @@ commander
         console.log('    $ leasot --tags review index.js');
         console.log('');
         console.log('    # Add ignore pattern to filter matches');
-        console.log('    $ leasot app/**/*.js --ignore "**/custom.js"');
+        console.log(`    $ leasot 'app/**/*.js' --ignore '**/custom.js'`);
         console.log('');
         console.log('    # Search for REVIEW comments as well');
         console.log('    $ leasot --tags review index.js');
@@ -79,7 +79,7 @@ commander
         console.log('');
         console.log('    # Report from leasot parsing and filter todos using `jq`');
         console.log(
-            '    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.tag == "TODO"))\' | leasot-reporter'
+            `    $ leasot 'tests/**/*.styl' --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter`
         );
         console.log('');
         console.log('    # Associate a parser for an unknown extension`');

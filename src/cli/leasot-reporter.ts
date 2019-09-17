@@ -30,7 +30,7 @@ commander
         console.log('    $ leasot-reporter index.json');
         console.log('');
         console.log('    # Report todos from a glob pattern');
-        console.log('    $ leasot-reporter **/*.json');
+        console.log(`    $ leasot-reporter '**/*.json'`);
         console.log('');
         console.log('    # Use the json reporter');
         console.log('    $ leasot-reporter --reporter json index.json');
@@ -40,7 +40,7 @@ commander
         console.log('');
         console.log('    # Report from leasot parsing and filter todos using `jq`');
         console.log(
-            '    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.tag == "TODO"))\' | leasot-reporter'
+            `    $ leasot 'tests/**/*.styl' --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter`
         );
         console.log('');
     })
