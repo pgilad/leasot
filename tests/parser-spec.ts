@@ -643,8 +643,8 @@ describe('parsing', function() {
             verifyComment(comments[0], 'TODO', 2, 'Svelte script comment');
         });
 
-        it('parses a vue file with just php', function() {
-            const file = getFixturePath('vue.vue');
+        it('parses a svelte file with just php', function() {
+            const file = getFixturePath('svelte.svelte');
             const comments = getComments(file, {
                 withInlineFiles: true,
             });
