@@ -82,6 +82,9 @@ commander
             '    $ leasot tests/**/*.styl --reporter json | jq \'map(select(.tag == "TODO"))\' | leasot-reporter'
         );
         console.log('');
+        console.log('    # Associate a parser for an unknown extension`');
+        console.log(`    $ leasot  -A '.svelte,twigParser' -A '.svelte,defaultParser' 'frontend/*.svelte'`);
+        console.log('');
     })
     .parse(process.argv);
 
