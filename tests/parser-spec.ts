@@ -640,7 +640,7 @@ describe('parsing', function() {
                 withInlineFiles: false,
             });
             comments.should.have.length(1);
-            verifyComment(comments[0], 'TODO', 2, 'Svelte script comment');
+            verifyComment(comments[0], 'TODO', 14, 'Svelte template comment');
         });
 
         it('parses a svelte file with just php', function() {
@@ -654,7 +654,7 @@ describe('parsing', function() {
             verifyComment(comments[2], 'TODO', 14, 'Svelte template comment');
         });
     });
-    
+
     describe('associate parser', function() {
         it('supports new extension', function() {
             const association = { '.cls': { parserName: 'defaultParser' } };
