@@ -108,23 +108,23 @@ Options:
   -V, --version                        output the version number
   -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser) (default: {})
   -i, --ignore <patterns>              add ignore patterns (default: [])
-  -I, --inline-files                   parse possible inline files
+  -I, --inline-files                   parse possible inline files (default: false)
   -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table) (default: "table")
-  -S, --skip-unsupported               skip unsupported filetypes
+  -S, --skip-unsupported               skip unsupported filetypes (default: false)
   -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
   -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme) (default: [])
-  -x, --exit-nicely                    exit with exit code 0 even if todos/fixmes are found
+  -x, --exit-nicely                    exit with exit code 0 even if todos/fixmes are found (default: false)
   -h, --help                           output usage information
-  Examples:
 
+Examples:
     # Check a specific file
     $ leasot index.js
 
     # Check php files with glob
-    $ leasot **/*.php
+    $ leasot '**/*.php'
 
     # Check multiple different filetypes
-    $ leasot app/**/*.js test.rb
+    $ leasot 'app/**/*.js' test.rb
 
     # Use the json reporter
     $ leasot --reporter json index.js
@@ -133,7 +133,7 @@ Options:
     $ leasot --tags review index.js
 
     # Add ignore pattern to filter matches
-    $ leasot app/**/*.js --ignore "**/custom.js"
+    $ leasot 'app/**/*.js' --ignore '**/custom.js'
 
     # Search for REVIEW comments as well
     $ leasot --tags review index.js
@@ -142,7 +142,10 @@ Options:
     $ cat index.coffee | leasot --filetype .coffee
 
     # Report from leasot parsing and filter todos using `jq`
-    $ leasot tests/**/*.styl --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter
+    $ leasot 'tests/**/*.styl' --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter
+
+    # Associate a parser for an unknown extension`
+    $ leasot -A '.svelte,twigParser' -A '.svelte,defaultParser' 'frontend/*.svelte'
 ```
 
 ### Usage in NPM scripts
@@ -162,7 +165,7 @@ run `leasot` in a CI tool to generate todos.
 }
 ```
 
-### Programmatic Installtion
+### Programmatic Installation
 
 ```bash
 npm install --save-dev leasot
