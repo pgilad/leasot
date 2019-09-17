@@ -1,10 +1,10 @@
 <template>
-  <!-- TODO: Svelte template comment -->
+  <!-- TODO: Vue template comment -->
   <p>{{ greeting }} World!</p>
 </template>
 
 <script>
-/* TODO: Svelte script comment */
+/* TODO: Vue script comment */
 module.exports = {
   data: function () {
     return {
@@ -17,7 +17,7 @@ module.exports = {
 <style lang="less" scoped>
 p {
   font-size: 2em;
-  // FIXME: Svelte style comment
+  // FIXME: Vue style comment
   text-align: center;
 }
 </style>
