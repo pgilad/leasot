@@ -52,8 +52,7 @@ commander
     .option('-x, --exit-nicely', 'exit with exit code 0 even if todos/fixmes are found', false)
     .on('--help', function() {
         console.log('');
-        console.log('  Examples:');
-        console.log('');
+        console.log('Examples:');
         console.log('    # Check a specific file');
         console.log('    $ leasot index.js');
         console.log('');
