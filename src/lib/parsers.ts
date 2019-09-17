@@ -56,6 +56,7 @@ const parsersDb: ExtensionsDb = {
     '.ss': { parserName: 'ssParser' },
     '.styl': { parserName: 'defaultParser' },
     '.swift': { parserName: 'defaultParser' },
+    '.svelte': { parserName: 'twigParser', includedFiles: ['.html', '.js', '.css'] },
     '.tex': { parserName: 'latexParser' },
     '.ts': { parserName: 'defaultParser' },
     '.tsx': { parserName: 'defaultParser' },
