@@ -1,5 +1,4 @@
-import defaults from 'lodash/defaults';
-import compact from 'lodash/compact';
+import _ from 'lodash';
 import { EOL } from 'os';
 import { ReportItems, ReporterConfig, Tag, TodoComment, TransformedComments } from '../../definitions';
 
@@ -48,7 +47,7 @@ export const joinBlocksByHeaders = (output: TransformedComments, config: Reporte
         if (!Array.isArray(header)) {
             header = [header];
         }
-        output[tag] = compact(header.concat(output[tag]));
+        output[tag] = _.compact(header.concat(output[tag]));
         // add padding between tag blocks
         if (contents.length) {
             contents += new Array(padding + 1).join(newLine);
@@ -63,7 +62,7 @@ export const joinBlocksByHeaders = (output: TransformedComments, config: Reporte
  * @hidden
  */
 export const prepareConfig = (defaultConfig: ReporterConfig, overrides?: ReporterConfig): ReporterConfig => {
-    const config: ReporterConfig = defaults({}, overrides, defaultConfig, {
+    const config: ReporterConfig = _.defaults({}, overrides, defaultConfig, {
         newLine: EOL,
         padding: 2,
     });

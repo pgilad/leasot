@@ -1,5 +1,4 @@
-import uniqWith from 'lodash/uniqWith';
-import uniq from 'lodash/uniq';
+import _ from 'lodash';
 import { ExtensionsDb, ParseConfig, ParserFactoryConfig, TodoComment } from '../definitions';
 
 const parsersDb: ExtensionsDb = {
@@ -109,7 +108,7 @@ const getActiveParserNames = (extension: string, withInlineFiles: boolean): stri
             // parserName could be an array
             parserNames = parserNames.concat(parsersDb[includedExtension].parserName);
         });
-        parserNames = uniq(parserNames);
+        parserNames = _.uniq(parserNames);
     }
     return parserNames;
 };
@@ -150,7 +149,7 @@ export const parse = (content: string, config: ParseConfig): TodoComment[] => {
         .reduce((items: TodoComment[], item: TodoComment[]) => items.concat(item), [])
         .sort((item1: TodoComment, item2: TodoComment) => item1.line - item2.line);
 
-    return uniqWith(parsed, function(a, b) {
+    return _.uniqWith(parsed, function(a, b) {
         return a.line === b.line && a.tag === b.tag && a.text === b.text;
     });
 };
