@@ -633,6 +633,28 @@ describe('parsing', function() {
         });
     });
 
+    describe('svelte', function() {
+        it('parses a svelte file without included files', function() {
+            const file = getFixturePath('svelte.svelte');
+            const comments = getComments(file, {
+                withInlineFiles: false,
+            });
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 2, 'Svelte script comment');
+        });
+
+        it('parses a svelte file with just php', function() {
+            const file = getFixturePath('svelte.svelte');
+            const comments = getComments(file, {
+                withInlineFiles: true,
+            });
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 2, 'Svelte script comment');
+            verifyComment(comments[1], 'FIXME', 9, 'Svelte style comment');
+            verifyComment(comments[2], 'TODO', 14, 'Svelte template comment');
+        });
+    });
+    
     describe('associate parser', function() {
         it('supports new extension', function() {
             const association = { '.cls': { parserName: 'defaultParser' } };
