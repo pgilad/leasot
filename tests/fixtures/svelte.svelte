@@ -1,15 +1,15 @@
 <script>
-/* TODO: Vue script comment */
+/* TODO: Svelte script comment */
 let greeting = 'Hello Leasot!'
 </script>
 
 <style lang="less" scoped>
 p {
   font-size: 2em;
-  // FIXME: Vue style comment
+  // FIXME: Svelte style comment
   text-align: center;
 }
 </style>
 
-<!-- TODO: Vue template comment -->
-<p>{{ greeting }} World!</p>
+<!-- TODO: Svelte template comment -->
+<p>{greeting} World!</p>
