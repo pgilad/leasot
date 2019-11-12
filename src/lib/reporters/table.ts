@@ -1,5 +1,5 @@
 import * as logSymbols from 'log-symbols';
-import chalk = require('chalk');
+import chalk from 'chalk';
 import stripAnsi from 'strip-ansi';
 import table from 'text-table';
 import { EOL } from 'os';
