@@ -7,10 +7,10 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     const commentsRegex = new RegExp('^\\s*//' + regex + '$', 'mig');
     const multiLineRegex = new RegExp('^\\s*{' + regex + '}$', 'mig');
 
-    return function parse(contents, file) {
+    return (contents, file) => {
         let comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach((line, index) => {
             let hashMatch = commentsRegex.exec(line);
             while (hashMatch) {
                 const comment = prepareComment(hashMatch, index + 1, file);
@@ -20,6 +20,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 hashMatch = commentsRegex.exec(line);
             }
+            commentsRegex.lastIndex = 0;
 
             let multiLineMatch = multiLineRegex.exec(line);
             while (multiLineMatch) {
@@ -30,6 +31,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 multiLineMatch = multiLineRegex.exec(line);
             }
+            multiLineRegex.lastIndex = 0;
         });
         // sort by line number
         comments = comments.sort((a, b) => a.line - b.line);

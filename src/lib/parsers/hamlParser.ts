@@ -26,6 +26,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 hamlRubyCommentMatch = hamlRubyComment.exec(line);
             }
+            hamlRubyComment.lastIndex = 0;
 
             while (hamlHtmlCommentMatch) {
                 const comment = prepareComment(hamlHtmlCommentMatch, index + 1, file);
@@ -36,6 +37,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
 
                 hamlHtmlCommentMatch = hamlHtmlComment.exec(line);
             }
+            hamlHtmlComment.lastIndex = 0;
 
             while (erbCommentMatch) {
                 const comment = prepareComment(erbCommentMatch, index + 1, file);
@@ -45,6 +47,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 erbCommentMatch = erbComment.exec(line);
             }
+            erbComment.lastIndex = 0;
 
             while (htmlCommentMatch) {
                 const comment = prepareComment(htmlCommentMatch, index + 1, file);
@@ -54,6 +57,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 htmlCommentMatch = htmlComment.exec(line);
             }
+            htmlComment.lastIndex = 0;
         });
         return comments;
     };

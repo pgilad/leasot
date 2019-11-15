@@ -9,10 +9,10 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
     const commentsRegex = new RegExp('^\\s*%' + regex + '$', 'mig');
 
-    return function parse(contents, file) {
+    return (contents, file) => {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach((line, index) => {
             let hashMatch = commentsRegex.exec(line);
             while (hashMatch) {
                 const comment = prepareComment(hashMatch, index + 1, file);
@@ -22,8 +22,9 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 hashMatch = commentsRegex.exec(line);
             }
+            commentsRegex.lastIndex = 0;
         });
-        // doing the multiline match outside of the loop because we need
+        // doing the multi line match outside of the loop because we need
         // multiple lines
         const multilineRegex = new RegExp(
             '^[ |\\t]*\\\\begin{comment}\\s*@?(todo|fixme)(?!\\w)\\s*(?:\\(([^)]*)\\))?\\s*:?\\s*((.*?)(?:\\s+([^\\s]+)\\s*)?)\\\\end{comment}',

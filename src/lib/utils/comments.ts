@@ -18,7 +18,7 @@ export const getRegex = (customTags: Tag[] = []): string => {
         '(?!\\w)' +
         // Optional space.
         '\\s*' +
-        // Optional leading reference in parens.
+        // Optional leading reference in parenthesis.
         '(?:\\(([^)]*)\\))?' +
         // Optional space.
         '\\s*' +

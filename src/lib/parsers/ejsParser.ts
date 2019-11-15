@@ -20,6 +20,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 bangCommentMatch = bangComment.exec(line);
             }
+            bangComment.lastIndex = 0;
 
             let htmlCommentMatch = htmlComment.exec(line);
             while (htmlCommentMatch) {
@@ -30,6 +31,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 htmlCommentMatch = htmlComment.exec(line);
             }
+            htmlComment.lastIndex = 0;
         });
         return comments;
     };
