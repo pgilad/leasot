@@ -246,6 +246,16 @@ describe('parsing', function() {
         });
     });
 
+    describe('jl', function() {
+        it('handle # comments', function () {
+            var file = getFixturePath('julia.jl');
+            var comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 7, 'Support POST');
+         });
+    });
+        
     describe('ejs', function() {
         it('parse <!-- --> and <%# %> comments', function() {
             const file = getFixturePath('ejs.ejs');
