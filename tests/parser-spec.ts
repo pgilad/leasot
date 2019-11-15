@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import should from 'should';
+import * as should from 'should';
 import { CustomParsers, ParseConfig, Tag, TodoComment } from '../src/definitions';
 import * as leasot from '../src/index';
 
@@ -247,15 +247,17 @@ describe('parsing', function() {
     });
 
     describe('jl', function() {
-        it('handle # comments', function () {
+        it('handle # comments', function() {
             var file = getFixturePath('julia.jl');
             var comments = getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
-            verifyComment(comments[0], 'TODO', 7, 'Support POST');
-         });
+            verifyComment(comments[0], 'TODO', 4, 'Support POST');
+            verifyComment(comments[1], 'TODO', 5, 'Foobar print');
+            verifyComment(comments[2], 'TODO', 7, 'End function');
+        });
     });
-        
+
     describe('ejs', function() {
         it('parse <!-- --> and <%# %> comments', function() {
             const file = getFixturePath('ejs.ejs');
