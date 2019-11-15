@@ -7,10 +7,10 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     const bangComment = new RegExp('{#' + regex + '#}', 'mig');
     const htmlComment = new RegExp('<!--' + regex + '-->', 'mig');
 
-    return function parse(contents, file) {
+    return (contents, file) => {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach((line, index) => {
             let bangCommentMatch = bangComment.exec(line);
             while (bangCommentMatch) {
                 const comment = prepareComment(bangCommentMatch, index + 1, file);
@@ -20,6 +20,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 bangCommentMatch = bangComment.exec(line);
             }
+            bangComment.lastIndex = 0;
 
             let htmlCommentMatch = htmlComment.exec(line);
             while (htmlCommentMatch) {
@@ -30,6 +31,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 htmlCommentMatch = htmlComment.exec(line);
             }
+            htmlComment.lastIndex = 0;
         });
         return comments;
     };

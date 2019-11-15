@@ -6,7 +6,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
     const commentsRegex = new RegExp('{{!(?:--)?' + regex + '(?:--)?}}', 'mig');
 
-    return function parse(contents, file) {
+    return (contents, file) => {
         const comments: TodoComment[] = [];
 
         split(contents).forEach(function(line, index) {
@@ -19,6 +19,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
                 comments.push(comment);
                 match = commentsRegex.exec(line);
             }
+            commentsRegex.lastIndex = 0;
         });
         return comments;
     };
