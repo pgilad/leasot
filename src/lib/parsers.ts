@@ -29,7 +29,7 @@ const parsersDb: ExtensionsDb = {
     '.html': { parserName: 'twigParser' },
     '.jade': { parserName: 'jadeParser' },
     '.java': { parserName: 'defaultParser' },
-    '.jl': {parserName: 'coffeeParser' },
+    '.jl': { parserName: 'coffeeParser' },
     '.js': { parserName: 'defaultParser' },
     '.jsx': { parserName: 'defaultParser' },
     '.kt': { parserName: 'defaultParser' },
