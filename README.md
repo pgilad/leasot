@@ -59,7 +59,7 @@ to extract your todos from comments.
 | Jade            | `.jade` `.pug`       | Supports `//` and `//-` comments.          | jadeParser          |
 | Java            | `.java`              | Supports `// and /* */` comments           | defaultParser        |
 | Javascript      | `.js` `.es` `.es6`   | Supports `// and /* */` comments           | defaultParser       |
-| Julia           | `.jl`                | Supports `#` comments.                     | coffeeParser        |
+| Julia           | `.jl`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Jsx             | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
 | Kotlin          | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
 | Latex           | `.tex`               | Supports `\begin{comment}` and `%` comments| latexParser         |
