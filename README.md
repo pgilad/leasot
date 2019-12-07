@@ -184,11 +184,11 @@ const contents = fs.readFileSync('./contents.js', 'utf8');
 const filetype = path.extname('./contents.js');
 // add file for better reporting
 const file = 'contents.js';
-const todos = leasot.parse(content, { extension: filetype, filename: file });
+const todos = leasot.parse(contents, { extension: filetype, filename: file });
 
 // -> todos now contains the array of todos/fixme parsed
 
-const output = leasot.reporter(todos, 'json', { spacing: 2 });
+const output = leasot.report(todos, 'json', { spacing: 2 });
 
 console.log(output);
 // -> json output of the todos
