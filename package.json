@@ -24,7 +24,7 @@
     "@types/async": "^3.0.3",
     "@types/lodash": "^4.14.146",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.7",
+    "@types/node": "^13.1.1",
     "@types/text-table": "^0.2.1",
     "gh-pages": "^2.1.1",
     "husky": "^3.0.9",
