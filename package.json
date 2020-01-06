@@ -10,7 +10,7 @@
   "dependencies": {
     "async": "^3.1.0",
     "chalk": "^3.0.0",
-    "commander": "^4.0.1",
+    "commander": "^4.1.0",
     "eol": "^0.9.1",
     "get-stdin": "^7.0.0",
     "globby": "^11.0.0",
@@ -22,21 +22,21 @@
   },
   "devDependencies": {
     "@types/async": "^3.0.3",
-    "@types/lodash": "^4.14.146",
+    "@types/lodash": "^4.14.149",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^13.1.1",
+    "@types/node": "^13.1.4",
     "@types/text-table": "^0.2.1",
     "gh-pages": "^2.1.1",
-    "husky": "^3.0.9",
-    "jsdoc-to-markdown": "^5.0.2",
-    "lint-staged": "^9.4.2",
+    "husky": "^3.1.0",
+    "jsdoc-to-markdown": "^5.0.3",
+    "lint-staged": "^9.5.0",
     "mocha": "^7.0.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "should": "^13.2.3",
-    "ts-node": "^8.5.0",
-    "typedoc": "^0.15.0",
-    "typescript": "^3.7.2"
+    "ts-node": "^8.5.4",
+    "typedoc": "^0.15.6",
+    "typescript": "^3.7.4"
   },
   "engines": {
     "node": ">=10"
