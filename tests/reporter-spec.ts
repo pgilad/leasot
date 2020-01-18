@@ -25,12 +25,14 @@ describe('reporting', function() {
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.ts' });
             should.exist(report);
             report.should.eql([
-                '### TODOs',
+                '## TODOs',
+                '',
                 '| Filename | line # | TODO',
                 '|:------|:------:|:------',
                 '| [' + file + '](' + file + '#L1) | 1 | change to public',
                 '',
-                '### FIXMEs',
+                '## FIXMEs',
+                '',
                 '| Filename | line # | FIXME',
                 '|:------|:------:|:------',
                 '| [' + file + '](' + file + '#L11) | 11 | use jquery',
@@ -42,7 +44,8 @@ describe('reporting', function() {
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
-                '### TODOs',
+                '## TODOs',
+                '',
                 '| Filename | line # | TODO',
                 '|:------|:------:|:------',
                 '| [' + file + '](' + file + '#L3) | 3 | @tregusti Use Symbol instead',
@@ -54,7 +57,8 @@ describe('reporting', function() {
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
-                '### TODOs',
+                '## TODOs',
+                '',
                 '| Filename | line # | TODO',
                 '|:------|:------:|:------',
                 '| [' + file + '](' + file + '#L1) | 1 | ',

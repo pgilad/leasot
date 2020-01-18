@@ -49,6 +49,10 @@ const parseContentSync = (content: string, program: ProgramArgs, filename?: stri
 const outputTodos = (todos: TodoComment[], { reporter, exitNicely }: ProgramArgs) => {
     try {
         const output = report(todos, reporter);
+        // MD041/first-line-heading/first-line-h1
+        if (reporter == 'markdown' || reporter == 'vscode') {
+            console.log('# A list of TODOs and FIXMEs\n');
+        }
         console.log(output);
     } catch (e) {
         console.error(e);

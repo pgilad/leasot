@@ -9,7 +9,7 @@ const reporterConfig: ReporterConfig = {
         return [`| [${file}](${file}#L${line}) | ${line} | ${text}`];
     },
     transformHeader(tag) {
-        return [`### ${tag}s`, `| Filename | line # | ${tag}`, '|:------|:------:|:------'];
+        return [`## ${tag}s\n`, `| Filename | line # | ${tag}`, '|:------|:------:|:------'];
     },
 };
 
