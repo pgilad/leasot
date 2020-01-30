@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/async": "^3.0.3",
     "@types/lodash": "^4.14.149",
-    "@types/mocha": "^5.2.7",
+    "@types/mocha": "^7.0.1",
     "@types/node": "^13.1.4",
     "@types/text-table": "^0.2.1",
     "gh-pages": "^2.1.1",
