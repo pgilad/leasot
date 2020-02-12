@@ -42,6 +42,7 @@ const parsersDb: ExtensionsDb = {
     '.njk': { parserName: 'twigParser' },
     '.pas': { parserName: 'pascalParser' },
     '.php': { parserName: 'defaultParser', includedFiles: ['.html', '.js', '.css'] },
+    '.ctp': { parserName: 'defaultParser', includedFiles: ['.html', '.js', '.css'] },
     '.pl': { parserName: 'coffeeParser' },
     '.pm': { parserName: 'coffeeParser' },
     '.proto': { parserName: 'defaultParser' },
