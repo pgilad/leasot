@@ -557,6 +557,18 @@ describe('parsing', function() {
         });
     });
 
+    describe('ctp', function() {
+        it('handles standard js comments in ctp', function() {
+            const file = getFixturePath('sample.ctp');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
+            verifyComment(comments[1], 'FIXME', 7, 'implement single line comment');
+            verifyComment(comments[2], 'TODO', 14, 'supported?');
+        });
+    });
+
     describe('swift', function() {
         it('handles standard comments in swift', function() {
             const file = getFixturePath('swift.swift');
