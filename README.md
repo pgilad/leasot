@@ -72,6 +72,7 @@ to extract your todos from comments.
 | Pascal          | `.pas`               | Supports `// and { }` comments.            | pascalParser        |
 | Perl            | `.pl`, `.pm`         | Supports `#` comments.                     | coffeeParser        |
 | PHP             | `.php`               | Supports `// and /* */` comments.          | defaultParser       |
+| CakePHP views   | `.ctp`               | Supports `// and /* */` comments.          | defaultParser       |
 | Protocol Buffer | `.proto`             | Supports `// and /* */` comments.          | defaultParser       |
 | Python          | `.py`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Ruby            | `.rb`                | Supports `#` comments.                     | coffeeParser        |
