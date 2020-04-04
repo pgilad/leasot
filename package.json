@@ -81,12 +81,10 @@
   },
   "lint-staged": {
     "*.yml": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.ts": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

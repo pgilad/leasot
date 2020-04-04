@@ -1,12 +1,13 @@
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
-import { associateExtWithParser, isExtensionSupported, parse, report } from '..';
+import { associateExtWithParser, isExtensionSupported, parse } from '..';
 import { extname, resolve } from 'path';
 import { mapLimit } from 'async';
-import { BuiltinReporters, ExtensionsDb, ParseConfig, ReporterName, Tag, TodoComment } from '../definitions';
+import { ParseConfig, TodoComment } from '../definitions';
 import { readFile } from 'fs';
 import { CommanderStatic } from 'commander';
+import { outputTodos, ProgramArgs } from './common';
 
 const DEFAULT_EXTENSION = '.js';
 const CONCURRENCY_LIMIT = 50;
@@ -23,20 +24,6 @@ export const getFiletype = (filetype?: string, filename?: string): string => {
     }
     return DEFAULT_EXTENSION;
 };
-
-/**
- * @hidden
- */
-export interface ProgramArgs {
-    readonly associateParser?: ExtensionsDb;
-    readonly exitNicely?: boolean;
-    readonly filetype?: string;
-    readonly ignore?: string[];
-    readonly inlineFiles?: boolean;
-    readonly reporter?: BuiltinReporters | ReporterName;
-    readonly skipUnsupported?: boolean;
-    readonly tags?: Tag[];
-}
 
 const parseContentSync = (content: string, options: ProgramArgs, filename?: string): TodoComment[] => {
     const extension = getFiletype(options.filetype, filename);
@@ -58,19 +45,6 @@ const parseContentSync = (content: string, options: ProgramArgs, filename?: stri
         withInlineFiles: options.inlineFiles,
     };
     return parse(content, config);
-};
-
-const outputTodos = (todos: TodoComment[], options: ProgramArgs) => {
-    try {
-        const output = report(todos, options.reporter);
-        console.log(output);
-    } catch (e) {
-        console.error(e);
-    }
-    if (options.exitNicely) {
-        process.exit(0);
-    }
-    process.exit(todos.length ? 1 : 0);
 };
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {

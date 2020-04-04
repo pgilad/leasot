@@ -3,36 +3,13 @@ import globby from 'globby';
 import logSymbols from 'log-symbols';
 import { mapLimit } from 'async';
 import { readFile } from 'fs';
-import { report } from '..';
 import { resolve } from 'path';
-import { BuiltinReporters, ReporterName, TodoComment } from '../definitions';
 import { CommanderStatic } from 'commander';
+import { outputTodos, ProgramArgs } from './common';
 
 const CONCURRENCY_LIMIT = 50;
 
-/**
- * @hidden
- */
-export interface ReporterProgramArgs {
-    readonly exitNicely?: boolean;
-    readonly ignore?: string[];
-    readonly reporter?: BuiltinReporters | ReporterName;
-}
-
-const outputTodos = (todos: TodoComment[], options: ReporterProgramArgs) => {
-    try {
-        const output = report(todos, options.reporter);
-        console.log(output);
-    } catch (e) {
-        console.error(e);
-    }
-    if (options.exitNicely) {
-        process.exit(0);
-    }
-    process.exit(todos.length ? 1 : 0);
-};
-
-const parseAndReportFiles = (fileGlobs: string[], options: ReporterProgramArgs): void => {
+const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globby.sync(fileGlobs, {
         ignore: options.ignore || [],
