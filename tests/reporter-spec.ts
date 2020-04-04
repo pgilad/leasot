@@ -18,9 +18,9 @@ function getReport(filename: string, reporter: ReporterName, parseOptions: Parse
     return split(report);
 }
 
-describe('reporting', function() {
-    describe('vscode', function() {
-        it('typescript', function() {
+describe('reporting', function () {
+    describe('vscode', function () {
+        it('typescript', function () {
             const file = getFixturePath('typescript.ts');
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.ts' });
             should.exist(report);
@@ -37,7 +37,7 @@ describe('reporting', function() {
             ]);
         });
 
-        it('reference-leading', function() {
+        it('reference-leading', function () {
             const file = getFixturePath('reference-leading.js');
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
@@ -49,7 +49,7 @@ describe('reporting', function() {
             ]);
         });
 
-        it('edge-cases', function() {
+        it('edge-cases', function () {
             const file = getFixturePath('edge-cases.js');
             const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);

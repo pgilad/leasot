@@ -9,7 +9,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return (contents, file) => {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach(function (line, index) {
             let match = commentsRegex.exec(line);
             while (match) {
                 const comment = prepareComment(match, index + 1, file);

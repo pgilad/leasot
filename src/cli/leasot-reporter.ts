@@ -1,29 +1,18 @@
 import commander from 'commander';
 import cli from './cli-reporter';
-import { BuiltinReporters, ReporterName } from '../definitions';
 
-/**
- * @hidden
- */
-export interface ReporterProgramArgs extends commander.CommanderStatic {
-    readonly exitNicely?: boolean;
-    readonly ignore?: string[];
-    readonly reporter?: BuiltinReporters | ReporterName;
-}
-
-function list(val: string): string[] {
-    return val.split(',');
-}
+const list = (val: string): string[] => val.split(',');
 
 /* eslint-disable no-console */
 commander
+    .storeOptionsAsProperties(false)
     .description('Report todos and fixmes from json files or stream')
     .version(require('../../package.json').version)
     .usage('[options] <file ...>')
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
     .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|vscode|raw) (default: table)', 'table')
     .option('-x, --exit-nicely', 'exit with exit code 0 even if todos/fixmes are found', false)
-    .on('--help', function() {
+    .on('--help', function () {
         console.log('');
         console.log('Examples:');
         console.log('    # Report todos from a specific file');
@@ -46,4 +35,4 @@ commander
     })
     .parse(process.argv);
 
-cli(commander as ReporterProgramArgs);
+cli(commander);

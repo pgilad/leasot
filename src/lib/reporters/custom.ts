@@ -14,7 +14,7 @@ export const getTransformedComments = (todos: TodoComment[], config: ReporterCon
             TODO: [],
         };
     }
-    return todos.reduce(function(mem: TransformedComments, comment: TodoComment) {
+    return todos.reduce(function (mem: TransformedComments, comment: TodoComment) {
         const tag = comment.tag;
 
         mem[tag] = mem[tag] || [];
@@ -41,7 +41,7 @@ export const joinBlocksByHeaders = (output: TransformedComments, config: Reporte
     let contents = '';
 
     //prepend headers
-    Object.keys(output).forEach(function(tag: Tag) {
+    Object.keys(output).forEach(function (tag: Tag) {
         header = transformHeader(tag);
         // enforce array response
         if (!Array.isArray(header)) {

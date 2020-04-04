@@ -21,20 +21,20 @@ function testCli(files: string[], extraArgs: string[] = [], cb: (exitCode: numbe
         stdio: [process.stdin, 'pipe', 'pipe'],
     });
     let chunks = '';
-    cp.stdout.on('data', function(data) {
+    cp.stdout.on('data', function (data) {
         chunks += Buffer.from(data).toString();
     });
-    cp.stderr.on('data', function(data) {
+    cp.stderr.on('data', function (data) {
         chunks += Buffer.from(data).toString();
     });
-    cp.on('close', function(exitCode: number) {
+    cp.on('close', function (exitCode: number) {
         cb(exitCode, split(stripAnsi(chunks)));
     });
 }
 
-describe('check cli', function() {
-    it('should be ok with no files found', function(callback) {
-        testCli(['*.impossible'], null, function(exitCode, log) {
+describe('check cli', function () {
+    it('should be ok with no files found', function (callback) {
+        testCli(['*.impossible'], null, function (exitCode, log) {
             should.exist(log);
             should.exist(exitCode);
             exitCode.should.equal(1);
@@ -42,9 +42,9 @@ describe('check cli', function() {
             callback();
         });
     });
-    it('should parse multiple files (single file per arg)', function(callback) {
+    it('should parse multiple files (single file per arg)', function (callback) {
         this.timeout(10000);
-        testCli(['block.less', 'coffee.coffee'], null, function(exitCode, log) {
+        testCli(['block.less', 'coffee.coffee'], null, function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -67,8 +67,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should parse multiple files (globbing)', function(callback) {
-        testCli(['*.styl'], null, function(exitCode, log) {
+    it('should parse multiple files (globbing)', function (callback) {
+        testCli(['*.styl'], null, function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -88,8 +88,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should test unsupported file', function(callback) {
-        testCli(['file.unsupported'], [], function(exitCode, log) {
+    it('should test unsupported file', function (callback) {
+        testCli(['file.unsupported'], [], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -98,8 +98,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should skip unsupported files if asked', function(callback) {
-        testCli(['file.unsupported'], ['--skip-unsupported'], function(exitCode, log) {
+    it('should skip unsupported files if asked', function (callback) {
+        testCli(['file.unsupported'], ['--skip-unsupported'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(0);
@@ -108,8 +108,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should not parse file with unknown extension', function(callback) {
-        testCli(['salesforce-apex.cls'], [], function(exitCode, log) {
+    it('should not parse file with unknown extension', function (callback) {
+        testCli(['salesforce-apex.cls'], [], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -118,8 +118,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should parse file with newly associated extension', function(callback) {
-        testCli(['salesforce-apex.cls'], ['--associate-parser', '.cls,defaultParser'], function(exitCode, log) {
+    it('should parse file with newly associated extension', function (callback) {
+        testCli(['salesforce-apex.cls'], ['--associate-parser', '.cls,defaultParser'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -136,8 +136,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should get no error exitCode if no todos or fixmes are found', function(callback) {
-        testCli(['no-todos.js'], null, function(exitCode, log) {
+    it('should get no error exitCode if no todos or fixmes are found', function (callback) {
+        testCli(['no-todos.js'], null, function (exitCode, log) {
             should.exist(log);
             should.exist(exitCode);
             exitCode.should.equal(0);
@@ -146,8 +146,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should apply the ignore pattern', function(callback) {
-        testCli(['*.styl'], ['--ignore', '**/block.styl'], function(exitCode, log) {
+    it('should apply the ignore pattern', function (callback) {
+        testCli(['*.styl'], ['--ignore', '**/block.styl'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);
@@ -163,9 +163,9 @@ describe('check cli', function() {
         });
     });
 
-    it('should exit with exit code 0 when --exit-nicely is enabled', function(callback) {
+    it('should exit with exit code 0 when --exit-nicely is enabled', function (callback) {
         this.timeout(10000);
-        testCli(['coffee.coffee'], ['--exit-nicely'], function(exitCode, log) {
+        testCli(['coffee.coffee'], ['--exit-nicely'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(0);
@@ -182,8 +182,8 @@ describe('check cli', function() {
         });
     });
 
-    it('should match subdirectory files', function(callback) {
-        testCli(['fixtures_subdir'], ['--ignore', '**/*.(h|jsx)'], function(exitCode, log) {
+    it('should match subdirectory files', function (callback) {
+        testCli(['fixtures_subdir'], ['--ignore', '**/*.(h|jsx)'], function (exitCode, log) {
             should.exist(exitCode);
             should.exist(log);
             exitCode.should.equal(1);

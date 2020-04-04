@@ -10,7 +10,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return function parse(contents, file) {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach(function (line, index) {
             let bangCommentMatch = bangComment.exec(line);
             while (bangCommentMatch) {
                 const comment = prepareComment(bangCommentMatch, index + 1, file);

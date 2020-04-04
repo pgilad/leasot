@@ -26,7 +26,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return function parse(contents, file) {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach(function (line, index) {
             let match = rLineComment.exec(line);
             while (match) {
                 const comment = prepareComment(match, index + 1, file);
@@ -47,7 +47,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
             //use first match as basis to look into todos/fixmes
             const baseMatch = match[0];
             // jshint loopfunc:true
-            split(baseMatch).forEach(function(line, index) {
+            split(baseMatch).forEach(function (line, index) {
                 let subMatch = rInnerBlock.exec(line);
                 while (subMatch) {
                     const adjustedLine = getLineFromPos(contents, match.index) + index;

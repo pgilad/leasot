@@ -4,29 +4,38 @@ import logSymbols from 'log-symbols';
 import { mapLimit } from 'async';
 import { readFile } from 'fs';
 import { report } from '..';
-import { ReporterProgramArgs } from './leasot-reporter';
 import { resolve } from 'path';
-import { TodoComment } from '../definitions';
+import { BuiltinReporters, ReporterName, TodoComment } from '../definitions';
+import { CommanderStatic } from 'commander';
 
-const concurrencyLimit = 50;
+const CONCURRENCY_LIMIT = 50;
 
-const outputTodos = (todos: TodoComment[], program: ReporterProgramArgs) => {
+/**
+ * @hidden
+ */
+export interface ReporterProgramArgs {
+    readonly exitNicely?: boolean;
+    readonly ignore?: string[];
+    readonly reporter?: BuiltinReporters | ReporterName;
+}
+
+const outputTodos = (todos: TodoComment[], options: ReporterProgramArgs) => {
     try {
-        const output = report(todos, program.reporter);
+        const output = report(todos, options.reporter);
         console.log(output);
     } catch (e) {
         console.error(e);
     }
-    if (program.exitNicely) {
+    if (options.exitNicely) {
         process.exit(0);
     }
     process.exit(todos.length ? 1 : 0);
 };
 
-const parseAndReportFiles = (fileGlobs: string[], program: ReporterProgramArgs): void => {
+const parseAndReportFiles = (fileGlobs: string[], options: ReporterProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globby.sync(fileGlobs, {
-        ignore: program.ignore || [],
+        ignore: options.ignore || [],
     });
 
     if (!files || !files.length) {
@@ -37,7 +46,7 @@ const parseAndReportFiles = (fileGlobs: string[], program: ReporterProgramArgs):
     // Parallel read all of the given files
     mapLimit(
         files,
-        concurrencyLimit,
+        CONCURRENCY_LIMIT,
         (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
         (err, results: string[]) => {
             if (err) {
@@ -50,14 +59,15 @@ const parseAndReportFiles = (fileGlobs: string[], program: ReporterProgramArgs):
                 .filter(item => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, program);
+            outputTodos(todos, options);
         }
     );
 };
 
-const run = (program: ReporterProgramArgs): void => {
+const run = (program: CommanderStatic): void => {
+    const options = program.opts();
     if (program.args && program.args.length > 0) {
-        return parseAndReportFiles(program.args, program);
+        return parseAndReportFiles(program.args, options);
     }
 
     if (process.stdin.isTTY) {
@@ -65,11 +75,11 @@ const run = (program: ReporterProgramArgs): void => {
     }
 
     getStdin()
-        .then(function(content: string) {
+        .then(function (content: string) {
             const todos = JSON.parse(content);
-            outputTodos(todos, program);
+            outputTodos(todos, options);
         })
-        .catch(function(e) {
+        .catch(function (e) {
             console.error(e);
             process.exit(1);
         });

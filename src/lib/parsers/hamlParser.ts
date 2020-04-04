@@ -12,7 +12,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return function parse(contents, file) {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function(line, index) {
+        split(contents).forEach(function (line, index) {
             let hamlRubyCommentMatch = hamlRubyComment.exec(line);
             let hamlHtmlCommentMatch = hamlHtmlComment.exec(line);
             let erbCommentMatch = erbComment.exec(line);

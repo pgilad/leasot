@@ -1,26 +1,10 @@
 import commander from 'commander';
 import cli from './cli';
-import { BuiltinReporters, ExtensionsDb, ReporterName, Tag } from '../definitions';
+import { ExtensionsDb } from '../definitions';
 
-/**
- * @hidden
- */
-export interface ProgramArgs extends commander.CommanderStatic {
-    readonly associateParser?: ExtensionsDb;
-    readonly exitNicely?: boolean;
-    readonly filetype?: string;
-    readonly ignore?: string[];
-    readonly inlineFiles?: boolean;
-    readonly reporter?: BuiltinReporters | ReporterName;
-    readonly skipUnsupported?: boolean;
-    readonly tags?: Tag[];
-}
+const list = (val: string): string[] => val.split(',');
 
-function list(val: string): string[] {
-    return val.split(',');
-}
-
-function parseAssociateParser(val: string, req: ExtensionsDb): ExtensionsDb {
+const parseAssociateParser = (val: string, req: ExtensionsDb): ExtensionsDb => {
     const data = val.split(',');
     if (data.length === 0 || data.length > 2) {
         throw new TypeError('Incorrectly formatted extension / parser registration. (param: ' + val + ')');
@@ -30,10 +14,11 @@ function parseAssociateParser(val: string, req: ExtensionsDb): ExtensionsDb {
 
     req[ext] = { parserName: parser };
     return req;
-}
+};
 
 /* eslint-disable no-console */
 commander
+    .storeOptionsAsProperties(false)
     .description(require('../../package.json').description)
     .version(require('../../package.json').version)
     .usage('[options] <file ...>')
@@ -50,7 +35,7 @@ commander
     .option('-t, --filetype [filetype]', 'force the filetype to parse. Useful for streams (default: .js)')
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
     .option('-x, --exit-nicely', 'exit with exit code 0 even if todos/fixmes are found', false)
-    .on('--help', function() {
+    .on('--help', function () {
         console.log('');
         console.log('Examples:');
         console.log('    # Check a specific file');
@@ -88,4 +73,4 @@ commander
     })
     .parse(process.argv);
 
-cli(commander as ProgramArgs);
+cli(commander);

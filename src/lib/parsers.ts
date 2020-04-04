@@ -78,7 +78,7 @@ export const associateExtWithParser = (extendedDb: ExtensionsDb): void => {
     if (keys.length === 0) {
         return;
     }
-    keys.forEach(function(extension) {
+    keys.forEach(function (extension) {
         if (extension.length <= 1 || extension[0] !== '.') {
             throw new TypeError(`Cannot register extension: invalid extension ${extension}`);
         }
@@ -152,7 +152,7 @@ export const parse = (content: string, config: ParseConfig): TodoComment[] => {
         .reduce((items: TodoComment[], item: TodoComment[]) => items.concat(item), [])
         .sort((item1: TodoComment, item2: TodoComment) => item1.line - item2.line);
 
-    return _.uniqWith(parsed, function(a, b) {
+    return _.uniqWith(parsed, function (a, b) {
         return a.line === b.line && a.tag === b.tag && a.text === b.text;
     });
 };

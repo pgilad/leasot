@@ -42,7 +42,7 @@ function outputTable(todos: TodoComment[]): string {
 
     //set filename headers
     t = split(t)
-        .map(function(el: string, i: number) {
+        .map(function (el: string, i: number) {
             return headers[i] ? EOL + chalk.underline(headers[i]) + EOL + el : el;
         })
         .join(EOL);

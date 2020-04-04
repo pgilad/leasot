@@ -4,9 +4,9 @@ import logSymbols from 'log-symbols';
 import { associateExtWithParser, isExtensionSupported, parse, report } from '..';
 import { extname, resolve } from 'path';
 import { mapLimit } from 'async';
-import { ParseConfig, TodoComment } from '../definitions';
-import { ProgramArgs } from './leasot';
+import { BuiltinReporters, ExtensionsDb, ParseConfig, ReporterName, Tag, TodoComment } from '../definitions';
 import { readFile } from 'fs';
+import { CommanderStatic } from 'commander';
 
 const DEFAULT_EXTENSION = '.js';
 const CONCURRENCY_LIMIT = 50;
@@ -24,13 +24,27 @@ export const getFiletype = (filetype?: string, filename?: string): string => {
     return DEFAULT_EXTENSION;
 };
 
-const parseContentSync = (content: string, program: ProgramArgs, filename?: string): TodoComment[] => {
-    const extension = getFiletype(program.filetype, filename);
+/**
+ * @hidden
+ */
+export interface ProgramArgs {
+    readonly associateParser?: ExtensionsDb;
+    readonly exitNicely?: boolean;
+    readonly filetype?: string;
+    readonly ignore?: string[];
+    readonly inlineFiles?: boolean;
+    readonly reporter?: BuiltinReporters | ReporterName;
+    readonly skipUnsupported?: boolean;
+    readonly tags?: Tag[];
+}
 
-    associateExtWithParser(program.associateParser);
+const parseContentSync = (content: string, options: ProgramArgs, filename?: string): TodoComment[] => {
+    const extension = getFiletype(options.filetype, filename);
+
+    associateExtWithParser(options.associateParser);
 
     if (!isExtensionSupported(extension)) {
-        if (program.skipUnsupported) {
+        if (options.skipUnsupported) {
             return [];
         }
         console.log(logSymbols.error, `Filetype ${extension} is unsupported.`);
@@ -38,31 +52,31 @@ const parseContentSync = (content: string, program: ProgramArgs, filename?: stri
     }
 
     const config: ParseConfig = {
-        customTags: program.tags,
+        customTags: options.tags,
         extension: extension,
         filename: filename,
-        withInlineFiles: program.inlineFiles,
+        withInlineFiles: options.inlineFiles,
     };
     return parse(content, config);
 };
 
-const outputTodos = (todos: TodoComment[], { reporter, exitNicely }: ProgramArgs) => {
+const outputTodos = (todos: TodoComment[], options: ProgramArgs) => {
     try {
-        const output = report(todos, reporter);
+        const output = report(todos, options.reporter);
         console.log(output);
     } catch (e) {
         console.error(e);
     }
-    if (exitNicely) {
+    if (options.exitNicely) {
         process.exit(0);
     }
     process.exit(todos.length ? 1 : 0);
 };
 
-const parseAndReportFiles = (fileGlobs: string[], program: ProgramArgs): void => {
+const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globby.sync(fileGlobs, {
-        ignore: program.ignore || [],
+        ignore: options.ignore || [],
     });
 
     if (!files || !files.length) {
@@ -81,21 +95,22 @@ const parseAndReportFiles = (fileGlobs: string[], program: ProgramArgs): void =>
                 process.exit(1);
             }
             const todos = results
-                .map(function(content: string, index: number) {
-                    return parseContentSync(content, program, files[index]);
+                .map(function (content: string, index: number) {
+                    return parseContentSync(content, options, files[index]);
                 })
                 // filter files without any parsed content
                 .filter(item => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, program);
+            outputTodos(todos, options);
         }
     );
 };
 
-const run = (program: ProgramArgs): void => {
+const run = (program: CommanderStatic): void => {
+    const options = program.opts();
     if (program.args && program.args.length > 0) {
-        return parseAndReportFiles(program.args, program);
+        return parseAndReportFiles(program.args, options);
     }
 
     if (process.stdin.isTTY) {
@@ -104,11 +119,11 @@ const run = (program: ProgramArgs): void => {
 
     // data is coming from a pipe
     getStdin()
-        .then(function(content: string) {
-            const todos = parseContentSync(content, program);
-            outputTodos(todos, program);
+        .then(function (content: string) {
+            const todos = parseContentSync(content, options);
+            outputTodos(todos, options);
         })
-        .catch(function(e) {
+        .catch(function (e) {
             console.error(e);
             process.exit(1);
         });
