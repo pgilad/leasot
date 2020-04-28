@@ -1,0 +1,10 @@
+{
+  "name": "leasot",
+  "readme": "none",
+  "out": "docs",
+  "target": "es6",
+  "mode": "file",
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "ignoreCompilerErrors": true
+}

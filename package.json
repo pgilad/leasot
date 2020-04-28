@@ -65,7 +65,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf docs dist",
-    "docs": "typedoc --name leasot --readme none --out docs --target es6 --mode file --excludeNotExported --excludePrivate --ignoreCompilerErrors src",
+    "docs": "typedoc --options typedoc.json src",
     "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
     "predocs:publish": "npm run release:prepare",
     "prepublishOnly": "npm run release:prepare",
