@@ -38,9 +38,7 @@ to extract your todos from comments.
 
 ## Supported languages
 
-Supports 49+ languages, pull requests for additional language support is most welcomed!
-
-[See supported languages](./media/supported-languages.md)
+[49+ languages are supported](./media/supported-languages.md), pull requests for additional language support is most welcomed!
 
 ## Usage in command line
 
