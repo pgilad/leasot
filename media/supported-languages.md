@@ -1,5 +1,5 @@
-| Filetype      | Extension            | Notes                                      | Parser Name         |
-| ------------  | -------------------- | -------------------------------------------| ------------------- |
+| Filetype        | Extension            | Notes                                      | Parser Name         |
+| --------------  | -------------------- | -------------------------------------------| ------------------- |
 | C#              | `.cs`                | Supports `// and /* */` comments.          | defaultParser       |
 | C++/C           | `.cpp` `.c` `.h`     | Supports `// and /* */` comments.          | defaultParser       |
 | Coffee-React    | `.cjsx`              | Supports `#` comments.                     | coffeeParser        |
@@ -17,14 +17,15 @@
 | Hogan           | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |
 | Jade            | `.jade` `.pug`       | Supports `//` and `//-` comments.          | jadeParser          |
-| Java            | `.java`              | Supports `// and /* */` comments           | defaultParser        |
+| Java            | `.java`              | Supports `// and /* */` comments           | defaultParser       |
 | Javascript      | `.js` `.es` `.es6`   | Supports `// and /* */` comments           | defaultParser       |
 | Julia           | `.jl`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Jsx             | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
 | Kotlin          | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
 | Latex           | `.tex`               | Supports `\begin{comment}` and `%` comments| latexParser         |
 | Less            | `.less`              | Supports `// and /* */` comments.          | defaultParser       |
-| Markdown        | `.markdown`, `.md`   | Supports `<!-- -->`                        | twigParser           |
+| Lua             | `.lua`               | Supports `--` and `--[[ ]]` comments.      | haskellParser       |
+| Markdown        | `.markdown`, `.md`   | Supports `<!-- -->`                        | twigParser          |
 | Mustache        | `.mustache`          | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Nunjucks        | `.njk`               | Supports `{#  #}` and `<!-- -->`           | twigParser          |
 | Objective-C     | `.m`                 | Supports `// and /* */` comments           | defaultParser       |
@@ -49,4 +50,3 @@
 | Typescript      | `.ts`, `.tsx`        | Supports `// and /* */` comments.          | defaultParser       |
 | Vue             | `.vue`               | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
 | Yaml            | `.yaml` `.yml`       | Supports `#` comments.                     | coffeeParser        |
-

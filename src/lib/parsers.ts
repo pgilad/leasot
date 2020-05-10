@@ -34,6 +34,7 @@ const parsersDb: ExtensionsDb = {
     '.jsx': { parserName: 'defaultParser' },
     '.kt': { parserName: 'defaultParser' },
     '.less': { parserName: 'defaultParser' },
+    '.lua': { parserName: 'haskellParser' },
     '.m': { parserName: 'defaultParser' },
     '.markdown': { parserName: 'twigParser' },
     '.md': { parserName: 'twigParser' },
