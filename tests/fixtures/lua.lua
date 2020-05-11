@@ -1,6 +1,6 @@
 function foo()
     -- TODO: Support POST
-    -- TODO: Foobar print
+    -- FIXME: Foobar print
     print("foobar")
     -- TODO: End function
 end
@@ -8,8 +8,8 @@ end
 function bar()
 --[[ Multiline
 comment
-block FIXME: maybe
-with a TODO: fix this
+FIXME: maybe
+TODO: fix this
 ]]
     return
 end

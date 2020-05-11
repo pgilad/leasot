@@ -1,4 +1,6 @@
 import { DefaultTags, Tag, TodoComment } from '../../definitions';
+import { split } from 'eol';
+import { getLineFromPos } from './index';
 
 const DEFAULT_TAGS: string[] = [DefaultTags.todo, DefaultTags.fixme];
 
@@ -47,4 +49,54 @@ export const prepareComment = (match: string[], line: number, filename: string =
         ref: ref.trim(),
         text: text.trim(),
     };
+};
+
+export const extractSingleLineComments = (contents: string, file: string, lineCommentRegex: RegExp): TodoComment[] => {
+    const comments: TodoComment[] = [];
+
+    split(contents).forEach((line, index) => {
+        let match = lineCommentRegex.exec(line);
+        while (match && match.length > 0) {
+            const comment = prepareComment(match, index + 1, file);
+            if (!comment) {
+                break;
+            }
+            comments.push(comment);
+            match = lineCommentRegex.exec(line);
+        }
+    });
+
+    return comments.filter(Boolean);
+};
+
+export const extractSingleLineFromBlocks = (
+    contents: string,
+    file: string,
+    multiLineCommentRegex: RegExp,
+    innerBlockRegex: RegExp
+): TodoComment[] => {
+    const comments: TodoComment[] = [];
+
+    let match = multiLineCommentRegex.exec(contents);
+    while (match && match.length > 0) {
+        // use entire match as basis to look into todos/fixmes
+        const baseMatch = match[0];
+
+        split(baseMatch).forEach((line, index) => {
+            let subMatch = innerBlockRegex.exec(line);
+            while (subMatch) {
+                const adjustedLine = getLineFromPos(contents, match.index) + index;
+                const comment = prepareComment(subMatch, adjustedLine, file);
+                if (!comment) {
+                    break;
+                }
+                comments.push(comment);
+                subMatch = innerBlockRegex.exec(line);
+            }
+        });
+
+        match = multiLineCommentRegex.exec(contents);
+    }
+
+    return comments.filter(Boolean);
 };
