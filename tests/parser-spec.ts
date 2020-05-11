@@ -826,6 +826,21 @@ describe('parsing', function () {
         });
     });
 
+    describe('lua', function () {
+        it('parse -- comments and --[[ ]] comments', function () {
+            const file = getFixturePath('lua.lua');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(5);
+
+            verifyComment(comments[0], 'TODO', 2, 'Support POST');
+            verifyComment(comments[1], 'FIXME', 3, 'Foobar print');
+            verifyComment(comments[2], 'TODO', 5, 'End function');
+            verifyComment(comments[3], 'FIXME', 11, 'maybe');
+            verifyComment(comments[4], 'TODO', 12, 'fix this');
+        });
+    });
+
     describe('custom parsers', function () {
         it('returns custom parser todos', function () {
             const file = getFixturePath('file.unsupported');
