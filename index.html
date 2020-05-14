@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>leasot</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for leasot">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -111,13 +111,15 @@
 								<li class="tsd-kind-variable"><a href="index.html#concurrency_limit" class="tsd-kind-icon">CONCURRENCY_<wbr>LIMIT</a></li>
 								<li class="tsd-kind-variable"><a href="index.html#default_extension" class="tsd-kind-icon">DEFAULT_<wbr>EXTENSION</a></li>
 								<li class="tsd-kind-variable"><a href="index.html#default_tags" class="tsd-kind-icon">DEFAULT_<wbr>TAGS</a></li>
-								<li class="tsd-kind-variable"><a href="index.html#rblockcomment" class="tsd-kind-icon">r<wbr>Block<wbr>Comment</a></li>
+								<li class="tsd-kind-variable"><a href="index.html#multilinecommentregex" class="tsd-kind-icon">multi<wbr>Line<wbr>Comment<wbr>Regex</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="index.html#associateextwithparser" class="tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser</a></li>
+								<li class="tsd-kind-function"><a href="index.html#extractsinglelinecomments" class="tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>Comments</a></li>
+								<li class="tsd-kind-function"><a href="index.html#extractsinglelinefromblocks" class="tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>From<wbr>Blocks</a></li>
 								<li class="tsd-kind-function"><a href="index.html#getactiveparsernames" class="tsd-kind-icon">get<wbr>Active<wbr>Parser<wbr>Names</a></li>
 								<li class="tsd-kind-function"><a href="index.html#getlinefrompos" class="tsd-kind-icon">get<wbr>Line<wbr>From<wbr>Pos</a></li>
 								<li class="tsd-kind-function"><a href="index.html#getregex" class="tsd-kind-icon">get<wbr>Regex</a></li>
@@ -156,7 +158,7 @@
 					<div class="tsd-signature tsd-kind-icon">Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L136">definitions.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L136">definitions.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">Parser<wbr>Factory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="interfaces/parserfactoryconfig.html" class="tsd-signature-type">ParserFactoryConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="index.html#parser" class="tsd-signature-type">Parser</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L141">definitions.ts:141</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L141">definitions.ts:141</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">Report<wbr>Items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>comments<span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L150">definitions.ts:150</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L150">definitions.ts:150</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -270,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">Reporter<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L151">definitions.ts:151</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L151">definitions.ts:151</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -280,7 +282,7 @@
 					<div class="tsd-signature tsd-kind-icon">Tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L12">definitions.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L12">definitions.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -295,7 +297,7 @@
 					<div class="tsd-signature tsd-kind-icon">Transform<wbr>Comment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, line<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, ref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, tag<span class="tsd-signature-symbol">: </span><a href="index.html#tag" class="tsd-signature-type">Tag</a>, text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L153">definitions.ts:153</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L153">definitions.ts:153</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -338,7 +340,7 @@
 					<div class="tsd-signature tsd-kind-icon">Transform<wbr>Header<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>tag<span class="tsd-signature-symbol">: </span><a href="index.html#tag" class="tsd-signature-type">Tag</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/definitions.ts#L155">definitions.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/definitions.ts#L155">definitions.ts:155</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -372,8 +374,8 @@
 					<div class="tsd-signature tsd-kind-icon">CONCURRENCY_<wbr>LIMIT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">50</span><span class="tsd-signature-symbol"> = 50</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli-reporter.ts#L10">cli/cli-reporter.ts:10</a></li>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli.ts#L13">cli/cli.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli-reporter.ts#L10">cli/cli-reporter.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli.ts#L13">cli/cli.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -383,7 +385,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>EXTENSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">".js"</span><span class="tsd-signature-symbol"> = &quot;.js&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli.ts#L12">cli/cli.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli.ts#L12">cli/cli.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -393,17 +395,18 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>TAGS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [DefaultTags.todo, DefaultTags.fixme]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/utils/comments.ts#L3">lib/utils/comments.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/comments.ts#L5">lib/utils/comments.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
-					<a name="rblockcomment" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> r<wbr>Block<wbr>Comment</h3>
-					<div class="tsd-signature tsd-kind-icon">r<wbr>Block<wbr>Comment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /\/\*(?:[\s\S]*?)\*\//gim</span></div>
+					<a name="multilinecommentregex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> multi<wbr>Line<wbr>Comment<wbr>Regex</h3>
+					<div class="tsd-signature tsd-kind-icon">multi<wbr>Line<wbr>Comment<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /--\[\[(?:[\s\S]*)]]/gim</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/defaultParser.ts#L5">lib/parsers/defaultParser.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/defaultParser.ts#L5">lib/parsers/defaultParser.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/luaParser.ts#L5">lib/parsers/luaParser.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -420,7 +423,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L76">lib/parsers.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L77">lib/parsers.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,6 +447,67 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="extractsinglelinecomments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> extract<wbr>Single<wbr>Line<wbr>Comments</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>Comments<span class="tsd-signature-symbol">(</span>contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lineCommentRegex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/comments.ts#L54">lib/utils/comments.ts:54</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contents: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>file: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>lineCommentRegex: <span class="tsd-signature-type">RegExp</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="extractsinglelinefromblocks" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> extract<wbr>Single<wbr>Line<wbr>From<wbr>Blocks</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>From<wbr>Blocks<span class="tsd-signature-symbol">(</span>contents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, multiLineCommentRegex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span>, innerBlockRegex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/comments.ts#L72">lib/utils/comments.ts:72</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contents: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>file: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>multiLineCommentRegex: <span class="tsd-signature-type">RegExp</span></h5>
+								</li>
+								<li>
+									<h5>innerBlockRegex: <span class="tsd-signature-type">RegExp</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/todocomment.html" class="tsd-signature-type">TodoComment</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="getactiveparsernames" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Active<wbr>Parser<wbr>Names</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -453,7 +517,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L104">lib/parsers.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L105">lib/parsers.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -476,7 +540,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="getlinefrompos" class="tsd-anchor"></a>
-					<h3>get<wbr>Line<wbr>From<wbr>Pos</h3>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Line<wbr>From<wbr>Pos</h3>
 					<ul class="tsd-signatures tsd-kind-function">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Line<wbr>From<wbr>Pos<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, pos<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
@@ -484,7 +548,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/defaultParser.ts#L9">lib/parsers/defaultParser.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/index.ts#L7">lib/utils/index.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -510,7 +574,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/utils/comments.ts#L5">lib/utils/comments.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/comments.ts#L7">lib/utils/comments.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -533,7 +597,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L99">lib/parsers.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L100">lib/parsers.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -567,7 +631,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/leasot-reporter.ts#L4">cli/leasot-reporter.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/leasot-reporter.ts#L4">cli/leasot-reporter.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -581,7 +645,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/leasot.ts#L5">cli/leasot.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/leasot.ts#L5">cli/leasot.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -604,7 +668,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters.ts#L7">lib/reporters.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters.ts#L7">lib/reporters.ts:7</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -632,7 +696,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/table.ts#L9">lib/reporters/table.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/table.ts#L9">lib/reporters/table.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -655,7 +719,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/table.ts#L19">lib/reporters/table.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/table.ts#L19">lib/reporters/table.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -678,7 +742,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/common.ts#L24">cli/common.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/common.ts#L24">cli/common.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -704,7 +768,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L124">lib/parsers.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L125">lib/parsers.ts:125</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -746,7 +810,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli-reporter.ts#L12">cli/cli-reporter.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli-reporter.ts#L12">cli/cli-reporter.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -763,7 +827,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli.ts#L50">cli/cli.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli.ts#L50">cli/cli.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -789,7 +853,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/leasot.ts#L7">cli/leasot.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/leasot.ts#L7">cli/leasot.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -815,7 +879,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli.ts#L28">cli/cli.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli.ts#L28">cli/cli.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -839,10 +903,11 @@
 					<h3><span class="tsd-flag ts-flagConst">Const</span> parser<wbr>Factory</h3>
 					<ul class="tsd-signatures tsd-kind-function">
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
-						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">parse</span></li>
+						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">parse</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">parse</span></li>
+						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 						<li class="tsd-signature tsd-kind-icon">parser<wbr>Factory<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
@@ -856,7 +921,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/coffeeParser.ts#L5">lib/parsers/coffeeParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/coffeeParser.ts#L5">lib/parsers/coffeeParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -875,7 +940,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/defaultParser.ts#L21">lib/parsers/defaultParser.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/defaultParser.ts#L7">lib/parsers/defaultParser.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>custom<wbr>Tags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/ejsParser.ts#L5">lib/parsers/ejsParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -894,7 +978,26 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/ejsParser.ts#L5">lib/parsers/ejsParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/erlangParser.ts#L5">lib/parsers/erlangParser.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>custom<wbr>Tags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/hamlParser.ts#L5">lib/parsers/hamlParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -913,7 +1016,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/erlangParser.ts#L5">lib/parsers/erlangParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/haskellParser.ts#L5">lib/parsers/haskellParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -932,26 +1035,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/hamlParser.ts#L5">lib/parsers/hamlParser.ts:5</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>customTags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>custom<wbr>Tags<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">parse</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/haskellParser.ts#L5">lib/parsers/haskellParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/hbsParser.ts#L5">lib/parsers/hbsParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -970,7 +1054,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/hbsParser.ts#L5">lib/parsers/hbsParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/jadeParser.ts#L5">lib/parsers/jadeParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -989,7 +1073,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/jadeParser.ts#L5">lib/parsers/jadeParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/latexParser.ts#L8">lib/parsers/latexParser.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1008,7 +1092,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/latexParser.ts#L8">lib/parsers/latexParser.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/luaParser.ts#L7">lib/parsers/luaParser.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1027,7 +1111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/pascalParser.ts#L5">lib/parsers/pascalParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/pascalParser.ts#L5">lib/parsers/pascalParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1046,7 +1130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/pythonParser.ts#L5">lib/parsers/pythonParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/pythonParser.ts#L5">lib/parsers/pythonParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1065,7 +1149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/ssParser.ts#L5">lib/parsers/ssParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/ssParser.ts#L5">lib/parsers/ssParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1084,7 +1168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers/twigParser.ts#L5">lib/parsers/twigParser.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers/twigParser.ts#L5">lib/parsers/twigParser.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1112,7 +1196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/utils/comments.ts#L36">lib/utils/comments.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/utils/comments.ts#L38">lib/utils/comments.ts:38</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1141,7 +1225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters.ts#L36">lib/reporters.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters.ts#L36">lib/reporters.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1196,7 +1280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/custom.ts#L92">lib/reporters/custom.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/custom.ts#L92">lib/reporters/custom.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1213,7 +1297,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/json.ts#L7">lib/reporters/json.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/json.ts#L7">lib/reporters/json.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1230,7 +1314,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/markdown.ts#L16">lib/reporters/markdown.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/markdown.ts#L16">lib/reporters/markdown.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1247,7 +1331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/raw.ts#L3">lib/reporters/raw.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/raw.ts#L3">lib/reporters/raw.ts:3</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1261,7 +1345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/table.ts#L57">lib/reporters/table.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/table.ts#L57">lib/reporters/table.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1275,7 +1359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/vscode.ts#L16">lib/reporters/vscode.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/vscode.ts#L16">lib/reporters/vscode.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1292,7 +1376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/xml.ts#L12">lib/reporters/xml.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/xml.ts#L12">lib/reporters/xml.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1319,7 +1403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli-reporter.ts#L44">cli/cli-reporter.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli-reporter.ts#L44">cli/cli-reporter.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1333,7 +1417,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/cli/cli.ts#L84">cli/cli.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/cli/cli.ts#L84">cli/cli.ts:84</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1355,7 +1439,7 @@
 					<div class="tsd-signature tsd-kind-icon">parsers<wbr>Db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L4">lib/parsers.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L4">lib/parsers.ts:4</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -1364,7 +1448,7 @@
 						<div class="tsd-signature tsd-kind-icon">.bash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L5">lib/parsers.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L5">lib/parsers.ts:5</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1373,7 +1457,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L5">lib/parsers.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L5">lib/parsers.ts:5</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1384,7 +1468,7 @@
 						<div class="tsd-signature tsd-kind-icon">.c<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L6">lib/parsers.ts:6</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L6">lib/parsers.ts:6</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1393,7 +1477,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L6">lib/parsers.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L6">lib/parsers.ts:6</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1404,7 +1488,7 @@
 						<div class="tsd-signature tsd-kind-icon">.cjsx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L7">lib/parsers.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L7">lib/parsers.ts:7</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1413,7 +1497,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L7">lib/parsers.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L7">lib/parsers.ts:7</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1424,7 +1508,7 @@
 						<div class="tsd-signature tsd-kind-icon">.coffee<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L8">lib/parsers.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L8">lib/parsers.ts:8</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1433,7 +1517,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L8">lib/parsers.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L8">lib/parsers.ts:8</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1444,7 +1528,7 @@
 						<div class="tsd-signature tsd-kind-icon">.cpp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L9">lib/parsers.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L9">lib/parsers.ts:9</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1453,7 +1537,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L9">lib/parsers.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L9">lib/parsers.ts:9</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1464,7 +1548,7 @@
 						<div class="tsd-signature tsd-kind-icon">.cr<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L10">lib/parsers.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L10">lib/parsers.ts:10</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1473,7 +1557,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L10">lib/parsers.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L10">lib/parsers.ts:10</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1484,7 +1568,7 @@
 						<div class="tsd-signature tsd-kind-icon">.cs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L11">lib/parsers.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L11">lib/parsers.ts:11</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1493,7 +1577,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L11">lib/parsers.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L11">lib/parsers.ts:11</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1504,7 +1588,7 @@
 						<div class="tsd-signature tsd-kind-icon">.cson<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L12">lib/parsers.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L12">lib/parsers.ts:12</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1513,7 +1597,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L12">lib/parsers.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L12">lib/parsers.ts:12</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1524,7 +1608,7 @@
 						<div class="tsd-signature tsd-kind-icon">.css<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L13">lib/parsers.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L13">lib/parsers.ts:13</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1533,7 +1617,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L13">lib/parsers.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L13">lib/parsers.ts:13</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1544,7 +1628,7 @@
 						<div class="tsd-signature tsd-kind-icon">.ctp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L46">lib/parsers.ts:46</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1553,7 +1637,7 @@
 							<div class="tsd-signature tsd-kind-icon">included<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;.html&#x27;, &#x27;.js&#x27;, &#x27;.css&#x27;]</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L46">lib/parsers.ts:46</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1563,7 +1647,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L46">lib/parsers.ts:46</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1574,7 +1658,7 @@
 						<div class="tsd-signature tsd-kind-icon">.ejs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L14">lib/parsers.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L14">lib/parsers.ts:14</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1583,7 +1667,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ejsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L14">lib/parsers.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L14">lib/parsers.ts:14</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1594,7 +1678,7 @@
 						<div class="tsd-signature tsd-kind-icon">.erb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L15">lib/parsers.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L15">lib/parsers.ts:15</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1603,7 +1687,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ejsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L15">lib/parsers.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L15">lib/parsers.ts:15</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1614,7 +1698,7 @@
 						<div class="tsd-signature tsd-kind-icon">.erl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L16">lib/parsers.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L16">lib/parsers.ts:16</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1623,7 +1707,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;erlangParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L16">lib/parsers.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L16">lib/parsers.ts:16</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1634,7 +1718,7 @@
 						<div class="tsd-signature tsd-kind-icon">.es<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L17">lib/parsers.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L17">lib/parsers.ts:17</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1643,7 +1727,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L17">lib/parsers.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L17">lib/parsers.ts:17</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1654,7 +1738,7 @@
 						<div class="tsd-signature tsd-kind-icon">.es6<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L18">lib/parsers.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L18">lib/parsers.ts:18</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1663,7 +1747,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L18">lib/parsers.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L18">lib/parsers.ts:18</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1674,7 +1758,7 @@
 						<div class="tsd-signature tsd-kind-icon">.go<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L19">lib/parsers.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L19">lib/parsers.ts:19</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1683,7 +1767,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L19">lib/parsers.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L19">lib/parsers.ts:19</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1694,7 +1778,7 @@
 						<div class="tsd-signature tsd-kind-icon">.h<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L20">lib/parsers.ts:20</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L20">lib/parsers.ts:20</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1703,7 +1787,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L20">lib/parsers.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L20">lib/parsers.ts:20</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1714,7 +1798,7 @@
 						<div class="tsd-signature tsd-kind-icon">.haml<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L21">lib/parsers.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L21">lib/parsers.ts:21</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1723,7 +1807,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hamlParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L21">lib/parsers.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L21">lib/parsers.ts:21</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1734,7 +1818,7 @@
 						<div class="tsd-signature tsd-kind-icon">.handlebars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L22">lib/parsers.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L22">lib/parsers.ts:22</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1743,7 +1827,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hbsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L22">lib/parsers.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L22">lib/parsers.ts:22</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1754,7 +1838,7 @@
 						<div class="tsd-signature tsd-kind-icon">.hbs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L23">lib/parsers.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L23">lib/parsers.ts:23</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1763,7 +1847,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hbsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L23">lib/parsers.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L23">lib/parsers.ts:23</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1774,7 +1858,7 @@
 						<div class="tsd-signature tsd-kind-icon">.hgn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L24">lib/parsers.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L24">lib/parsers.ts:24</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1783,7 +1867,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hbsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L24">lib/parsers.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L24">lib/parsers.ts:24</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1794,7 +1878,7 @@
 						<div class="tsd-signature tsd-kind-icon">.hogan<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L25">lib/parsers.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L25">lib/parsers.ts:25</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1803,7 +1887,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hbsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L25">lib/parsers.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L25">lib/parsers.ts:25</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1814,7 +1898,7 @@
 						<div class="tsd-signature tsd-kind-icon">.hrl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L26">lib/parsers.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L26">lib/parsers.ts:26</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1823,7 +1907,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;erlangParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L26">lib/parsers.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L26">lib/parsers.ts:26</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1834,7 +1918,7 @@
 						<div class="tsd-signature tsd-kind-icon">.hs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L27">lib/parsers.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L27">lib/parsers.ts:27</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1843,7 +1927,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;haskellParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L27">lib/parsers.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L27">lib/parsers.ts:27</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1854,7 +1938,7 @@
 						<div class="tsd-signature tsd-kind-icon">.htm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L28">lib/parsers.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L28">lib/parsers.ts:28</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1863,7 +1947,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L28">lib/parsers.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L28">lib/parsers.ts:28</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1874,7 +1958,7 @@
 						<div class="tsd-signature tsd-kind-icon">.html<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L29">lib/parsers.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L29">lib/parsers.ts:29</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1883,7 +1967,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L29">lib/parsers.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L29">lib/parsers.ts:29</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1894,7 +1978,7 @@
 						<div class="tsd-signature tsd-kind-icon">.jade<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L30">lib/parsers.ts:30</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L30">lib/parsers.ts:30</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1903,7 +1987,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;jadeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L30">lib/parsers.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L30">lib/parsers.ts:30</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1914,7 +1998,7 @@
 						<div class="tsd-signature tsd-kind-icon">.java<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L31">lib/parsers.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L31">lib/parsers.ts:31</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1923,7 +2007,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L31">lib/parsers.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L31">lib/parsers.ts:31</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1934,7 +2018,7 @@
 						<div class="tsd-signature tsd-kind-icon">.jl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L32">lib/parsers.ts:32</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L32">lib/parsers.ts:32</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1943,7 +2027,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;pythonParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L32">lib/parsers.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L32">lib/parsers.ts:32</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1954,7 +2038,7 @@
 						<div class="tsd-signature tsd-kind-icon">.js<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L33">lib/parsers.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L33">lib/parsers.ts:33</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1963,7 +2047,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L33">lib/parsers.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L33">lib/parsers.ts:33</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1974,7 +2058,7 @@
 						<div class="tsd-signature tsd-kind-icon">.jsx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L34">lib/parsers.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L34">lib/parsers.ts:34</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1983,7 +2067,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L34">lib/parsers.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L34">lib/parsers.ts:34</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1994,7 +2078,7 @@
 						<div class="tsd-signature tsd-kind-icon">.kt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L35">lib/parsers.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L35">lib/parsers.ts:35</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -2003,7 +2087,7 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L35">lib/parsers.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L35">lib/parsers.ts:35</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2014,7 +2098,7 @@
 						<div class="tsd-signature tsd-kind-icon">.less<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L36">lib/parsers.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L36">lib/parsers.ts:36</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -2023,7 +2107,27 @@
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L36">lib/parsers.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L36">lib/parsers.ts:36</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="parsersdb._lua" class="tsd-anchor"></a>
+						<h3>.lua</h3>
+						<div class="tsd-signature tsd-kind-icon">.lua<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L37">lib/parsers.ts:37</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="parsersdb._lua.parsername-33" class="tsd-anchor"></a>
+							<h3>parser<wbr>Name</h3>
+							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;luaParser&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L37">lib/parsers.ts:37</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2034,16 +2138,16 @@
 						<div class="tsd-signature tsd-kind-icon">.m<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L37">lib/parsers.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L38">lib/parsers.ts:38</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._m.parsername-33" class="tsd-anchor"></a>
+							<a name="parsersdb._m.parsername-34" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L37">lib/parsers.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L38">lib/parsers.ts:38</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2054,16 +2158,16 @@
 						<div class="tsd-signature tsd-kind-icon">.markdown<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L38">lib/parsers.ts:38</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L39">lib/parsers.ts:39</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._markdown.parsername-34" class="tsd-anchor"></a>
+							<a name="parsersdb._markdown.parsername-35" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L38">lib/parsers.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L39">lib/parsers.ts:39</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2074,16 +2178,16 @@
 						<div class="tsd-signature tsd-kind-icon">.md<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L39">lib/parsers.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L40">lib/parsers.ts:40</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._md.parsername-35" class="tsd-anchor"></a>
+							<a name="parsersdb._md.parsername-36" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L39">lib/parsers.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L40">lib/parsers.ts:40</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2094,16 +2198,16 @@
 						<div class="tsd-signature tsd-kind-icon">.mm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L40">lib/parsers.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L41">lib/parsers.ts:41</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._mm.parsername-36" class="tsd-anchor"></a>
+							<a name="parsersdb._mm.parsername-37" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L40">lib/parsers.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L41">lib/parsers.ts:41</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2114,16 +2218,16 @@
 						<div class="tsd-signature tsd-kind-icon">.mustache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L41">lib/parsers.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L42">lib/parsers.ts:42</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._mustache.parsername-37" class="tsd-anchor"></a>
+							<a name="parsersdb._mustache.parsername-38" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;hbsParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L41">lib/parsers.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L42">lib/parsers.ts:42</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2134,16 +2238,16 @@
 						<div class="tsd-signature tsd-kind-icon">.njk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L42">lib/parsers.ts:42</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L43">lib/parsers.ts:43</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._njk.parsername-38" class="tsd-anchor"></a>
+							<a name="parsersdb._njk.parsername-39" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L42">lib/parsers.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L43">lib/parsers.ts:43</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2154,16 +2258,16 @@
 						<div class="tsd-signature tsd-kind-icon">.pas<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L43">lib/parsers.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L44">lib/parsers.ts:44</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._pas.parsername-39" class="tsd-anchor"></a>
+							<a name="parsersdb._pas.parsername-40" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;pascalParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L43">lib/parsers.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L44">lib/parsers.ts:44</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2174,7 +2278,7 @@
 						<div class="tsd-signature tsd-kind-icon">.php<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L44">lib/parsers.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -2183,17 +2287,17 @@
 							<div class="tsd-signature tsd-kind-icon">included<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;.html&#x27;, &#x27;.js&#x27;, &#x27;.css&#x27;]</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L44">lib/parsers.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
 								</ul>
 							</aside>
 						</section>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._php.parsername-40" class="tsd-anchor"></a>
+							<a name="parsersdb._php.parsername-41" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L44">lib/parsers.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L45">lib/parsers.ts:45</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2204,16 +2308,16 @@
 						<div class="tsd-signature tsd-kind-icon">.pl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L46">lib/parsers.ts:46</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L47">lib/parsers.ts:47</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._pl.parsername-41" class="tsd-anchor"></a>
+							<a name="parsersdb._pl.parsername-42" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L46">lib/parsers.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L47">lib/parsers.ts:47</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2224,16 +2328,16 @@
 						<div class="tsd-signature tsd-kind-icon">.pm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L47">lib/parsers.ts:47</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L48">lib/parsers.ts:48</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._pm.parsername-42" class="tsd-anchor"></a>
+							<a name="parsersdb._pm.parsername-43" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L47">lib/parsers.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L48">lib/parsers.ts:48</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2244,16 +2348,16 @@
 						<div class="tsd-signature tsd-kind-icon">.proto<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L48">lib/parsers.ts:48</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L49">lib/parsers.ts:49</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._proto.parsername-43" class="tsd-anchor"></a>
+							<a name="parsersdb._proto.parsername-44" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L48">lib/parsers.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L49">lib/parsers.ts:49</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2264,16 +2368,16 @@
 						<div class="tsd-signature tsd-kind-icon">.pug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L49">lib/parsers.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L50">lib/parsers.ts:50</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._pug.parsername-44" class="tsd-anchor"></a>
+							<a name="parsersdb._pug.parsername-45" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;jadeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L49">lib/parsers.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L50">lib/parsers.ts:50</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2284,16 +2388,16 @@
 						<div class="tsd-signature tsd-kind-icon">.py<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L50">lib/parsers.ts:50</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L51">lib/parsers.ts:51</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._py.parsername-45" class="tsd-anchor"></a>
+							<a name="parsersdb._py.parsername-46" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;pythonParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L50">lib/parsers.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L51">lib/parsers.ts:51</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2304,16 +2408,16 @@
 						<div class="tsd-signature tsd-kind-icon">.rb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L51">lib/parsers.ts:51</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L52">lib/parsers.ts:52</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._rb.parsername-46" class="tsd-anchor"></a>
+							<a name="parsersdb._rb.parsername-47" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L51">lib/parsers.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L52">lib/parsers.ts:52</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2324,16 +2428,16 @@
 						<div class="tsd-signature tsd-kind-icon">.rs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L52">lib/parsers.ts:52</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L53">lib/parsers.ts:53</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._rs.parsername-47" class="tsd-anchor"></a>
+							<a name="parsersdb._rs.parsername-48" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L52">lib/parsers.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L53">lib/parsers.ts:53</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2344,16 +2448,16 @@
 						<div class="tsd-signature tsd-kind-icon">.sass<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L53">lib/parsers.ts:53</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L54">lib/parsers.ts:54</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._sass.parsername-48" class="tsd-anchor"></a>
+							<a name="parsersdb._sass.parsername-49" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L53">lib/parsers.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L54">lib/parsers.ts:54</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2364,16 +2468,16 @@
 						<div class="tsd-signature tsd-kind-icon">.scala<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L54">lib/parsers.ts:54</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L55">lib/parsers.ts:55</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._scala.parsername-49" class="tsd-anchor"></a>
+							<a name="parsersdb._scala.parsername-50" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L54">lib/parsers.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L55">lib/parsers.ts:55</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2384,16 +2488,16 @@
 						<div class="tsd-signature tsd-kind-icon">.scss<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L55">lib/parsers.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L56">lib/parsers.ts:56</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._scss.parsername-50" class="tsd-anchor"></a>
+							<a name="parsersdb._scss.parsername-51" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L55">lib/parsers.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L56">lib/parsers.ts:56</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2404,16 +2508,16 @@
 						<div class="tsd-signature tsd-kind-icon">.sh<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L56">lib/parsers.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L57">lib/parsers.ts:57</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._sh.parsername-51" class="tsd-anchor"></a>
+							<a name="parsersdb._sh.parsername-52" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L56">lib/parsers.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L57">lib/parsers.ts:57</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2424,16 +2528,16 @@
 						<div class="tsd-signature tsd-kind-icon">.sql<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L57">lib/parsers.ts:57</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L58">lib/parsers.ts:58</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._sql.parsername-52" class="tsd-anchor"></a>
+							<a name="parsersdb._sql.parsername-53" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;defaultParser&#x27;, &#x27;haskellParser&#x27;]</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L57">lib/parsers.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L58">lib/parsers.ts:58</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2444,16 +2548,16 @@
 						<div class="tsd-signature tsd-kind-icon">.ss<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L58">lib/parsers.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L59">lib/parsers.ts:59</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._ss.parsername-53" class="tsd-anchor"></a>
+							<a name="parsersdb._ss.parsername-54" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ssParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L58">lib/parsers.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L59">lib/parsers.ts:59</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2464,16 +2568,16 @@
 						<div class="tsd-signature tsd-kind-icon">.styl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L59">lib/parsers.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L60">lib/parsers.ts:60</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._styl.parsername-54" class="tsd-anchor"></a>
+							<a name="parsersdb._styl.parsername-55" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L59">lib/parsers.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L60">lib/parsers.ts:60</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2484,7 +2588,7 @@
 						<div class="tsd-signature tsd-kind-icon">.svelte<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L60">lib/parsers.ts:60</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L61">lib/parsers.ts:61</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -2493,17 +2597,17 @@
 							<div class="tsd-signature tsd-kind-icon">included<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;.html&#x27;, &#x27;.js&#x27;, &#x27;.css&#x27;]</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L60">lib/parsers.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L61">lib/parsers.ts:61</a></li>
 								</ul>
 							</aside>
 						</section>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._svelte.parsername-55" class="tsd-anchor"></a>
+							<a name="parsersdb._svelte.parsername-56" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L60">lib/parsers.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L61">lib/parsers.ts:61</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2514,16 +2618,16 @@
 						<div class="tsd-signature tsd-kind-icon">.swift<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L61">lib/parsers.ts:61</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L62">lib/parsers.ts:62</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._swift.parsername-56" class="tsd-anchor"></a>
+							<a name="parsersdb._swift.parsername-57" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L61">lib/parsers.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L62">lib/parsers.ts:62</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2534,16 +2638,16 @@
 						<div class="tsd-signature tsd-kind-icon">.tex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L62">lib/parsers.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L63">lib/parsers.ts:63</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._tex.parsername-57" class="tsd-anchor"></a>
+							<a name="parsersdb._tex.parsername-58" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;latexParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L62">lib/parsers.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L63">lib/parsers.ts:63</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2554,16 +2658,16 @@
 						<div class="tsd-signature tsd-kind-icon">.ts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L63">lib/parsers.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L64">lib/parsers.ts:64</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._ts.parsername-58" class="tsd-anchor"></a>
+							<a name="parsersdb._ts.parsername-59" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L63">lib/parsers.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L64">lib/parsers.ts:64</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2574,16 +2678,16 @@
 						<div class="tsd-signature tsd-kind-icon">.tsx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L64">lib/parsers.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L65">lib/parsers.ts:65</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._tsx.parsername-59" class="tsd-anchor"></a>
+							<a name="parsersdb._tsx.parsername-60" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;defaultParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L64">lib/parsers.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L65">lib/parsers.ts:65</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2594,16 +2698,16 @@
 						<div class="tsd-signature tsd-kind-icon">.twig<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L65">lib/parsers.ts:65</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L66">lib/parsers.ts:66</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._twig.parsername-60" class="tsd-anchor"></a>
+							<a name="parsersdb._twig.parsername-61" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L65">lib/parsers.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L66">lib/parsers.ts:66</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2614,7 +2718,7 @@
 						<div class="tsd-signature tsd-kind-icon">.vue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L66">lib/parsers.ts:66</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L67">lib/parsers.ts:67</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -2623,17 +2727,17 @@
 							<div class="tsd-signature tsd-kind-icon">included<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;.html&#x27;, &#x27;.js&#x27;, &#x27;.css&#x27;]</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L66">lib/parsers.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L67">lib/parsers.ts:67</a></li>
 								</ul>
 							</aside>
 						</section>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._vue.parsername-61" class="tsd-anchor"></a>
+							<a name="parsersdb._vue.parsername-62" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;twigParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L66">lib/parsers.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L67">lib/parsers.ts:67</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2644,16 +2748,16 @@
 						<div class="tsd-signature tsd-kind-icon">.yaml<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L67">lib/parsers.ts:67</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L68">lib/parsers.ts:68</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._yaml.parsername-62" class="tsd-anchor"></a>
+							<a name="parsersdb._yaml.parsername-63" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L67">lib/parsers.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L68">lib/parsers.ts:68</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2664,16 +2768,16 @@
 						<div class="tsd-signature tsd-kind-icon">.yml<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L68">lib/parsers.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L69">lib/parsers.ts:69</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._yml.parsername-63" class="tsd-anchor"></a>
+							<a name="parsersdb._yml.parsername-64" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L68">lib/parsers.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L69">lib/parsers.ts:69</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2684,16 +2788,16 @@
 						<div class="tsd-signature tsd-kind-icon">.zsh<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L69">lib/parsers.ts:69</a></li>
+								<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L70">lib/parsers.ts:70</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="parsersdb._zsh.parsername-64" class="tsd-anchor"></a>
+							<a name="parsersdb._zsh.parsername-65" class="tsd-anchor"></a>
 							<h3>parser<wbr>Name</h3>
 							<div class="tsd-signature tsd-kind-icon">parser<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;coffeeParser&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/parsers.ts#L69">lib/parsers.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/parsers.ts#L70">lib/parsers.ts:70</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -2705,9 +2809,9 @@
 					<div class="tsd-signature tsd-kind-icon">reporter<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/custom.ts#L83">lib/reporters/custom.ts:83</a></li>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/markdown.ts#L4">lib/reporters/markdown.ts:4</a></li>
-							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/vscode.ts#L4">lib/reporters/vscode.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/custom.ts#L83">lib/reporters/custom.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/markdown.ts#L4">lib/reporters/markdown.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/vscode.ts#L4">lib/reporters/vscode.ts:4</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -2720,7 +2824,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/custom.ts#L84">lib/reporters/custom.ts:84</a></li>
+										<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/custom.ts#L84">lib/reporters/custom.ts:84</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2755,7 +2859,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/pgilad/leasot/blob/0bf947e/src/lib/reporters/custom.ts#L87">lib/reporters/custom.ts:87</a></li>
+										<li>Defined in <a href="https://github.com/pgilad/leasot/blob/431946f/src/lib/reporters/custom.ts#L87">lib/reporters/custom.ts:87</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2851,10 +2955,16 @@
 						<a href="index.html#default_tags" class="tsd-kind-icon">DEFAULT_<wbr>TAGS</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="index.html#rblockcomment" class="tsd-kind-icon">r<wbr>Block<wbr>Comment</a>
+						<a href="index.html#multilinecommentregex" class="tsd-kind-icon">multi<wbr>Line<wbr>Comment<wbr>Regex</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="index.html#associateextwithparser" class="tsd-kind-icon">associate<wbr>Ext<wbr>With<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#extractsinglelinecomments" class="tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>Comments</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#extractsinglelinefromblocks" class="tsd-kind-icon">extract<wbr>Single<wbr>Line<wbr>From<wbr>Blocks</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="index.html#getactiveparsernames" class="tsd-kind-icon">get<wbr>Active<wbr>Parser<wbr>Names</a>
