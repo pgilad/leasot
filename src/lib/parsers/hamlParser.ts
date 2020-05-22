@@ -4,10 +4,10 @@ import { split } from 'eol';
 
 const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
-    const hamlRubyComment = new RegExp('^\\s*-#' + regex + '$', 'mig');
-    const hamlHtmlComment = new RegExp('^\\s*/' + regex + '$', 'mig');
-    const erbComment = new RegExp('<%#' + regex + '%>', 'mig');
-    const htmlComment = new RegExp('<!--' + regex + '-->', 'mig');
+    const hamlRubyComment = new RegExp(`^\\s*-#${regex}$`, 'mig');
+    const hamlHtmlComment = new RegExp(`^\\s*/${regex}$`, 'mig');
+    const erbComment = new RegExp(`<%#${regex}%>`, 'mig');
+    const htmlComment = new RegExp(`<!--${regex}-->`, 'mig');
 
     return function parse(contents, file) {
         const comments: TodoComment[] = [];

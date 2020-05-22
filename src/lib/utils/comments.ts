@@ -83,7 +83,8 @@ export const extractSingleLineFromBlocks = (
         const baseMatch = match[0];
 
         split(baseMatch).forEach((line, index) => {
-            let subMatch = innerBlockRegex.exec(line);
+            const stripped = line.trim();
+            let subMatch = innerBlockRegex.exec(stripped);
             while (subMatch) {
                 const adjustedLine = getLineFromPos(contents, match.index) + index;
                 const comment = prepareComment(subMatch, adjustedLine, file);

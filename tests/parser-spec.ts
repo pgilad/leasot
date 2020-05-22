@@ -789,6 +789,18 @@ describe('parsing', function () {
         });
     });
 
+    describe('fsharp', function () {
+        it('handle comments', function () {
+            const file = getFixturePath('f-sharp.fs');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 3, 'This is a single line comment');
+            verifyComment(comments[1], 'FIXME', 7, 'This is a single line fixme');
+            verifyComment(comments[2], 'TODO', 16, 'This is a multiline todo');
+        });
+    });
+
     describe('rust', function () {
         it('handle rust lines comments', function () {
             const file = getFixturePath('rust.rs');
