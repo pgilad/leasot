@@ -789,6 +789,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('clojure', function () {
+        it('handle comments', function () {
+            const file = getFixturePath('clojure.clj');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 2, 'This is a single line comment');
+            verifyComment(comments[1], 'FIXME', 3, 'This is a single line fixme');
+        });
+    });
+
     describe('fsharp', function () {
         it('handle comments', function () {
             const file = getFixturePath('f-sharp.fs');
