@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "es2015",
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    "target": "ES2018",
+    "lib": ["ES2018"],
     "declaration": true,
     "outDir": "./dist",
     "noUnusedLocals": true,
