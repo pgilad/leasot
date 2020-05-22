@@ -4,8 +4,8 @@ import { split } from 'eol';
 
 const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
-    const commentsRegex = new RegExp('^\\s*#' + regex + '$', 'mig');
-    const multiLineRegex = new RegExp('^\\s*"""' + regex + '"""$', 'mig');
+    const commentsRegex = new RegExp(`^\\s*#${regex}$`, 'mig');
+    const multiLineRegex = new RegExp(`^\\s*"""${regex}"""$`, 'mig');
 
     return (contents, file) => {
         const comments: TodoComment[] = [];

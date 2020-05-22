@@ -4,8 +4,8 @@ import { split } from 'eol';
 
 const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
-    const bangComment = new RegExp('<%#' + regex + '%>', 'mig');
-    const htmlComment = new RegExp('<!--' + regex + '-->', 'mig');
+    const bangComment = new RegExp(`<%#${regex}%>`, 'mig');
+    const htmlComment = new RegExp(`<!--${regex}-->`, 'mig');
 
     return function parse(contents, file) {
         const comments: TodoComment[] = [];
