@@ -27,7 +27,7 @@
     "@types/node": "^14.14.16",
     "@types/text-table": "^0.2.1",
     "gh-pages": "^3.1.0",
-    "husky": "^4.3.6",
+    "husky": "^6.0.0",
     "jsdoc-to-markdown": "^6.0.1",
     "lint-staged": "^10.5.3",
     "mocha": "^8.2.1",
@@ -72,12 +72,8 @@
     "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
     "prettier-check": "prettier --list-different 'src/**/*.ts' 'tests/*.ts'",
     "release:prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs",
-    "test": "mocha --require ts-node/register -R spec './tests/*.ts'"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "test": "mocha --require ts-node/register -R spec './tests/*.ts'",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.yml": [
