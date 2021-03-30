@@ -10,7 +10,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "chalk": "^4.1.0",
-    "commander": "^6.2.1",
+    "commander": "^7.1.0",
     "eol": "^0.9.1",
     "get-stdin": "^8.0.0",
     "globby": "^11.0.1",
@@ -28,7 +28,7 @@
     "@types/text-table": "^0.2.1",
     "gh-pages": "^3.1.0",
     "husky": "^6.0.0",
-    "jsdoc-to-markdown": "^6.0.1",
+    "jsdoc-to-markdown": "^7.0.0",
     "lint-staged": "^10.5.3",
     "mocha": "^8.2.1",
     "prettier": "^2.2.1",
