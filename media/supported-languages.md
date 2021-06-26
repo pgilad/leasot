@@ -13,6 +13,7 @@
 | Erb             | `.erb`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erlang          | `.erl` `.hrl`        | Supports `%` comments.                     | erlangParser        |
 | F-Sharp         | `.fs`                | Supports `// and (* *)` comments.          | fsharpParser        |
+| GDScript        | `.gd`                | Supports `#` comments.                     | coffeeParser        |
 | Go              | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |
 | Haml            | `.haml`              | Supports `/ -# <!-- --> and <%# %>`        | twigParser          |
