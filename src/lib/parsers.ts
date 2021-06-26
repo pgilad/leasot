@@ -21,6 +21,7 @@ const parsersDb: ExtensionsDb = {
     '.es': { parserName: 'defaultParser' },
     '.es6': { parserName: 'defaultParser' },
     '.fs': { parserName: 'fsharpParser' },
+    '.gd': { parserName: 'coffeeParser' },
     '.go': { parserName: 'defaultParser' },
     '.h': { parserName: 'defaultParser' },
     '.haml': { parserName: 'hamlParser' },
