@@ -6,10 +6,10 @@ const reporterConfig: ReporterConfig = {
         if (ref) {
             text = `@${ref} ${text}`;
         }
-        return [`| [${file}](${file}#L${line}) | ${line} | ${text}`];
+        return [`| [${file}](${file}#L${line}) | ${line} | ${text} |`];
     },
     transformHeader(tag) {
-        return [`### ${tag}s`, `| Filename | line # | ${tag}`, '|:------|:------:|:------'];
+        return [`### ${tag}s`, `| Filename | line # | ${tag} |`, '|:------|:------:|:------|'];
     },
 };
 
