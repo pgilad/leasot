@@ -467,6 +467,16 @@ describe('parsing', function () {
         });
     });
 
+    describe('gdscript', function () {
+        it('handle # comments', function () {
+            const file = getFixturePath('gdscript.gd');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+            verifyComment(comments[0], 'TODO', 4, 'pre-initialize variable');
+        });
+    });
+
     describe('ss', function () {
         it('handle <%-- --%> and <!-- --> comments', function () {
             const file = getFixturePath('silverstripe.ss');
