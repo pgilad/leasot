@@ -5,13 +5,14 @@
 | CSS             | `.css`               | Supports `/* */` comments.                 | defaultParser       |
 | CSon            | `.cson`              | Supports `#` comments.                     | coffeeParser        |
 | CakePHP views   | `.ctp`               | Supports `// and /* */` comments.          | defaultParser       |
-| Clojure         | `.clj` `.cljs` `.cljc` | Supports `;` comments.                   | clojureParser     |
+| Clojure         | `.clj` `.cljs` `.cljc` | Supports `;` comments.                   | clojureParser       |
 | Coffee-React    | `.cjsx`              | Supports `#` comments.                     | coffeeParser        |
 | Coffeescript    | `.coffee`            | Supports `#` comments.                     | coffeeParser        |
 | Crystal         | `.cr`                | Supports `#` comments.                     | coffeeParser        |
 | EJS             | `.ejs`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erb             | `.erb`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erlang          | `.erl` `.hrl`        | Supports `%` comments.                     | erlangParser        |
+| Elixir          | `.ex` `.exs`         | Supports `#` comments.                     | coffeeParser        |
 | F-Sharp         | `.fs`                | Supports `// and (* *)` comments.          | fsharpParser        |
 | Go              | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |

@@ -20,6 +20,8 @@ const parsersDb: ExtensionsDb = {
     '.erl': { parserName: 'erlangParser' },
     '.es': { parserName: 'defaultParser' },
     '.es6': { parserName: 'defaultParser' },
+    '.ex': { parserName: 'coffeeParser' },
+    '.exs': { parserName: 'coffeeParser' },
     '.fs': { parserName: 'fsharpParser' },
     '.go': { parserName: 'defaultParser' },
     '.h': { parserName: 'defaultParser' },

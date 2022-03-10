@@ -864,6 +864,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('elixir', function () {
+        it('parse -- comments and --[[ ]] comments', function () {
+            const file = getFixturePath('elixir.ex');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(1);
+
+            verifyComment(comments[0], 'TODO', 2, 'add "!"');
+        });
+    });
+
     describe('custom parsers', function () {
         it('returns custom parser todos', function () {
             const file = getFixturePath('file.unsupported');
