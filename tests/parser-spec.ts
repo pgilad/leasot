@@ -369,6 +369,22 @@ describe('parsing', function () {
             verifyComment(comments[0], 'TODO', 1, 'change to public');
             verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
+        it('parse // and /* comments with cts extension', function () {
+            const file = getFixturePath('typescript.cts');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 1, 'change to public');
+            verifyComment(comments[1], 'FIXME', 11, 'use jquery');
+        });
+        it('parse // and /* comments with mts extension', function () {
+            const file = getFixturePath('typescript.mts');
+            const comments = getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 1, 'change to public');
+            verifyComment(comments[1], 'FIXME', 11, 'use jquery');
+        });
     });
 
     describe('jsdoc', function () {
