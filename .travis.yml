@@ -14,15 +14,5 @@ script:
     - npm run docs
     - ./bin/leasot --help
     - ./bin/leasot-reporter --help
-deploy:
-    provider: npm
-    edge: true
-    skip_cleanup: true
-    cleanup: false
-    api_token:
-        secure: ADl6Iwt0NQT2fgc9Qv1njyr4UrobYFCgGIMfK3lKK4ZEr5JgDHmPtYQNdxr8JGypzYb9YROA+wTdTilow2pBzhoqmhN7TioT41P9VhT4SB/p/fRq5PukU/4BOqeaCt/R4zfi1+vQVLzmTGu/ffqczVZHqd9W12k0ouRhP9yEiCo=
-    on:
-        tags: true
-        node_js: '15'
 notifications:
     email: false
