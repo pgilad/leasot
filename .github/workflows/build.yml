@@ -1,0 +1,51 @@
+name: Test
+on: [push]
+jobs:
+    build:
+        name: Test
+        strategy:
+            matrix:
+                os: [macos-latest, windows-latest, ubuntu-latest]
+                node-version: [12.x, 14.x, 16.x, 17.x]
+        runs-on: ${{ matrix.os }}
+        env:
+            OS: ${{ matrix.os }}
+            NODE_VERSION: ${{ matrix.node-version }}
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup Cache
+              uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ matrix.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Install packages
+              run: npm ci
+
+            - name: Clean
+              run: npm run clean
+
+            - name: Prettier Check
+              run: npm run prettier-check
+
+            - name: Build
+              run: npm run build
+
+            - name: Test
+              run: npm run test
+
+            - name: Docs
+              run: npm run docs
+
+            - name: Main CLI smoke test
+              run: ./bin/leasot --help
+
+            - name: Reporter CLI smoke test
+              run: ./bin/leasot-reporter --help
