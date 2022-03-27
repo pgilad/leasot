@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "async": "^3.2.0",
-    "chalk": "^4.1.0",
+    "chalk": "^5.0.1",
     "commander": "^9.1.0",
     "eol": "^0.9.1",
     "globby": "^13.1.1",
