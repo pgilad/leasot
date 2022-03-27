@@ -3,24 +3,22 @@ import * as logSymbols from 'log-symbols';
 import * as path from 'path';
 import * as should from 'should';
 import { split } from 'eol';
+import normalize from 'normalize-path';
 // @ts-ignore
 import stripAnsi from 'strip-ansi';
 
 const pkg = require('../package.json');
 
 function getFixturePath(file: string): string {
-    return path.join('./tests/fixtures/', file);
+    return normalize(path.join('./tests/fixtures/', file));
 }
 
 function testCli(files: string[], extraArgs: string[] = [], cb: (exitCode: number, log: string[]) => void) {
     const args: string[] = [pkg.bin.leasot].concat(files.map(getFixturePath).concat(extraArgs)).filter(Boolean);
 
-    console.log(args);
-
     const cp = childProcess.spawn('node', args, {
         cwd: path.resolve(__dirname, '..'),
         env: process.env,
-        shell: true,
         stdio: [process.stdin, 'pipe', 'pipe'],
     });
     let chunks = '';

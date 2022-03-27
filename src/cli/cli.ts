@@ -58,7 +58,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
         process.exit(1);
     }
 
-    // Parallel read all of the given files
+    // Parallel read all the given files
     mapLimit(
         files,
         CONCURRENCY_LIMIT,
