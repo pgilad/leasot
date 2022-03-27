@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import getStdin from 'get-stdin';
-import { globby } from 'globby';
+import { globbySync } from 'globby';
 import logSymbols from 'log-symbols';
 import { associateExtWithParser, isExtensionSupported, parse } from '../index.js';
 import path from 'path';
@@ -51,7 +51,7 @@ const parseContentSync = async (content: string, options: ProgramArgs, filename?
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
-    const files = globby.sync(fileGlobs, {
+    const files = globbySync(fileGlobs, {
         ignoreFiles: options.ignore || [],
     });
 
