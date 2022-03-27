@@ -1,6 +1,6 @@
-import { getRegex, prepareComment } from '../utils';
-import { ParserFactory, TodoComment } from '../../definitions';
-import { split } from 'eol';
+import { getRegex, prepareComment } from '../utils/index.js';
+import { ParserFactory, TodoComment } from '../../definitions.js';
+import eol from 'eol';
 
 // I know this is different style, but I wasn't able to get the escape
 // characters right
@@ -12,7 +12,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return (contents, file) => {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach((line, index) => {
+        eol.split(contents).forEach((line, index) => {
             let hashMatch = commentsRegex.exec(line);
             while (hashMatch) {
                 const comment = prepareComment(hashMatch, index + 1, file);

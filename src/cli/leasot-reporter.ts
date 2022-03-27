@@ -1,5 +1,13 @@
 import commander from 'commander';
-import cli from './cli-reporter';
+import fs from 'fs';
+
+import cli from './cli-reporter.js';
+import path from 'path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -7,7 +15,7 @@ const list = (val: string): string[] => val.split(',');
 commander
     .storeOptionsAsProperties(false)
     .description('Report todos and fixmes from json files or stream')
-    .version(require('../../package.json').version)
+    .version(pkg.version)
     .usage('[options] <file ...>')
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
     .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|vscode|raw) (default: table)', 'table')
@@ -31,6 +39,8 @@ commander
         console.log(
             `    $ leasot 'tests/**/*.styl' --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter`
         );
+        console.log('');
+        console.log(`App version: ${pkg.version}`);
         console.log('');
     })
     .parse(process.argv);

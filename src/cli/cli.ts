@@ -1,13 +1,15 @@
+#!/usr/bin/env node
+
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
-import { associateExtWithParser, isExtensionSupported, parse } from '..';
-import { extname, resolve } from 'path';
+import { associateExtWithParser, isExtensionSupported, parse } from '../index.js';
+import path from 'path';
 import { mapLimit } from 'async';
-import { ParseConfig, TodoComment } from '../definitions';
-import { readFile } from 'fs';
+import { ParseConfig, TodoComment } from '../definitions.js';
+import fs from 'fs';
 import { CommanderStatic } from 'commander';
-import { outputTodos, ProgramArgs } from './common';
+import { outputTodos, ProgramArgs } from './common.js';
 
 const DEFAULT_EXTENSION = '.js';
 const CONCURRENCY_LIMIT = 50;
@@ -19,13 +21,13 @@ export const getFiletype = (filetype?: string, filename?: string): string => {
     if (filetype) {
         return filetype;
     }
-    if (filename && extname(filename)) {
-        return extname(filename);
+    if (filename && path.extname(filename)) {
+        return path.extname(filename);
     }
     return DEFAULT_EXTENSION;
 };
 
-const parseContentSync = (content: string, options: ProgramArgs, filename?: string): TodoComment[] => {
+const parseContentSync = async (content: string, options: ProgramArgs, filename?: string): Promise<TodoComment[]> => {
     const extension = getFiletype(options.filetype, filename);
 
     associateExtWithParser(options.associateParser);
@@ -44,7 +46,7 @@ const parseContentSync = (content: string, options: ProgramArgs, filename?: stri
         filename: filename,
         withInlineFiles: options.inlineFiles,
     };
-    return parse(content, config);
+    return await parse(content, config);
 };
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
@@ -62,21 +64,24 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
     mapLimit(
         files,
         CONCURRENCY_LIMIT,
-        (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
-        (err, results: string[]) => {
+        (file, cb) => fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb),
+        async (err, results: string[]) => {
             if (err) {
                 console.log(err);
                 process.exit(1);
             }
-            const todos = results
-                .map(function (content: string, index: number) {
-                    return parseContentSync(content, options, files[index]);
+            const contents = await Promise.all(
+                results.map(async function (content: string, index: number) {
+                    return await parseContentSync(content, options, files[index]);
                 })
-                // filter files without any parsed content
+            );
+
+            // filter files without any parsed content
+            const todos = contents
                 .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         }
     );
 };
@@ -93,9 +98,9 @@ const run = (program: CommanderStatic): void => {
 
     // data is coming from a pipe
     getStdin()
-        .then(function (content: string) {
-            const todos = parseContentSync(content, options);
-            outputTodos(todos, options);
+        .then(async function (content: string) {
+            const todos = await parseContentSync(content, options);
+            await outputTodos(todos, options);
         })
         .catch(function (e) {
             console.error(e);

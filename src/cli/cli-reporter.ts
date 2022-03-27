@@ -1,11 +1,13 @@
+#!/usr/bin/env node
+
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
+import fs from 'fs';
+import path from 'path';
 import { mapLimit } from 'async';
-import { readFile } from 'fs';
-import { resolve } from 'path';
 import { CommanderStatic } from 'commander';
-import { outputTodos, ProgramArgs } from './common';
+import { outputTodos, ProgramArgs } from './common.js';
 
 const CONCURRENCY_LIMIT = 50;
 
@@ -20,12 +22,12 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
         process.exit(1);
     }
 
-    // Parallel read all of the given files
+    // Parallel read all the given files
     mapLimit(
         files,
         CONCURRENCY_LIMIT,
-        (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
-        (err, results: string[]) => {
+        (file, cb) => fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb),
+        async (err, results: string[]) => {
             if (err) {
                 console.log(err);
                 process.exit(1);
@@ -36,7 +38,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
                 .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         }
     );
 };
@@ -52,9 +54,9 @@ const run = (program: CommanderStatic): void => {
     }
 
     getStdin()
-        .then(function (content: string) {
+        .then(async function (content: string) {
             const todos = JSON.parse(content);
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         })
         .catch(function (e) {
             console.error(e);

@@ -1,6 +1,14 @@
 import commander from 'commander';
-import cli from './cli';
-import { ExtensionsDb } from '../definitions';
+import cli from './cli.js';
+import { ExtensionsDb } from '../definitions.js';
+import fs from 'fs';
+import path from 'path';
+
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -19,8 +27,8 @@ const parseAssociateParser = (val: string, req: ExtensionsDb): ExtensionsDb => {
 /* eslint-disable no-console */
 commander
     .storeOptionsAsProperties(false)
-    .description(require('../../package.json').description)
-    .version(require('../../package.json').version)
+    .description(pkg.description)
+    .version(pkg.version)
     .usage('[options] <file ...>')
     .option(
         '-A, --associate-parser [ext,parser]',
@@ -69,6 +77,8 @@ commander
         console.log('');
         console.log('    # Associate a parser for an unknown extension`');
         console.log(`    $ leasot -A '.svelte,twigParser' -A '.svelte,defaultParser' 'frontend/*.svelte'`);
+        console.log('');
+        console.log(`App version: ${pkg.version}`);
         console.log('');
     })
     .parse(process.argv);
