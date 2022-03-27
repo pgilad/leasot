@@ -58,10 +58,10 @@ jobs:
               run: npm run docs
 
             - name: Main CLI smoke test
-              run: ./bin/leasot --help
+              run: node ./dist/cli/leasot.js --help
 
             - name: Reporter CLI smoke test
-              run: ./bin/leasot-reporter --help
+              run: node ./dist/cli/leasot-reporter.js --help
 
             - if: matrix.node-version == env.DEFAULT_NODE_VERSION
               uses: actions/upload-artifact@v3

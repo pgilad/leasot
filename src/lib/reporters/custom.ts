@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { EOL } from 'os';
-import { ReportItems, ReporterConfig, Tag, TodoComment, TransformedComments } from '../../definitions';
+import { ReportItems, ReporterConfig, Tag, TodoComment, TransformedComments } from '../../definitions.js';
 
 /**
  * @hidden
