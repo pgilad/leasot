@@ -36,7 +36,7 @@ jobs:
               run: npm run clean
 
             - name: Prettier Check
-              run: npm run prettier-check
+              run: npx prettier src/ tests/
 
             - name: Build
               run: npm run build
