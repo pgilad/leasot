@@ -1,6 +1,6 @@
-import { DefaultTags, Tag, TodoComment } from '../../definitions';
-import { split } from 'eol';
-import { getLineFromPos } from './index';
+import { DefaultTags, Tag, TodoComment } from '../../definitions.js';
+import eol from 'eol';
+import { getLineFromPos } from './index.js';
 
 const DEFAULT_TAGS: string[] = [DefaultTags.todo, DefaultTags.fixme];
 
@@ -54,7 +54,7 @@ export const prepareComment = (match: string[], line: number, filename: string =
 export const extractSingleLineComments = (contents: string, file: string, lineCommentRegex: RegExp): TodoComment[] => {
     const comments: TodoComment[] = [];
 
-    split(contents).forEach((line, index) => {
+    eol.split(contents).forEach((line, index) => {
         let match = lineCommentRegex.exec(line);
         while (match && match.length > 0) {
             const comment = prepareComment(match, index + 1, file);
@@ -82,7 +82,7 @@ export const extractSingleLineFromBlocks = (
         // use entire match as basis to look into todos/fixmes
         const baseMatch = match[0];
 
-        split(baseMatch).forEach((line, index) => {
+        eol.split(baseMatch).forEach((line, index) => {
             const stripped = line.trim();
             let subMatch = innerBlockRegex.exec(stripped);
             while (subMatch) {
