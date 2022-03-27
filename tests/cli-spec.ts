@@ -9,7 +9,7 @@ import stripAnsi from 'strip-ansi';
 const pkg = require('../package.json');
 
 function getFixturePath(file: string): string {
-    return path.join('./tests/fixtures/', file);
+    return path.normalize(path.join('./tests/fixtures/', file));
 }
 
 function testCli(files: string[], extraArgs: string[] = [], cb: (exitCode: number, log: string[]) => void) {
