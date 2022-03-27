@@ -5,14 +5,16 @@
 | CSS             | `.css`               | Supports `/* */` comments.                 | defaultParser       |
 | CSon            | `.cson`              | Supports `#` comments.                     | coffeeParser        |
 | CakePHP views   | `.ctp`               | Supports `// and /* */` comments.          | defaultParser       |
-| Clojure         | `.clj` `.cljs` `.cljc` | Supports `;` comments.                   | clojureParser     |
+| Clojure         | `.clj` `.cljs` `.cljc` | Supports `;` comments.                   | clojureParser       |
 | Coffee-React    | `.cjsx`              | Supports `#` comments.                     | coffeeParser        |
 | Coffeescript    | `.coffee`            | Supports `#` comments.                     | coffeeParser        |
 | Crystal         | `.cr`                | Supports `#` comments.                     | coffeeParser        |
 | EJS             | `.ejs`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erb             | `.erb`               | Supports `<!-- -->` and `<%# %>`           | ejsParser           |
 | Erlang          | `.erl` `.hrl`        | Supports `%` comments.                     | erlangParser        |
+| Elixir          | `.ex` `.exs`         | Supports `#` comments.                     | coffeeParser        |
 | F-Sharp         | `.fs`                | Supports `// and (* *)` comments.          | fsharpParser        |
+| GDScript        | `.gd`                | Supports `#` comments.                     | coffeeParser        |
 | Go              | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |
 | Haml            | `.haml`              | Supports `/ -# <!-- --> and <%# %>`        | twigParser          |
@@ -21,7 +23,7 @@
 | Hogan           | `.hgn` `.hogan`      | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Jade            | `.jade` `.pug`       | Supports `//` and `//-` comments.          | jadeParser          |
 | Java            | `.java`              | Supports `// and /* */` comments           | defaultParser       |
-| Javascript      | `.js` `.es` `.es6`   | Supports `// and /* */` comments           | defaultParser       |
+| Javascript      | `.js` `.es` `.es6` `.cjs` `.mjs` | Supports `// and /* */` comments | defaultParser     |
 | Jsx             | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
 | Julia           | `.jl`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Kotlin          | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
@@ -49,6 +51,6 @@
 | Svelte          | `.svelte`            | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
 | Swift           | `.swift`             | Supports `// and /* */` comments.          | defaultParser       |
 | Twig            | `.twig`              | Supports `{#  #}` and `<!-- -->`           | twigParser          |
-| Typescript      | `.ts`, `.tsx`        | Supports `// and /* */` comments.          | defaultParser       |
+| Typescript      | `.ts` `.tsx` `.cts` `.mts` | Supports `// and /* */` comments.    | defaultParser       |
 | Vue             | `.vue`               | Supports `//` `/* */` `<!-- -->` comments. | twigParser          |
 | Yaml            | `.yaml` `.yml`       | Supports `#` comments.                     | coffeeParser        |

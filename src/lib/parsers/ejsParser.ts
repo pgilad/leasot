@@ -1,6 +1,6 @@
-import { getRegex, prepareComment } from '../utils';
-import { ParserFactory, TodoComment } from '../../definitions';
-import { split } from 'eol';
+import { getRegex, prepareComment } from '../utils/index.js';
+import { ParserFactory, TodoComment } from '../../definitions.js';
+import eol from 'eol';
 
 const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
@@ -10,7 +10,7 @@ const parserFactory: ParserFactory = ({ customTags }) => {
     return function parse(contents, file) {
         const comments: TodoComment[] = [];
 
-        split(contents).forEach(function (line, index) {
+        eol.split(contents).forEach(function (line, index) {
             let bangCommentMatch = bangComment.exec(line);
             while (bangCommentMatch) {
                 const comment = prepareComment(bangCommentMatch, index + 1, file);

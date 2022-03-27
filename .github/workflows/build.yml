@@ -1,0 +1,112 @@
+name: Node.js CI
+on: [push]
+
+env:
+    DEFAULT_NODE_VERSION: '17.x'
+    CI: true
+    HUSKY: 0
+
+jobs:
+    build:
+        name: Test
+        strategy:
+            fail-fast: false
+            max-parallel: 15
+            matrix:
+                os: [macos-latest, windows-latest, ubuntu-latest]
+                node-version: [12.x, 14.x, 16.x, 17.x]
+        runs-on: ${{ matrix.os }}
+        env:
+            OS: ${{ matrix.os }}
+            NODE_VERSION: ${{ matrix.node-version }}
+
+        steps:
+            - name: Set git to use LF
+              run: |
+                  git config --global core.autocrlf false
+                  git config --global core.eol lf
+
+            - uses: actions/checkout@v2
+
+            - name: Setup Cache
+              uses: actions/cache@v2
+              with:
+                  path: '**/node_modules'
+                  key: ${{ matrix.os }}-${{ matrix.node-version }}-pkgs-${{ hashFiles('**/package.json') }}
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Install packages
+              run: npm install --ignore-scripts
+
+            - name: Clean
+              run: npm run clean
+
+            - name: Prettier Check
+              run: npm run prettier-check
+
+            - name: Build
+              run: npm run build
+
+            - name: Test
+              run: npm run test
+
+            - name: Docs
+              run: npm run docs
+
+            - name: Main CLI smoke test
+              run: node ./dist/cli/leasot.js --help
+
+            - name: Reporter CLI smoke test
+              run: node ./dist/cli/leasot-reporter.js --help
+
+            - if: matrix.node-version == env.DEFAULT_NODE_VERSION
+              uses: actions/upload-artifact@v3
+              with:
+                  name: build
+                  retention-days: 7
+                  path: |
+                      ./
+                      !./node_modules/**/*
+                      !./tests/**/*
+                      !./media/**/*
+                      !./src/**/*
+
+    deploy-docs:
+        name: Deploy Docs
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - uses: actions/download-artifact@v3
+              with:
+                  name: build
+            - name: Deploy Docs
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./docs
+
+    deploy-npm:
+        name: Deploy NPM
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - uses: actions/download-artifact@v3
+              with:
+                  name: build
+            - name: Use Node.js ${{ env.DEFAULT_NODE_VERSION }} with NPM registry
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ env.DEFAULT_NODE_VERSION }}
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Disable prepare script (for husky)
+              run: npm set-script prepare ""
+            - name: Publish to NPM
+              run: npm publish --access public --ignore-scripts
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

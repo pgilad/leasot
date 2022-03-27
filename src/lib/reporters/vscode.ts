@@ -1,5 +1,5 @@
-import { getTransformedComments, joinBlocksByHeaders, prepareConfig } from './custom';
-import { ReportItems, ReporterConfig, TodoComment } from '../../definitions';
+import { getTransformedComments, joinBlocksByHeaders, prepareConfig } from './custom.js';
+import { ReportItems, ReporterConfig, TodoComment } from '../../definitions.js';
 
 const reporterConfig: ReporterConfig = {
     transformComment(file, line, text, _tag, ref) {

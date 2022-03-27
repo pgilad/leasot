@@ -1,9 +1,10 @@
 import _ from 'lodash';
-import { ExtensionsDb, ParseConfig, ParserFactoryConfig, TodoComment } from '../definitions';
+import { ExtensionsDb, ParseConfig, ParserFactory, ParserFactoryConfig, TodoComment } from '../definitions.js';
 
 const parsersDb: ExtensionsDb = {
     '.bash': { parserName: 'coffeeParser' },
     '.c': { parserName: 'defaultParser' },
+    '.cjs': { parserName: 'defaultParser' },
     '.cjsx': { parserName: 'coffeeParser' },
     '.clj': { parserName: 'clojureParser' },
     '.cljs': { parserName: 'clojureParser' },
@@ -15,12 +16,16 @@ const parsersDb: ExtensionsDb = {
     '.cson': { parserName: 'coffeeParser' },
     '.css': { parserName: 'defaultParser' },
     '.ctp': { parserName: 'defaultParser', includedFiles: ['.html', '.js', '.css'] },
+    '.cts': { parserName: 'defaultParser' },
     '.ejs': { parserName: 'ejsParser' },
     '.erb': { parserName: 'ejsParser' },
     '.erl': { parserName: 'erlangParser' },
     '.es': { parserName: 'defaultParser' },
     '.es6': { parserName: 'defaultParser' },
+    '.ex': { parserName: 'coffeeParser' },
+    '.exs': { parserName: 'coffeeParser' },
     '.fs': { parserName: 'fsharpParser' },
+    '.gd': { parserName: 'coffeeParser' },
     '.go': { parserName: 'defaultParser' },
     '.h': { parserName: 'defaultParser' },
     '.haml': { parserName: 'hamlParser' },
@@ -43,7 +48,9 @@ const parsersDb: ExtensionsDb = {
     '.m': { parserName: 'defaultParser' },
     '.markdown': { parserName: 'twigParser' },
     '.md': { parserName: 'twigParser' },
+    '.mjs': { parserName: 'defaultParser' },
     '.mm': { parserName: 'defaultParser' },
+    '.mts': { parserName: 'defaultParser' },
     '.mustache': { parserName: 'hbsParser' },
     '.njk': { parserName: 'twigParser' },
     '.pas': { parserName: 'pascalParser' },
@@ -112,7 +119,7 @@ const getActiveParserNames = (extension: string, withInlineFiles: boolean): stri
 
     const includedFiles = originalParser.includedFiles || [];
     if (withInlineFiles) {
-        includedFiles.forEach(includedExtension => {
+        includedFiles.forEach((includedExtension) => {
             // parserName could be an array
             parserNames = parserNames.concat(parsersDb[includedExtension].parserName);
         });
@@ -126,7 +133,7 @@ const getActiveParserNames = (extension: string, withInlineFiles: boolean): stri
  * @param content The contents to parse
  * @param config The parse configuration
  */
-export const parse = (content: string, config: ParseConfig): TodoComment[] => {
+export const parse = async (content: string, config: ParseConfig): Promise<TodoComment[]> => {
     const {
         associateParser = {},
         customParsers = {},
@@ -148,13 +155,24 @@ export const parse = (content: string, config: ParseConfig): TodoComment[] => {
     const parseOptions: ParserFactoryConfig = { customTags };
     const parserNames = getActiveParserNames(extension, withInlineFiles);
 
-    const parsed = parserNames
-        .map(parserName => {
-            const parserFactory = customParsers[parserName] || require('./parsers/' + parserName).default;
+    const comments = await Promise.all(
+        parserNames.map(async (parserName) => {
+            let parserFactory: ParserFactory;
+            if (customParsers[parserName]) {
+                parserFactory = customParsers[parserName];
+            } else {
+                const { default: parserFunc } = await import(`./parsers/${parserName}.js`);
+                parserFactory = parserFunc;
+            }
             const parser = parserFactory(parseOptions);
             return parser(content, filename);
         })
-        .reduce((items: TodoComment[], item: TodoComment[]) => items.concat(item), [])
+    );
+
+    const parsed = comments
+        .reduce((items: TodoComment[], item: TodoComment[]) => {
+            return items.concat(item);
+        }, [])
         .sort((item1: TodoComment, item2: TodoComment) => item1.line - item2.line);
 
     return _.uniqWith(parsed, function (a, b) {

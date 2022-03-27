@@ -1,4 +1,4 @@
-import { ReportItems, TodoComment } from '../../definitions';
+import { ReportItems, TodoComment } from '../../definitions.js';
 
 export interface JsonReporterConfig {
     spacing?: number;
