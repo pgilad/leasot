@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import getStdin from 'get-stdin';
-import globby from 'globby';
+import { globbySync } from 'globby';
 import logSymbols from 'log-symbols';
 import fs from 'fs';
 import path from 'path';
@@ -13,7 +13,7 @@ const CONCURRENCY_LIMIT = 50;
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
-    const files = globby.sync(fileGlobs, {
+    const files = globbySync(fileGlobs, {
         ignore: options.ignore || [],
     });
 
