@@ -25,7 +25,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
         files,
         CONCURRENCY_LIMIT,
         (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
-        (err, results: string[]) => {
+        async (err, results: string[]) => {
             if (err) {
                 console.log(err);
                 process.exit(1);
@@ -36,7 +36,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
                 .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         }
     );
 };
@@ -52,9 +52,9 @@ const run = (program: CommanderStatic): void => {
     }
 
     getStdin()
-        .then(function (content: string) {
+        .then(async function (content: string) {
             const todos = JSON.parse(content);
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         })
         .catch(function (e) {
             console.error(e);

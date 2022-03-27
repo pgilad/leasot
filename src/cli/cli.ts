@@ -25,7 +25,7 @@ export const getFiletype = (filetype?: string, filename?: string): string => {
     return DEFAULT_EXTENSION;
 };
 
-const parseContentSync = (content: string, options: ProgramArgs, filename?: string): TodoComment[] => {
+const parseContentSync = async (content: string, options: ProgramArgs, filename?: string): Promise<TodoComment[]> => {
     const extension = getFiletype(options.filetype, filename);
 
     associateExtWithParser(options.associateParser);
@@ -44,7 +44,7 @@ const parseContentSync = (content: string, options: ProgramArgs, filename?: stri
         filename: filename,
         withInlineFiles: options.inlineFiles,
     };
-    return parse(content, config);
+    return await parse(content, config);
 };
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
@@ -63,20 +63,23 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
         files,
         CONCURRENCY_LIMIT,
         (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
-        (err, results: string[]) => {
+        async (err, results: string[]) => {
             if (err) {
                 console.log(err);
                 process.exit(1);
             }
-            const todos = results
-                .map(function (content: string, index: number) {
-                    return parseContentSync(content, options, files[index]);
+            const contents = await Promise.all(
+                results.map(async function (content: string, index: number) {
+                    return await parseContentSync(content, options, files[index]);
                 })
-                // filter files without any parsed content
+            );
+
+            // filter files without any parsed content
+            const todos = contents
                 .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
-            outputTodos(todos, options);
+            await outputTodos(todos, options);
         }
     );
 };
@@ -93,9 +96,9 @@ const run = (program: CommanderStatic): void => {
 
     // data is coming from a pipe
     getStdin()
-        .then(function (content: string) {
-            const todos = parseContentSync(content, options);
-            outputTodos(todos, options);
+        .then(async function (content: string) {
+            const todos = await parseContentSync(content, options);
+            await outputTodos(todos, options);
         })
         .catch(function (e) {
             console.error(e);

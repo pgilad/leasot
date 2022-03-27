@@ -1,10 +1,9 @@
-import { BuiltinReporters, ReportItems, ReporterConfig, ReporterName, TodoComment } from '../definitions.js';
-import { join } from 'path';
+import { BuiltinReporters, ReporterConfig, ReporterName, ReportItems, TodoComment } from '../definitions.js';
 
 /**
  * Load the given reporter
  */
-export const loadReporter = (reporter: ReporterName | ReportItems): ReportItems | void => {
+export const loadReporter = async (reporter: ReporterName | ReportItems): Promise<ReportItems | void> => {
     if (typeof reporter === 'function') {
         return reporter;
     }
@@ -14,14 +13,14 @@ export const loadReporter = (reporter: ReporterName | ReportItems): ReportItems 
     }
 
     if (reporter in BuiltinReporters) {
-        const reporterPath = join(__dirname, './reporters', reporter);
-        const reporterFac = require(reporterPath).reporter;
-        return loadReporter(reporterFac);
+        const { reporter: reporterFunc } = await import(`./reporters/${reporter}.js`);
+        return await loadReporter(reporterFunc);
     }
 
     try {
         // external reporter
-        return loadReporter(require(reporter).reporter);
+        const { reporter: reporterFunc } = await import(reporter);
+        return await loadReporter(reporterFunc);
     } catch (err) {
         // eslint-disable-next-line no-empty
     }
@@ -33,12 +32,12 @@ export const loadReporter = (reporter: ReporterName | ReportItems): ReportItems 
  * @param reporter The reporter to use
  * @param config Reporter configuration
  */
-export const report = (
+export const report = async (
     items: TodoComment[],
     reporter: BuiltinReporters | ReporterName | ReportItems = BuiltinReporters.raw,
     config: ReporterConfig = {}
-): any => {
-    const reporterFn = loadReporter(reporter);
+): Promise<any> => {
+    const reporterFn = await loadReporter(reporter);
 
     if (typeof reporterFn !== 'function') {
         throw new Error(`Cannot find or load reporter: ${reporter}`);

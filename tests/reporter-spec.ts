@@ -9,20 +9,20 @@ function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);
 }
 
-function getReport(filename: string, reporter: ReporterName, parseOptions: ParseConfig) {
+async function getReport(filename: string, reporter: ReporterName, parseOptions: ParseConfig) {
     parseOptions.filename = filename;
 
     const content = fs.readFileSync(filename, 'utf8');
-    const comments = leasot.parse(content, parseOptions);
-    const report = leasot.report(comments, reporter);
+    const comments = await leasot.parse(content, parseOptions);
+    const report = await leasot.report(comments, reporter);
     return eol.split(report);
 }
 
 describe('reporting', function () {
     describe('vscode', function () {
-        it('typescript', function () {
+        it('typescript', async function () {
             const file = getFixturePath('typescript.ts');
-            const report = getReport(file, BuiltinReporters.vscode, { extension: '.ts' });
+            const report = await getReport(file, BuiltinReporters.vscode, { extension: '.ts' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',
@@ -37,9 +37,9 @@ describe('reporting', function () {
             ]);
         });
 
-        it('reference-leading', function () {
+        it('reference-leading', async function () {
             const file = getFixturePath('reference-leading.js');
-            const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
+            const report = await getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',
@@ -49,9 +49,9 @@ describe('reporting', function () {
             ]);
         });
 
-        it('edge-cases', function () {
+        it('edge-cases', async function () {
             const file = getFixturePath('edge-cases.js');
-            const report = getReport(file, BuiltinReporters.vscode, { extension: '.js' });
+            const report = await getReport(file, BuiltinReporters.vscode, { extension: '.js' });
             should.exist(report);
             report.should.eql([
                 '### TODOs',

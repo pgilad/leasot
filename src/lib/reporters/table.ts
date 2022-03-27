@@ -1,4 +1,4 @@
-import * as logSymbols from 'log-symbols';
+import logSymbols from 'log-symbols';
 import chalk from 'chalk';
 import stripAnsi from 'strip-ansi';
 import table from 'text-table';

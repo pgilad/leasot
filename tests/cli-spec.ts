@@ -6,6 +6,9 @@ import eol from 'eol';
 import normalize from 'normalize-path';
 import stripAnsi from 'strip-ansi';
 import fs from 'fs';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
 

@@ -5,8 +5,8 @@
   "author": "Gilad Peleg <gilad@giladpeleg.com> (https://www.giladpeleg.com)",
   "type": "module",
   "bin": {
-    "leasot": "./bin/leasot",
-    "leasot-reporter": "./bin/leasot-reporter"
+    "leasot": "./dist/cli/leasot.js",
+    "leasot-reporter": "./dist/cli/leasot-reporter.js"
   },
   "dependencies": {
     "async": "^3.2.0",

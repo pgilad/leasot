@@ -8,11 +8,11 @@ function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);
 }
 
-function getComments(file: string, config: Partial<ParseConfig> = {}) {
+async function getComments(file: string, config: Partial<ParseConfig> = {}) {
     const content = fs.readFileSync(file, 'utf8');
     const ext = path.extname(file);
 
-    return leasot.parse(content, {
+    return await leasot.parse(content, {
         associateParser: config.associateParser,
         customParsers: config.customParsers,
         customTags: config.customTags,
@@ -33,9 +33,9 @@ function verifyComment(actual: TodoComment, tag: Tag, line: number, text: string
 
 describe('parsing', function () {
     describe('edge cases', function () {
-        it('javascript', function () {
+        it('javascript', async function () {
             const file = getFixturePath('edge-cases.js');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(5);
             verifyComment(comments[0], 'TODO', 1, '');
@@ -47,17 +47,17 @@ describe('parsing', function () {
     });
 
     describe('stylus', function () {
-        it('parse simple line comments', function () {
+        it('parse simple line comments', async function () {
             const file = getFixturePath('line.styl');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'use fixmes as well');
         });
 
-        it('parse block line comments', function () {
+        it('parse block line comments', async function () {
             const file = getFixturePath('block.styl');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 5, 'single line comment with a todo');
@@ -66,9 +66,9 @@ describe('parsing', function () {
     });
 
     describe('handlebars', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
+        it('parse {{! }} and {{!-- --}} comments', async function () {
             const file = getFixturePath('handlebars.hbs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -79,9 +79,9 @@ describe('parsing', function () {
     });
 
     describe('mustache', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
+        it('parse {{! }} and {{!-- --}} comments', async function () {
             const file = getFixturePath('mustache.mustache');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -92,9 +92,9 @@ describe('parsing', function () {
     });
 
     describe('hogan', function () {
-        it('parse {{! }} and {{!-- --}} comments', function () {
+        it('parse {{! }} and {{!-- --}} comments', async function () {
             const file = getFixturePath('hogan.hgn');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'only output this author names if an author exists');
@@ -105,9 +105,9 @@ describe('parsing', function () {
     });
 
     describe('c++', function () {
-        it('parse // and /* style comments', function () {
+        it('parse // and /* style comments', async function () {
             const file = getFixturePath('cplusplus.cpp');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'document file operations');
@@ -116,9 +116,9 @@ describe('parsing', function () {
     });
 
     describe('c#', function () {
-        it('parse // and /* style comments', function () {
+        it('parse // and /* style comments', async function () {
             const file = getFixturePath('csharp.cs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'document file operations');
@@ -127,9 +127,9 @@ describe('parsing', function () {
     });
 
     describe('c', function () {
-        it('parse // and /* style comments', function () {
+        it('parse // and /* style comments', async function () {
             const file = getFixturePath('c.c');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'decide whether to use a pointer');
@@ -138,9 +138,9 @@ describe('parsing', function () {
     });
 
     describe('go', function () {
-        it('parse // and /* style comments', function () {
+        it('parse // and /* style comments', async function () {
             const file = getFixturePath('go.go');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'be more explicit here');
@@ -148,9 +148,9 @@ describe('parsing', function () {
     });
 
     describe('c header', function () {
-        it('parse // and /* style comments', function () {
+        it('parse // and /* style comments', async function () {
             const file = getFixturePath('c.h');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'should use a double');
@@ -158,9 +158,9 @@ describe('parsing', function () {
     });
 
     describe('erlang', function () {
-        it('parse % comments', function () {
+        it('parse % comments', async function () {
             const file = getFixturePath('erlang.erl');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 're-write this');
@@ -169,9 +169,9 @@ describe('parsing', function () {
     });
 
     describe('ruby', function () {
-        it('parse # comments', function () {
+        it('parse # comments', async function () {
             const file = getFixturePath('ruby.rb');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'initialize things lol');
@@ -180,9 +180,9 @@ describe('parsing', function () {
     });
 
     describe('crystal', function () {
-        it('parse # comments', function () {
+        it('parse # comments', async function () {
             const file = getFixturePath('crystal.cr');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'Write tests');
@@ -190,9 +190,9 @@ describe('parsing', function () {
     });
 
     describe('haml', function () {
-        it('parse -# comments and / comments', function () {
+        it('parse -# comments and / comments', async function () {
             const file = getFixturePath('haml.haml');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'All your base are belong to us.');
@@ -203,9 +203,9 @@ describe('parsing', function () {
     });
 
     describe('haskell', function () {
-        it('parse -- comments', function () {
+        it('parse -- comments', async function () {
             const file = getFixturePath('haskell.hs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 4, 'force evaluation of the given value');
@@ -214,9 +214,9 @@ describe('parsing', function () {
     });
 
     describe('sql', function () {
-        it('parse -- and /* comments', function () {
+        it('parse -- and /* comments', async function () {
             const file = getFixturePath('sql.sql');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Sql multi comment');
@@ -225,9 +225,9 @@ describe('parsing', function () {
     });
 
     describe('html', function () {
-        it('parse <!-- --> comments', function () {
+        it('parse <!-- --> comments', async function () {
             const file = getFixturePath('HTML.html');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -236,9 +236,9 @@ describe('parsing', function () {
     });
 
     describe('htm', function () {
-        it('parse <!-- comments', function () {
+        it('parse <!-- comments', async function () {
             const file = getFixturePath('HTML.htm');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -247,9 +247,9 @@ describe('parsing', function () {
     });
 
     describe('jl', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             var file = getFixturePath('julia.jl');
-            var comments = getComments(file);
+            var comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 4, 'Support POST');
@@ -259,9 +259,9 @@ describe('parsing', function () {
     });
 
     describe('ejs', function () {
-        it('parse <!-- --> and <%# %> comments', function () {
+        it('parse <!-- --> and <%# %> comments', async function () {
             const file = getFixturePath('ejs.ejs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'FIXME', 1, 'change this tag from Id to class');
@@ -272,9 +272,9 @@ describe('parsing', function () {
     });
 
     describe('pascal', function () {
-        it('parse // and { } comments', function () {
+        it('parse // and { } comments', async function () {
             const file = getFixturePath('pascal.pas');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 1, 'Add more stuff');
@@ -285,9 +285,9 @@ describe('parsing', function () {
     });
 
     describe('python', function () {
-        it('parse # and """ comments', function () {
+        it('parse # and """ comments', async function () {
             const file = getFixturePath('python.py');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'refactor this');
@@ -296,9 +296,9 @@ describe('parsing', function () {
     });
 
     describe('latex', function () {
-        it('parse % and \\begin{comment} comments', function () {
+        it('parse % and \\begin{comment} comments', async function () {
             const file = getFixturePath('tex.tex');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 3, 'refactor this');
@@ -308,9 +308,9 @@ describe('parsing', function () {
     });
 
     describe('perl module', function () {
-        it('parse # comments', function () {
+        it('parse # comments', async function () {
             const file = getFixturePath('perl_module.pm');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 3, 'Use python');
@@ -319,9 +319,9 @@ describe('parsing', function () {
     });
 
     describe('perl script', function () {
-        it('parse # comments', function () {
+        it('parse # comments', async function () {
             const file = getFixturePath('perl.pl');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 3, 'Refactor this');
@@ -330,9 +330,9 @@ describe('parsing', function () {
     });
 
     describe('sass', function () {
-        it('parse // and /* comments', function () {
+        it('parse // and /* comments', async function () {
             const file = getFixturePath('block.sass');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
@@ -343,9 +343,9 @@ describe('parsing', function () {
     });
 
     describe('scss', function () {
-        it('parse // and /* comments', function () {
+        it('parse // and /* comments', async function () {
             const file = getFixturePath('block.scss');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'add another class');
@@ -353,33 +353,33 @@ describe('parsing', function () {
     });
 
     describe('typescript', function () {
-        it('parse // and /* comments with ts extension', function () {
+        it('parse // and /* comments with ts extension', async function () {
             const file = getFixturePath('typescript.ts');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
             verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
-        it('parse // and /* comments with tsx extension', function () {
+        it('parse // and /* comments with tsx extension', async function () {
             const file = getFixturePath('typescript.tsx');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
             verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
-        it('parse // and /* comments with cts extension', function () {
+        it('parse // and /* comments with cts extension', async function () {
             const file = getFixturePath('typescript.cts');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
             verifyComment(comments[1], 'FIXME', 11, 'use jquery');
         });
-        it('parse // and /* comments with mts extension', function () {
+        it('parse // and /* comments with mts extension', async function () {
             const file = getFixturePath('typescript.mts');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'change to public');
@@ -388,17 +388,17 @@ describe('parsing', function () {
     });
 
     describe('jsdoc', function () {
-        it('handle jsdoc comments', function () {
+        it('handle jsdoc comments', async function () {
             const file = getFixturePath('jsdoc.js');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
         });
 
-        it('handle jsdoc @todo comments', function () {
+        it('handle jsdoc @todo comments', async function () {
             const file = getFixturePath('jsdoc2.js');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 9, 'make this supported');
@@ -406,9 +406,9 @@ describe('parsing', function () {
     });
 
     describe('coffeescript', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('coffee.coffee');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 1, 'Do something');
@@ -417,9 +417,9 @@ describe('parsing', function () {
     });
 
     describe('coffee-react', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('coffee-react.cjsx');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 1, 'better document');
@@ -427,9 +427,9 @@ describe('parsing', function () {
     });
 
     describe('zsh', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('zsh.zsh');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 17, 'complete file');
@@ -437,16 +437,16 @@ describe('parsing', function () {
     });
 
     describe('yaml', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('yaml.yaml');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 7, 'Support POST');
         });
-        it('handle # comments with withInlineFiles', function () {
+        it('handle # comments with withInlineFiles', async function () {
             const file = getFixturePath('yaml.yaml');
-            const comments = getComments(file, { withInlineFiles: true });
+            const comments = await getComments(file, { withInlineFiles: true });
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 7, 'Support POST');
@@ -454,9 +454,9 @@ describe('parsing', function () {
     });
 
     describe('yml', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('yaml.yml');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 7, 'Support POST');
@@ -464,9 +464,9 @@ describe('parsing', function () {
     });
 
     describe('bash', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('bash.bash');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 5, 'wrap variables in quotes');
@@ -474,9 +474,9 @@ describe('parsing', function () {
     });
 
     describe('sh', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('sh.sh');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 31, 'we now exit the program');
@@ -484,9 +484,9 @@ describe('parsing', function () {
     });
 
     describe('gdscript', function () {
-        it('handle # comments', function () {
+        it('handle # comments', async function () {
             const file = getFixturePath('gdscript.gd');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'pre-initialize variable');
@@ -494,9 +494,9 @@ describe('parsing', function () {
     });
 
     describe('ss', function () {
-        it('handle <%-- --%> and <!-- --> comments', function () {
+        it('handle <%-- --%> and <!-- --> comments', async function () {
             const file = getFixturePath('silverstripe.ss');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'FIXME', 4, 'title is incorrect');
@@ -506,9 +506,9 @@ describe('parsing', function () {
     });
 
     describe('less', function () {
-        it('handles block and inline comment forms', function () {
+        it('handles block and inline comment forms', async function () {
             const file = getFixturePath('block.less');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(4);
             verifyComment(comments[0], 'TODO', 2, 'it will appear in the CSS output.');
@@ -519,9 +519,9 @@ describe('parsing', function () {
     });
 
     describe('twig', function () {
-        it('matches bang and html comment style', function () {
+        it('matches bang and html comment style', async function () {
             const file = getFixturePath('twig.twig');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 1, "Hey, I'm a fixme!");
@@ -530,9 +530,9 @@ describe('parsing', function () {
     });
 
     describe('Objective-C', function () {
-        it('handles standard js comments', function () {
+        it('handles standard js comments', async function () {
             const file = getFixturePath('objective.m');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 4, 'better rename this variable');
@@ -540,9 +540,9 @@ describe('parsing', function () {
     });
 
     describe('Objective-C++', function () {
-        it('handles standard js comments', function () {
+        it('handles standard js comments', async function () {
             const file = getFixturePath('objective.mm');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 4, 'better rename this variable');
@@ -550,9 +550,9 @@ describe('parsing', function () {
     });
 
     describe('jsx', function () {
-        it('handles standard js comments in jsx', function () {
+        it('handles standard js comments in jsx', async function () {
             const file = getFixturePath('react.jsx');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
@@ -561,9 +561,9 @@ describe('parsing', function () {
     });
 
     describe('jade', function () {
-        it('handle // style comments', function () {
+        it('handle // style comments', async function () {
             const file = getFixturePath('comments.jade');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 9, 'this is a todo');
@@ -572,9 +572,9 @@ describe('parsing', function () {
     });
 
     describe('php', function () {
-        it('handles standard js comments in php', function () {
+        it('handles standard js comments in php', async function () {
             const file = getFixturePath('sample.php');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
@@ -584,9 +584,9 @@ describe('parsing', function () {
     });
 
     describe('ctp', function () {
-        it('handles standard js comments in ctp', function () {
+        it('handles standard js comments in ctp', async function () {
             const file = getFixturePath('sample.ctp');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
@@ -596,9 +596,9 @@ describe('parsing', function () {
     });
 
     describe('swift', function () {
-        it('handles standard comments in swift', function () {
+        it('handles standard comments in swift', async function () {
             const file = getFixturePath('swift.swift');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 2, 'perimeter of the Shape.');
@@ -607,9 +607,9 @@ describe('parsing', function () {
     });
 
     describe('custom tags', function () {
-        it('custom tags', function () {
+        it('custom tags', async function () {
             const file = getFixturePath('custom-tags.rb');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 customTags: ['review'],
             });
             should.exist(comments);
@@ -618,17 +618,17 @@ describe('parsing', function () {
             verifyComment(comments[1], 'FIXME', 10, 'just kidding');
         });
 
-        it('custom tag is temporary', function () {
+        it('custom tag is temporary', async function () {
             const file = getFixturePath('custom-tags.rb');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 10, 'just kidding');
         });
 
-        it('custom tag matches strict', function () {
+        it('custom tag matches strict', async function () {
             const file = getFixturePath('strict-tags.php');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 customTags: ['prod'],
             });
             should.exist(comments);
@@ -641,18 +641,20 @@ describe('parsing', function () {
     });
 
     describe('with inline files', function () {
-        it('parses a php file without included files', function () {
+        it('parses a php file without included files', async function () {
             const file = getFixturePath('with-inline.php');
-            const comments = getComments(file, {
-                withInlineFiles: false,
-            });
+            const [comments] = await Promise.all([
+                getComments(file, {
+                    withInlineFiles: false,
+                }),
+            ]);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 2, 'This is a single-line comment');
         });
 
-        it('parses a php file with just php', function () {
+        it('parses a php file with just php', async function () {
             const file = getFixturePath('with-inline.php');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 withInlineFiles: true,
             });
             comments.should.have.length(2);
@@ -662,18 +664,18 @@ describe('parsing', function () {
     });
 
     describe('vue', function () {
-        it('parses a vue file without included files', function () {
+        it('parses a vue file without included files', async function () {
             const file = getFixturePath('vue.vue');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 withInlineFiles: false,
             });
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 2, 'Vue template comment');
         });
 
-        it('parses a vue file with just php', function () {
+        it('parses a vue file with just php', async function () {
             const file = getFixturePath('vue.vue');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 withInlineFiles: true,
             });
             comments.should.have.length(3);
@@ -684,18 +686,18 @@ describe('parsing', function () {
     });
 
     describe('svelte', function () {
-        it('parses a svelte file without included files', function () {
+        it('parses a svelte file without included files', async function () {
             const file = getFixturePath('svelte.svelte');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 withInlineFiles: false,
             });
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 14, 'Svelte template comment');
         });
 
-        it('parses a svelte file with just php', function () {
+        it('parses a svelte file with just php', async function () {
             const file = getFixturePath('svelte.svelte');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 withInlineFiles: true,
             });
             comments.should.have.length(3);
@@ -713,9 +715,9 @@ describe('parsing', function () {
             leasot.isExtensionSupported('.cls').should.equal(true);
         });
 
-        it('parses newly associated file using specified parser', function () {
+        it('parses newly associated file using specified parser', async function () {
             const file = getFixturePath('salesforce-apex.cls');
-            const comments = getComments(file, {
+            const comments = await getComments(file, {
                 associateParser: { '.cls': { parserName: 'defaultParser' } },
             });
             should.exist(comments);
@@ -726,33 +728,33 @@ describe('parsing', function () {
     });
 
     describe('references', function () {
-        it('leading', function () {
+        it('leading', async function () {
             const file = getFixturePath('reference-leading.js');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             comments.should.have.length(1);
             verifyComment(comments[0], 'TODO', 3, 'Use Symbol instead', 'tregusti');
         });
 
-        it('trailing', function () {
+        it('trailing', async function () {
             const file = getFixturePath('reference-trailing.rb');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             comments.should.have.length(1);
             verifyComment(comments[0], 'FIXME', 2, 'Make it better', 'tregusti');
         });
     });
 
     describe('java', function () {
-        it('handle java lines comments', function () {
+        it('handle java lines comments', async function () {
             const file = getFixturePath('java.java');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 6, 'Change language');
         });
 
-        it('handle java block comments', function () {
+        it('handle java block comments', async function () {
             const file = getFixturePath('java.java');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 9, 'Log response');
@@ -760,17 +762,17 @@ describe('parsing', function () {
     });
 
     describe('kotlin', function () {
-        it('handle kotlin lines comments', function () {
+        it('handle kotlin lines comments', async function () {
             const file = getFixturePath('kotlin.kt');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Change language');
         });
 
-        it('handle kotlin block comments', function () {
+        it('handle kotlin block comments', async function () {
             const file = getFixturePath('kotlin.kt');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 7, 'Log response');
@@ -778,17 +780,17 @@ describe('parsing', function () {
     });
 
     describe('scala', function () {
-        it('handle scala line comments', function () {
+        it('handle scala line comments', async function () {
             const file = getFixturePath('Scala.scala');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Do something');
         });
 
-        it('handle scala block comments', function () {
+        it('handle scala block comments', async function () {
             const file = getFixturePath('Scala.scala');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'FIXME', 8, 'Fix something');
@@ -796,18 +798,18 @@ describe('parsing', function () {
     });
 
     describe('markdown', function () {
-        it('parse <!-- --> comments in .markdown', function () {
+        it('parse <!-- --> comments in .markdown', async function () {
             const file = getFixturePath('markdown.markdown');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 3, 'Update instructions');
             verifyComment(comments[1], 'TODO', 7, 'Add docs');
         });
 
-        it('parse <!-- --> comments in .md', function () {
+        it('parse <!-- --> comments in .md', async function () {
             const file = getFixturePath('markdown.md');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 3, 'Update instructions');
@@ -816,9 +818,9 @@ describe('parsing', function () {
     });
 
     describe('clojure', function () {
-        it('handle comments', function () {
+        it('handle comments', async function () {
             const file = getFixturePath('clojure.clj');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 2, 'This is a single line comment');
@@ -827,9 +829,9 @@ describe('parsing', function () {
     });
 
     describe('fsharp', function () {
-        it('handle comments', function () {
+        it('handle comments', async function () {
             const file = getFixturePath('f-sharp.fs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 3, 'This is a single line comment');
@@ -839,17 +841,17 @@ describe('parsing', function () {
     });
 
     describe('rust', function () {
-        it('handle rust lines comments', function () {
+        it('handle rust lines comments', async function () {
             const file = getFixturePath('rust.rs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 1, 'This is a single-line comment');
         });
 
-        it('handle rust block comments', function () {
+        it('handle rust block comments', async function () {
             const file = getFixturePath('rust.rs');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(3);
             verifyComment(comments[1], 'FIXME', 5, 'implement single line comment');
@@ -858,17 +860,17 @@ describe('parsing', function () {
     });
 
     describe('protocol-buffer', function () {
-        it('handle protocol-buffer lines comments', function () {
+        it('handle protocol-buffer lines comments', async function () {
             const file = getFixturePath('protocol-buffer.proto');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[1], 'TODO', 14, 'implements list method');
         });
 
-        it('handle protocol-buffer block comments', function () {
+        it('handle protocol-buffer block comments', async function () {
             const file = getFixturePath('protocol-buffer.proto');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'FIXME', 4, 'implement single line comment');
@@ -876,9 +878,9 @@ describe('parsing', function () {
     });
 
     describe('lua', function () {
-        it('parse -- comments and --[[ ]] comments', function () {
+        it('parse -- comments and --[[ ]] comments', async function () {
             const file = getFixturePath('lua.lua');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(5);
 
@@ -891,9 +893,9 @@ describe('parsing', function () {
     });
 
     describe('elixir', function () {
-        it('parse -- comments and --[[ ]] comments', function () {
+        it('parse -- comments and --[[ ]] comments', async function () {
             const file = getFixturePath('elixir.ex');
-            const comments = getComments(file);
+            const comments = await getComments(file);
             should.exist(comments);
             comments.should.have.length(1);
 
@@ -902,7 +904,7 @@ describe('parsing', function () {
     });
 
     describe('custom parsers', function () {
-        it('returns custom parser todos', function () {
+        it('returns custom parser todos', async function () {
             const file = getFixturePath('file.unsupported');
             const customParsers: CustomParsers = {
                 customParser: function (_parseOptions) {
@@ -933,7 +935,7 @@ describe('parsing', function () {
                 customParsers: customParsers,
             };
 
-            const comments = getComments(file, config);
+            const comments = await getComments(file, config);
             should.exist(comments);
             comments.should.have.length(2);
             verifyComment(comments[0], 'TODO', 4, 'Do something');
