@@ -1,6 +1,6 @@
-import { DefaultTags, Tag, TodoComment } from '../../definitions';
+import { DefaultTags, Tag, TodoComment } from '../../definitions.js';
 import { split } from 'eol';
-import { getLineFromPos } from './index';
+import { getLineFromPos } from './index.js';
 
 const DEFAULT_TAGS: string[] = [DefaultTags.todo, DefaultTags.fixme];
 

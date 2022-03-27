@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { ExtensionsDb, ParseConfig, ParserFactoryConfig, TodoComment } from '../definitions';
+import { ExtensionsDb, ParseConfig, ParserFactoryConfig, TodoComment } from '../definitions.js';
 
 const parsersDb: ExtensionsDb = {
     '.bash': { parserName: 'coffeeParser' },

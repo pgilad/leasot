@@ -1,13 +1,13 @@
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
-import { associateExtWithParser, isExtensionSupported, parse } from '..';
+import { associateExtWithParser, isExtensionSupported, parse } from '../index.js';
 import { extname, resolve } from 'path';
 import { mapLimit } from 'async';
-import { ParseConfig, TodoComment } from '../definitions';
+import { ParseConfig, TodoComment } from '../definitions.js';
 import { readFile } from 'fs';
 import { CommanderStatic } from 'commander';
-import { outputTodos, ProgramArgs } from './common';
+import { outputTodos, ProgramArgs } from './common.js';
 
 const DEFAULT_EXTENSION = '.js';
 const CONCURRENCY_LIMIT = 50;

@@ -1,6 +1,6 @@
 import { split } from 'eol';
 
-export { prepareComment, getRegex } from './comments';
+export { prepareComment, getRegex } from './comments.js';
 
 // Bases on get-line-from-pos to support Windows as well
 // See https://github.com/pgilad/get-line-from-pos/blob/master/index.js

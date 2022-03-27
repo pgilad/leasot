@@ -1,5 +1,5 @@
-import { BuiltinReporters, ExtensionsDb, ReporterName, Tag, TodoComment } from '../definitions';
-import { report } from '..';
+import { BuiltinReporters, ExtensionsDb, ReporterName, Tag, TodoComment } from '../definitions.js';
+import { report } from '../index.js';
 
 /**
  * @hidden

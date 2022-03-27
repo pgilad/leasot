@@ -1,5 +1,5 @@
-import { getRegex, prepareComment } from '../utils';
-import { ParserFactory, TodoComment } from '../../definitions';
+import { getRegex, prepareComment } from '../utils/index.js';
+import { ParserFactory, TodoComment } from '../../definitions.js';
 import { split } from 'eol';
 
 const parserFactory: ParserFactory = ({ customTags }) => {

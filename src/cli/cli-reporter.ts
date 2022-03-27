@@ -5,7 +5,7 @@ import { mapLimit } from 'async';
 import { readFile } from 'fs';
 import { resolve } from 'path';
 import { CommanderStatic } from 'commander';
-import { outputTodos, ProgramArgs } from './common';
+import { outputTodos, ProgramArgs } from './common.js';
 
 const CONCURRENCY_LIMIT = 50;
 
@@ -20,7 +20,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
         process.exit(1);
     }
 
-    // Parallel read all of the given files
+    // Parallel read all the given files
     mapLimit(
         files,
         CONCURRENCY_LIMIT,

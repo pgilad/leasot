@@ -1,5 +1,10 @@
 import commander from 'commander';
+import fs from 'fs';
+
 import cli from './cli-reporter';
+import path from 'path';
+
+const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -7,7 +12,7 @@ const list = (val: string): string[] => val.split(',');
 commander
     .storeOptionsAsProperties(false)
     .description('Report todos and fixmes from json files or stream')
-    .version(require('../../package.json').version)
+    .version(pkg.version)
     .usage('[options] <file ...>')
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
     .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|vscode|raw) (default: table)', 'table')

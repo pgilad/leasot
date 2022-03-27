@@ -1,6 +1,10 @@
 import commander from 'commander';
-import cli from './cli';
-import { ExtensionsDb } from '../definitions';
+import cli from './cli.js';
+import { ExtensionsDb } from '../definitions.js';
+import fs from 'fs';
+import path from 'path';
+
+const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -19,8 +23,8 @@ const parseAssociateParser = (val: string, req: ExtensionsDb): ExtensionsDb => {
 /* eslint-disable no-console */
 commander
     .storeOptionsAsProperties(false)
-    .description(require('../../package.json').description)
-    .version(require('../../package.json').version)
+    .description(pkg.description)
+    .version(pkg.version)
     .usage('[options] <file ...>')
     .option(
         '-A, --associate-parser [ext,parser]',

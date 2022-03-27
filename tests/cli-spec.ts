@@ -2,12 +2,13 @@ import * as childProcess from 'child_process';
 import * as logSymbols from 'log-symbols';
 import * as path from 'path';
 import * as should from 'should';
-import { split } from 'eol';
+import eol from 'eol';
 import normalize from 'normalize-path';
 // @ts-ignore
 import stripAnsi from 'strip-ansi';
+import fs from 'fs';
 
-const pkg = require('../package.json');
+const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
 
 function getFixturePath(file: string): string {
     return normalize(path.join('./tests/fixtures/', file));
@@ -29,7 +30,7 @@ function testCli(files: string[], extraArgs: string[] = [], cb: (exitCode: numbe
         chunks += Buffer.from(data).toString();
     });
     cp.on('close', function (exitCode: number) {
-        cb(exitCode, split(stripAnsi(chunks)));
+        cb(exitCode, eol.split(stripAnsi(chunks)));
     });
 }
 

@@ -1,4 +1,4 @@
-import { BuiltinReporters, ReportItems, ReporterConfig, ReporterName, TodoComment } from '../definitions';
+import { BuiltinReporters, ReportItems, ReporterConfig, ReporterName, TodoComment } from '../definitions.js';
 import { join } from 'path';
 
 /**
