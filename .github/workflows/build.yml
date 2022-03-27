@@ -1,5 +1,5 @@
 name: Node.js CI
-on: [push]
+on: [push, pull_request]
 
 env:
     DEFAULT_NODE_VERSION: '17.x'
