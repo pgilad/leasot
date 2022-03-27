@@ -4,6 +4,8 @@ jobs:
     build:
         name: Test
         strategy:
+            fail-fast: true
+            max-parallel: 5
             matrix:
                 os: [macos-latest, windows-latest, ubuntu-latest]
                 node-version: [12.x, 14.x, 16.x, 17.x]
