@@ -7,8 +7,10 @@ jobs:
             fail-fast: false
             max-parallel: 15
             matrix:
-                os: [macos-latest, windows-latest, ubuntu-latest]
-                node-version: [12.x, 14.x, 16.x, 17.x]
+                #                os: [macos-latest, windows-latest, ubuntu-latest]
+                os: [windows-latest]
+                #                node-version: [12.x, 14.x, 16.x, 17.x]
+                node-version: [17.x]
         runs-on: ${{ matrix.os }}
         env:
             OS: ${{ matrix.os }}
