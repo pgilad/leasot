@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import getStdin from 'get-stdin';
-import globby from 'globby';
+import { globby } from 'globby';
 import logSymbols from 'log-symbols';
 import fs from 'fs';
 import path from 'path';
