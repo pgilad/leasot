@@ -104,6 +104,6 @@ jobs:
                   node-version: ${{ env.DEFAULT_NODE_VERSION }}
                   registry-url: 'https://registry.npmjs.org'
             - name: Publish to NPM
-              run: npm publish --access public --dry-run
+              run: npm publish --access public --dry-run --ignore-scripts
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
