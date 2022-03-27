@@ -8,7 +8,7 @@ import path from 'path';
 import { mapLimit } from 'async';
 import { ParseConfig, TodoComment } from '../definitions.js';
 import fs from 'fs';
-import { CommanderStatic } from 'commander';
+import { Command } from 'commander';
 import { outputTodos, ProgramArgs } from './common.js';
 
 const DEFAULT_EXTENSION = '.js';
@@ -86,7 +86,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
     );
 };
 
-const run = (program: CommanderStatic): void => {
+const run = (program: Command): void => {
     const options = program.opts();
     if (program.args && program.args.length > 0) {
         return parseAndReportFiles(program.args, options);
