@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as leasot from '../src/index';
-import * as path from 'path';
-import * as should from 'should';
-import { BuiltinReporters, ParseConfig, ReporterName } from '../src/definitions';
-import { split } from 'eol';
+import fs from 'fs';
+import * as leasot from '../src/index.js';
+import path from 'path';
+import should from 'should';
+import { BuiltinReporters, ParseConfig, ReporterName } from '../src/definitions.js';
+import eol from 'eol';
 
 function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);
@@ -15,7 +15,7 @@ function getReport(filename: string, reporter: ReporterName, parseOptions: Parse
     const content = fs.readFileSync(filename, 'utf8');
     const comments = leasot.parse(content, parseOptions);
     const report = leasot.report(comments, reporter);
-    return split(report);
+    return eol.split(report);
 }
 
 describe('reporting', function () {

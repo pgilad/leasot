@@ -1,8 +1,8 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as should from 'should';
-import { CustomParsers, ParseConfig, Tag, TodoComment } from '../src/definitions';
-import * as leasot from '../src/index';
+import fs from 'fs';
+import path from 'path';
+import should from 'should';
+import { CustomParsers, ParseConfig, Tag, TodoComment } from '../src/definitions.js';
+import * as leasot from '../src/index.js';
 
 function getFixturePath(file: string): string {
     return path.join('./tests/fixtures/', file);

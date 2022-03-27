@@ -1,6 +1,6 @@
-import { getRegex } from '../utils';
-import { ParserFactory } from '../../definitions';
-import { extractSingleLineComments, extractSingleLineFromBlocks } from '../utils/comments';
+import { getRegex } from '../utils/index.js';
+import { ParserFactory } from '../../definitions.js';
+import { extractSingleLineComments, extractSingleLineFromBlocks } from '../utils/comments.js';
 
 const multiLineCommentRegex = /--\[\[(?:[\s\S]*)]]/gim;
 

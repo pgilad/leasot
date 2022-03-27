@@ -1,10 +1,9 @@
-import * as childProcess from 'child_process';
-import * as logSymbols from 'log-symbols';
-import * as path from 'path';
-import * as should from 'should';
+import childProcess from 'child_process';
+import logSymbols from 'log-symbols';
+import path from 'path';
+import should from 'should';
 import eol from 'eol';
 import normalize from 'normalize-path';
-// @ts-ignore
 import stripAnsi from 'strip-ansi';
 import fs from 'fs';
 
