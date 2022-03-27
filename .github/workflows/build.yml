@@ -12,6 +12,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         env:
             OS: ${{ matrix.os }}
+            CI: true
             NODE_VERSION: ${{ matrix.node-version }}
 
         steps:
