@@ -2,5 +2,6 @@
   "name": "leasot",
   "readme": "none",
   "out": "docs",
-  "excludePrivate": true
+  "excludePrivate": true,
+  "includeVersion": true
 }

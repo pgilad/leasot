@@ -1,3 +1,3 @@
-export { associateExtWithParser, isExtensionSupported, parse } from './lib/parsers';
-export { report } from './lib/reporters';
-export { getRegex, prepareComment } from './lib/utils';
+export { associateExtWithParser, isExtensionSupported, parse } from './lib/parsers.js';
+export { report } from './lib/reporters.js';
+export { getRegex, prepareComment } from './lib/utils/index.js';
