@@ -1,5 +1,5 @@
-import { BuiltinReporters, ExtensionsDb, ReporterName, Tag, TodoComment } from '../definitions';
-import { report } from '..';
+import { BuiltinReporters, ExtensionsDb, ReporterName, Tag, TodoComment } from '../definitions.js';
+import { report } from '../index.js';
 
 /**
  * @hidden
@@ -21,9 +21,9 @@ export interface ProgramArgs extends CommonProgramArgs {
     readonly tags?: Tag[];
 }
 
-export const outputTodos = (todos: TodoComment[], options: ProgramArgs) => {
+export const outputTodos = async (todos: TodoComment[], options: ProgramArgs) => {
     try {
-        const output = report(todos, options.reporter);
+        const output = await report(todos, options.reporter);
         console.log(output);
     } catch (e) {
         console.error(e);

@@ -1,5 +1,5 @@
 import json2xml from 'json2xml';
-import { ReportItems, TodoComment } from '../../definitions';
+import { ReportItems, TodoComment } from '../../definitions.js';
 
 /**
  * See https://github.com/estheban/node-json2xml#options--behaviour

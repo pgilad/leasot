@@ -1,10 +1,10 @@
-import * as logSymbols from 'log-symbols';
+import logSymbols from 'log-symbols';
 import chalk from 'chalk';
 import stripAnsi from 'strip-ansi';
 import table from 'text-table';
 import { EOL } from 'os';
-import { ReportItems, TodoComment } from '../../definitions';
-import { split } from 'eol';
+import { ReportItems, TodoComment } from '../../definitions.js';
+import eol from 'eol';
 
 function outputFooter(todos: TodoComment[]): string {
     const total = todos.length;
@@ -41,7 +41,8 @@ function outputTable(todos: TodoComment[]): string {
     });
 
     //set filename headers
-    t = split(t)
+    t = eol
+        .split(t)
         .map(function (el: string, i: number) {
             return headers[i] ? EOL + chalk.underline(headers[i]) + EOL + el : el;
         })
