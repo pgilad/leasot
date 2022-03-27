@@ -4,7 +4,7 @@ jobs:
     build:
         name: Test
         strategy:
-            fail-fast: true
+            fail-fast: false
             max-parallel: 5
             matrix:
                 os: [macos-latest, windows-latest, ubuntu-latest]
