@@ -31,7 +31,7 @@ jobs:
               uses: actions/cache@v2
               with:
                   path: '**/node_modules'
-                  key: ${{ matrix.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/package.json') }}
+                  key: ${{ matrix.os }}-${{ matrix.node-version }}-pkgs-${{ hashFiles('**/package.json') }}
 
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
