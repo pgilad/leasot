@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
 import getStdin from 'get-stdin';
-import globby from 'globby';
+import { globbySync } from 'globby';
 import logSymbols from 'log-symbols';
 import fs from 'fs';
 import path from 'path';
 import { mapLimit } from 'async';
-import { CommanderStatic } from 'commander';
+import { Command } from 'commander';
 import { outputTodos, ProgramArgs } from './common.js';
 
 const CONCURRENCY_LIMIT = 50;
 
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
-    const files = globby.sync(fileGlobs, {
+    const files = globbySync(fileGlobs, {
         ignore: options.ignore || [],
     });
 
@@ -43,7 +43,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
     );
 };
 
-const run = (program: CommanderStatic): void => {
+const run = (program: Command): void => {
     const options = program.opts();
     if (program.args && program.args.length > 0) {
         return parseAndReportFiles(program.args, options);

@@ -1,4 +1,4 @@
-import commander from 'commander';
+import { program } from 'commander';
 import fs from 'fs';
 
 import cli from './cli-reporter.js';
@@ -12,8 +12,7 @@ const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'
 const list = (val: string): string[] => val.split(',');
 
 /* eslint-disable no-console */
-commander
-    .storeOptionsAsProperties(false)
+program
     .description('Report todos and fixmes from json files or stream')
     .version(pkg.version)
     .usage('[options] <file ...>')
@@ -45,4 +44,4 @@ commander
     })
     .parse(process.argv);
 
-cli(commander);
+cli(program);

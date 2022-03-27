@@ -1,4 +1,4 @@
-import commander from 'commander';
+import { program } from 'commander';
 import cli from './cli.js';
 import { ExtensionsDb } from '../definitions.js';
 import fs from 'fs';
@@ -25,8 +25,7 @@ const parseAssociateParser = (val: string, req: ExtensionsDb): ExtensionsDb => {
 };
 
 /* eslint-disable no-console */
-commander
-    .storeOptionsAsProperties(false)
+program
     .description(pkg.description)
     .version(pkg.version)
     .usage('[options] <file ...>')
@@ -83,4 +82,4 @@ commander
     })
     .parse(process.argv);
 
-cli(commander);
+cli(program);
