@@ -30,7 +30,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Install packages
-              run: npm install
+              run: npm install --ignore-scripts
 
             - name: Clean
               run: npm run clean
