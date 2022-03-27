@@ -19,7 +19,7 @@ jobs:
               uses: actions/cache@v2
               with:
                   path: '**/node_modules'
-                  key: ${{ matrix.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/package-lock.json') }}
+                  key: ${{ matrix.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/package.json') }}
 
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
@@ -27,7 +27,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Install packages
-              run: npm ci
+              run: npm install
 
             - name: Clean
               run: npm run clean
