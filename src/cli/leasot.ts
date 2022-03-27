@@ -4,7 +4,11 @@ import { ExtensionsDb } from '../definitions.js';
 import fs from 'fs';
 import path from 'path';
 
-const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -73,6 +77,8 @@ commander
         console.log('');
         console.log('    # Associate a parser for an unknown extension`');
         console.log(`    $ leasot -A '.svelte,twigParser' -A '.svelte,defaultParser' 'frontend/*.svelte'`);
+        console.log('');
+        console.log(`App version: ${pkg.version}`);
         console.log('');
     })
     .parse(process.argv);

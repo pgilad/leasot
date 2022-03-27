@@ -1,11 +1,13 @@
+#!/usr/bin/env node
+
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
 import { associateExtWithParser, isExtensionSupported, parse } from '../index.js';
-import { extname, resolve } from 'path';
+import path from 'path';
 import { mapLimit } from 'async';
 import { ParseConfig, TodoComment } from '../definitions.js';
-import { readFile } from 'fs';
+import fs from 'fs';
 import { CommanderStatic } from 'commander';
 import { outputTodos, ProgramArgs } from './common.js';
 
@@ -19,8 +21,8 @@ export const getFiletype = (filetype?: string, filename?: string): string => {
     if (filetype) {
         return filetype;
     }
-    if (filename && extname(filename)) {
-        return extname(filename);
+    if (filename && path.extname(filename)) {
+        return path.extname(filename);
     }
     return DEFAULT_EXTENSION;
 };
@@ -62,7 +64,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
     mapLimit(
         files,
         CONCURRENCY_LIMIT,
-        (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
+        (file, cb) => fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb),
         async (err, results: string[]) => {
             if (err) {
                 console.log(err);

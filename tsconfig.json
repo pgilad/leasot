@@ -21,6 +21,7 @@
         "noEmitOnError": true,
         "useDefineForClassFields": true,
         "forceConsistentCasingInFileNames": true,
+        "pretty": true,
         "skipLibCheck": true
     },
     "include": ["src/**/*.ts"],

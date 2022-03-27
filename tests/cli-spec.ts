@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
 
 function getFixturePath(file: string): string {
     return normalize(path.join('./tests/fixtures/', file));

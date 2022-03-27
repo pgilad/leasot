@@ -1,9 +1,11 @@
+#!/usr/bin/env node
+
 import getStdin from 'get-stdin';
 import globby from 'globby';
 import logSymbols from 'log-symbols';
+import fs from 'fs';
+import path from 'path';
 import { mapLimit } from 'async';
-import { readFile } from 'fs';
-import { resolve } from 'path';
 import { CommanderStatic } from 'commander';
 import { outputTodos, ProgramArgs } from './common.js';
 
@@ -24,7 +26,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
     mapLimit(
         files,
         CONCURRENCY_LIMIT,
-        (file, cb) => readFile(resolve(process.cwd(), file), 'utf8', cb),
+        (file, cb) => fs.readFile(path.resolve(process.cwd(), file), 'utf8', cb),
         async (err, results: string[]) => {
             if (err) {
                 console.log(err);

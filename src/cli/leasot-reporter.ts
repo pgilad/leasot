@@ -1,10 +1,13 @@
 import commander from 'commander';
 import fs from 'fs';
 
-import cli from './cli-reporter';
+import cli from './cli-reporter.js';
 import path from 'path';
+import { fileURLToPath } from 'node:url';
 
-const pkg = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf-8'));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf-8'));
 
 const list = (val: string): string[] => val.split(',');
 
@@ -36,6 +39,8 @@ commander
         console.log(
             `    $ leasot 'tests/**/*.styl' --reporter json | jq 'map(select(.tag == "TODO"))' | leasot-reporter`
         );
+        console.log('');
+        console.log(`App version: ${pkg.version}`);
         console.log('');
     })
     .parse(process.argv);
