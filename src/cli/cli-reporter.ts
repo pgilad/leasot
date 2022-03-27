@@ -31,9 +31,9 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
                 process.exit(1);
             }
             const todos = results
-                .map(content => JSON.parse(content))
+                .map((content) => JSON.parse(content))
                 // filter files without any parsed content
-                .filter(item => item && item.length > 0)
+                .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
             outputTodos(todos, options);

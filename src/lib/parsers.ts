@@ -119,7 +119,7 @@ const getActiveParserNames = (extension: string, withInlineFiles: boolean): stri
 
     const includedFiles = originalParser.includedFiles || [];
     if (withInlineFiles) {
-        includedFiles.forEach(includedExtension => {
+        includedFiles.forEach((includedExtension) => {
             // parserName could be an array
             parserNames = parserNames.concat(parsersDb[includedExtension].parserName);
         });
@@ -156,7 +156,7 @@ export const parse = (content: string, config: ParseConfig): TodoComment[] => {
     const parserNames = getActiveParserNames(extension, withInlineFiles);
 
     const parsed = parserNames
-        .map(parserName => {
+        .map((parserName) => {
             const parserFactory = customParsers[parserName] || require('./parsers/' + parserName).default;
             const parser = parserFactory(parseOptions);
             return parser(content, filename);

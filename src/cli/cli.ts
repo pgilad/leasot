@@ -73,7 +73,7 @@ const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void =>
                     return parseContentSync(content, options, files[index]);
                 })
                 // filter files without any parsed content
-                .filter(item => item && item.length > 0)
+                .filter((item) => item && item.length > 0)
                 .reduce((items, item) => items.concat(item), []);
 
             outputTodos(todos, options);
