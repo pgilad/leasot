@@ -71,6 +71,8 @@ jobs:
                       ./
                       !./node_modules/**/*
                       !./tests/**/*
+                      !./media/**/*
+                      !./src/**/*
 
     deploy-docs:
         name: Deploy Docs
