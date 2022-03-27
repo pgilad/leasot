@@ -70,7 +70,6 @@
     "docs": "typedoc src/index.ts src/definitions.ts",
     "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
     "predocs:publish": "npm run release:prepare",
-    "prepublishOnly": "npm run release:prepare",
     "prettier": "prettier --write src/ tests/",
     "prettier-check": "prettier --check src/ tests/",
     "release:prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs",
