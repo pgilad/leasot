@@ -69,8 +69,8 @@
     "docs:publish": "gh-pages -m '[ci skip] Updates' -d docs",
     "predocs:publish": "npm run release:prepare",
     "prepublishOnly": "npm run release:prepare",
-    "prettier": "prettier --write 'src/**/*.ts' 'tests/*.ts'",
-    "prettier-check": "prettier --check 'src/**/*.ts' 'tests/*.ts'",
+    "prettier": "prettier --write src/ tests/",
+    "prettier-check": "prettier --check src/ tests/",
     "release:prepare": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs",
     "test": "mocha --require ts-node/register -R spec './tests/*.ts'",
     "prepare": "husky install"
