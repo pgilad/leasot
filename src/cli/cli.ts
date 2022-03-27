@@ -52,7 +52,7 @@ const parseContentSync = async (content: string, options: ProgramArgs, filename?
 const parseAndReportFiles = (fileGlobs: string[], options: ProgramArgs): void => {
     // Get all files and their resolved globs
     const files = globbySync(fileGlobs, {
-        ignoreFiles: options.ignore || [],
+        ignore: options.ignore || [],
     });
 
     if (!files || !files.length) {
