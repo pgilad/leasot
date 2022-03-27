@@ -1,0 +1,23 @@
+name: Release
+on:
+    push:
+        branches: [master]
+jobs:
+    build:
+        name: Release
+        runs-on: ubuntu-latest
+        needs: [Test]
+        env:
+            CI: true
+            DEFAULT_NODE_VERSION: 17.x
+
+        steps:
+            - name: Set git to use LF
+              run: |
+                  git config --global core.autocrlf false
+                  git config --global core.eol lf
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ env.DEFAULT_NODE_VERSION }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ env.DEFAULT_NODE_VERSION }}
