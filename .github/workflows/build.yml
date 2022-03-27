@@ -3,6 +3,7 @@ on: [push]
 
 env:
     DEFAULT_NODE_VERSION: '17.x'
+    CI: true
 
 jobs:
     build:
@@ -16,7 +17,6 @@ jobs:
         runs-on: ${{ matrix.os }}
         env:
             OS: ${{ matrix.os }}
-            CI: true
             NODE_VERSION: ${{ matrix.node-version }}
 
         steps:
