@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { program } from 'commander';
 import cli from './cli.js';
 import { ExtensionsDb } from '../definitions.js';

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import getStdin from 'get-stdin';
 import { globbySync } from 'globby';
 import logSymbols from 'log-symbols';
