@@ -903,6 +903,25 @@ describe('parsing', function () {
         });
     });
 
+    describe('terraform', function () {
+        it('handle terraform lines comments', async function () {
+            const file = getFixturePath('terraform.tf');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[0], 'TODO', 1, 'This is a single-line comment');
+        });
+
+        it('handle terraform block comments', async function () {
+            const file = getFixturePath('terraform.tf');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(3);
+            verifyComment(comments[1], 'FIXME', 3, 'Implement single line comment');
+            verifyComment(comments[2], 'TODO', 8, 'This is a multiple-lines comment block');
+        });
+    });
+
     describe('custom parsers', function () {
         it('returns custom parser todos', async function () {
             const file = getFixturePath('file.unsupported');

@@ -16,6 +16,7 @@
 | F-Sharp         | `.fs`                | Supports `// and (* *)` comments.          | fsharpParser        |
 | GDScript        | `.gd`                | Supports `#` comments.                     | coffeeParser        |
 | Go              | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
+| HCL             | `.tf` `.hcl`         | Supports `//` `/* */` and `#` comments.    | defaultParser & coffeeParser |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |
 | Haml            | `.haml`              | Supports `/ -# <!-- --> and <%# %>`        | twigParser          |
 | Handlebars      | `.hbs` `.handlebars` | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
