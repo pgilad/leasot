@@ -25,7 +25,7 @@
     "@types/async": "^3.2.12",
     "@types/lodash": "^4.14.180",
     "@types/mocha": "^9.1.0",
-    "@types/node": "^17.0.23",
+    "@types/node": "^18.0.5",
     "@types/normalize-path": "^3.0.0",
     "@types/text-table": "^0.2.2",
     "husky": "^7.0.4",
