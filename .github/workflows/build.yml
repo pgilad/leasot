@@ -2,7 +2,7 @@ name: Node.js CI
 on: [push]
 
 env:
-    DEFAULT_NODE_VERSION: '17.x'
+    DEFAULT_NODE_VERSION: '18.x'
     CI: true
     HUSKY: 0
 
@@ -14,7 +14,7 @@ jobs:
             max-parallel: 15
             matrix:
                 os: [macos-latest, windows-latest, ubuntu-latest]
-                node-version: [14.x, 16.x, 17.x]
+                node-version: [14.x, 16.x, 18.x]
         runs-on: ${{ matrix.os }}
         env:
             OS: ${{ matrix.os }}
