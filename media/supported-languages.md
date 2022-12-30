@@ -41,6 +41,7 @@
 | Perl            | `.pl`, `.pm`         | Supports `#` comments.                     | coffeeParser        |
 | Protocol Buffer | `.proto`             | Supports `// and /* */` comments.          | defaultParser       |
 | Python          | `.py`                | Supports `"""` and `#` comments.           | pythonParser        |
+| R               | `.R`                 | Supports `#` comments.                     | coffeeParser        |
 | Ruby            | `.rb`                | Supports `#` comments.                     | coffeeParser        |
 | Rust            | `.rs`                | Supports `// and /* */` comments.          | defaultParser       |
 | SQL             | `.sql`               | Supports `--` and `/* */` comments         | defaultParser & haskellParser |
