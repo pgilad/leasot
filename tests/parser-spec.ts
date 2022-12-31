@@ -922,6 +922,17 @@ describe('parsing', function () {
         });
     });
 
+    describe('R script', function () {
+        it('parse # comments', async function () {
+            const file = getFixturePath('rscript.R');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 5, 'Make this better');
+            verifyComment(comments[1], 'FIXME', 15, "Don't call function in library script");
+        });
+    });
+
     describe('custom parsers', function () {
         it('returns custom parser todos', async function () {
             const file = getFixturePath('file.unsupported');
