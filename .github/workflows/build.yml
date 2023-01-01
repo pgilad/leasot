@@ -14,7 +14,7 @@ jobs:
             max-parallel: 15
             matrix:
                 os: [macos-latest, windows-latest, ubuntu-latest]
-                node-version: [14.x, 16.x, 18.x]
+                node-version: [16.x, 18.x, 19.x]
         runs-on: ${{ matrix.os }}
         env:
             OS: ${{ matrix.os }}
@@ -26,16 +26,16 @@ jobs:
                   git config --global core.autocrlf false
                   git config --global core.eol lf
 
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - name: Setup Cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: '**/node_modules'
                   key: ${{ matrix.os }}-${{ matrix.node-version }}-pkgs-${{ hashFiles('**/package.json') }}
 
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
 
