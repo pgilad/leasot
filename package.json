@@ -11,7 +11,7 @@
   "dependencies": {
     "async": "^3.2.4",
     "chalk": "^5.0.1",
-    "commander": "^9.4.0",
+    "commander": "^10.0.0",
     "eol": "^0.9.1",
     "get-stdin": "^9.0.0",
     "globby": "^13.1.2",
