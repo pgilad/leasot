@@ -34,7 +34,7 @@
     "mocha": "^10.0.0",
     "normalize-path": "3.0.0",
     "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.1.2",
     "should": "^13.2.3",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.8",
