@@ -39,7 +39,11 @@ program
     )
     .option('-i, --ignore <patterns>', 'add ignore patterns', list, [])
     .option('-I, --inline-files', 'parse possible inline files', false)
-    .option('-r, --reporter [reporter]', 'use reporter (table|json|xml|markdown|vscode|raw) (default: table)', 'table')
+    .option(
+        '-r, --reporter [reporter]',
+        'use reporter (table|json|xml|markdown|vscode|gitlab|raw) (default: table)',
+        'table'
+    )
     .option('-S, --skip-unsupported', 'skip unsupported filetypes', false)
     .option('-t, --filetype [filetype]', 'force the filetype to parse. Useful for streams (default: .js)')
     .option('-T, --tags <tags>', 'add additional comment types to find (alongside todo & fixme)', list, [])
