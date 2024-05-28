@@ -49,6 +49,7 @@ const parsersDb: ExtensionsDb = {
     '.m': { parserName: 'defaultParser' },
     '.markdown': { parserName: 'twigParser' },
     '.md': { parserName: 'twigParser' },
+    '.mdx': { parserName: 'defaultParser' },
     '.mjs': { parserName: 'defaultParser' },
     '.mm': { parserName: 'defaultParser' },
     '.mts': { parserName: 'defaultParser' },

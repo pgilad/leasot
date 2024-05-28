@@ -32,6 +32,7 @@
 | Less            | `.less`              | Supports `// and /* */` comments.          | defaultParser       |
 | Lua             | `.lua`               | Supports `--` and `--[[ ]]` comments.      | haskellParser       |
 | Markdown        | `.markdown`, `.md`   | Supports `<!-- -->`                        | twigParser          |
+| MDX             | `.mdx`               | Supports `{/* */}` comments.               | defaultParser       |
 | Mustache        | `.mustache`          | Supports `{{! }}` and `{{!-- --}}`         | hbsParser           |
 | Nunjucks        | `.njk`               | Supports `{#  #}` and `<!-- -->`           | twigParser          |
 | Objective-C     | `.m`                 | Supports `// and /* */` comments           | defaultParser       |

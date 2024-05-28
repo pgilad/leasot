@@ -817,6 +817,18 @@ describe('parsing', function () {
         });
     });
 
+    describe('mdx', function () {
+        it('parse {/* */} comments in .mdx', async function () {
+            const file = getFixturePath('mdx.mdx');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            console.table(comments);
+            verifyComment(comments[0], 'FIXME', 3, 'Update instructions');
+            verifyComment(comments[1], 'TODO', 7, 'Add docs');
+        });
+    });
+
     describe('clojure', function () {
         it('handle comments', async function () {
             const file = getFixturePath('clojure.clj');
