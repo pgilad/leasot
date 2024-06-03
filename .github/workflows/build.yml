@@ -21,6 +21,7 @@ jobs:
             OS: ${{ matrix.os }}
             NODE_VERSION: ${{ matrix.node-version }}
         outputs:
+            is-release-candidate: ${{ steps.is-release-candidate.outputs.is-release-candidate }}
             artifact-name: ${{ steps.set-artifact-name.outputs.artifact-name }}
 
         steps:
@@ -68,6 +69,10 @@ jobs:
 
             - name: Reporter CLI smoke test
               run: node ./dist/cli/leasot-reporter.js --help
+
+            - name: Check if release candidate
+              id: is-release-candidate
+              run: echo "is-release-candidate=${{ matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION }}" >> $GITHUB_OUTPUT
 
             - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION
               name: Set artifact build name output
