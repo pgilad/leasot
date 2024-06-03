@@ -64,7 +64,7 @@ jobs:
               run: node ./dist/cli/leasot-reporter.js --help
 
             - if: matrix.node-version == env.DEFAULT_NODE_VERSION
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: build
                   retention-days: 7
