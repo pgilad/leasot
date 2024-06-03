@@ -554,9 +554,10 @@ describe('parsing', function () {
             const file = getFixturePath('react.jsx');
             const comments = await getComments(file);
             should.exist(comments);
-            comments.should.have.length(2);
+            comments.should.have.length(3);
             verifyComment(comments[0], 'TODO', 14, 'Show my TODO please');
             verifyComment(comments[1], 'FIXME', 21, 'illogical');
+            verifyComment(comments[2], 'FIXME', 24, 'inside jsx comment');
         });
     });
 

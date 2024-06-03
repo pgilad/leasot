@@ -25,7 +25,7 @@
 | Jade            | `.jade` `.pug`       | Supports `//` and `//-` comments.          | jadeParser          |
 | Java            | `.java`              | Supports `// and /* */` comments           | defaultParser       |
 | Javascript      | `.js` `.es` `.es6` `.cjs` `.mjs` | Supports `// and /* */` comments | defaultParser     |
-| Jsx             | `.jsx`               | Supports `// and /* */` comments.          | defaultParser       |
+| Jsx             | `.jsx`               | Supports `//, /* */, {/* */}` comments.    | defaultParser       |
 | Julia           | `.jl`                | Supports `"""` and `#` comments.           | pythonParser        |
 | Kotlin          | `.kt`                | Supports `// and /* */` comments.          | defaultParser       |
 | Latex           | `.tex`               | Supports `\begin{comment}` and `%` comments| latexParser         |

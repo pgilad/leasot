@@ -21,5 +21,6 @@ if (a) {
 //FIXME: illogical
 var content = (
     <div className={false ? 'true' : 'false'}>
+        {/* FIXME: inside jsx comment */}
     </div>
 );
