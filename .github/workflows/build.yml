@@ -86,7 +86,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFULAT_NODE_VERSION }}
+                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
             - name: Check artifact
               run: test -d "./dist"
 
@@ -98,7 +98,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFULAT_NODE_VERSION }}
+                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
             - name: Deploy Docs
               uses: peaceiris/actions-gh-pages@v4
               with:
@@ -113,7 +113,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFULAT_NODE_VERSION }}
+                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
             - name: Use Node.js ${{ env.DEFAULT_NODE_VERSION }} with NPM registry
               uses: actions/setup-node@v4
               with:
