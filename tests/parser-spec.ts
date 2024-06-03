@@ -883,13 +883,17 @@ describe('parsing', function () {
             const file = getFixturePath('lua.lua');
             const comments = await getComments(file);
             should.exist(comments);
-            comments.should.have.length(5);
+            comments.should.have.length(9);
 
             verifyComment(comments[0], 'TODO', 2, 'Support POST');
             verifyComment(comments[1], 'FIXME', 3, 'Foobar print');
             verifyComment(comments[2], 'TODO', 5, 'End function');
             verifyComment(comments[3], 'FIXME', 11, 'maybe');
             verifyComment(comments[4], 'TODO', 12, 'fix this');
+            verifyComment(comments[5], 'TODO', 17, 'inline comment (space: no, colon: no)');
+            verifyComment(comments[6], 'TODO', 18, 'inline comment (space: no, colon: yes)');
+            verifyComment(comments[7], 'TODO', 19, 'inline comment (space: yes, colon: no)');
+            verifyComment(comments[8], 'TODO', 20, 'inline comment (space: yes, colon: yes)');
         });
     });
 

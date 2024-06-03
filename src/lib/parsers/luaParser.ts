@@ -6,7 +6,7 @@ const multiLineCommentRegex = /--\[\[(?:[\s\S]*)]]/gim;
 
 const parserFactory: ParserFactory = ({ customTags }) => {
     const regex = getRegex(customTags);
-    const lineCommentRegex = new RegExp(`^\\s*--${regex}$`, 'mig');
+    const lineCommentRegex = new RegExp(`\\s*--${regex}$`, 'mig');
     const innerBlockRegex = new RegExp(`^\\s*${regex}\\s*$`, 'mig');
 
     return (contents, file) => {
