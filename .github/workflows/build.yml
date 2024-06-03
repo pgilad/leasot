@@ -74,12 +74,12 @@ jobs:
               id: is-release-candidate
               run: echo "is-release-candidate=${{ matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION }}" >> $GITHUB_OUTPUT
 
-            - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION
+            - if: steps.is-release-candidate.outputs.is-release-candidate == 'true'
               name: Set artifact build name output
               id: set-artifact-name
               run: echo "artifact-name=build-${{ matrix.os }}-${{ matrix.node-version }}" >> $GITHUB_OUTPUT
 
-            - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION
+            - if: steps.is-release-candidate.outputs.is-release-candidate == 'true'
               uses: actions/upload-artifact@v4
               with:
                   name: ${{ steps.set-artifact-name.outputs.artifact-name }}
