@@ -131,8 +131,6 @@ jobs:
               with:
                   node-version: ${{ env.DEFAULT_NODE_VERSION }}
                   registry-url: 'https://registry.npmjs.org'
-            - name: Disable prepare script (for husky)
-              run: npm pkg delete scripts.prepare
             - name: Publish to NPM
               run: npm publish --access public --ignore-scripts
               env:
