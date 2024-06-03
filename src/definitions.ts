@@ -171,6 +171,10 @@ export enum BuiltinReporters {
      */
     custom = 'custom',
     /**
+     * Return a Gitlab code quality formatted json string of the todos
+     */
+    gitlab = 'gitlab',
+    /**
      * Return a json string of the todos
      */
     json = 'json',
