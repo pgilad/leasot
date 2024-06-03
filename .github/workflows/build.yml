@@ -63,7 +63,7 @@ jobs:
             - name: Reporter CLI smoke test
               run: node ./dist/cli/leasot-reporter.js --help
 
-            - if: matrix.node-version == env.DEFAULT_NODE_VERSION
+            - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == 'ubuntu-latest'
               uses: actions/upload-artifact@v4
               with:
                   name: build
@@ -81,11 +81,11 @@ jobs:
         runs-on: ubuntu-latest
         needs: build
         steps:
-            - uses: actions/download-artifact@v3
+            - uses: actions/download-artifact@v4
               with:
                   name: build
             - name: Deploy Docs
-              uses: peaceiris/actions-gh-pages@v3
+              uses: peaceiris/actions-gh-pages@v4
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./docs
@@ -96,11 +96,11 @@ jobs:
         runs-on: ubuntu-latest
         needs: build
         steps:
-            - uses: actions/download-artifact@v3
+            - uses: actions/download-artifact@v4
               with:
                   name: build
             - name: Use Node.js ${{ env.DEFAULT_NODE_VERSION }} with NPM registry
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: ${{ env.DEFAULT_NODE_VERSION }}
                   registry-url: 'https://registry.npmjs.org'
