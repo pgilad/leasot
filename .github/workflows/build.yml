@@ -57,6 +57,9 @@ jobs:
             - name: Docs
               run: npm run docs
 
+            - name: Main CLI version smoke test
+              run: node ./dist/cli/leasot.js --version
+
             - name: Main CLI smoke test
               run: node ./dist/cli/leasot.js --help
 
