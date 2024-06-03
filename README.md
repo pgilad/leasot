@@ -12,7 +12,6 @@
 
 [![npm](https://img.shields.io/npm/v/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
 [![npm downloads](https://img.shields.io/npm/dm/leasot.svg?style=for-the-badge)](https://www.npmjs.com/package/leasot)
-[![Travis (.org)](https://img.shields.io/travis/pgilad/leasot.svg?style=for-the-badge)](https://travis-ci.org/pgilad/leasot)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 Easily extract, collect and report TODOs and FIXMEs in your code. This project uses regex in order
@@ -26,10 +25,10 @@ to extract your todos from comments.
 
 - Spaces are optional.
 - Colon is optional.
-- Must be in a comment (line or block) in its' own line (`some code(); //TODO: do something` is not supported).
-- Can be prefixed with a @ (i.e @TODO).
+- Must be in a comment (line or block) in its own line (`some code(); //TODO: do something` is not supported).
+- Can be prefixed with a @ (i.e. @TODO).
 - Spaces are trimmed around comment text.
-- Supported default types are `TODO` and `FIXME` - case insensitive.
+- Supported default types are `TODO` and `FIXME` - case-insensitive.
 - Additional types can be added (using `tags` in cli and `customTags` in `leasot.parse`)
 - New extensions can be associated with bundled parsers as many languages have overlapping syntax
 - Supports both leading and trailing references. Examples:
@@ -60,7 +59,7 @@ Options:
   -A, --associate-parser [ext,parser]  associate unknown extensions with bundled parsers (parser optional / default: defaultParser) (default: {})
   -i, --ignore <patterns>              add ignore patterns (default: [])
   -I, --inline-files                   parse possible inline files (default: false)
-  -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|raw) (default: table) (default: "table")
+  -r, --reporter [reporter]            use reporter (table|json|xml|markdown|vscode|gitlab|raw) (default: table) (default: "table")
   -S, --skip-unsupported               skip unsupported filetypes (default: false)
   -t, --filetype [filetype]            force the filetype to parse. Useful for streams (default: .js)
   -T, --tags <tags>                    add additional comment types to find (alongside todo & fixme) (default: [])
