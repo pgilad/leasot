@@ -66,7 +66,7 @@ jobs:
             - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == 'ubuntu-latest'
               uses: actions/upload-artifact@v4
               with:
-                  name: build
+                  name: build-${{ matrix.os }}-${{ matrix.node-version }}
                   retention-days: 7
                   path: |
                       ./
