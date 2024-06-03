@@ -88,7 +88,7 @@ jobs:
               with:
                   name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
             - name: Check artifact
-              run: test -d "./dist"
+              run: test -d "./dist2"
 
     deploy-docs:
         name: Deploy Docs
