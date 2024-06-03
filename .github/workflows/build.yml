@@ -69,14 +69,15 @@ jobs:
             - name: Reporter CLI smoke test
               run: node ./dist/cli/leasot-reporter.js --help
 
-            - name: Set artifact build name output
+            - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION
+              name: Set artifact build name output
               id: set-artifact-name
               run: echo "artifact-name=build-${{ matrix.os }}-${{ matrix.node-version }}" >> $GITHUB_OUTPUT
 
             - if: matrix.node-version == env.DEFAULT_NODE_VERSION && matrix.os == env.DEFAULT_OS_VERSION
               uses: actions/upload-artifact@v4
               with:
-                  name: build-${{ matrix.os }}-${{ matrix.node-version }}
+                  name: ${{ steps.set-artifact-name.outputs.artifact-name }}
                   retention-days: 7
                   path: |
                       ./
@@ -104,7 +105,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
+                  name: ${{ needs.build.outputs.artifact-name }}
             - name: Deploy Docs
               uses: peaceiris/actions-gh-pages@v4
               with:
@@ -119,7 +120,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                  name: build-${{ env.DEFAULT_OS_VERSION }}-${{ env.DEFAULT_NODE_VERSION }}
+                  name: ${{ needs.build.outputs.artifact-name }}
             - name: Use Node.js ${{ env.DEFAULT_NODE_VERSION }} with NPM registry
               uses: actions/setup-node@v4
               with:
