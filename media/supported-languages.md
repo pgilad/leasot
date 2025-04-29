@@ -15,8 +15,8 @@
 | Elixir          | `.ex` `.exs`         | Supports `#` comments.                     | coffeeParser        |
 | F-Sharp         | `.fs`                | Supports `// and (* *)` comments.          | fsharpParser        |
 | GDScript        | `.gd`                | Supports `#` comments.                     | coffeeParser        |
-| Groovy          | `.groovy`            | Supports `// and /* */` comments.          | defaultParser       |
 | Go              | `.go`                | Supports `// and /* */` comments.          | defaultParser       |
+| Groovy          | `.groovy`            | Supports `// and /* */` comments.          | defaultParser       |
 | HCL             | `.tf` `.hcl`         | Supports `//` `/* */` and `#` comments.    | defaultParser & coffeeParser |
 | HTML            | `.html` `.htm`       | Supports `<!-- -->`                        | twigParser          |
 | Haml            | `.haml`              | Supports `/ -# <!-- --> and <%# %>`        | twigParser          |
