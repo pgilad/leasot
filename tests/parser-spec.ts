@@ -762,6 +762,24 @@ describe('parsing', function () {
         });
     });
 
+    describe('groovy', function () {
+        it('handle groovy lines comments', async function () {
+            const file = getFixturePath('groovy.groovy');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[0], 'TODO', 14, 'Add some real code');
+        });
+
+        it('handle groovy block comments', async function () {
+            const file = getFixturePath('groovy.groovy');
+            const comments = await getComments(file);
+            should.exist(comments);
+            comments.should.have.length(2);
+            verifyComment(comments[1], 'FIXME', 5, 'Assign a real agent');
+        });
+    });
+    
     describe('kotlin', function () {
         it('handle kotlin lines comments', async function () {
             const file = getFixturePath('kotlin.kt');
